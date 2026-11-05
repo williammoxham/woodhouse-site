@@ -47,11 +47,14 @@ function renderRail(res){
   });
   rh+=`<div class="ev-end"><span class="eyebrow">Every week</span><h3>Tuesday jams, Afrobeats, line dancing, comedy and more.</h3><a class="btn btn-teal" href="calendar.html" style="align-self:flex-start">See the full calendar <span class="arr">→</span></a></div>`;
   rail.innerHTML=rh;
-  const list=res.events.slice(0,10);
-  rail.querySelectorAll('button.ev').forEach(b=>b.addEventListener('click',()=>window.WH.openEvent(list[+b.dataset.i],+b.dataset.i)));
+  railList=res.events.slice(0,10);
   if(window.ScrollTrigger)ScrollTrigger.refresh();
 }
-if(rail)loadEvents(renderRail);
+let railList=[];
+if(rail){
+  rail.addEventListener('click',ev=>{const b=ev.target.closest('button.ev');if(!b)return;ev.preventDefault();window.WH.openEvent(railList[+b.dataset.i],+b.dataset.i);});
+  loadEvents(renderRail);
+}
 
 /* ---------- House News (Squarespace blog, read on our site; never links out) ---------- */
 const newsGrid=document.getElementById('newsGrid');
