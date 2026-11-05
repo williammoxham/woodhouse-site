@@ -33,6 +33,15 @@ cellar-setup.sql    one-time setup for the live cellar (brewing app's Supabase)
 | SQUARESPACE_EVENTS_PATH | /events (default) |
 | SQUARESPACE_BLOG_PATH | /news (default) |
 
+## Square (tap list + email signups)
+The Beer page tap list reads what actually sold at the bar in the last 7 days, and the
+footer signup adds people to your Square Customer Directory (tagged `website-signup`).
+1. developer.squareup.com > Applications > + New application (name it "Woodhouse website").
+2. Open it > Production > copy the **Production Access Token**.
+3. Vercel > Project > Settings > Environment Variables: add `SQUARE_ACCESS_TOKEN` = that token,
+   and `SQUARE_LOCATION_ID` = `V90WW1EQSH926`. Redeploy.
+The token stays on the server (in the `api/` functions); it never reaches visitors' browsers.
+
 ## Live cellar
 1. Run `cellar-setup.sql` in the brewing app's Supabase (match the table names to the app).
 2. Put the Supabase URL and anon key in `CELLAR_SOURCE` in `assets/js/data.js`.

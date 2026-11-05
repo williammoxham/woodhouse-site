@@ -39,14 +39,16 @@ function renderRail(res){
     const diff=Math.round((Date.UTC(e.y,e.m-1,e.d)-Date.UTC(now.y,now.m-1,now.d))/864e5);
     const tick=(e.tags||[]).find(t=>/ticket/i.test(t));
     const chip=diff===0?'<span class="ev-chip">Tonight</span>':diff===1?'<span class="ev-chip soft">Tomorrow</span>':tick?'<span class="ev-chip soft">Tickets</span>':'';
-    rh+=`<a class="ev${e.img?' has-img':''}" href="${e.u}" target="_blank" rel="noopener" style="--glow:${glows[i%3]}">
+    rh+=`<button type="button" class="ev${e.img?' has-img':''}" data-i="${i}" style="--glow:${glows[i%3]}">
       ${e.img?`<span class="ev-img" style="background-image:url('${e.img}')"></span>`:''}${chip}
       <div class="ev-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd.slice(0,3)}</span></div>
       <h3>${esc(e.t)}</h3><p>${esc(e.p)}</p>
-      <div class="ev-foot"><span>${e.time||''}</span><span>Details ↗</span></div></a>`;
+      <div class="ev-foot"><span>${e.time||''}</span><span>More info +</span></div></button>`;
   });
   rh+=`<div class="ev-end"><span class="eyebrow">Every week</span><h3>Tuesday jams, Afrobeats, line dancing, comedy and more.</h3><a class="btn btn-teal" href="calendar.html" style="align-self:flex-start">See the full calendar <span class="arr">→</span></a></div>`;
   rail.innerHTML=rh;
+  const list=res.events.slice(0,10);
+  rail.querySelectorAll('button.ev').forEach(b=>b.addEventListener('click',()=>window.WH.openEvent(list[+b.dataset.i],+b.dataset.i)));
   if(window.ScrollTrigger)ScrollTrigger.refresh();
 }
 if(rail)loadEvents(renderRail);

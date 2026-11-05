@@ -26,12 +26,12 @@ const ampm=h=>h>=12?'pm':'am';
 /* ---------- Events: one shape for Squarespace + fallback ---------- */
 function normFallback(e){
   const [y,m,d]=e.date.split('-').map(Number),[sh,sm]=e.start.split(':').map(Number),[eh,em]=(e.end||e.start).split(':').map(Number);
-  return {y,m,d,sh:sh+sm/60,eh:eh+em/60,t:e.title,p:e.excerpt||'',body:e.body||e.excerpt||'',u:e.url,img:e.image||'',tags:e.tags||[],
+  return {y,m,d,sh:sh+sm/60,eh:eh+em/60,t:e.title,p:e.excerpt||'',body:e.body||e.excerpt||'',u:e.url,img:e.image||'',tags:e.tags||[],tickets:e.tickets||'',
     time:`${clock12(sh,sm)} to ${clock12(eh,em)} ${ampm(eh)}`};
 }
 function normApi(x){
   const a=laParts(x.start),b=laParts(x.end||x.start);
-  return {y:a.y,m:a.m,d:a.d,sh:a.h+a.min/60,eh:(b.d!==a.d?24:b.h+b.min/60),t:x.title,p:x.excerpt||'',body:x.body||x.excerpt||'',u:x.url,img:x.image||'',
+  return {y:a.y,m:a.m,d:a.d,sh:a.h+a.min/60,eh:(b.d!==a.d?24:b.h+b.min/60),t:x.title,p:x.excerpt||'',body:x.body||x.excerpt||'',u:x.url,img:x.image||'',tickets:x.tickets||'',
     tags:[...(x.tags||[]),...(x.categories||[])],time:`${clock12(a.h,a.min)} to ${clock12(b.h,b.min)} ${ampm(b.h)}`};
 }
 const isUpcoming=e=>{const k=e.y*10000+e.m*100+e.d;return k>todayKey||(k===todayKey&&now.h*60+now.min<e.eh*60);};
@@ -80,7 +80,11 @@ const su=document.getElementById('signup');
 if(su)su.addEventListener('submit',e=>{
   e.preventDefault();
   const v=document.getElementById('email').value.trim(),m=document.getElementById('signupMsg');
-  m.textContent=/.+@.+\..+/.test(v)?'Thanks. Mailing list signup goes live at launch.':'Enter an email address like you@email.com.';
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent='Enter an email address like you@email.com.';return;}
+  m.textContent='Adding you...';
+  fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:v})})
+    .then(r=>r.json()).then(j=>{if(!j.ok)throw 0;m.textContent="You're on the list. See you at the bar.";su.reset();})
+    .catch(()=>{m.textContent='Signups open when the site goes live. Email '+D.CONTACT.general+' in the meantime.';});
 });
 
 /* ---------- Downloads that may not exist yet (press kit) ---------- */
@@ -133,7 +137,48 @@ function splitWords(el){
 }
 document.querySelectorAll('[data-words]').forEach(splitWords);
 
-window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,lenis:null};
+/* ---------- Popup window (events, bar packages) ---------- */
+const modal=document.createElement('div');modal.className='modal';modal.hidden=true;
+modal.innerHTML='<div class="modal-back" data-close></div><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><button class="modal-x" type="button" aria-label="Close" data-close>×</button><div class="modal-body"></div></div>';
+document.body.appendChild(modal);
+const mBody=modal.querySelector('.modal-body'),mCard=modal.querySelector('.modal-card');let lastFocus=null,onClose=null;
+function openModal(html,opts={}){
+  lastFocus=document.activeElement;mBody.innerHTML=html;modal.className='modal'+(opts.cls?' '+opts.cls:'');modal.hidden=false;
+  document.documentElement.classList.add('modal-open');if(window.WH&&WH.lenis)WH.lenis.stop();
+  requestAnimationFrame(()=>{modal.classList.add('in');mCard.focus();});mCard.scrollTop=0;onClose=opts.onClose||null;
+  mBody.querySelectorAll('.copybtn').forEach(b=>b.addEventListener('click',()=>{try{navigator.clipboard.writeText(b.dataset.copy).then(()=>{b.textContent='Copied';});}catch(e){}}));
+}
+function closeModal(){if(modal.hidden)return;modal.classList.remove('in');document.documentElement.classList.remove('modal-open');if(window.WH&&WH.lenis)WH.lenis.start();
+  setTimeout(()=>{modal.hidden=true;mBody.innerHTML='';},250);if(lastFocus)lastFocus.focus();if(onClose)onClose();}
+modal.addEventListener('click',e=>{if(e.target.closest('[data-close]'))closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+const slug=t=>String(t).toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60);
+const FALLBACK_IMG=['img/stage-night.jpg','img/crowd.jpg','img/indoor.jpg','img/stage.jpg','img/patio-dusk.jpg'];
+function gcal(e){
+  const p=n=>String(n).padStart(2,'0'),hm=h=>p(Math.floor(h))+p(Math.round((h%1)*60));
+  const d=`${e.y}${p(e.m)}${p(e.d)}`;
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(e.t+' at Woodhouse')+
+    `&dates=${d}T${hm(e.sh)}00/${d}T${hm(Math.min(e.eh,23.98))}00&ctz=America/Los_Angeles&location=`+encodeURIComponent('Woodhouse Blending & Brewing, 119 Madrone St, Santa Cruz, CA')+
+    '&details='+encodeURIComponent(e.p||'');
+}
+function eventHtml(e,i){
+  const wd=WD[new Date(Date.UTC(e.y,e.m-1,e.d,12)).getUTCDay()];
+  const tickets=e.tickets||((e.body||'').match(/https?:\/\/\S*(eventbrite|fareharbor|ticket|tix)\S*/i)||[])[0]||'';
+  const paras=String(e.body||e.p||'').split(/\n{2,}|\n/).map(x=>x.trim()).filter(Boolean).map(x=>`<p>${esc(x)}</p>`).join('');
+  const img=e.img||FALLBACK_IMG[(i||0)%FALLBACK_IMG.length];
+  return `<div class="ev-hero" style="background-image:url('${img}')"><div class="ev-hero-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd}</span></div></div>
+    <div class="ev-pad"><p class="eyebrow">${esc(e.time)} · Woodhouse, 119 Madrone St</p><h2 id="modalTitle">${esc(e.t)}</h2>
+    <div class="chips" style="margin-top:14px">${(e.cats||e.tags||[]).filter(c=>c!=='Ticketed').slice(0,3).map(c=>`<span class="chip">${esc(c)}</span>`).join('')}${tickets?'<span class="chip warm">Tickets</span>':''}</div>
+    <div class="ev-text">${paras}</div>
+    <div class="btn-row" style="margin-top:26px">${tickets?`<a class="btn btn-teal" href="${tickets}" target="_blank" rel="noopener">Get tickets <span class="arr">↗</span></a>`:''}
+      <a class="btn ${tickets?'btn-ghost':'btn-teal'}" href="${gcal(e)}" target="_blank" rel="noopener">Add to calendar</a>
+      <a class="btn btn-ghost" href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions</a></div>
+</div>`;
+}
+function openEvent(e,i){openModal(eventHtml(e,i),{cls:'modal-ev'});}
+
+window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,slug,lenis:null};
 
 /* ---------- Motion (shared) ---------- */
 if(reduce||!hasGsap)return;
@@ -156,7 +201,7 @@ gsap.utils.toArray('.plate').forEach(p=>gsap.from(p,{clipPath:'inset(8% 8% 8% 8%
 gsap.utils.toArray('.panel .copy,[data-stagger]').forEach(c=>gsap.from(c.children,{y:30,opacity:.25,stagger:.08,duration:1,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 88%'}}));
 gsap.utils.toArray('[data-count]').forEach(el=>{
   const end=+el.dataset.count,o={v:0};
-  ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)})});
+  ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v).toLocaleString("en-US")})});
 });
 gsap.utils.toArray('.sec-head h2,.book h2,.page-hero h1').forEach(h=>gsap.from(h,{y:60,opacity:.2,duration:1.2,ease:'power4.out',scrollTrigger:{trigger:h,start:'top 92%'}}));
 gsap.utils.toArray('[data-drift]').forEach(el=>gsap.to(el,{yPercent:+el.dataset.drift||-20,ease:'none',scrollTrigger:{trigger:el.closest('section')||el,start:'top top',end:'bottom top',scrub:true}}));

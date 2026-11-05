@@ -27,29 +27,34 @@ function renderList(){
     const wd=WD[new Date(Date.UTC(e.y,e.m-1,e.d,12)).getUTCDay()];
     const diff=Math.round((Date.UTC(e.y,e.m-1,e.d)-Date.UTC(now.y,now.m-1,now.d))/864e5);
     const when=diff===0?'<span class="ev-chip" style="position:static">Tonight</span>':diff===1?'<span class="chip" style="color:var(--teal)">Tomorrow</span>':'';
-    const long=e.body&&e.body.length>e.p.length+40;
-    html+=`<article class="cal-row">
+        const idx=ev.indexOf(e);
+    html+=`<article class="cal-row" data-i="${idx}" id="ev-${window.WH.slug(e.t)}">
       <div class="cal-date"><span class="d">${e.d}</span><span class="w">${wd.slice(0,3)} · ${MON[e.m-1]}</span></div>
-      <div class="cal-main"><h3>${esc(e.t)}</h3>
+      <div class="cal-main"><h3><button type="button" class="cal-open" data-i="${idx}">${esc(e.t)}</button></h3>
         <div class="meta">${when}<span class="time">${esc(e.time)}</span>${e.cats.filter(c=>c!=='Ticketed').slice(0,2).map(c=>`<span class="chip">${esc(c)}</span>`).join('')}${e.cats.includes('Ticketed')?'<span class="chip" style="color:var(--amber);border-color:rgba(227,169,92,.35)">Tickets</span>':''}</div>
         <p>${esc(e.p)}</p>
-        ${long?`<details><summary>More about this show</summary><p>${esc(e.body)}</p></details>`:''}
+
       </div>
-      <div class="cal-side">${e.img?`<span class="cal-thumb" style="background-image:url('${e.img}')"></span>`:''}<a class="btn btn-ghost" href="${e.u}" target="_blank" rel="noopener">Details ↗</a></div>
+      <div class="cal-side">${e.img?`<button type="button" class="cal-thumb" data-i="${idx}" style="background-image:url('${e.img}')" aria-label="More about ${esc(e.t)}"></button>`:''}<button type="button" class="btn btn-ghost" data-i="${idx}">More info +</button></div>
     </article>`;
   });
   list.innerHTML=html;
+  list.querySelectorAll('[data-i]').forEach(b=>{if(b.tagName==='ARTICLE')return;b.addEventListener('click',()=>{const e=ev[+b.dataset.i];
+    try{history.replaceState(null,'','#ev-'+window.WH.slug(e.t));}catch(x){}
+    window.WH.openModal&&window.WH.openEvent(e,+b.dataset.i);});});
   if(window.ScrollTrigger)ScrollTrigger.refresh();
 }
+let opened=false;
 if(list)loadEvents(res=>{
   all=res.events.map(e=>Object.assign(e,{cats:catOf(e)}));
   note.textContent=res.live?'Updated from our events calendar.':'Showing a saved list of upcoming shows. The full calendar loads on the live site.';
   if(cur!=='All'&&!all.some(e=>e.cats.includes(cur)))cur='All';
   renderFilters();renderList();
+  const h=location.hash.slice(1);if(h.startsWith('ev-')&&!opened){const e=all.find(x=>'ev-'+window.WH.slug(x.t)===h);if(e){opened=true;window.WH.openEvent(e,all.indexOf(e));}}
 });
 
 /* artist wall */
 const wall=document.getElementById('wall');
-if(wall){const a=D.ARTISTS.slice(),rows=[[],[],[]];a.forEach((n,i)=>rows[i%3].push(n));
+if(wall){const a=D.ARTISTS.slice(2),rows=[[D.ARTISTS[0]],[],[D.ARTISTS[1]]];a.forEach((n,i)=>rows[i%3].push(n));
   wall.innerHTML=rows.map(r=>{const s=r.map(n=>`<span>${esc(n)}</span>`).join('');return `<div class="wall-row">${s}${s.replace(/<span>/g,'<span aria-hidden="true">')}</div>`;}).join('');}
 })();

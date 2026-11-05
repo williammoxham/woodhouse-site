@@ -54,14 +54,14 @@
         <p class="crumb"><a href="/">Woodhouse</a><span class="chev" aria-hidden="true"></span>Beer</p>
         <h1>From the <span class="o">Cellar</span></h1>
       </div>
-      <p class="lede">Brewed, blended and conditioned at 119 Madrone St. This is our cellar right now, straight from the brewing log: what's fermenting, what's conditioning and what's about to pour.</p>
+      <p class="lede">Brewed, blended and conditioned at 119 Madrone St. This is our cellar right now, straight from our brewing log. Flip on x-ray to see inside the steel, and tap any tank for its brew sheet.</p>
     </div>
     <div class="cellar3d" id="cellar3d">
       <div class="c3-stage" id="c3stage" aria-label="3D view of the Woodhouse cellar. Drag to look around, tap a tank for details.">
         <div class="c3-labels" id="c3labels"></div>
         <div class="c3-top">
           <span class="c3-chip" id="c3chip"><span class="dot"></span><span id="c3chipText">Loading the cellar</span></span>
-          <span class="c3-hint">Drag to look around · Tap a tank</span>
+          <span class="c3-tools"><button type="button" class="xray-btn" id="xrayBtn" aria-pressed="false"><span class="sw" aria-hidden="true"></span>X-ray</button><span class="c3-hint">Drag to look around · Tap a tank</span></span>
         </div>
       </div>
       <aside class="c3-card" id="c3card" aria-live="polite"></aside>
@@ -86,11 +86,12 @@
   <div class="wrap">
     <div class="sec-head">
       <h2>On <span class="o">Tap</span></h2>
-      <p class="lede">House beers first, plus a guest tap or two from breweries we admire while the next batches condition. The list changes often, so ask the bar what's fresh.</p>
+      <div><p class="lede">Straight from our bar. This list updates itself from what we're pouring right now: house beers, guest taps, spritzes, cider, wine and zero proof.</p>
+      <p class="c3-chip" id="tapChip" style="margin-top:18px;display:inline-flex"><span class="dot"></span><span id="tapChipText">Loading the bar</span></p></div>
     </div>
-    <div class="taps" id="tapList"></div>
-    <div class="drinks" id="drinkList"></div>
-    <div class="split" style="margin-top:clamp(80px,9vw,120px)">
+    <div class="tap-tabs" id="tapTabs" role="group" aria-label="Drink categories"></div>
+    <div id="tapGroups"></div>
+<div class="split" style="margin-top:clamp(80px,9vw,120px)">
       <div class="note">
         <span class="eyebrow">A quick update on our beer</span>
         <p><strong>Santa Cruz drank us dry.</strong> When a whole town shows up for a small independent brewery, beer disappears faster than you can make it. Thank you.</p>
@@ -129,31 +130,22 @@
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="sec" id="process">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>How we <span class="o">Brew</span></h2>
-      <p class="lede">Classic technique, a curious streak and a lot of patience. Every batch moves through the same five stops in the building.</p>
-    </div>
-    <div class="process" data-stagger>
-      <div class="step"><span class="n">01</span><h3>Mill &amp; Mash</h3><p>Malted grain is cracked and steeped in hot water, turning starch into the sugars yeast will eat.</p><span class="eq">10 bbl, 3 vessel brewhouse</span></div>
-      <div class="step"><span class="n">02</span><h3>Boil &amp; Hop</h3><p>The sweet wort is boiled and hopped for bitterness, aroma and balance, then chilled fast.</p><span class="eq">Kettle and whirlpool</span></div>
-      <div class="step"><span class="n">03</span><h3>Ferment</h3><p>Yeast goes to work. Clean ales take days; mixed cultures and wild beers take as long as they need.</p><span class="eq">FV1 to FV4 and two pilot tanks</span></div>
-      <div class="step"><span class="n">04</span><h3>Condition &amp; Blend</h3><p>Beer rests and clears. Some of it heads to oak, where time and blending build depth you can't rush.</p><span class="eq">Oak barrels and bright tanks</span></div>
-      <div class="step"><span class="n">05</span><h3>Bright &amp; Pour</h3><p>Carbonated, tasted and approved, it moves to the bright tanks and then straight to the bar.</p><span class="eq">BT2 to BT4 and a 20 bbl bright</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- BREWERS -->
 <section class="sec" id="brewers" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
-      <h2>The <span class="o">Brewers</span></h2>
-      <p class="lede">Two meticulous brewers with deep Central Coast roots, running the cellar day to day.</p>
+      <h2>Our <span class="o">Brewers</span></h2>
+      <p class="lede">Science and heart, in equal measure.</p>
     </div>
-    <div class="bios">
+    <div class="ode" data-stagger>
+      <p class="ode-big" data-words>Jeff brings the Monterey Bay. Gino brings the still. <span class="hl">Together they science and heart the hell out of every batch.</span></p>
+      <div class="ode-cols">
+        <p>Jeff has spent fifteen years between barrels and vines, with a palate shaped by Carmel Valley fruit and coastal fog. Gino came up the honest way: a homebrew kit, a production brewhouse, and now the patience of the still. One reads a beer like a winemaker. The other reads it like a distiller.</p>
+        <p>In our cellar they measure everything. Gravity, temperature, the minute the hops go in, the day the yeast is done talking. Then they taste, argue, laugh and adjust, because numbers can tell you a beer is correct, but only people can tell you it's good.</p>
+        <p>Science gets every batch to the line. Heart carries it over. That's the whole recipe, and it's the same one we use for everything else in this building.</p>
+      </div>
+    </div>
+    <div class="bios" style="margin-top:clamp(56px,7vw,90px)">
       <article class="bio">
         <div class="por oak" aria-hidden="true">JV</div>
         <div>

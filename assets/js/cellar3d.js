@@ -32,11 +32,22 @@ function cellarCard(t,row){
     const p=Math.max(0,Math.min(1,(n-a)/(b-a))),day=Math.max(1,Math.round((n-a)/864e5)),tot=Math.round((b-a)/864e5);
     prog=`<div class="c3-prog"><div class="track"><i style="width:${Math.round(p*100)}%"></i></div><div class="lab"><span>Day ${day} of ~${tot}</span><span>${row.status==='ready'?'Ready':'On tap ~'+fmtDay(row.ready_on)}</span></div></div>`;
   }
+  const g=v=>v?Number(v).toFixed(3):'';
+  const abvNow=row.og&&row.sg?((row.og-row.sg)*131.25).toFixed(1)+'%':'';
+  const rows=has?[
+    ['Batch',row.batch],['Brewed',row.brewed_on?fmtDay(row.brewed_on):''],
+    ['Original gravity',g(row.og)],['Current gravity',g(row.sg)],
+    ['Target final',g(row.fg_target)],['ABV now',abvNow||(row.abv_target?row.abv_target+'%':'')],
+    ['Target ABV',row.abv_target?row.abv_target+'%':''],['IBU',row.ibu],
+    ['Tank temp',row.temp_f?row.temp_f+'°F':''],['Yeast',row.yeast],
+    ['Hops',row.hops],['Malt',row.malt]
+  ].filter(r=>r[1]):[];
   const body=has?`<h3>${row.beer_name}</h3><p class="sty">${row.style||''}</p>`
     :`<h3>${row.status==='cleaning'?'Getting clean':'Standing by'}</h3><p class="sty">${row.status==='cleaning'?'Scrubbed and sanitized for the next brew.':'Waiting on the next brew day.'}</p>`;
-  return `<span class="code">${t.label||t.code} · ${t.bbl} bbl ${t.kind==='fv'?'fermenter':'bright tank'}</span>${body}
+  return `<div class="sheet-head"><span class="code">Brew sheet · ${t.label||t.code}</span><span class="code">${t.bbl} bbl ${t.kind==='fv'?'fermenter':'bright'}</span></div>${body}
     <span class="pill" style="background:${st.color};color:${has||row.status==='ready'?'#0a0f0f':'#f2ead9'}">${st.label}</span>${prog}
-    <div class="c3-facts"><div><span>Fill</span><b>${has?Math.round(row.fill_pct||0)+'%':'0%'}</b></div><div><span>Target ABV</span><b>${has&&row.abv_target?row.abv_target+'%':'TBD'}</b></div></div>`;
+    ${rows.length?`<dl class="sheet">${rows.map(r=>`<div class="${/Hops|Malt|Yeast/.test(r[0])?'wide':''}"><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl>`:''}
+    <p class="sheet-note">Read only · from our brewing log</p>`;
 }
 
 /* ---------- Cellar: 3D scene ---------- */
@@ -85,7 +96,7 @@ function cellarCard(t,row){
     /* studio environment for the stainless */
     const pm=new THREE.PMREMGenerator(R);const env=new THREE.Scene();
     env.add(new THREE.Mesh(new THREE.BoxGeometry(800,400,800),new THREE.MeshBasicMaterial({color:0x111817,side:THREE.BackSide})));
-    [[0,190,0,600,10,300,0xffffff],[-390,60,0,10,200,500,0x89d8d0],[390,80,-100,10,160,300,0xffe2b8],[0,60,-390,500,120,10,0x9aa9a6]].forEach(p=>{
+    [[0,190,0,600,10,300,0xffffff],[-390,60,0,10,200,500,0xbfe9e4],[390,80,-100,10,160,300,0xffe8c8],[0,60,-390,500,120,10,0xd5dcdb],[0,-190,0,700,10,500,0x3a4443]].forEach(p=>{
       const m=new THREE.Mesh(new THREE.BoxGeometry(p[3],p[4],p[5]),new THREE.MeshBasicMaterial({color:p[6]}));m.position.set(p[0],p[1],p[2]);env.add(m);});
     scene.environment=pm.fromScene(env,.04).texture;
     scene.add(new THREE.HemisphereLight(0xdde9e6,0x0a0f0f,.35));
@@ -95,11 +106,11 @@ function cellarCard(t,row){
     const floor=new THREE.Mesh(new THREE.CircleGeometry(900,64),new THREE.MeshStandardMaterial({color:0x0c1312,roughness:.85,metalness:.1}));
     floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
     const grid=new THREE.GridHelper(1400,56,0x89d8d0,0x89d8d0);grid.material.transparent=true;grid.material.opacity=.06;grid.position.y=.2;scene.add(grid);
-    const steel=new THREE.MeshPhysicalMaterial({color:0xd7dcdb,metalness:1,roughness:.24,clearcoat:.4,clearcoatRoughness:.2,side:THREE.DoubleSide,envMapIntensity:1.15});
-    const steelDark=new THREE.MeshStandardMaterial({color:0x8a9291,metalness:1,roughness:.4});
+    const steel=new THREE.MeshPhysicalMaterial({color:0xe4e9e8,metalness:.9,roughness:.28,clearcoat:.5,clearcoatRoughness:.2,side:THREE.DoubleSide,envMapIntensity:1.7,transparent:true,opacity:1,emissive:0x89d8d0,emissiveIntensity:0});
+    const steelDark=new THREE.MeshStandardMaterial({color:0xa9b2b1,metalness:.9,roughness:.38,envMapIntensity:1.4,transparent:true,opacity:1});
     const ring=new THREE.Mesh(new THREE.RingGeometry(1,1.12,64),new THREE.MeshBasicMaterial({color:0x89d8d0,transparent:true,opacity:.9}));ring.rotation.x=-Math.PI/2;ring.position.y=.6;scene.add(ring);
     const tanks={},picks=[];
-    const GAP=1.0,TS=GAP/2,TL=Math.PI*2-GAP;
+    const TS=0,TL=Math.PI*2;
     function make(t){
       const r=22*Math.cbrt(t.bbl/10),fv=t.kind==='fv';
       const bodyH=r*(fv?2.5:2.2),coneH=fv?r*.95:r*.32,legH=r*.5+8,y0=legH;
@@ -110,7 +121,9 @@ function cellarCard(t,row){
       const dome=add(new THREE.SphereGeometry(r,72,18,0,Math.PI*2,0,Math.PI/2),steel,y0+coneH+bodyH);dome.scale.y=fv?.34:.26;
       if(!fv){const db=add(new THREE.SphereGeometry(r*.92,48,12,0,Math.PI*2,Math.PI/2,Math.PI/2),steel,y0);db.scale.y=.2;}
       /* cut edges, jacket bands, fittings */
-      [TS,-TS].forEach(a=>{const e=add(new THREE.CylinderGeometry(.7,.7,bodyH,8),steelDark,y0+coneH+bodyH/2);e.position.x=Math.sin(a)*r;e.position.z=Math.cos(a)*r;});
+      /* sight glass + racking arm, like the real ones */
+      {const sg=add(new THREE.CylinderGeometry(.9,.9,bodyH*.7,10),steelDark,y0+coneH+bodyH*.5);sg.position.set(r+1.2,0,0);sg.position.y=y0+coneH+bodyH*.5;}
+      {const arm=add(new THREE.CylinderGeometry(1.2,1.2,r*.5,10),steelDark,y0+coneH*.9);arm.rotation.z=Math.PI/2;arm.position.x=r*.9;}
       [.32,.72].forEach(f=>{const b=add(new THREE.CylinderGeometry(r+.6,r+.6,r*.16,72,1,true,TS,TL),steelDark,y0+coneH+bodyH*f);});
       const top=add(new THREE.CylinderGeometry(r*.12,r*.12,r*.32,24),steelDark,y0+coneH+bodyH+r*(fv?.34:.26)+r*.1);
       const legs=fv?4:3;for(let i=0;i<legs;i++){const a=i/legs*Math.PI*2+Math.PI/legs;const l=add(new THREE.CylinderGeometry(1.4,1.4,legH+coneH*.5,10),steelDark,(legH+coneH*.5)/2);l.position.x=Math.sin(a)*r*.78;l.position.z=Math.cos(a)*r*.78;}
@@ -132,10 +145,11 @@ function cellarCard(t,row){
       list.forEach((t,i)=>{x+=w[i]/2;tanks[t.code].position.set(x,0,z);x+=w[i]/2+22;});return tot;}
     const wB=row(D.CELLAR_LAYOUT.filter(t=>t.kind==='fv'),-48), wF=row(D.CELLAR_LAYOUT.filter(t=>t.kind==='bt'),62);
     const span=Math.max(wB,wF);
+    function CELLAR_EMISSIVE(x){D.CELLAR_LAYOUT.forEach(t=>{const u=tanks[t.code].userData;u.liqMat.emissiveIntensity=.12+x*.35;});}
     function setLevels(){
       D.CELLAR_LAYOUT.forEach(t=>{const u=tanks[t.code].userData,r=rowsBy[t.code]||{},full=r.beer_name&&r.status!=='empty'&&r.status!=='cleaning';
         u.target=full?Math.max(.05,Math.min(1,(r.fill_pct||0)/100)):0;u.fer=r.status==='fermenting';
-        u.liqMat.color.setHex(beerColor(r.style)).convertSRGBToLinear();u.liqMat.emissive.setHex(beerColor(r.style)).convertSRGBToLinear();u.liqMat.emissiveIntensity=.12;});
+        u.liqMat.color.setHex(beerColor(r.style)).convertSRGBToLinear();u.liqMat.emissive.setHex(beerColor(r.style)).convertSRGBToLinear();});
     }
     function applyLevel(u){
       const lvl=u.cur, show=lvl>.004;
@@ -145,7 +159,9 @@ function cellarCard(t,row){
       const fh=u.fer?Math.max(2,u.r*.14):1.4;u.foam.scale.y=fh;u.foam.position.y=u.y0+u.coneH+h+fh/2;
       u.bubbles.visible=show&&u.fer;u.bubbles.userData.h=h+u.coneH*.5;
     }
-    let az=-.18,azV=0,drag=false,lx=0,lastIn=0,hov=0;
+    let az=-.18,azV=0,drag=false,lx=0,lastIn=0,hov=0,xray=0,xrayT=0;
+    const xb=document.getElementById('xrayBtn');
+    if(xb)xb.addEventListener('click',()=>{xrayT=xrayT?0:1;xb.setAttribute('aria-pressed',xrayT?'true':'false');if(!vis)frame();});
     const cv=R.domElement,ray=new THREE.Raycaster(),ptr=new THREE.Vector2();let downX=0,downY=0;
     cv.addEventListener('pointerdown',e=>{drag=true;lx=downX=e.clientX;downY=e.clientY;cv.setPointerCapture(e.pointerId);lastIn=performance.now();});
     cv.addEventListener('pointermove',e=>{const rc=cv.getBoundingClientRect();hov=(e.clientY-rc.top)/rc.height-.5;if(!drag)return;azV=(e.clientX-lx)*-.004;az+=azV;az=Math.max(-.85,Math.min(.85,az));lx=e.clientX;lastIn=performance.now();});
@@ -157,6 +173,9 @@ function cellarCard(t,row){
     const v=new THREE.Vector3();let vis=false,raf=0,started=false;const clock=new THREE.Clock();
     function frame(){
       const dt=Math.min(.05,clock.getDelta()),time=clock.elapsedTime;
+      xray+=(xrayT-xray)*(reduce?1:Math.min(1,dt*5));
+      steel.opacity=1-xray*.86;steel.depthWrite=xray<.5;steel.emissiveIntensity=xray*.35;steel.roughness=.28-xray*.2;steelDark.opacity=1-xray*.7;steelDark.depthWrite=xray<.5;
+      CELLAR_EMISSIVE(xray);
       if(!drag){az+=azV;azV*=.92;if(performance.now()-lastIn>3000&&!reduce)az+=(Math.sin(time*.15)*.35-az)*.004;}
       const fit=(span*.62)/Math.tan(THREE.MathUtils.degToRad(cam.fov/2))/Math.max(.75,cam.aspect);
       const d=Math.max(520,fit),el=.34-hov*.04;
