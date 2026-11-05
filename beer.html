@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beer · Woodhouse</title>
+<meta name="description" content="Small batch beer brewed at 119 Madrone St, Santa Cruz. See the live cellar, what is on tap, how we brew and who brews it.">
+<meta name="theme-color" content="#0a0f0f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Beer · Woodhouse">
+<meta property="og:description" content="Small batch beer brewed at 119 Madrone St, Santa Cruz. See the live cellar, what is on tap, how we brew and who brews it.">
+<meta property="og:image" content="https://www.woodhousebrews.com/img/pints.jpg">
+<meta property="og:url" content="https://www.woodhousebrews.com/beer">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.woodhousebrews.com/beer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700;800&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="Woodhouse Blending and Brewing home">
+      <svg viewBox="0 0 256 340" aria-hidden="true"><use href="#wmark"/></svg>
+      <span><span class="wm" aria-hidden="true"></span><small>Blending &amp; Brewing</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary"><a href="/calendar">Calendar</a><a href="/beer" aria-current="page">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Events</a><a href="#visit">Visit</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></nav>
+    <a class="btn btn-teal" href="/events#plan">Plan an event <span class="arr">→</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="/">Home</a><a href="/calendar">Calendar</a><a href="/beer" aria-current="page">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Events</a><a href="#visit">Visit</a>
+  <a href="/events#plan" style="color:var(--teal)">Plan an event</a>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="wmark">
+      <path fill="#89d8d0" fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/>
+      <polygon fill="#89d8d0" points="44,213 86,255 86,340 128,298 171,340 171,255 213,213"/>
+    </g>
+  </defs>
+</svg>
+<main id="top" class="pg-beer">
+<!-- CELLAR HERO -->
+<section class="beer-hero" aria-label="The cellar">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <p class="crumb"><a href="/">Woodhouse</a><span class="chev" aria-hidden="true"></span>Beer</p>
+        <h1>From the <span class="o">Cellar</span></h1>
+      </div>
+      <p class="lede">Brewed, blended and conditioned at 119 Madrone St. This is our cellar right now, straight from the brewing log: what's fermenting, what's conditioning and what's about to pour.</p>
+    </div>
+    <div class="cellar3d" id="cellar3d">
+      <div class="c3-stage" id="c3stage" aria-label="3D view of the Woodhouse cellar. Drag to look around, tap a tank for details.">
+        <div class="c3-labels" id="c3labels"></div>
+        <div class="c3-top">
+          <span class="c3-chip" id="c3chip"><span class="dot"></span><span id="c3chipText">Loading the cellar</span></span>
+          <span class="c3-hint">Drag to look around · Tap a tank</span>
+        </div>
+      </div>
+      <aside class="c3-card" id="c3card" aria-live="polite"></aside>
+      <div class="c3-legend" aria-hidden="true">
+        <span><i style="background:var(--amber)"></i>Fermenting</span><span><i style="background:var(--teal)"></i>Conditioning</span><span><i style="background:var(--cream)"></i>Ready to pour</span><span><i style="background:#4a5856"></i>Empty or cleaning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b data-count="10">10</b><span>Barrel, 3 vessel brewhouse</span></div>
+    <div class="stat"><b data-count="6">6</b><span>Fermenters, 2 to 20 bbl</span></div>
+    <div class="stat"><b data-count="4">4</b><span>Bright tanks</span></div>
+    <div class="stat"><b>Oak</b><span>Barrels for blending</span></div>
+  </div>
+</div>
+
+<!-- ON TAP -->
+<section class="sec" id="taps">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>On <span class="o">Tap</span></h2>
+      <p class="lede">House beers first, plus a guest tap or two from breweries we admire while the next batches condition. The list changes often, so ask the bar what's fresh.</p>
+    </div>
+    <div class="taps" id="tapList"></div>
+    <div class="drinks" id="drinkList"></div>
+    <div class="split" style="margin-top:clamp(80px,9vw,120px)">
+      <div class="note">
+        <span class="eyebrow">A quick update on our beer</span>
+        <p><strong>Santa Cruz drank us dry.</strong> When a whole town shows up for a small independent brewery, beer disappears faster than you can make it. Thank you.</p>
+        <p>We've raised the bar across the brewery and brought on two meticulous, science driven brewers focused on consistency and quality. The early results are outstanding.</p>
+        <p><strong>The next generation of Woodhouse beer is on its way.</strong></p>
+      </div>
+      <div class="frame" style="aspect-ratio:3/2"><div class="plate-img" data-parallax style="background-image:url('img/bar.jpg')" role="img" aria-label="The Woodhouse bar looking toward the fermenters and barrel racks"></div><span class="plate-cap">Brewhouse and barrel room</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PINT -->
+<section class="sec pint-sec" id="pint">
+  <div class="wrap pint-grid">
+    <div class="pint-stage" id="pintStage">
+      <div class="pint-hud"><span>Drag sideways to spin · Drag down to tip</span><span>Pints poured <b id="pintCount">1</b></span></div>
+      <div class="pint-toast" id="pintToast">Cheers. Pour another?</div>
+    </div>
+    <div>
+      <p class="eyebrow tg-tag"><span class="chev" aria-hidden="true"></span>Interact with our beer</p>
+      <h2 style="font-size:clamp(40px,5.6vw,84px);text-transform:uppercase;line-height:.92">Pour one <span style="color:var(--teal)">out</span></h2>
+      <p class="lede" style="margin-top:18px">Grab the glass. Spin it to see the mark, tip it until it spills, then pull a fresh one. It's the only beer at Woodhouse you're allowed to waste.</p>
+      <div class="pint-ctrl">
+        <div><label id="beerLbl">Choose your pour</label>
+          <div class="seg" id="beerSeg" role="group" aria-labelledby="beerLbl">
+            <button type="button" data-beer="light" aria-pressed="true"><i style="background:#e8c45a"></i>Light Ale</button>
+            <button type="button" data-beer="hazy" aria-pressed="false"><i style="background:#eaa63a"></i>Hazy IPA</button>
+            <button type="button" data-beer="porter" aria-pressed="false"><i style="background:#2a140a;outline:1px solid #6b4a33"></i>Porter</button>
+            <button type="button" data-beer="sour" aria-pressed="false"><i style="background:#d5604a"></i>Fruited Sour</button>
+          </div>
+        </div>
+        <div><label for="tilt">Tip the glass</label><input type="range" id="tilt" min="0" max="100" value="0"></div>
+        <div class="btn-row"><button type="button" class="btn btn-teal" id="pourBtn">Pour a fresh one <span class="arr">→</span></button><button type="button" class="btn btn-ghost" id="spinBtn">Spin it</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How we <span class="o">Brew</span></h2>
+      <p class="lede">Classic technique, a curious streak and a lot of patience. Every batch moves through the same five stops in the building.</p>
+    </div>
+    <div class="process" data-stagger>
+      <div class="step"><span class="n">01</span><h3>Mill &amp; Mash</h3><p>Malted grain is cracked and steeped in hot water, turning starch into the sugars yeast will eat.</p><span class="eq">10 bbl, 3 vessel brewhouse</span></div>
+      <div class="step"><span class="n">02</span><h3>Boil &amp; Hop</h3><p>The sweet wort is boiled and hopped for bitterness, aroma and balance, then chilled fast.</p><span class="eq">Kettle and whirlpool</span></div>
+      <div class="step"><span class="n">03</span><h3>Ferment</h3><p>Yeast goes to work. Clean ales take days; mixed cultures and wild beers take as long as they need.</p><span class="eq">FV1 to FV4 and two pilot tanks</span></div>
+      <div class="step"><span class="n">04</span><h3>Condition &amp; Blend</h3><p>Beer rests and clears. Some of it heads to oak, where time and blending build depth you can't rush.</p><span class="eq">Oak barrels and bright tanks</span></div>
+      <div class="step"><span class="n">05</span><h3>Bright &amp; Pour</h3><p>Carbonated, tasted and approved, it moves to the bright tanks and then straight to the bar.</p><span class="eq">BT2 to BT4 and a 20 bbl bright</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BREWERS -->
+<section class="sec" id="brewers" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The <span class="o">Brewers</span></h2>
+      <p class="lede">Two meticulous brewers with deep Central Coast roots, running the cellar day to day.</p>
+    </div>
+    <div class="bios">
+      <article class="bio">
+        <div class="por oak" aria-hidden="true">JV</div>
+        <div>
+          <h3>Jeffrey Vitalich</h3>
+          <p class="role">Brewer</p>
+          <p>With a long history of success in multiple fields, Jeffrey found the craft beer industry to be the most fun and rewarding. Coming of age in the Monterey Bay Area, he became deeply involved in the two worlds of craft beer and wine, and has dedicated the last decade and a half to those creative outlets.</p>
+          <p>Stay tuned for all the fun changes, and come over to taste the inspiration and dedication to the beauty of Carmel, Carmel Valley and the Monterey Bay coast.</p>
+        </div>
+      </article>
+      <article class="bio">
+        <div class="por oak" aria-hidden="true">GM</div>
+        <div>
+          <h3>Gino Monjaraz</h3>
+          <p class="role">Brewer</p>
+          <p>Gino's brewing life started the way the best ones do: a homebrew kit, a lot of questions and a stack of batches shared with friends. He sharpened that obsession at Shanty Shack, learning to brew on a production system, and now distills at Venus Spirits, where the craft of fermentation meets the patience of the still.</p>
+          <p>That range, from the bucket to the brewhouse to the column still, shows up in every beer he touches at Woodhouse.</p>
+          <p class="ph-note">Placeholder bio. Final version coming from Gino.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="sec" id="history" style="background:linear-gradient(180deg,var(--ink),#0d1514 30%,var(--ink))">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>13,000 Years <span class="o">of Beer</span></h2>
+      <p class="lede">Brewing is older than writing, and it has always been about gathering. We're just the latest stop on a very long timeline.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl"><div class="yr">~11,000 BCE<small>13,000 years ago</small></div><div><h3>A brew in the cave</h3><p>Residue in stone mortars at Raqefet Cave near Mount Carmel suggests the Natufian people were brewing a grain based, beer-like drink, likely for feasts honoring the dead. It's the oldest known evidence of brewing.</p></div></div>
+      <div class="tl"><div class="yr">~3500 BCE<small>Godin Tepe, Iran</small></div><div><h3>Beerstone in the jars</h3><p>Chemical traces of barley beer found in clay jars in the Zagros Mountains are some of the earliest proof of beer as an everyday drink.</p></div></div>
+      <div class="tl"><div class="yr">~2500 BCE<small>Giza, Egypt</small></div><div><h3>Paid in pints</h3><p>The crews who built the pyramids received daily beer rations, often cited at around four to five liters a day. Thick, nourishing and safer than the water.</p></div></div>
+      <div class="tl"><div class="yr">~1800 BCE<small>Sumer</small></div><div><h3>A hymn that's a recipe</h3><p>The Hymn to Ninkasi, goddess of beer, praises her while walking through the steps of brewing: the bappir bread, the soaking malt, the fermenting vat.</p></div></div>
+      <div class="tl"><div class="yr">~1750 BCE<small>Babylon</small></div><div><h3>Tavern law</h3><p>The Code of Hammurabi set rules for beer sellers. A tavern keeper caught short pouring could face drowning. We'll stick to honest pints.</p></div></div>
+      <div class="tl"><div class="yr">~900 CE<small>Athlone, Ireland</small></div><div><h3>The oldest pub</h3><p>Sean's Bar traces its roots to around 900 CE and is widely called Ireland's oldest pub. Same idea as ours: a warm room, a drink and the whole town.</p></div></div>
+      <div class="tl"><div class="yr">1040<small>Bavaria</small></div><div><h3>Monks keep the lights on</h3><p>Weihenstephan Abbey is considered the oldest continuously operating brewery in the world. Monasteries brewed for pilgrims and travelers, the original brewpubs.</p></div></div>
+      <div class="tl"><div class="yr">~1150<small>Rhineland</small></div><div><h3>Hops arrive</h3><p>Abbess Hildegard of Bingen wrote that hops' bitterness keeps a drink from spoiling. Before hops, brewers flavored beer with gruit, a blend of herbs.</p></div></div>
+      <div class="tl"><div class="yr">1516<small>Bavaria</small></div><div><h3>The purity law</h3><p>The Reinheitsgebot limited beer to water, barley and hops. Yeast wasn't on the list because no one knew it existed yet.</p></div></div>
+      <div class="tl"><div class="yr">1982<small>West Coast</small></div><div><h3>Brewpubs come back</h3><p>After Prohibition, brewing and selling beer under one roof was largely illegal. Yakima, Washington got the first modern American brewpub in 1982, and Mendocino Brewing opened California's first in Hopland in 1983.</p></div></div>
+      <div class="tl here"><div class="yr">Today<small>Santa Cruz</small></div><div><h3>Woodhouse</h3><p>A brewery, kitchen, stage and gathering place at 119 Madrone St. Thirteen thousand years later, still about the same thing: good beer and good company.</p></div></div>
+    </div>
+
+    <h3 style="font-size:clamp(28px,3vw,40px);text-transform:uppercase;margin-top:clamp(80px,9vw,120px)">Ancient brewing, <span style="color:var(--teal)">tap to find out</span></h3>
+    <div class="flips">
+      <button type="button" class="flip" aria-pressed="false"><span class="in"><span class="f"><span class="q">Mesopotamia</span><h4>Why did Sumerians drink beer through straws?</h4><span class="tap-hint">Tap to flip</span></span><span class="b"><b>To skip the husks.</b>Early beer was unfiltered, with grain and hulls floating on top. Long reed straws, some decorated with gold, let drinkers sip the clear beer underneath.</span></span></button>
+      <button type="button" class="flip" aria-pressed="false"><span class="in"><span class="f"><span class="q">Brewsters</span><h4>Who brewed most of history's beer?</h4><span class="tap-hint">Tap to flip</span></span><span class="b"><b>Women.</b>From Ninkasi's priestesses to medieval English alewives and brewsters, brewing was largely women's work and a household skill for thousands of years.</span></span></button>
+      <button type="button" class="flip" aria-pressed="false"><span class="in"><span class="f"><span class="q">Bappir</span><h4>Was beer made from bread?</h4><span class="tap-hint">Tap to flip</span></span><span class="b"><b>Sometimes, yes.</b>Sumerian recipes used bappir, a twice baked barley loaf that could be stored and crumbled into the mash. Bread and beer were close cousins.</span></span></button>
+      <button type="button" class="flip" aria-pressed="false"><span class="in"><span class="f"><span class="q">Gruit</span><h4>What flavored beer before hops?</h4><span class="tap-hint">Tap to flip</span></span><span class="b"><b>Herbs.</b>Gruit blends of bog myrtle, yarrow, heather and other botanicals did the job hops do today. Some brewers, us included, still love an herbal experiment.</span></span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section class="sec" id="archive" style="padding-top:0">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <div class="sec-head" style="margin-bottom:24px"><h2>The <span class="o">Archive</span></h2></div>
+      <p class="lede">Beers that came, poured and sold out. Some will be back.</p>
+      <div class="frame" style="aspect-ratio:675/612;margin-top:32px;max-width:440px"><div class="plate-img" data-parallax style="background-image:url('img/pints.jpg')" role="img" aria-label="Two Woodhouse beers raised in a toast"></div></div>
+    </div>
+    <div class="archive" id="archiveList" aria-label="Past releases"></div>
+  </div>
+</section>
+
+<section class="band" aria-label="Pour it at your event">
+  <div class="wrap">
+    <p class="eyebrow">Open bar packages</p>
+    <h2>Pour Woodhouse at your event</h2>
+    <p>Our open bar packages put house pale ale, IPA and light beer on tap for your guests, with wine, cider, seltzer and a signature cocktail on the select package.</p>
+    <div class="btn-row"><a class="btn btn-teal" href="/events">Plan an event <span class="arr">→</span></a><a class="btn btn-ghost" href="/calendar">What's on tonight</a></div>
+  </div>
+</section>
+
+</main>
+<section class="visit-band" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <p class="eyebrow" style="margin-bottom:22px">Come say hi</p>
+      <p class="addr">119 Madrone St<small>Santa Cruz, CA 95060</small></p>
+      <div class="contact">
+        <div class="ci"><div><div class="k">Phone</div><div class="v">(831) 313-9461</div></div><button class="copybtn" data-copy="(831) 313-9461">Copy</button></div>
+        <div class="ci"><div><div class="k">Email</div><div class="v">beer@woodhousebrews.com</div></div><button class="copybtn" data-copy="beer@woodhousebrews.com">Copy</button></div>
+      </div>
+      <div class="socials">
+        <a class="btn btn-ghost" href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions <span class="arr">↗</span></a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn btn-ghost" href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn btn-ghost" href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow" style="margin-bottom:22px">Hours</p>
+      <div class="hours" id="hours"></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/" aria-label="Woodhouse Blending and Brewing"><svg viewBox="0 0 256 340" aria-hidden="true" style="width:30px"><use href="#wmark"/></svg><span><span class="wm" aria-hidden="true" style="width:150px"></span><small>Blending &amp; Brewing</small></span></a>
+        <p style="color:var(--muted);margin-top:18px;max-width:38ch;font-size:15px">Get first word on shows, releases and pop ups.</p>
+        <form class="signup" id="signup" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Email address</label>
+          <input id="email" type="email" placeholder="you@email.com" autocomplete="email">
+          <button class="btn btn-teal" type="submit">Join</button>
+        </form>
+        <p class="signup-msg" id="signupMsg" aria-live="polite"></p>
+      </div>
+      <div><h5>Explore</h5><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Private events</a></div>
+      <div><h5>Work with us</h5><a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Book an event</a><a href="downloads/woodhouse-events-brochure-2026.pdf" download>Events brochure</a><a href="/calendar#play">Play at Woodhouse</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></div>
+      <div><h5>Follow</h5><a href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">@woodhousebrews</a><a href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a><a href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a></div>
+    </div>
+    <div class="giant wm" aria-hidden="true"></div>
+    <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>Brewed and blended in Santa Cruz</span></div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/cellar3d.js"></script>
+<script src="assets/js/pint.js"></script>
+<script src="assets/js/beer.js"></script>
+</body>
+</html>

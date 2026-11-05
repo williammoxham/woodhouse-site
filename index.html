@@ -3,421 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
+<title>Woodhouse Blending &amp; Brewing</title>
+<meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta name="theme-color" content="#0a0f0f">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Woodhouse Blending &amp; Brewing · Santa Cruz">
-<meta property="og:description" content="More than just a brewery. Small batch fermentation, free live music and art in Santa Cruz.">
+<meta property="og:title" content="Woodhouse Blending &amp; Brewing">
+<meta property="og:description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta property="og:image" content="https://www.woodhousebrews.com/img/crowd.jpg">
-<meta property="og:url" content="https://www.woodhousebrews.com">
+<meta property="og:url" content="https://www.woodhousebrews.com/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://www.woodhousebrews.com">
-<style>html,body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style>
-<title>Woodhouse Blending &amp; Brewing</title>
+<link rel="canonical" href="https://www.woodhousebrews.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700;800&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: dark cinematic scroll story. Full-bleed bands, a 12-col content grid inside a 1240px frame, pinned chapters for the big moments. */
-:root{
-  --ink:#0a0f0f; --ink-2:#111918; --ink-3:#18221f;
-  --line:rgba(137,216,208,.16); --line-2:rgba(242,234,217,.10);
-  --teal:#89d8d0; --teal-2:#5fb3ab; --teal-deep:#1f4b47;
-  --cream:#f2ead9; --muted:#9db0ac; --amber:#e3a95c;
-  --f-display:"Jost","Futura","Futura PT","Century Gothic",system-ui,sans-serif;
-  --f-thin:"Jost","Futura","Century Gothic",system-ui,sans-serif;
-  --f-body:"Avenir Next","Albert Sans","Avenir",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-  --frame:1240px;
-  --gut-l:max(20px, env(safe-area-inset-left, 0px));
-  --gut-r:max(20px, env(safe-area-inset-right, 0px));
-  --ease:cubic-bezier(.2,.7,.1,1);
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{background:var(--ink);scroll-behavior:auto}
-body{background:var(--ink);color:var(--cream);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
-::selection{background:var(--teal);color:var(--ink)}
-a{color:inherit}
-img{max-width:100%}
-:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
-.wrap{max-width:var(--frame);margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
-.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
-.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.0;margin:0;text-wrap:balance;letter-spacing:-.005em}
-p{margin:0}
-.lede{font-size:clamp(18px,1.6vw,21px);color:var(--muted);max-width:60ch}
-
-/* grain */
-.grain{position:fixed;inset:-50%;pointer-events:none;z-index:70;opacity:.06;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation:grain 1.2s steps(6) infinite}
-@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(1%,3%)}}
-
-/* WORDMARK (real artwork used as a mask so it can take any color or fill) */
-.wm{display:block;aspect-ratio:2113/233;max-width:100%;
-  -webkit-mask:url("img/wordmark.png") center/contain no-repeat;mask:url("img/wordmark.png") center/contain no-repeat;background:var(--cream)}
-.lockup-sub{font-family:var(--f-thin);font-weight:300;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
-.chev{display:inline-block;width:12px;height:10px;background:var(--teal);clip-path:polygon(0 0,50% 48%,100% 0,100% 52%,50% 100%,0 52%)}
-
-/* NAV */
-.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;transition:background .4s var(--ease),border-color .4s}
-.nav.scrolled{background:rgba(10,15,15,.72);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;gap:28px;height:68px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand svg{width:26px;height:auto;flex:0 0 auto}
-.brand .wm{width:128px}
-.brand small{display:block;font-family:var(--f-thin);font-weight:400;font-size:9px;letter-spacing:.34em;color:var(--muted);text-transform:uppercase;margin-top:5px;white-space:nowrap}
-.nav-links{display:flex;gap:26px;margin-left:auto;font-size:14px;font-weight:500}
-.nav-links a{text-decoration:none;color:var(--muted);transition:color .2s}
-.nav-links a:hover{color:var(--cream)}
-.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-body);font-weight:600;font-size:14px;text-decoration:none;border-radius:999px;padding:12px 20px;border:1px solid transparent;cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s;white-space:nowrap}
-.btn-teal{background:var(--teal);color:var(--ink)}
-.btn-teal:hover{background:var(--cream);transform:translateY(-1px)}
-.btn-ghost{border-color:var(--line);color:var(--cream);background:rgba(137,216,208,.04)}
-.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
-.btn .arr{transition:transform .3s var(--ease)}
-.btn:hover .arr{transform:translateX(3px)}
-.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--cream);border-radius:999px;padding:9px 14px;font:600 13px var(--f-body)}
-.drawer{display:none}
-@media (max-width:900px){
-  .nav-links,.nav .btn-teal{display:none}
-  .menu-btn{display:inline-flex}
-  .drawer{display:block;position:fixed;inset:0;z-index:49;background:rgba(10,15,15,.96);backdrop-filter:blur(10px);padding:calc(100px + env(safe-area-inset-top,0px)) var(--gut-r) 40px var(--gut-l);transform:translateY(-100%);transition:transform .5s var(--ease)}
-  .drawer.open{transform:none}
-  .drawer a{display:block;font-family:var(--f-display);font-weight:800;font-size:34px;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--line-2)}
-}
-
-/* HERO */
-.hero{position:relative;min-height:min(900px,96svh);display:flex;align-items:flex-end;overflow:hidden;padding-block:140px 56px}
-#bubbles{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(80% 60% at 70% 30%,rgba(137,216,208,.16),transparent 60%),radial-gradient(60% 50% at 10% 100%,rgba(227,169,92,.10),transparent 60%),linear-gradient(180deg,transparent 55%,var(--ink) 100%)}
-.hero .wrap{position:relative;z-index:2;width:100%}
-.hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
-.status{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(10,15,15,.5);backdrop-filter:blur(6px)}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
-.status.open .dot{background:var(--teal);box-shadow:0 0 0 0 rgba(137,216,208,.6);animation:pulse 2s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(137,216,208,0)}100%{box-shadow:0 0 0 0 rgba(137,216,208,0)}}
-.wordmark{margin:0;width:100%;
-  background:linear-gradient(180deg,var(--cream) 0 50%,rgba(137,216,208,.22) 50% 100%);background-size:100% 200%;background-position:0 0;animation:pour 2.4s var(--ease) .2s both}
-@keyframes pour{from{background-position:0 100%}to{background-position:0 0}}
-.wm-sub{display:flex;justify-content:space-between;gap:12px;margin-top:clamp(12px,1.6vw,22px);font-size:clamp(11px,1.5vw,22px)}
-.hero-mark{position:relative;width:clamp(120px,14vw,200px);aspect-ratio:256/340;margin:clamp(22px,3vw,40px) auto 0;max-width:100%}
-.hero-mark::before{content:"";position:absolute;inset:-30% -60%;background:radial-gradient(closest-side,rgba(137,216,208,.16),transparent);pointer-events:none}
-.hero-mark svg{position:relative;width:100%;height:100%}
-.hero-mark.is3d svg{display:none}
-.hero-mark canvas{position:absolute;inset:-15% -40%;width:180%;height:130%;cursor:grab;touch-action:pan-y}
-.hero-mark canvas:active{cursor:grabbing}
-.crest{position:absolute;z-index:1;right:max(-60px,-4vw);top:60px;width:min(560px,48vw);opacity:.9;pointer-events:none;filter:drop-shadow(0 40px 80px rgba(0,0,0,.6))}
-@media (max-width:760px){.crest{width:72vw;top:90px;right:-18vw;opacity:.55}}
-.hero-sub{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end;margin-top:40px}
-.hero-sub .tag{font-family:var(--f-display);font-weight:600;font-size:clamp(22px,2.6vw,36px);line-height:1.1;max-width:18ch}
-.hero-sub .tag em{font-style:normal;color:var(--teal)}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-.scroll-cue{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;color:var(--muted);display:flex;align-items:center;gap:10px;margin-top:44px}
-.scroll-cue i{display:block;width:48px;height:1px;background:var(--line);position:relative;overflow:hidden}
-.scroll-cue i::after{content:"";position:absolute;inset:0;background:var(--teal);transform:translateX(-100%);animation:cue 2.4s var(--ease) infinite}
-@keyframes cue{to{transform:translateX(100%)}}
-@media (max-width:760px){.hero-sub{grid-template-columns:1fr}.hero-cta{justify-content:flex-start}}
-
-/* TICKER */
-.ticker{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;padding-block:18px;background:var(--ink-2)}
-.ticker-track{display:inline-flex;gap:48px;animation:tick 40s linear infinite;font-family:var(--f-display);font-weight:600;font-size:15px;letter-spacing:.22em;text-transform:uppercase}
-.ticker-track span{display:inline-flex;align-items:center;gap:48px;color:var(--muted)}
-.ticker-track span::after{content:"";width:13px;height:11px;background:var(--teal);clip-path:polygon(0 0,50% 48%,100% 0,100% 52%,50% 100%,0 52%)}
-@keyframes tick{to{transform:translateX(-50%)}}
-
-/* MANIFESTO */
-.manifesto{padding-block:clamp(110px,16vw,200px)}
-.manifesto .eyebrow{margin-bottom:28px}
-.reveal-text{font-family:var(--f-display);font-weight:600;font-size:clamp(28px,4.4vw,62px);line-height:1.12;letter-spacing:-.015em;max-width:22ch}
-.reveal-text .w{opacity:.2;transition:opacity .2s}
-.reveal-text .hl{color:var(--teal)}
-.manifesto-foot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin-top:72px;max-width:900px}
-.manifesto-foot p{color:var(--muted)}
-@media (max-width:700px){.manifesto-foot{grid-template-columns:1fr;gap:24px}}
-
-/* BLENDING (pinned tangram) */
-.blend{position:relative;height:300vh}
-.blend-stage{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden;background:radial-gradient(70% 70% at 30% 50%,rgba(31,75,71,.55),transparent 70%),var(--ink)}
-.blend-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;width:100%}
-.tangram{width:100%;justify-self:center}
-.tangram{position:relative;aspect-ratio:1/1;max-width:560px}
-.tangram::before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,rgba(137,216,208,.18),transparent 65%);pointer-events:none}
-.tangram canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y;outline:none}
-.tangram canvas:active{cursor:grabbing}
-.tangram.is3d svg{display:none}
-.tg-tag{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-.tg-hint{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;color:var(--muted);margin-top:14px;display:flex;gap:16px;flex-wrap:wrap}
-.tg-hint span{display:inline-flex;align-items:center;gap:8px}
-.tangram svg{width:100%;height:100%;overflow:visible}
-.tg-stage{opacity:0;transform:scale(.86) rotate(-6deg);transform-origin:0 0;transform-box:view-box;transition:opacity .55s var(--ease),transform .7s var(--ease)}
-.tg-stage.on{opacity:1;transform:none}
-.film{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
-.film button{width:44px;height:52px;padding:6px;border-radius:10px;border:1px solid var(--line);background:transparent;cursor:pointer;opacity:.45;transition:opacity .3s,border-color .3s}
-.film button.on{opacity:1;border-color:var(--teal)}
-.film svg{width:100%;height:100%;display:block}
-.blend-copy{position:relative;min-height:340px}
-.blend-step{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:20px}
-.blend-step h2{font-size:clamp(38px,5vw,76px);text-transform:uppercase}
-.blend-step h2 span{color:var(--teal)}
-.blend-step p{color:var(--muted);max-width:44ch;font-size:18px}
-.blend-step p.focal{font-family:var(--f-display);font-weight:600;font-size:clamp(22px,2.3vw,32px);line-height:1.22;color:var(--cream);max-width:24ch;text-wrap:balance}
-@media (max-width:900px){
-  .blend{height:auto}
-  .blend-stage{position:relative;height:auto;padding-block:100px}
-  .blend-grid{grid-template-columns:1fr;gap:40px}
-  .blend-copy{min-height:0;display:grid;gap:56px}
-  .blend-step{position:relative}
-  .tangram{max-width:420px}
-}
-.no-motion .blend{height:auto}.no-motion .blend-stage{position:relative;height:auto;padding-block:120px}.no-motion .blend-copy{min-height:0;display:grid;gap:56px}.no-motion .blend-step{position:relative}
-
-/* SECTION HEAD */
-.sec{padding-block:clamp(100px,12vw,160px)}
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
-.sec-head h2{font-size:clamp(44px,7vw,108px);text-transform:uppercase;letter-spacing:-.03em}
-.sec-head h2 .o{color:transparent;-webkit-text-stroke:1.5px var(--teal)}
-.sec-head .lede{max-width:44ch}
-
-/* EVENTS */
-.events{background:var(--ink);position:relative}
-.ev-pin{overflow:hidden}
-.ev-rail{display:flex;gap:20px;padding-left:var(--gut-l);padding-right:var(--gut-r);will-change:transform}
-.ev{flex:0 0 min(380px,82vw);min-height:460px;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:22px;padding:26px;background:linear-gradient(170deg,var(--ink-3),var(--ink-2));text-decoration:none;position:relative;overflow:hidden;transition:border-color .35s,transform .5s var(--ease)}
-.ev:hover{border-color:rgba(137,216,208,.55);transform:translateY(-4px)}
-.ev::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-110px;top:-110px;background:radial-gradient(circle,var(--glow,rgba(137,216,208,.22)),transparent 70%);transition:transform .6s var(--ease)}
-.ev:hover::before{transform:scale(1.25)}
-.ev-date{display:flex;align-items:baseline;gap:12px;position:relative}
-.ev-date .d{font-family:var(--f-display);font-weight:800;font-size:86px;line-height:.9;letter-spacing:-.04em}
-.ev-date .m{font-family:var(--f-mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.5}
-.ev-date .m b{display:block;color:var(--cream);font-weight:500}
-.ev-chip{position:absolute;top:24px;right:24px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--teal);color:var(--ink);font-weight:500}
-.ev-chip.soft{background:transparent;border:1px solid var(--line);color:var(--teal)}
-.ev h3{font-size:24px;line-height:1.12;margin-top:auto;padding-top:40px;position:relative}
-.ev p{color:var(--muted);font-size:15px;margin-top:12px;position:relative}
-.ev-foot{display:flex;justify-content:space-between;align-items:center;margin-top:22px;padding-top:18px;border-top:1px solid var(--line-2);font-family:var(--f-mono);font-size:12.5px;color:var(--muted);position:relative}
-.ev-foot span:last-child{color:var(--teal)}
-.ev-end{flex:0 0 min(380px,82vw);display:flex;flex-direction:column;justify-content:center;gap:20px;padding:26px}
-.ev-end h3{font-size:34px}
-@media (max-width:900px){.ev-rail{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}.ev{scroll-snap-align:start}}
-.no-motion .ev-rail{overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}
-
-.ev-img{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.32;transition:opacity .5s,transform .8s var(--ease)}
-.ev.has-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,15,.35),rgba(10,15,15,.92) 70%);pointer-events:none}
-.ev.has-img>*:not(.ev-img){z-index:1}
-.ev.has-img:hover .ev-img{opacity:.5;transform:scale(1.04)}
-
-/* NEWS */
-.news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.post{display:flex;flex-direction:column;gap:12px;text-decoration:none;min-width:0}
-.post-img{display:block;aspect-ratio:4/3;max-width:100%;border-radius:20px;background:var(--ink-3) center/cover;border:1px solid var(--line-2);transition:transform .6s var(--ease)}
-.post:hover .post-img{transform:scale(1.02)}
-.post-date{font:12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
-.post h3{font-size:24px;line-height:1.15}
-.post p{color:var(--muted);font-size:15px}
-@media (max-width:860px){.news-grid{grid-template-columns:1fr}}
-
-/* SPACE */
-.space-list{display:grid;gap:clamp(80px,10vw,140px)}
-.panel{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center}
-.plate{grid-column:1/8;position:relative;aspect-ratio:4/3;border-radius:24px;overflow:hidden;max-width:100%;border:1px solid var(--line-2)}
-.panel.flip .plate{grid-column:6/13;grid-row:1}
-.panel .copy{grid-column:9/13;display:grid;gap:18px}
-.panel.flip .copy{grid-column:1/5;grid-row:1}
-.plate-img{position:absolute;inset:-14% 0;background-size:cover;background-position:center;background-color:var(--ink-3)}
-.plate::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,15,15,.55));pointer-events:none}
-.panel.flip .plate{aspect-ratio:1/1}
-.panel .plate.tall{grid-column:1/7;aspect-ratio:4/5}
-.panel .plate.tall~.copy{grid-column:8/13}
-.cellar-plate{position:relative;aspect-ratio:3/2;border-radius:24px;overflow:hidden;margin-top:40px;border:1px solid var(--line-2)}
-.cellar-plate .plate-img{background-image:url("img/bar.jpg")}
-.plate-cap{z-index:1;position:absolute;left:18px;bottom:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,234,217,.78);padding:6px 10px;border-radius:999px;background:rgba(10,15,15,.55);backdrop-filter:blur(6px)}
-.p-indoor{background-image:url("img/indoor.jpg");background-position:center 55%}
-.p-x1{background:radial-gradient(40% 50% at 30% 35%,rgba(227,169,92,.55),transparent 70%),radial-gradient(30% 40% at 75% 25%,rgba(242,234,217,.25),transparent 70%),repeating-linear-gradient(90deg,rgba(0,0,0,.0) 0 58px,rgba(0,0,0,.35) 58px 64px),linear-gradient(160deg,#3b2a1b,#140f0b 70%)}
-.p-outdoor{background-image:url("img/crowd.jpg");background-position:center 62%}
-.p-x2{background:radial-gradient(70% 45% at 50% 0%,rgba(137,216,208,.55),transparent 70%),radial-gradient(4px 4px at 20% 30%,#fff8,transparent),radial-gradient(3px 3px at 40% 22%,#fff7,transparent),radial-gradient(3px 3px at 64% 34%,#fff6,transparent),radial-gradient(4px 4px at 82% 26%,#fff8,transparent),linear-gradient(180deg,#1c3f3c,#0d1716 65%,#0a0f0f)}
-.p-music{background-image:url("img/stage.jpg");background-position:center 58%}
-.p-x3{background:conic-gradient(from 200deg at 50% 110%,transparent 0 30deg,rgba(137,216,208,.5) 40deg,transparent 52deg,rgba(227,169,92,.45) 66deg,transparent 78deg,rgba(242,234,217,.3) 92deg,transparent 104deg,transparent 360deg),linear-gradient(180deg,#121a19,#06090a)}
-.copy .num{font-family:var(--f-display);font-weight:800;font-size:clamp(60px,7vw,104px);line-height:.9;letter-spacing:-.04em;color:var(--teal)}
-.copy .num small{font-size:.28em;letter-spacing:0;color:var(--muted);font-weight:600;display:block;margin-top:8px;font-family:var(--f-mono);text-transform:uppercase}
-.copy h3{font-size:clamp(28px,3vw,40px);text-transform:uppercase}
-.copy p{color:var(--muted)}
-@media (max-width:900px){
-  .panel{grid-template-columns:1fr}
-  .plate,.panel.flip .plate,.panel .copy,.panel.flip .copy,.panel .plate.tall,.panel .plate.tall~.copy{grid-column:1;grid-row:auto}
-}
-
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
-.stat{padding:40px 24px;border-right:1px solid var(--line)}
-.stat:last-child{border-right:0}
-.stat b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.stat span{display:block;margin-top:10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-@media (max-width:800px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}}
-
-/* CELLAR */
-.cellar{background:linear-gradient(180deg,var(--ink),#0d1514 40%,var(--ink))}
-.cellar-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:64px;align-items:start}
-.note{border-left:2px solid var(--teal);padding-left:24px;display:grid;gap:16px;color:var(--muted)}
-.note strong{color:var(--cream);font-weight:600}
-.tanks{display:flex;gap:14px;align-items:flex-end;justify-content:space-between;padding:32px 28px 24px;border:1px solid var(--line);border-radius:24px;background:var(--ink-2);overflow-x:auto}
-.tank{display:flex;flex-direction:column;align-items:center;gap:10px;flex:0 0 auto}
-.tank-body{position:relative;width:var(--w);height:var(--h);border:1.5px solid rgba(137,216,208,.45);border-radius:var(--r) var(--r) 30% 30%/18% 18% 40% 40%;overflow:hidden;background:rgba(137,216,208,.03)}
-.tank-fill{position:absolute;left:0;right:0;bottom:0;height:var(--fill);background:linear-gradient(180deg,var(--amber),#b97a32);transition:height 1.6s var(--ease)}
-.tank-fill::before{content:"";position:absolute;left:0;right:0;top:-6px;height:10px;background:var(--cream);opacity:.85;border-radius:50%}
-.tank.bt .tank-fill{background:linear-gradient(180deg,#f0c77a,#d49a46)}
-.tank-lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-align:center;line-height:1.4}
-.tank-lbl b{display:block;color:var(--cream);font-weight:500}
-.archive{margin-top:18px;display:grid;gap:0;border-top:1px solid var(--line)}
-.arch{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line)}
-.arch h4{font-family:var(--f-display);font-weight:600;font-size:20px;margin:0}
-.arch .style{color:var(--muted);font-size:15px}
-.arch .abv{font-family:var(--f-mono);color:var(--teal);font-size:14px;min-width:5.5ch;text-align:right}
-.cellar-cap{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:12px}
-@media (max-width:900px){.cellar-grid{grid-template-columns:1fr;gap:48px}.arch{grid-template-columns:minmax(0,1fr) auto}.arch .style{grid-column:1}.arch .abv{grid-row:1/3;grid-column:2}}
-
-/* CELLAR 3D */
-.cellar3d{position:relative;margin-bottom:72px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:stretch}
-.c3-stage{position:relative;aspect-ratio:16/9;max-width:100%;border:1px solid var(--line);border-radius:26px;overflow:hidden;
-  background:radial-gradient(70% 60% at 50% 35%,rgba(137,216,208,.10),transparent 70%),linear-gradient(180deg,#0f1716,#080c0c)}
-.c3-stage canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
-.c3-stage canvas:active{cursor:grabbing}
-.c3-labels{position:absolute;inset:0;pointer-events:none;z-index:2}
-.c3-lbl{position:absolute;left:0;top:0;transform:translate(-50%,-100%);pointer-events:auto;cursor:pointer;font:500 11px var(--f-mono);letter-spacing:.08em;color:var(--cream);
-  background:rgba(10,15,15,.72);border:1px solid var(--line);border-radius:999px;padding:5px 10px;white-space:nowrap;backdrop-filter:blur(6px);display:flex;align-items:center;gap:7px;transition:border-color .2s,background .2s}
-.c3-lbl i{width:7px;height:7px;border-radius:50%;display:block}
-.c3-lbl.sel{border-color:var(--teal);background:rgba(31,75,71,.85)}
-.c3-top{position:absolute;left:16px;right:16px;top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;z-index:3;pointer-events:none}
-.c3-chip{display:inline-flex;align-items:center;gap:9px;font:500 11.5px var(--f-mono);letter-spacing:.06em;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(10,15,15,.65);backdrop-filter:blur(6px)}
-.c3-chip.live .dot{background:var(--teal);animation:pulse 2s infinite}
-.c3-chip.preview .dot{background:var(--amber)}
-.c3-hint{font:11px var(--f-mono);color:var(--muted);letter-spacing:.06em;padding:7px 0}
-.c3-card{border:1px solid var(--line);border-radius:26px;background:var(--ink-2);padding:26px;display:flex;flex-direction:column;gap:16px;min-width:0}
-.c3-card .code{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
-.c3-card h3{font-size:30px;text-transform:uppercase;line-height:1}
-.c3-card .sty{color:var(--muted);margin-top:-6px}
-.pill{align-self:flex-start;font:500 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;color:var(--ink)}
-.c3-prog{display:grid;gap:8px}
-.c3-prog .track{height:6px;border-radius:3px;background:rgba(137,216,208,.1);overflow:hidden}
-.c3-prog .track i{display:block;height:100%;background:var(--teal);border-radius:3px}
-.c3-prog .lab{display:flex;justify-content:space-between;font:12px var(--f-mono);color:var(--muted)}
-.c3-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line-2)}
-.c3-facts div{display:grid;gap:2px}
-.c3-facts span{font:10.5px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.c3-facts b{font-family:var(--f-display);font-weight:600;font-size:18px;font-variant-numeric:tabular-nums}
-.c3-legend{grid-column:1/-1;display:flex;gap:20px;flex-wrap:wrap;font:11.5px var(--f-mono);color:var(--muted);letter-spacing:.05em}
-.c3-legend span{display:inline-flex;align-items:center;gap:8px}
-.c3-legend i{width:9px;height:9px;border-radius:50%;display:block}
-.c3-fallback{position:absolute;inset:60px 20px 20px;display:flex;gap:14px;align-items:flex-end;justify-content:space-between;overflow-x:auto}
-@media (max-width:980px){.cellar3d{grid-template-columns:1fr}.c3-stage{aspect-ratio:4/3}}
-@media (max-width:560px){.c3-stage{aspect-ratio:4/5}}
-
-/* KITCHEN */
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
-.tab{font:600 14px var(--f-body);padding:11px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .25s}
-.tab[aria-selected="true"]{background:var(--cream);color:var(--ink);border-color:var(--cream)}
-.menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:64px}
-.item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;padding:22px 0;border-bottom:1px solid var(--line-2)}
-.item h4{margin:0;font-family:var(--f-display);font-weight:600;font-size:19px;line-height:1.25}
-.item .price{font-family:var(--f-mono);font-size:16px;color:var(--teal)}
-.item p{grid-column:1/-1;color:var(--muted);font-size:15px;max-width:58ch}
-.tagx{display:inline-block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(227,169,92,.35);border-radius:999px;padding:2px 8px;margin-left:8px;vertical-align:3px}
-.kitchen-note{margin-top:40px;color:var(--muted);font-style:italic}
-@media (max-width:800px){.menu{grid-template-columns:1fr}}
-
-/* BOOK */
-.book{position:relative;overflow:hidden;border-radius:32px;margin-inline:var(--gut-l) var(--gut-r);background:var(--teal);color:var(--ink);padding-block:clamp(70px,9vw,120px)}
-.book .wrap{position:relative;z-index:1}
-.book h2{font-size:clamp(44px,8vw,128px);text-transform:uppercase;letter-spacing:-.02em;line-height:.9}
-.book p{max-width:50ch;margin-top:24px;font-size:18px;color:#0f2a27}
-.book .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
-.book .btn-dark{background:var(--ink);color:var(--cream)}
-.book .btn-dark:hover{background:#000;transform:translateY(-1px)}
-.book .btn-line{border-color:rgba(10,15,15,.35);color:var(--ink)}
-.book .btn-line:hover{border-color:var(--ink)}
-.book-w{position:absolute;right:2%;bottom:-22%;width:min(420px,50vw);opacity:.14;z-index:0}
-.book-list{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-.book-list span{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(10,15,15,.3);border-radius:999px;padding:6px 12px}
-
-/* VISIT */
-.visit-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:64px}
-.addr{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,4.4vw,60px);line-height:1;text-transform:uppercase;letter-spacing:-.02em}
-.addr small{display:block;font-size:.4em;color:var(--muted);letter-spacing:.02em;margin-top:14px;font-weight:600}
-.contact{display:grid;gap:12px;margin-top:36px}
-.ci{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:14px}
-.ci .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.ci .v{font-size:17px;user-select:all;word-break:break-word}
-.copybtn{font:600 12px var(--f-body);color:var(--teal);background:none;border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer;flex:0 0 auto}
-.copybtn:hover{border-color:var(--teal)}
-.hours{border:1px solid var(--line);border-radius:22px;padding:8px 24px;background:var(--ink-2)}
-.hr{display:grid;grid-template-columns:5ch minmax(0,1fr) auto;gap:16px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line-2);font-variant-numeric:tabular-nums}
-.hr:last-child{border-bottom:0}
-.hr .day{font-family:var(--f-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.hr .bar{position:relative;height:6px;border-radius:3px;background:rgba(137,216,208,.08)}
-.hr .bar i{position:absolute;top:0;bottom:0;border-radius:3px;background:var(--teal-deep)}
-.hr .t{font-family:var(--f-mono);font-size:13.5px;min-width:12ch;text-align:right}
-.hr.today .day,.hr.today .t{color:var(--teal)}
-.hr.today .bar i{background:var(--teal)}
-.hr.closed .t{color:var(--muted)}
-.hours-axis{display:grid;grid-template-columns:5ch minmax(0,1fr) auto;gap:16px;padding:14px 0 6px;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
-.hours-axis div{display:flex;justify-content:space-between}
-.hours-axis span:last-child{min-width:12ch}
-.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-
-/* FOOTER */
-footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp(80px,10vw,140px)}
-.foot{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));gap:40px}
-.foot h5{margin:0 0 14px;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
-.foot a{display:block;text-decoration:none;color:var(--cream);padding:4px 0;font-size:15px}
-.foot a:hover{color:var(--teal)}
-.signup{display:flex;gap:8px;margin-top:18px;max-width:420px}
-.signup input{flex:1;min-width:0;background:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:12px 18px;color:var(--cream);font:15px var(--f-body)}
-.signup input::placeholder{color:var(--muted)}
-.signup-msg{font-size:13px;color:var(--teal);margin-top:10px;min-height:1.3em}
-.giant{margin-top:72px;width:100%;background:linear-gradient(90deg,rgba(137,216,208,.14),rgba(137,216,208,.34) 50%,rgba(137,216,208,.14))}
-.legal{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:28px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);letter-spacing:.04em}
-@media (max-width:900px){.visit-grid{grid-template-columns:1fr;gap:48px}.foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}}
-
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .wordmark{background-position:0 0}
-}
-</style>
+<link rel="stylesheet" href="assets/css/site.css">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-
-
 <div class="grain" aria-hidden="true"></div>
-
-<!-- NAV -->
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="Woodhouse Blending and Brewing home">
+    <a class="brand" href="/" aria-label="Woodhouse Blending and Brewing home">
       <svg viewBox="0 0 256 340" aria-hidden="true"><use href="#wmark"/></svg>
       <span><span class="wm" aria-hidden="true"></span><small>Blending &amp; Brewing</small></span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#events">Events</a>
-      <a href="#space">The Space</a>
-      <a href="#cellar">Beer</a>
-      <a href="#kitchen">Kitchen</a>
-      <a href="#visit">Visit</a>
-      <a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a>
-    </nav>
-    <a class="btn btn-teal" href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Book the space <span class="arr">→</span></a>
+    <nav class="nav-links" aria-label="Primary"><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Events</a><a href="#visit">Visit</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></nav>
+    <a class="btn btn-teal" href="/events#plan">Plan an event <span class="arr">→</span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button>
   </div>
 </header>
 <div class="drawer" id="drawer">
-  <a href="#events">Events</a><a href="#space">The Space</a><a href="#cellar">Beer</a><a href="#kitchen">Kitchen</a><a href="#visit">Visit</a>
-  <a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener" style="color:var(--teal)">Book the space</a>
+  <a href="/">Home</a><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Events</a><a href="#visit">Visit</a>
+  <a href="/events#plan" style="color:var(--teal)">Plan an event</a>
 </div>
-
-<!-- shared logo mark -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <g id="wmark">
@@ -426,8 +45,7 @@ footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp
     </g>
   </defs>
 </svg>
-
-<main id="top">
+<main id="top" class="pg-index">
 <!-- HERO -->
 <section class="hero" aria-label="Welcome">
   <canvas id="bubbles" aria-hidden="true"></canvas>
@@ -435,7 +53,7 @@ footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp
   <div class="wrap">
     <div class="hero-top">
       <span class="eyebrow">Santa Cruz, California · 119 Madrone St</span>
-      <span class="status" id="status"><span class="dot"></span><span id="statusText">Checking hours</span></span>
+      <span class="status" data-status><span class="dot"></span><span class="status-text">Checking hours</span></span>
     </div>
     <h1 class="wordmark wm" id="wordmark" aria-label="Woodhouse"></h1>
     <div class="wm-sub lockup-sub" aria-hidden="true"><span>Blending &amp; Brewing</span><span>Santa Cruz, CA</span></div>
@@ -462,14 +80,13 @@ footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp
 <section class="manifesto">
   <div class="wrap">
     <p class="eyebrow">A destination</p>
-    <p class="reveal-text" id="reveal">An evolving community space for Santa Cruz. Small batch craft fermentation, and a platform for the boundless intersections of <span class="hl">music, art and imagination.</span></p>
+    <p class="reveal-text" id="reveal" data-words>An evolving community space for Santa Cruz. Small batch craft fermentation, and a platform for the boundless intersections of <span class="hl">music, art and imagination.</span></p>
     <div class="manifesto-foot">
       <p>We want to be a major moving part of our community: to bring culture to Santa Cruz, and to be a place where everyone comes together to experience what this beautiful city has to offer.</p>
       <p>We do not compete when it comes to community. Woodhouse celebrates other entrepreneurs and creators, makers in every form, from every walk of life.</p>
     </div>
   </div>
 </section>
-
 <!-- BLENDING -->
 <section class="blend" id="blend" aria-label="What Blending and Brewing means">
   <div class="blend-stage">
@@ -481,41 +98,35 @@ footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp
       <div class="blend-copy">
         <div class="blend-step" data-step="0">
           <span class="eyebrow">Why the name</span>
-          <h2>Blending <span>people.</span></h2>
-          <p>Blending and brewing community and positive relationships. Regulars become friends, friends become family, and the patio fills up.</p>
+          <h2>Blending <span>people &amp; culture.</span></h2>
+          <p>Blending and brewing community, positive relationships and cultural backgrounds. Afrobeats nights, line dancing, reggae, square dances, figure drawing and comedy. Regulars become friends, friends become family, and every background brings something to the table.</p>
         </div>
         <div class="blend-step" data-step="1">
           <span class="eyebrow">Why the name</span>
-          <h2>Blending <span>cultures.</span></h2>
-          <p>Afrobeats nights, line dancing, reggae, square dances, figure drawing and comedy. Every background brings something to the table.</p>
-        </div>
-        <div class="blend-step" data-step="2">
-          <span class="eyebrow">Why the name</span>
           <h2>Brewing <span>beer &amp;&hellip;</span></h2>
           <p class="focal">The best beer science and soul allow for, and putting that same heart into anything we do.</p>
+          <a class="txt-link" href="/beer">Step into the cellar <span class="arr">→</span></a>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- EVENTS -->
+<!-- ON THE CALENDAR -->
 <section class="sec events" id="events">
   <div class="wrap sec-head">
-    <h2>On <span class="o">Stage</span></h2>
-    <p class="lede">Free shows most nights, plus bigger ticketed nights with touring bands, authors and comedians. Here's what's coming up.</p>
+    <h2>On the <span class="o">Calendar</span></h2>
+    <div><p class="lede">Free shows most nights, plus bigger ticketed nights with touring bands, authors and comedians. Here's what's coming up.</p><a class="txt-link" href="/calendar" style="margin-top:18px">Full calendar <span class="arr">→</span></a></div>
   </div>
   <div class="ev-pin" id="evPin">
     <div class="ev-rail" id="evRail"></div>
   </div>
 </section>
-
 <!-- SPACE -->
 <section class="sec" id="space">
   <div class="wrap">
     <div class="sec-head">
       <h2>The <span class="o">Space</span></h2>
-      <p class="lede">A stripped down room that puts the focus on the artist, and an open air patio built for the whole town.</p>
+      <div><p class="lede">A stripped down room that puts the focus on the artist, and an open air patio built for the whole town.</p><div class="btn-row" style="margin-top:22px"><a class="txt-link" href="/events">Host an event here <span class="arr">→</span></a><a class="txt-link" href="/calendar#space">For artists <span class="arr">→</span></a></div></div>
     </div>
     <div class="space-list">
       <article class="panel">
@@ -554,75 +165,17 @@ footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp
     <div class="stat"><b>$0</b><span>Cover, most shows</span></div>
   </div>
 </div>
-
-<!-- CELLAR -->
-<section class="sec cellar" id="cellar">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>From the <span class="o">Cellar</span></h2>
-      <p class="lede">A balance of tradition and experimentation. Blended barrel aged ales, hop forward West Coast pours and farmhouse beers with rustic depth.</p>
-    </div>
-    <div class="cellar3d" id="cellar3d">
-      <div class="c3-stage" id="c3stage" aria-label="3D view of the Woodhouse cellar. Drag to look around, tap a tank for details.">
-        <div class="c3-labels" id="c3labels"></div>
-        <div class="c3-top">
-          <span class="c3-chip" id="c3chip"><span class="dot"></span><span id="c3chipText">Loading the cellar</span></span>
-          <span class="c3-hint">Drag to look around · Tap a tank</span>
-        </div>
-      </div>
-      <aside class="c3-card" id="c3card" aria-live="polite"></aside>
-      <div class="c3-legend" aria-hidden="true">
-        <span><i style="background:var(--amber)"></i>Fermenting</span><span><i style="background:var(--teal)"></i>Conditioning</span><span><i style="background:var(--cream)"></i>Ready to pour</span><span><i style="background:#4a5856"></i>Empty or cleaning</span>
-      </div>
-    </div>
-    <div class="cellar-grid">
-      <div class="note">
-        <span class="eyebrow">A quick update on our beer</span>
-        <p><strong>Santa Cruz drank us dry.</strong> When a whole town shows up for a small independent brewery, beer disappears faster than you can make it. Thank you.</p>
-        <p>We've raised the bar across the brewery and brought on two meticulous, science driven brewers focused on consistency and quality. The early results are outstanding.</p>
-        <p>While the next batches finish conditioning, you'll see guest taps from breweries we admire. Every pint helps us build something better.</p>
-        <p><strong>The next generation of Woodhouse beer is on its way.</strong></p>
-        <div class="cellar-plate"><div class="plate-img" data-parallax role="img" aria-label="The Woodhouse bar looking toward the fermenters and barrel racks"></div><span class="plate-cap">Brewhouse and barrel room</span></div>
-      </div>
-      <div>
-        <p class="eyebrow">From the archive</p>
-        <div class="archive" aria-label="Past releases">
-          <div class="arch"><h4>Early Bird</h4><span class="style">American Light Ale</span><span class="abv">5.3%</span></div>
-          <div class="arch"><h4>Moonless Midnight</h4><span class="style">Porter · Simcoe, Mosaic</span><span class="abv">7.1%</span></div>
-          <div class="arch"><h4>Nexties</h4><span class="style">Hazy IPA</span><span class="abv">IPA</span></div>
-          <div class="arch"><h4>Jam Session</h4><span class="style">IPA · Superblume collab, Superbloom yeast</span><span class="abv">IPA</span></div>
-          <div class="arch"><h4>Trick or Treat</h4><span class="style">Mixed fermentation on gummies and jolly ranchers</span><span class="abv">Wild</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- KITCHEN -->
-<section class="sec" id="kitchen">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Culinary <span class="o">Playground</span></h2>
-      <p class="lede">A menu that follows the seasons and the artistry of our chefs, plus weekly pop ups and themed cuisine nights.</p>
-    </div>
-    <div class="tabs" role="tablist" aria-label="Menu sections">
-      <button class="tab" role="tab" id="tab-small" aria-selected="true" data-tab="small">Small Plates</button>
-      <button class="tab" role="tab" id="tab-salads" aria-selected="false" data-tab="salads">Salads</button>
-      <button class="tab" role="tab" id="tab-flat" aria-selected="false" data-tab="flat">Flatbread Pizza</button>
-    </div>
-    <div class="menu" id="menu" role="tabpanel" aria-live="polite"></div>
-    <p class="kitchen-note">Stay tuned. The journey never stops.</p>
-  </div>
-</section>
-
 <!-- NEWS (filled from Squarespace blog when live) -->
-<section class="sec" id="news" hidden>
+<section class="sec" id="news">
   <div class="wrap">
     <div class="sec-head"><h2>House <span class="o">News</span></h2><p class="lede">Releases, collaborations and stories from around the brewery.</p></div>
-    <div class="news-grid" id="newsGrid"></div>
+    <div class="news-grid" id="newsGrid">
+      <a class="post" href="https://www.woodhousebrews.com/news" target="_blank" rel="noopener"><span class="post-img" style="background-image:url('img/pints.jpg')"></span><span class="post-date">From the archive</span><h3>Why we're called Blending &amp; Brewing</h3><p>Blending and brewing community and positive relationships. Blending and brewing cultural backgrounds. And yes, the beer.</p></a>
+      <a class="post" href="https://www.woodhousebrews.com/news" target="_blank" rel="noopener"><span class="post-img" style="background-image:url('img/stage.jpg')"></span><span class="post-date">From the archive</span><h3>The hippest hangout in Santa Cruz</h3><p>We hosted the Nexties and took home the award for the hippest hangout spot in town. It means the world to us.</p></a>
+      <a class="post" href="https://www.woodhousebrews.com/news" target="_blank" rel="noopener"><span class="post-img" style="background-image:url('img/cheers.jpg')"></span><span class="post-date">From the archive</span><h3>Jam Session: a band and brewery collab</h3><p>Superblume and Woodhouse brewed an IPA with the Berkeley Superbloom yeast strain and released it on show night.</p></a>
+    </div>
   </div>
 </section>
-
 <!-- BOOK -->
 <section class="book" id="book" aria-label="Book the space">
   <svg class="book-w" viewBox="0 0 256 340" aria-hidden="true"><path fill="#0a0f0f" fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><polygon fill="#0a0f0f" points="44,213 86,255 86,340 128,298 171,340 171,255 213,213"/></svg>
@@ -630,17 +183,16 @@ footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp
     <p class="eyebrow" style="color:#0f2a27">Private events · Reservations</p>
     <h2>Throw it at</h2>
     <div class="wm" style="background:var(--ink);width:min(980px,100%);margin-top:14px" role="img" aria-label="Woodhouse"></div>
-    <p>Birthdays, company mixers, album releases, weddings and full festivals. Up to 400 guests on the patio, an intimate room inside, a kitchen and a brewery behind the bar.</p>
-    <div class="book-list"><span>Private parties</span><span>Corporate</span><span>Shows and festivals</span><span>Markets</span><span>Table reservations</span></div>
+    <p>Birthdays, company mixers, album releases, weddings and full festivals. Indoor and outdoor spaces for up to about 500 guests, a kitchen that caters, and a brewery behind the bar.</p>
+    <div class="book-list"><span>Private parties</span><span>Corporate</span><span>Weddings and welcomes</span><span>Showers and milestones</span><span>Fundraisers</span><span>Full buyouts</span></div>
     <div class="row">
       <a class="btn btn-dark" href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Start a booking <span class="arr">→</span></a>
-      <a class="btn btn-line" href="#visit">Talk to us</a>
+      <a class="btn btn-line" href="/events">Explore private events</a>
     </div>
   </div>
 </section>
-
-<!-- VISIT -->
-<section class="sec" id="visit">
+</main>
+<section class="visit-band" id="visit">
   <div class="wrap visit-grid">
     <div>
       <p class="eyebrow" style="margin-bottom:22px">Come say hi</p>
@@ -662,13 +214,11 @@ footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp
     </div>
   </div>
 </section>
-</main>
-
 <footer>
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="brand" href="#top" aria-label="Woodhouse Blending and Brewing"><svg viewBox="0 0 256 340" aria-hidden="true" style="width:30px"><use href="#wmark"/></svg><span><span class="wm" aria-hidden="true" style="width:150px"></span><small>Blending &amp; Brewing</small></span></a>
+        <a class="brand" href="/" aria-label="Woodhouse Blending and Brewing"><svg viewBox="0 0 256 340" aria-hidden="true" style="width:30px"><use href="#wmark"/></svg><span><span class="wm" aria-hidden="true" style="width:150px"></span><small>Blending &amp; Brewing</small></span></a>
         <p style="color:var(--muted);margin-top:18px;max-width:38ch;font-size:15px">Get first word on shows, releases and pop ups.</p>
         <form class="signup" id="signup" novalidate>
           <label for="email" style="position:absolute;left:-9999px">Email address</label>
@@ -677,706 +227,20 @@ footer{border-top:1px solid var(--line);padding-block:56px 40px;margin-top:clamp
         </form>
         <p class="signup-msg" id="signupMsg" aria-live="polite"></p>
       </div>
-      <div><h5>Visit</h5><a href="#events">Events</a><a href="#kitchen">Food</a><a href="#cellar">Beer</a><a href="#visit">Hours</a></div>
-      <div><h5>Work with us</h5><a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Bookings</a><a href="#book">Private events</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></div>
+      <div><h5>Explore</h5><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Private events</a></div>
+      <div><h5>Work with us</h5><a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Book an event</a><a href="downloads/woodhouse-events-brochure-2026.pdf" download>Events brochure</a><a href="/calendar#play">Play at Woodhouse</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></div>
       <div><h5>Follow</h5><a href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">@woodhousebrews</a><a href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a><a href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a></div>
     </div>
     <div class="giant wm" aria-hidden="true"></div>
     <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>Brewed and blended in Santa Cruz</span></div>
   </div>
 </footer>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-(function(){
-const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const hasGsap = !!(window.gsap && window.ScrollTrigger);
-if (reduce || !hasGsap) document.documentElement.classList.add('no-motion');
-
-/* ---------- Pacific time helpers ---------- */
-function laNow(){
-  const parts = new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false,weekday:'short'}).formatToParts(new Date());
-  const o={}; parts.forEach(p=>o[p.type]=p.value);
-  const wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday);
-  return {y:+o.year,m:+o.month,d:+o.day,h:(+o.hour)%24,min:+o.minute,wd};
-}
-const now = laNow();
-const nowMin = now.h*60+now.min;
-
-/* ---------- Hours ---------- */
-const HOURS=[ // index = weekday 0 Sun
-  {d:'Sun',o:12,c:19},{d:'Mon',o:null,c:null},{d:'Tue',o:13,c:21},{d:'Wed',o:13,c:21},
-  {d:'Thu',o:13,c:21},{d:'Fri',o:13,c:22},{d:'Sat',o:12,c:22}
-];
-const fmt=h=>{const p=h>=12?'pm':'am';const x=h%12||12;return x+p};
-const order=[2,3,4,5,6,0,1];
-const hoursEl=document.getElementById('hours');
-const span=[10,23];
-let hh='<div class="hours-axis" aria-hidden="true"><span></span><div><span>10am</span><span>4pm</span><span>11pm</span></div><span></span></div>';
-order.forEach(i=>{
-  const h=HOURS[i]; const today=i===now.wd;
-  const bar=h.o==null?'':`<i style="left:${(h.o-span[0])/(span[1]-span[0])*100}%;right:${(span[1]-h.c)/(span[1]-span[0])*100}%"></i>`;
-  hh+=`<div class="hr${today?' today':''}${h.o==null?' closed':''}"><span class="day">${h.d}</span><span class="bar">${bar}</span><span class="t">${h.o==null?'Closed':fmt(h.o)+' to '+fmt(h.c)}${today?' · today':''}</span></div>`;
-});
-hoursEl.innerHTML=hh;
-
-/* open status */
-(function(){
-  const st=document.getElementById('status'),tx=document.getElementById('statusText');
-  const t=HOURS[now.wd];
-  if(t.o!=null && nowMin>=t.o*60 && nowMin<t.c*60){st.classList.add('open');tx.textContent='Open now · until '+fmt(t.c);return;}
-  if(t.o!=null && nowMin<t.o*60){tx.textContent='Opens today at '+fmt(t.o);return;}
-  for(let k=1;k<=7;k++){const n=HOURS[(now.wd+k)%7];if(n.o!=null){tx.textContent='Closed · opens '+(k===1?'tomorrow':n.d)+' at '+fmt(n.o);return;}}
-})();
-
-/* ---------- Events ---------- */
-const EV=[
- {y:2026,m:11,d:4,s:'6:00',e:'8:30',sh:18,eh:20.6,t:'Free Elements',p:'A Santa Cruz band with a loose style and a tight sound. Fresh takes on classic covers to get your groove on.',u:'https://www.woodhousebrews.com/events/2026/5/5/free-elements-1-8nct4-e3xdn',g:'rgba(137,216,208,.28)'},
- {y:2026,m:11,d:5,s:'7:00',e:'10:00',sh:19,eh:22,t:'Camellia Boutros Band & Flat SUN Society',p:'Arab experimentalism on the electric oud guitar, then six friends from Big Sur and Santa Cruz with polyrhythmic psych rock.',u:'https://www.woodhousebrews.com/events/2026/11/5/camellia-boutros-band-amp-flat-sun-society',g:'rgba(227,169,92,.3)'},
- {y:2026,m:11,d:6,s:'7:00',e:'10:00',sh:19,eh:22,t:'Los Pendejos Imbeciles Band',p:'Friday night, live on the Woodhouse stage.',u:'https://www.woodhousebrews.com/events/2026/11/6/los-pendejos-imbeciles-band',g:'rgba(242,234,217,.2)'},
- {y:2026,m:11,d:7,s:'6:30',e:'9:30',sh:18.5,eh:21.5,t:'Puffball Collective',p:'Funky Americana dance jams with members of the Banana Slug String Band, Rosebud and Velour.',u:'https://www.woodhousebrews.com/events/2025/3/21/puffball-collective',g:'rgba(137,216,208,.28)'},
- {y:2026,m:11,d:18,s:'5:00',e:'9:00',sh:17,eh:21,t:'Foster Andersen Benefit',p:'A community benefit night. Come out, raise a glass and show up for one of our own.',u:'https://www.woodhousebrews.com/events/2026/11/18/foster-andersen-benefit',g:'rgba(227,169,92,.3)'},
- {y:2026,m:11,d:28,s:'7:00',e:'10:00',sh:19,eh:22,t:'China Cats',p:'The premier Grateful Dead tribute in Santa Cruz and the Bay Area, playing the Dead since 2010.',u:'https://www.woodhousebrews.com/events/2025/11/29/china-cats-2plsr',g:'rgba(242,234,217,.2)',tag:'$25 door'},
- {y:2026,m:12,d:4,s:'7:00',e:'10:00',sh:19,eh:22,t:"1970's Rock Revue",p:'Original arrangements of Rush, Genesis, Mahavishnu, Return to Forever and more jazz rock and prog.',u:'https://www.woodhousebrews.com/events/2026/12/4/1970s-rock-revue',g:'rgba(137,216,208,.28)'},
- {y:2026,m:12,d:6,s:'5:00',e:'8:00',sh:17,eh:20,t:'Horse Feathers',p:'Two decades of intimate, cinematic chamber folk from the Pacific Northwest. The kind of night that makes a room go still.',u:'https://www.eventbrite.com/e/horse-feathers-tickets-1993861278758',g:'rgba(227,169,92,.3)',tag:'Tickets'}
-];
-const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const WD=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-const todayKey=now.y*10000+now.m*100+now.d;
-const rail=document.getElementById('evRail');
-const esc=t=>String(t||'').replace(/&(?!amp;|#\d+;|[a-z]+;)/g,'&amp;').replace(/</g,'&lt;');
-let calendarUrl='';
-function renderEvents(list){
-  let rh='';
-  list.filter(e=>{const k=e.y*10000+e.m*100+e.d; return k>todayKey || (k===todayKey && nowMin<e.eh*60);})
-    .sort((a,b)=>(a.y*1e4+a.m*100+a.d+a.sh/100)-(b.y*1e4+b.m*100+b.d+b.sh/100))
-    .slice(0,12)
-    .forEach((e,i)=>{
-      const wd=WD[new Date(Date.UTC(e.y,e.m-1,e.d,12)).getUTCDay()];
-      let chip='';
-      const diff=Math.round((Date.UTC(e.y,e.m-1,e.d)-Date.UTC(now.y,now.m-1,now.d))/864e5);
-      if(diff===0) chip='<span class="ev-chip">Tonight</span>';
-      else if(diff===1) chip='<span class="ev-chip soft">Tomorrow</span>';
-      else if(e.tag) chip=`<span class="ev-chip soft">${esc(e.tag)}</span>`;
-      const glow=e.g||['rgba(137,216,208,.28)','rgba(227,169,92,.3)','rgba(242,234,217,.2)'][i%3];
-      rh+=`<a class="ev${e.img?' has-img':''}" href="${e.u}" target="_blank" rel="noopener" style="--glow:${glow}">
-        ${e.img?`<span class="ev-img" style="background-image:url('${e.img}')"></span>`:''}${chip}
-        <div class="ev-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd.slice(0,3)}</span></div>
-        <h3>${esc(e.t)}</h3><p>${esc(e.p)}</p>
-        <div class="ev-foot"><span>${e.time||''}</span><span>Details ↗</span></div></a>`;
-    });
-  rh+=`<div class="ev-end"><span class="eyebrow">Every week</span><h3>Tuesday jams, Afrobeats, line dancing and more.</h3>${calendarUrl?`<a class="btn btn-ghost" href="${calendarUrl}" target="_blank" rel="noopener" style="align-self:flex-start">Full calendar <span class="arr">↗</span></a>`:`<a class="btn btn-ghost" href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener" style="align-self:flex-start">Follow for new shows <span class="arr">↗</span></a>`}</div>`;
-  rail.innerHTML=rh;
-  if(window.ScrollTrigger) ScrollTrigger.refresh();
-}
-EV.forEach(e=>{e.time=`${e.s} to ${e.e} ${e.sh>=12?'pm':'am'}`;});
-renderEvents(EV);
-
-/* Squarespace as the content backend: /api/events and /api/news are Vercel functions in this repo.
-   In the preview (or if Squarespace is unreachable) the built-in list above stays. */
-const laParts=ms=>{const o={};new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'2-digit',hour12:false}).formatToParts(new Date(ms)).forEach(p=>o[p.type]=p.value);return {y:+o.year,m:+o.month,d:+o.day,h:(+o.hour)%24,min:+o.minute};};
-const clock12=(h,m)=>`${h%12||12}:${String(m).padStart(2,'0')}`;
-if(/^https?:$/.test(location.protocol)){
-  fetch('/api/events').then(r=>r.ok?r.json():Promise.reject()).then(data=>{
-    if(!data||!Array.isArray(data.events)||!data.events.length) return;
-    calendarUrl=data.calendarUrl||'';
-    renderEvents(data.events.map(x=>{const a=laParts(x.start),b=laParts(x.end||x.start);
-      return {y:a.y,m:a.m,d:a.d,sh:a.h+a.min/60,eh:(b.d!==a.d?24:b.h+b.min/60),t:x.title,p:x.excerpt,u:x.url,img:x.image,
-        time:`${clock12(a.h,a.min)} to ${clock12(b.h,b.min)} ${b.h>=12?'pm':'am'}`};}));
-  }).catch(()=>{});
-  fetch('/api/news').then(r=>r.ok?r.json():Promise.reject()).then(data=>{
-    if(!data||!Array.isArray(data.posts)||!data.posts.length) return;
-    const sec=document.getElementById('news'),grid=document.getElementById('newsGrid');
-    grid.innerHTML=data.posts.slice(0,3).map(p=>{const a=laParts(p.date);
-      return `<a class="post" href="${p.url}" target="_blank" rel="noopener">${p.image?`<span class="post-img" style="background-image:url('${p.image}')"></span>`:'<span class="post-img"></span>'}
-        <span class="post-date">${MON[a.m-1]} ${a.d}, ${a.y}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p></a>`;}).join('');
-    sec.hidden=false; if(window.ScrollTrigger) ScrollTrigger.refresh();
-  }).catch(()=>{});
-}
-
-/* ---------- Cellar: data ---------- */
-/* Launch: fill these in with the brewing app's Supabase project (anon key + the read-only public_cellar view). Empty = preview data. */
-const CELLAR_SOURCE={url:'',anonKey:'',view:'public_cellar',refreshMinutes:5};
-const CELLAR_LAYOUT=[
- {code:'FV1',bbl:10,kind:'fv'},{code:'FV2',bbl:10,kind:'fv'},{code:'FV3',bbl:10,kind:'fv'},{code:'FV4',bbl:20,kind:'fv'},
- {code:'P1',bbl:2,kind:'fv',label:'Pilot 1'},{code:'P2',bbl:2,kind:'fv',label:'Pilot 2'},
- {code:'BT2',bbl:7,kind:'bt'},{code:'BT3',bbl:7,kind:'bt'},{code:'BT4',bbl:7,kind:'bt'},{code:'B20',bbl:20,kind:'bt',label:'20 bbl Bright'}
-];
-const iso=(dd)=>{const d=new Date(Date.UTC(now.y,now.m-1,now.d+dd));return d.toISOString().slice(0,10);};
-const CELLAR_PREVIEW=[
- {tank_code:'FV1',beer_name:'Early Bird',style:'American Light Ale',status:'fermenting',fill_pct:88,brewed_on:iso(-4),ready_on:iso(10),abv_target:5.3},
- {tank_code:'FV2',beer_name:'West Coast IPA',style:'IPA',status:'conditioning',fill_pct:92,brewed_on:iso(-12),ready_on:iso(6),abv_target:6.8},
- {tank_code:'FV3',status:'cleaning'},
- {tank_code:'FV4',beer_name:'Nexties',style:'Hazy IPA',status:'fermenting',fill_pct:94,brewed_on:iso(-2),ready_on:iso(18),abv_target:6.5},
- {tank_code:'P1',beer_name:'Trick or Treat',style:'Mixed fermentation',status:'fermenting',fill_pct:72,brewed_on:iso(-20),ready_on:iso(40)},
- {tank_code:'P2',status:'empty'},
- {tank_code:'BT2',beer_name:'Moonless Midnight',style:'Porter',status:'ready',fill_pct:78,brewed_on:iso(-24),ready_on:iso(-1),abv_target:7.1},
- {tank_code:'BT3',beer_name:'Jam Session',style:'IPA',status:'conditioning',fill_pct:64,brewed_on:iso(-16),ready_on:iso(3),abv_target:6.2},
- {tank_code:'BT4',status:'empty'},
- {tank_code:'B20',status:'empty'}
-];
-async function loadCellar(){
-  const c=CELLAR_SOURCE;
-  if(!c.url||!c.anonKey) return {rows:CELLAR_PREVIEW,live:false};
-  try{
-    const r=await fetch(`${c.url.replace(/\/$/,'')}/rest/v1/${c.view}?select=*`,{headers:{apikey:c.anonKey,Authorization:'Bearer '+c.anonKey}});
-    if(!r.ok) throw new Error(r.status);
-    return {rows:await r.json(),live:true,at:new Date()};
-  }catch(e){return {rows:CELLAR_PREVIEW,live:false,failed:true};}
-}
-const STATUS={
- fermenting:{label:'Fermenting',color:'#e3a95c'},conditioning:{label:'Conditioning',color:'#89d8d0'},
- ready:{label:'Ready to pour',color:'#f2ead9'},empty:{label:'Empty',color:'#4a5856'},cleaning:{label:'Cleaning',color:'#4a5856'}
-};
-function beerColor(style=''){const s=style.toLowerCase();
-  if(/porter|stout|dark|schwarz/.test(s))return 0x2a140a;
-  if(/hazy|neipa/.test(s))return 0xe6a336;
-  if(/light|pils|lager|kolsch|blonde/.test(s))return 0xe8c45a;
-  if(/sour|wild|mixed|brett|farmhouse|saison/.test(s))return 0xc7703a;
-  if(/ipa|pale/.test(s))return 0xd99030;
-  if(/amber|red/.test(s))return 0xa8521f;
-  return 0xd08a34;}
-const fmtDay=d=>{const x=new Date(d+'T12:00:00');return MON[x.getMonth()]+' '+x.getDate();};
-function cellarCard(t,row){
-  const st=STATUS[row.status]||STATUS.empty, has=row.beer_name&&row.status!=='empty'&&row.status!=='cleaning';
-  let prog='';
-  if(has&&row.brewed_on&&row.ready_on){
-    const a=Date.parse(row.brewed_on),b=Date.parse(row.ready_on),n=Date.UTC(now.y,now.m-1,now.d);
-    const p=Math.max(0,Math.min(1,(n-a)/(b-a))),day=Math.max(1,Math.round((n-a)/864e5)),tot=Math.round((b-a)/864e5);
-    prog=`<div class="c3-prog"><div class="track"><i style="width:${Math.round(p*100)}%"></i></div><div class="lab"><span>Day ${day} of ~${tot}</span><span>${row.status==='ready'?'Ready':'On tap ~'+fmtDay(row.ready_on)}</span></div></div>`;
-  }
-  const body=has?`<h3>${row.beer_name}</h3><p class="sty">${row.style||''}</p>`
-    :`<h3>${row.status==='cleaning'?'Getting clean':'Standing by'}</h3><p class="sty">${row.status==='cleaning'?'Scrubbed and sanitized for the next brew.':'Waiting on the next brew day.'}</p>`;
-  return `<span class="code">${t.label||t.code} · ${t.bbl} bbl ${t.kind==='fv'?'fermenter':'bright tank'}</span>${body}
-    <span class="pill" style="background:${st.color};color:${has||row.status==='ready'?'#0a0f0f':'#f2ead9'}">${st.label}</span>${prog}
-    <div class="c3-facts"><div><span>Fill</span><b>${has?Math.round(row.fill_pct||0)+'%':'0%'}</b></div><div><span>Target ABV</span><b>${has&&row.abv_target?row.abv_target+'%':'TBD'}</b></div></div>`;
-}
-
-
-/* ---------- Menu ---------- */
-const MENU={
- small:[
-  ['Homemade Pretzel','$10','A freshly baked, golden sourdough pretzel served warm with house beer cheese or brown mustard.'],
-  ['Pão de Queijo (5)','$10','Brazilian style cheese bread. Crisp outside, pillowy inside, delicately savory.','GF'],
-  ['Beet Hummus','$10','Silky garbanzo hummus infused with roasted beets, with warm pita and crisp veggies.','Vegan'],
-  ['Jalapeño Hummus','$10','Silky garbanzo hummus with a spicy kick, with warm pita and crisp veggies.','Vegan'],
-  ['Sausage Roll (3)','$10','Seasoned sausage hand rolled in flaky puff pastry, with house mustard.'],
-  ['Veggie Empanada','$7','Baked pastry filled with potato, carrot and peas. Dancing fuel.'],
-  ['Chicken Empanada','$7','Juicy marinated chicken and gooey cheese in a hearty baked pie.'],
-  ["Kid's Quesadilla",'$5','Flour tortilla with jack and cheddar for our little guests. Add chicken for a little extra.']
- ],
- salads:[
-  ['Caesar','$12','Crisp romaine tossed in our house dressing, shaved parmesan and artisanal croutons.'],
-  ['Greek','$12','Spring greens, red onion, kalamata olives, feta and cucumber with a light Mediterranean dressing.','GF'],
-  ['Beet','$12','Spring greens, tangy goat cheese and candied walnuts with a delicate citrus vinaigrette.','GF']
- ],
- flat:[
-  ['Woodhouse','$16','The signature. Pepperoni, earthy mushrooms and zesty banana peppers.'],
-  ['Chicken Pesto','$16','Slow roasted chicken, melted mozzarella and house basil pesto, finished with fresh basil.'],
-  ['Pepperoni','$16','Crispy pepperoni over bubbling mozzarella with a drizzle of hot honey.'],
-  ['Margherita','$16','Creamy mozzarella and fragrant fresh basil. Simple at its best.','Veg'],
-  ['Veggie','$16','Bell peppers, marinated artichoke, mushroom and pineapple.'],
-  ['Carnitas','$18','Slow roasted carnitas with house chipotle salsa. New, and already a favorite.']
- ]
-};
-const menuEl=document.getElementById('menu');
-function renderMenu(k){
-  menuEl.setAttribute('aria-labelledby','tab-'+k);
-  menuEl.innerHTML=MENU[k].map(i=>`<div class="item"><h4>${i[0]}${i[3]?`<span class="tagx">${i[3]}</span>`:''}</h4><span class="price mono">${i[1]}</span><p>${i[2]}</p></div>`).join('');
-  if(hasGsap && !reduce) gsap.from(menuEl.children,{y:16,opacity:.0,duration:.5,stagger:.04,ease:'power2.out',clearProps:'all'});
-}
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b?'true':'false'));
-  renderMenu(b.dataset.tab);
-}));
-renderMenu('small');
-
-/* ---------- Copy buttons ---------- */
-document.querySelectorAll('.copybtn').forEach(b=>b.addEventListener('click',()=>{
-  const v=b.dataset.copy;
-  const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600)};
-  try{navigator.clipboard.writeText(v).then(done,()=>sel(b))}catch(e){sel(b)}
-}));
-function sel(b){const el=b.parentElement.querySelector('.v');const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected';}
-
-/* ---------- Signup (preview) ---------- */
-document.getElementById('signup').addEventListener('submit',e=>{
-  e.preventDefault();
-  const v=document.getElementById('email').value.trim(), m=document.getElementById('signupMsg');
-  m.textContent=/.+@.+\..+/.test(v)?'Preview only. At launch this connects to your mailing list.':'Enter an email address like you@email.com.';
-});
-
-/* ---------- Nav ---------- */
-const nav=document.getElementById('nav');
-const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
-window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-const menuBtn=document.getElementById('menuBtn'),drawer=document.getElementById('drawer');
-menuBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o);menuBtn.textContent=o?'Close':'Menu';});
-drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='Menu';}));
-
-/* ---------- Bubbles canvas ---------- */
-(function(){
-  const c=document.getElementById('bubbles'),ctx=c.getContext('2d');
-  let W,H,dpr,bs=[],mx=-999,my=-999,run=true;
-  function size(){dpr=Math.min(2,window.devicePixelRatio||1);W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
-    const n=Math.round(Math.min(160,W*H/9000));bs=Array.from({length:n},()=>mk(true));}
-  function mk(init){const r=Math.random()**2*9+1;return{x:Math.random()*W,y:init?Math.random()*H:H+r*2,r,v:.25+r*.07+Math.random()*.3,ph:Math.random()*6.28,a:.15+Math.random()*.5}}
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    for(const b of bs){
-      if(!reduce){b.y-=b.v;b.ph+=.02;b.x+=Math.sin(b.ph)*.25;
-        const dx=b.x-mx,dy=b.y-my,d=Math.hypot(dx,dy);if(d<120){b.x+=dx/d*1.6;b.y+=dy/d*1.2;}
-        if(b.y<-20)Object.assign(b,mk(false));}
-      ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,6.283);
-      ctx.strokeStyle=`rgba(137,216,208,${b.a})`;ctx.lineWidth=1;ctx.stroke();
-      ctx.beginPath();ctx.arc(b.x-b.r*.35,b.y-b.r*.35,b.r*.28,0,6.283);ctx.fillStyle=`rgba(242,234,217,${b.a*.8})`;ctx.fill();
-    }
-    if(run && !reduce)requestAnimationFrame(draw);
-  }
-  size();draw();
-  window.addEventListener('resize',()=>{size();if(reduce)draw();});
-  c.parentElement.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;});
-  c.parentElement.addEventListener('pointerleave',()=>{mx=my=-999});
-  new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!run){run=true;draw();}else if(!v)run=false;}).observe(c);
-})();
-
-/* ---------- Word split for reveal ---------- */
-(function(){
-  const el=document.getElementById('reveal');
-  const wrapWords=(node)=>{
-    [...node.childNodes].forEach(n=>{
-      if(n.nodeType===3){const f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(t=>{if(!t)return;if(/^\s+$/.test(t))f.appendChild(document.createTextNode(t));else{const s=document.createElement('span');s.className='w';s.textContent=t;f.appendChild(s);}});n.replaceWith(f);}
-      else if(n.nodeType===1)wrapWords(n);
-    });
-  };
-  wrapWords(el);
-  if(reduce||!hasGsap)el.querySelectorAll('.w').forEach(w=>w.style.opacity=1);
-})();
-
-/* ---------- Mark progression (from the brand's tangram artwork) ---------- */
-const MK=[
- [[[0,-84],[85,1],[0,86],[-85,1]]],
- [[[0,-88],[85,-3],[-85,-3]],[[-85,4],[85,4],[0,89]]],
- [[[-85,-85],[85,-85],[0,0]],[[0,0],[85,85],[-85,85]]],
- [[[-85,-86],[0,-1],[-85,84]],[[85,-86],[85,84],[0,-1]]],
- [[[-85,-87],[-43,-45],[-43,41],[-85,83]],[[85,-87],[85,83],[43,41],[43,-45]]],
- [[[-85,-134],[-42,-91],[-42,-8],[-85,36]],[[85,-134],[85,36],[43,-8],[43,-91]],[[0,-42],[85,43],[0,128],[-85,43]]],
- 'final'
-];
-const tint=i=>['rgba(242,234,217,.28)','rgba(242,234,217,.42)','rgba(200,226,220,.55)','rgba(170,222,214,.68)','rgba(150,219,210,.8)','rgba(137,216,208,.92)','#89d8d0'][i];
-const finalSvg=`<g transform="translate(-128,-171)"><use href="#wmark"/></g>`;
-const stageSvg=(st,i)=>st==='final'?finalSvg:st.map(p=>`<polygon points="${p.map(q=>q.join(',')).join(' ')}" fill="${tint(i)}"/>`).join('');
-const tg=document.getElementById('tgSvg'), film=document.getElementById('film');
-tg.innerHTML=MK.map((st,i)=>`<g class="tg-stage${i===MK.length-1?' on':''}">${stageSvg(st,i)}</g>`).join('');
-film.innerHTML=MK.map((st,i)=>`<button type="button" aria-label="Step ${i+1} of ${MK.length}" class="${i===MK.length-1?'on':''}"><svg viewBox="-140 -180 280 330">${stageSvg(st,i)}</svg></button>`).join('');
-const tgStages=[...tg.children], filmBtns=[...film.children];
-let tgCur=MK.length-1;
-function showStage(k){if(k===tgCur)return;tgCur=k;tgStages.forEach((g,i)=>g.classList.toggle('on',i===k));filmBtns.forEach((b,i)=>b.classList.toggle('on',i===k));}
-/* shared oak texture (barrel stave grain) */
-function makeWoodCanvas(bump){
-    const W=1024,H=1024,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
-    let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647;};
-    const g=x.createLinearGradient(0,0,W,0);
-    if(bump){g.addColorStop(0,'#7a7a7a');g.addColorStop(1,'#808080');}
-    else{g.addColorStop(0,'#9a6538');g.addColorStop(.5,'#b37a45');g.addColorStop(1,'#93602f');}
-    x.fillStyle=g;x.fillRect(0,0,W,H);
-    for(let i=0;i<900;i++){
-      const px=rnd()*W,amp=2+rnd()*10,freq=.002+rnd()*.006,ph=rnd()*6.28,w=.4+rnd()*2.2,dark=rnd()<.62;
-      x.beginPath();for(let y=0;y<=H;y+=8){const xx=px+Math.sin(y*freq+ph)*amp+Math.sin(y*freq*3.1+ph)*amp*.25;y?x.lineTo(xx,y):x.moveTo(xx,y);}
-      const a=.04+rnd()*.16;
-      x.strokeStyle=bump?(dark?`rgba(0,0,0,${a*1.6})`:`rgba(255,255,255,${a})`):(dark?`rgba(58,30,12,${a*1.4})`:`rgba(236,190,128,${a})`);
-      x.lineWidth=w;x.stroke();
-    }
-    for(let i=0;i<9;i++){const kx=rnd()*W,ky=rnd()*H,r=6+rnd()*14;
-      const rg=x.createRadialGradient(kx,ky,0,kx,ky,r*2.4);rg.addColorStop(0,bump?'rgba(0,0,0,.5)':'rgba(55,28,10,.55)');rg.addColorStop(1,'rgba(0,0,0,0)');
-      x.fillStyle=rg;x.beginPath();x.ellipse(kx,ky,r*1.2,r*2.4,0,0,6.28);x.fill();}
-    for(let s=128;s<W;s+=256){x.fillStyle=bump?'rgba(0,0,0,.55)':'rgba(40,20,8,.55)';x.fillRect(s-1.5,0,3,H);
-      x.fillStyle=bump?'rgba(255,255,255,.25)':'rgba(240,200,140,.12)';x.fillRect(s+1.5,0,1.5,H);}
-    return c;
-  }
-
-/* ---------- Hero: 3D oak W mark ---------- */
-(function(){
-  const box=document.getElementById('heroMark');
-  if(!box||!window.THREE)return;
-  let R;try{R=new THREE.WebGLRenderer({antialias:true,alpha:true});}catch(e){return;}
-  if(!R.getContext())return;
-  R.setPixelRatio(Math.min(2.5,window.devicePixelRatio||1));R.outputEncoding=THREE.sRGBEncoding;
-  R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.15;
-  const cv=R.domElement;cv.setAttribute('role','img');cv.setAttribute('aria-label','The Woodhouse W mark in oak. Drag to spin.');
-  box.appendChild(cv);box.classList.add('is3d');
-  const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(28,256/340,1,4000);cam.position.set(0,0,860);
-  scene.add(new THREE.HemisphereLight(0xf2ead9,0x0a0f0f,.6));
-  const key=new THREE.DirectionalLight(0xfff4e6,1.45);key.position.set(300,380,620);scene.add(key);
-  const rim=new THREE.PointLight(0x89d8d0,2,1500);rim.position.set(-360,120,-300);scene.add(rim);
-  const warm=new THREE.PointLight(0xe3a95c,.8,1400);warm.position.set(280,-300,320);scene.add(warm);
-  const ani=R.capabilities.getMaxAnisotropy();
-  const tex=(c,srgb)=>{const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1/300,1/300);t.anisotropy=ani;if(srgb)t.encoding=THREE.sRGBEncoding;return t;};
-  const mat=new THREE.MeshPhysicalMaterial({map:tex(makeWoodCanvas(false),true),bumpMap:tex(makeWoodCanvas(true),false),bumpScale:.9,roughness:.4,clearcoat:.9,clearcoatRoughness:.16});
-  const P=pts=>new THREE.Shape(pts.map(q=>new THREE.Vector2(q[0]-128,-(q[1]-170))));
-  const ext={depth:34,bevelEnabled:true,bevelThickness:1.3,bevelSize:1,bevelOffset:-1,bevelSegments:4,curveSegments:1};
-  const g=new THREE.Group();
-  [P([[0,0],[256,0],[256,213],[213,213],[213,43],[171,85],[171,171],[128,128],[86,171],[86,85],[44,43],[44,213],[0,213]]),
-   P([[120,184],[137,184],[137,213],[213,213],[171,255],[171,340],[128,298],[86,340],[86,255],[44,213],[120,213]])]
-   .forEach(sh=>{const m=new THREE.Mesh(new THREE.ExtrudeGeometry(sh,ext),mat);m.position.z=-17;g.add(m);});
-  scene.add(g);
-  let rot=reduce?.45:-1.4,vel=0,drag=false,lx=0,last=0,intro=reduce?1:0,vis=true,raf=0;
-  cv.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;cv.setPointerCapture(e.pointerId);last=performance.now();});
-  cv.addEventListener('pointermove',e=>{if(!drag)return;vel=(e.clientX-lx)*.014;rot+=vel;lx=e.clientX;last=performance.now();});
-  const up=()=>drag=false;cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
-  function resize(){const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
-  new ResizeObserver(resize).observe(box);resize();
-  const clock=new THREE.Clock();
-  function frame(){
-    const dt=Math.min(.05,clock.getDelta()),t=clock.elapsedTime;
-    if(intro<1){intro=Math.min(1,intro+dt*.7);}
-    const e=1-Math.pow(1-intro,3);
-    if(!drag&&!reduce){rot+=vel;vel*=.95;if(performance.now()-last>1800)rot+=dt*.45;}
-    g.rotation.y=rot+(1-e)*1.2;g.rotation.x=reduce?0:Math.sin(t*.7)*.06;
-    g.position.y=reduce?0:Math.sin(t*1.1)*5;
-    const s=.7+.3*e;g.scale.set(s,s,s);
-    R.render(scene,cam);
-    if(vis&&!reduce)raf=requestAnimationFrame(frame);
-  }
-  new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis&&!reduce){cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);}}).observe(box);
-  frame();
-})();
-
-/* ---------- 3D mark: the same stages, extruded and morphed ---------- */
-let tgT=MK.length-1, tgTarget=MK.length-1;
-const M3=(function(){
-  const box=document.getElementById('tangram');
-  if(!window.THREE) return null;
-  let renderer;
-  try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});}catch(e){return null;}
-  if(!renderer.getContext()) return null;
-  renderer.setPixelRatio(Math.min(2.5,window.devicePixelRatio||1));
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;
-  renderer.outputEncoding=THREE.sRGBEncoding;
-  const cv=renderer.domElement; cv.setAttribute('aria-label','3D Woodhouse mark. Drag to spin.'); cv.setAttribute('role','img'); cv.tabIndex=0;
-  box.appendChild(cv); box.classList.add('is3d');
-  const scene=new THREE.Scene();
-  const cam=new THREE.PerspectiveCamera(30,1,1,4000); cam.position.set(0,0,980);
-  scene.add(new THREE.HemisphereLight(0xf2ead9,0x0a0f0f,.55));
-  const key=new THREE.DirectionalLight(0xfff4e6,1.35); key.position.set(320,420,600); scene.add(key);
-  const rim=new THREE.PointLight(0x89d8d0,1.6,1600); rim.position.set(-380,160,-260); scene.add(rim);
-  const warm=new THREE.PointLight(0xe3a95c,.9,1400); warm.position.set(300,-320,300); scene.add(warm);
-
-  /* stage geometry in the artwork's own coordinates (y down) */
-  const tiny=(x,y)=>[[x,y-.8],[x+.8,y],[x,y+.8],[x-.8,y]];
-  const fin=pts=>pts.map(p=>[p[0]-128,p[1]-171]);
-  const leftHalf=fin([[0,0],[128,0],[128,128],[86,171],[86,85],[44,43],[44,213],[0,213]]);
-  const rightHalf=fin([[128,0],[256,0],[256,213],[213,213],[213,43],[171,85],[171,171],[128,128]]);
-  const tail=fin([[120,184],[137,184],[137,213],[213,213],[171,255],[171,340],[128,298],[86,340],[86,255],[44,213],[120,213]]);
-  const S=MK.slice(0,6).map((st,i)=>{
-    if(st.length===1) return [[[0,-84],[85,1],[-85,1]],[[-85,1],[85,1],[0,86]],tiny(0,40)];
-    if(st.length===2) return [st[0],st[1],tiny(0,43)];
-    return st;
-  });
-  S.push([leftHalf,rightHalf,tail]);
-  const N=44;
-  function norm(p){
-    let a=0;for(let i=0;i<p.length;i++){const q=p[i],r=p[(i+1)%p.length];a+=q[0]*r[1]-r[0]*q[1];}
-    if(a<0)p=p.slice().reverse();
-    let k=0;p.forEach((q,i)=>{if(q[1]<p[k][1]-1e-6||(Math.abs(q[1]-p[k][1])<1e-6&&q[0]<p[k][0]))k=i;});
-    return p.slice(k).concat(p.slice(0,k));
-  }
-  function resample(p){
-    p=norm(p);const m=p.length,L=[];let tot=0;
-    for(let i=0;i<m;i++){const a=p[i],b=p[(i+1)%m];const l=Math.hypot(b[0]-a[0],b[1]-a[1]);L.push(l);tot+=l;}
-    const extra=N-m,c=L.map(l=>Math.floor(l/tot*extra));let rem=extra-c.reduce((x,y)=>x+y,0);
-    while(rem-->0){let bi=0,bv=-1;L.forEach((l,i)=>{const v=l/(c[i]+1);if(v>bv){bv=v;bi=i;}});c[bi]++;}
-    const out=[];for(let i=0;i<m;i++){const a=p[i],b=p[(i+1)%m];out.push(a);for(let j=1;j<=c[i];j++){const t=j/(c[i]+1);out.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]);}}
-    return out;
-  }
-  const R=S.map(st=>st.map(resample));
-  const group=new THREE.Group(); scene.add(group);
-  /* procedural oak: barrel stave grain, generated once */
-  const woodCanvas=makeWoodCanvas;
-  const maxAniso=renderer.capabilities.getMaxAnisotropy();
-  const mkTex=(cvs,srgb)=>{const t=new THREE.CanvasTexture(cvs);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1/300,1/300);t.anisotropy=maxAniso;if(srgb)t.encoding=THREE.sRGBEncoding;return t;};
-  const woodTex=mkTex(woodCanvas(false),true), bumpTex=mkTex(woodCanvas(true),false);
-  const tints=[0xffffff,0xe7d2b8,0xf6e6d0];
-  const mats=tints.map((tc,i)=>{const m=new THREE.MeshPhysicalMaterial({color:tc,map:woodTex,bumpMap:bumpTex,bumpScale:.9,roughness:.42,metalness:0,clearcoat:.85,clearcoatRoughness:.18,sheen:0});return m;});
-  const meshes=mats.map((m,i)=>{const me=new THREE.Mesh(new THREE.BufferGeometry(),m);me.position.z=i*.25-13;group.add(me);return me;});
-  const ext={depth:26,bevelEnabled:true,bevelThickness:1.1,bevelSize:.9,bevelOffset:-.9,bevelSegments:4,curveSegments:1};
-  function clean(p){
-    const out=[];const n=p.length;
-    for(let i=0;i<n;i++){const a=p[(i-1+n)%n],b=p[i],c=p[(i+1)%n];
-      const cr=(b[0]-a[0])*(c[1]-b[1])-(b[1]-a[1])*(c[0]-b[0]);
-      if(Math.hypot(b[0]-a[0],b[1]-a[1])<.05)continue;
-      if(Math.abs(cr)<.02)continue;out.push(b);}
-    return out.length>=3?out:p;
-  }
-  let lastT=-1;
-  function build(t){
-    const a=Math.min(R.length-2,Math.floor(t)),f0=Math.min(1,t-a),f=f0*f0*(3-2*f0);
-    const atRest=f<.002||f>.998, rs=f>.5?a+1:a;
-    for(let k=0;k<3;k++){
-      let pts;
-      if(atRest) pts=S[rs][k];
-      else{const A=R[a][k],B=R[a+1][k];pts=A.map((p,i)=>[p[0]+(B[i][0]-p[0])*f,p[1]+(B[i][1]-p[1])*f]);}
-      pts=clean(pts);
-      const area=Math.abs(pts.reduce((s,p,i)=>{const q=pts[(i+1)%pts.length];return s+p[0]*q[1]-q[0]*p[1];},0))/2;
-      meshes[k].visible=area>30;
-      const sh=new THREE.Shape(pts.map(p=>new THREE.Vector2(p[0],-p[1])));
-      const g=new THREE.ExtrudeGeometry(sh,meshes[k].visible?ext:{depth:26,bevelEnabled:false});
-      meshes[k].geometry.dispose();meshes[k].geometry=g;
-    }
-  }
-  /* interaction */
-  let dragging=false,lx=0,ly=0,rotY=0,rotX=0,vY=0,hoverX=0,hoverY=0,lastInput=0;
-  cv.addEventListener('pointerdown',e=>{dragging=true;lx=e.clientX;ly=e.clientY;vY=0;cv.setPointerCapture(e.pointerId);lastInput=performance.now();});
-  cv.addEventListener('pointermove',e=>{
-    const r=cv.getBoundingClientRect();hoverX=(e.clientX-r.left)/r.width-.5;hoverY=(e.clientY-r.top)/r.height-.5;
-    if(!dragging)return;const dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
-    vY=dx*.012;rotY+=vY;rotX=Math.max(-.6,Math.min(.6,rotX+dy*.006));lastInput=performance.now();
-  });
-  const end=()=>{dragging=false;};
-  cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
-  cv.addEventListener('pointerleave',()=>{hoverX=hoverY=0;});
-  cv.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){vY=-.12;}if(e.key==='ArrowRight'){vY=.12;}});
-  function resize(){const w=box.clientWidth,h=box.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
-  new ResizeObserver(resize).observe(box);resize();
-  let visible=true,raf=0;const clock=new THREE.Clock();
-  function frame(){
-    const time=clock.getElapsedTime();
-    tgT+=(tgTarget-tgT)*(reduce?1:.09);
-    if(Math.abs(tgT-tgTarget)<.0005)tgT=tgTarget;
-    if(Math.abs(tgT-lastT)>1e-4){build(tgT);lastT=tgT;}
-    if(!dragging){rotY+=vY;vY*=.94;if(performance.now()-lastInput>2500){rotY*=.985;rotX*=.95;}}
-    const morph=Math.sin((tgT%1)*Math.PI);
-    group.rotation.y=rotY+(reduce?0:Math.sin(time*.6)*.28)+hoverX*.35+morph*.5;
-    group.rotation.x=rotX+(reduce?0:Math.sin(time*.45)*.08)+hoverY*.25;
-    group.position.y=reduce?0:Math.sin(time*.9)*6;
-    renderer.render(scene,cam);
-    if(visible&&!reduce)raf=requestAnimationFrame(frame);
-  }
-  new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!reduce){cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);}}).observe(box);
-  frame();
-  return {kick(){if(reduce)frame();}};
-})();
-function setT(t){tgTarget=Math.max(0,Math.min(MK.length-1,t));showStage(Math.round(tgTarget));if(M3)M3.kick();}
-
-/* ---------- Cellar: 3D scene ---------- */
-(function(){
-  const stage=document.getElementById('c3stage'),labelsEl=document.getElementById('c3labels'),card=document.getElementById('c3card');
-  const chip=document.getElementById('c3chip'),chipTx=document.getElementById('c3chipText');
-  let rowsBy={},selected='FV1',api=null;
-  function setData(res){
-    rowsBy={};res.rows.forEach(r=>rowsBy[r.tank_code]=r);
-    chip.classList.toggle('live',res.live);chip.classList.toggle('preview',!res.live);
-    chipTx.textContent=res.live?'Live from the cellar · updated '+res.at.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):'Preview data · goes live with the brewing app';
-    const firstFull=CELLAR_LAYOUT.find(t=>{const r=rowsBy[t.code];return r&&r.beer_name&&r.status!=='empty';});
-    if(!rowsBy[selected]||!rowsBy[selected].beer_name) selected=(firstFull||CELLAR_LAYOUT[0]).code;
-    if(api)api.update();else fallback();
-    select(selected);
-  }
-  function select(code){
-    selected=code;const t=CELLAR_LAYOUT.find(x=>x.code===code);
-    card.innerHTML=cellarCard(t,rowsBy[code]||{status:'empty'});
-    labelsEl.querySelectorAll('.c3-lbl').forEach(l=>l.classList.toggle('sel',l.dataset.code===code));
-    if(api)api.highlight(code);
-  }
-  function buildLabels(){
-    labelsEl.innerHTML=CELLAR_LAYOUT.map(t=>{const r=rowsBy[t.code]||{},st=STATUS[r.status]||STATUS.empty;
-      return `<button type="button" class="c3-lbl" data-code="${t.code}"><i style="background:${st.color}"></i>${t.code}${r.beer_name&&r.status!=='empty'?' · '+r.beer_name:''}</button>`;}).join('');
-    labelsEl.querySelectorAll('.c3-lbl').forEach(b=>b.addEventListener('click',()=>select(b.dataset.code)));
-  }
-  function fallback(){
-    buildLabels();labelsEl.style.position='absolute';
-    let fb=stage.querySelector('.c3-fallback');if(!fb){fb=document.createElement('div');fb.className='c3-fallback';stage.appendChild(fb);}
-    fb.innerHTML=CELLAR_LAYOUT.map(t=>{const r=rowsBy[t.code]||{},w=Math.round(18+Math.sqrt(t.bbl)*7),h=Math.round(70+Math.sqrt(t.bbl)*22),f=r.beer_name&&r.status!=='empty'?r.fill_pct||0:0;
-      return `<div class="tank${t.kind==='bt'?' bt':''}" data-code="${t.code}" style="cursor:pointer"><div class="tank-body" style="--w:${w}px;--h:${h}px;--r:${w/2}px"><div class="tank-fill" style="--fill:${f}%"></div></div><div class="tank-lbl"><b>${t.code}</b>${t.bbl} bbl</div></div>`;}).join('');
-    labelsEl.innerHTML='';
-    fb.querySelectorAll('.tank').forEach(el=>el.addEventListener('click',()=>select(el.dataset.code)));
-  }
-  api=(function(){
-    if(!window.THREE)return null;
-    let R;try{R=new THREE.WebGLRenderer({antialias:true,alpha:true});}catch(e){return null;}
-    if(!R.getContext())return null;
-    R.setPixelRatio(Math.min(2,window.devicePixelRatio||1));R.outputEncoding=THREE.sRGBEncoding;
-    R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.05;
-    R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
-    stage.insertBefore(R.domElement,labelsEl);
-    const scene=new THREE.Scene();
-    const cam=new THREE.PerspectiveCamera(30,16/9,1,5000);
-    /* studio environment for the stainless */
-    const pm=new THREE.PMREMGenerator(R);const env=new THREE.Scene();
-    env.add(new THREE.Mesh(new THREE.BoxGeometry(800,400,800),new THREE.MeshBasicMaterial({color:0x111817,side:THREE.BackSide})));
-    [[0,190,0,600,10,300,0xffffff],[-390,60,0,10,200,500,0x89d8d0],[390,80,-100,10,160,300,0xffe2b8],[0,60,-390,500,120,10,0x9aa9a6]].forEach(p=>{
-      const m=new THREE.Mesh(new THREE.BoxGeometry(p[3],p[4],p[5]),new THREE.MeshBasicMaterial({color:p[6]}));m.position.set(p[0],p[1],p[2]);env.add(m);});
-    scene.environment=pm.fromScene(env,.04).texture;
-    scene.add(new THREE.HemisphereLight(0xdde9e6,0x0a0f0f,.35));
-    const sun=new THREE.DirectionalLight(0xfff1dd,1.3);sun.position.set(160,380,260);sun.castShadow=true;
-    sun.shadow.mapSize.set(2048,2048);const sc=sun.shadow.camera;sc.left=-360;sc.right=360;sc.top=260;sc.bottom=-160;sc.near=50;sc.far=1200;sun.shadow.bias=-.0004;scene.add(sun);
-    const rim=new THREE.PointLight(0x89d8d0,1.1,1400);rim.position.set(-300,220,-260);scene.add(rim);
-    const floor=new THREE.Mesh(new THREE.CircleGeometry(900,64),new THREE.MeshStandardMaterial({color:0x0c1312,roughness:.85,metalness:.1}));
-    floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
-    const grid=new THREE.GridHelper(1400,56,0x89d8d0,0x89d8d0);grid.material.transparent=true;grid.material.opacity=.06;grid.position.y=.2;scene.add(grid);
-    const steel=new THREE.MeshPhysicalMaterial({color:0xd7dcdb,metalness:1,roughness:.24,clearcoat:.4,clearcoatRoughness:.2,side:THREE.DoubleSide,envMapIntensity:1.15});
-    const steelDark=new THREE.MeshStandardMaterial({color:0x8a9291,metalness:1,roughness:.4});
-    const ring=new THREE.Mesh(new THREE.RingGeometry(1,1.12,64),new THREE.MeshBasicMaterial({color:0x89d8d0,transparent:true,opacity:.9}));ring.rotation.x=-Math.PI/2;ring.position.y=.6;scene.add(ring);
-    const tanks={},picks=[];
-    const GAP=1.0,TS=GAP/2,TL=Math.PI*2-GAP;
-    function make(t){
-      const r=22*Math.cbrt(t.bbl/10),fv=t.kind==='fv';
-      const bodyH=r*(fv?2.5:2.2),coneH=fv?r*.95:r*.32,legH=r*.5+8,y0=legH;
-      const g=new THREE.Group();
-      const add=(geo,mat,y)=>{const m=new THREE.Mesh(geo,mat);m.position.y=y;m.castShadow=true;m.receiveShadow=true;m.userData.code=t.code;g.add(m);picks.push(m);return m;};
-      add(new THREE.CylinderGeometry(r,r,bodyH,72,1,true,TS,TL),steel,y0+coneH+bodyH/2);
-      add(new THREE.CylinderGeometry(r,fv?r*.13:r*.92,coneH,72,1,true,TS,TL),steel,y0+coneH/2);
-      const dome=add(new THREE.SphereGeometry(r,72,18,0,Math.PI*2,0,Math.PI/2),steel,y0+coneH+bodyH);dome.scale.y=fv?.34:.26;
-      if(!fv){const db=add(new THREE.SphereGeometry(r*.92,48,12,0,Math.PI*2,Math.PI/2,Math.PI/2),steel,y0);db.scale.y=.2;}
-      /* cut edges, jacket bands, fittings */
-      [TS,-TS].forEach(a=>{const e=add(new THREE.CylinderGeometry(.7,.7,bodyH,8),steelDark,y0+coneH+bodyH/2);e.position.x=Math.sin(a)*r;e.position.z=Math.cos(a)*r;});
-      [.32,.72].forEach(f=>{const b=add(new THREE.CylinderGeometry(r+.6,r+.6,r*.16,72,1,true,TS,TL),steelDark,y0+coneH+bodyH*f);});
-      const top=add(new THREE.CylinderGeometry(r*.12,r*.12,r*.32,24),steelDark,y0+coneH+bodyH+r*(fv?.34:.26)+r*.1);
-      const legs=fv?4:3;for(let i=0;i<legs;i++){const a=i/legs*Math.PI*2+Math.PI/legs;const l=add(new THREE.CylinderGeometry(1.4,1.4,legH+coneH*.5,10),steelDark,(legH+coneH*.5)/2);l.position.x=Math.sin(a)*r*.78;l.position.z=Math.cos(a)*r*.78;}
-      /* beer */
-      const liqMat=new THREE.MeshPhysicalMaterial({color:0xd08a34,roughness:.12,metalness:0,clearcoat:1,emissive:0x000000,transmission:0,side:THREE.FrontSide});
-      const lr=r*.965;
-      const coneL=new THREE.Mesh(new THREE.CylinderGeometry(lr,fv?r*.12:r*.88,coneH*.98,48),liqMat);coneL.position.y=y0+coneH/2;g.add(coneL);
-      const bodyL=new THREE.Mesh(new THREE.CylinderGeometry(lr,lr,1,48),liqMat);g.add(bodyL);
-      const foam=new THREE.Mesh(new THREE.CylinderGeometry(lr,lr,1,48),new THREE.MeshStandardMaterial({color:0xf3e6c8,roughness:.9}));g.add(foam);
-      const N=70,pos=new Float32Array(N*3),seed=[];for(let i=0;i<N;i++){const a=Math.random()*6.28,d=Math.sqrt(Math.random())*lr*.85;pos[i*3]=Math.sin(a)*d;pos[i*3+2]=Math.cos(a)*d;pos[i*3+1]=Math.random();seed.push(.15+Math.random()*.5);}
-      const bg=new THREE.BufferGeometry();bg.setAttribute('position',new THREE.BufferAttribute(pos,3));
-      const bubbles=new THREE.Points(bg,new THREE.PointsMaterial({color:0xfff6e0,size:1.6,transparent:true,opacity:.75,depthWrite:false}));g.add(bubbles);
-      g.userData={r,bodyH,coneH,y0,topY:y0+coneH+bodyH+r*.5,cur:0,target:0,liqMat,coneL,bodyL,foam,bubbles,seed,fv};
-      scene.add(g);return g;
-    }
-    CELLAR_LAYOUT.forEach(t=>tanks[t.code]=make(t));
-    /* two rows: fermenters behind, brights in front */
-    function row(list,z){const w=list.map(t=>tanks[t.code].userData.r*2);const tot=w.reduce((a,b)=>a+b,0)+(list.length-1)*22;let x=-tot/2;
-      list.forEach((t,i)=>{x+=w[i]/2;tanks[t.code].position.set(x,0,z);x+=w[i]/2+22;});return tot;}
-    const wB=row(CELLAR_LAYOUT.filter(t=>t.kind==='fv'),-48), wF=row(CELLAR_LAYOUT.filter(t=>t.kind==='bt'),62);
-    const span=Math.max(wB,wF);
-    function setLevels(){
-      CELLAR_LAYOUT.forEach(t=>{const u=tanks[t.code].userData,r=rowsBy[t.code]||{},full=r.beer_name&&r.status!=='empty'&&r.status!=='cleaning';
-        u.target=full?Math.max(.05,Math.min(1,(r.fill_pct||0)/100)):0;u.fer=r.status==='fermenting';
-        u.liqMat.color.setHex(beerColor(r.style));u.liqMat.emissive.setHex(beerColor(r.style));u.liqMat.emissiveIntensity=.12;});
-    }
-    function applyLevel(u){
-      const lvl=u.cur, show=lvl>.004;
-      u.coneL.visible=show;u.bodyL.visible=show&&lvl>.01;u.foam.visible=show;
-      const h=Math.max(.01,lvl*u.bodyH*.96);
-      u.bodyL.scale.y=h;u.bodyL.position.y=u.y0+u.coneH+h/2;
-      const fh=u.fer?Math.max(2,u.r*.14):1.4;u.foam.scale.y=fh;u.foam.position.y=u.y0+u.coneH+h+fh/2;
-      u.bubbles.visible=show&&u.fer;u.bubbles.userData.h=h+u.coneH*.5;
-    }
-    let az=-.18,azV=0,drag=false,lx=0,lastIn=0,hov=0;
-    const cv=R.domElement,ray=new THREE.Raycaster(),ptr=new THREE.Vector2();let downX=0,downY=0;
-    cv.addEventListener('pointerdown',e=>{drag=true;lx=downX=e.clientX;downY=e.clientY;cv.setPointerCapture(e.pointerId);lastIn=performance.now();});
-    cv.addEventListener('pointermove',e=>{const rc=cv.getBoundingClientRect();hov=(e.clientY-rc.top)/rc.height-.5;if(!drag)return;azV=(e.clientX-lx)*-.004;az+=azV;az=Math.max(-.85,Math.min(.85,az));lx=e.clientX;lastIn=performance.now();});
-    cv.addEventListener('pointerup',e=>{drag=false;if(Math.hypot(e.clientX-downX,e.clientY-downY)<6){const rc=cv.getBoundingClientRect();ptr.set((e.clientX-rc.left)/rc.width*2-1,-(e.clientY-rc.top)/rc.height*2+1);ray.setFromCamera(ptr,cam);const hit=ray.intersectObjects(picks,false)[0];if(hit)select(hit.object.userData.code);}});
-    cv.addEventListener('pointercancel',()=>drag=false);
-    const target=new THREE.Vector3(0,58,10);
-    function resize(){const w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
-    new ResizeObserver(resize).observe(stage);resize();
-    const v=new THREE.Vector3();let vis=false,raf=0,started=false;const clock=new THREE.Clock();
-    function frame(){
-      const dt=Math.min(.05,clock.getDelta()),time=clock.elapsedTime;
-      if(!drag){az+=azV;azV*=.92;if(performance.now()-lastIn>3000&&!reduce)az+=(Math.sin(time*.15)*.35-az)*.004;}
-      const fit=(span*.62)/Math.tan(THREE.MathUtils.degToRad(cam.fov/2))/Math.max(.75,cam.aspect);
-      const d=Math.max(520,fit),el=.34-hov*.04;
-      cam.position.set(Math.sin(az)*d*Math.cos(el),target.y+Math.sin(el)*d,Math.cos(az)*d*Math.cos(el));cam.lookAt(target);
-      CELLAR_LAYOUT.forEach((t,i)=>{const g=tanks[t.code],u=g.userData;
-        if(started){const tgt=u.target;u.cur+=(tgt-u.cur)*(reduce?1:Math.min(1,dt*1.6));}
-        applyLevel(u);
-        if(u.bubbles.visible&&!reduce){const p=u.bubbles.geometry.attributes.position;for(let k=0;k<p.count;k++){let y=p.array[k*3+1]+u.seed[k]*dt*.35;if(y>1)y=0;p.array[k*3+1]=y;}p.needsUpdate=true;
-          u.bubbles.scale.y=u.bubbles.userData.h;u.bubbles.position.y=u.y0+u.coneH*.5;}
-      });
-      const sg=tanks[selected];if(sg){ring.position.x=sg.position.x;ring.position.z=sg.position.z;const s=sg.userData.r*1.25+Math.sin(time*3)*.8;ring.scale.set(s,s,s);}
-      R.render(scene,cam);
-      const rc=stage.getBoundingClientRect();
-      labelsEl.querySelectorAll('.c3-lbl').forEach(l=>{const g=tanks[l.dataset.code];v.set(g.position.x,g.userData.topY+4,g.position.z).project(cam);
-        l.style.transform=`translate(${(v.x*.5+.5)*rc.width}px,${(-v.y*.5+.5)*rc.height}px) translate(-50%,-100%)`;});
-      if(vis)raf=requestAnimationFrame(frame);
-    }
-    new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis){started=true;cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);}},{threshold:.15}).observe(stage);
-    return {update(){setLevels();buildLabels();if(!vis)frame();},highlight(){if(!vis)frame();}};
-  })();
-  loadCellar().then(setData);
-  if(CELLAR_SOURCE.url) setInterval(()=>loadCellar().then(setData),CELLAR_SOURCE.refreshMinutes*60000);
-})();
-
-let tgAuto=null;
-function autoPlay(){if(reduce||tgAuto)return;let k=0;setT(0);tgAuto=setInterval(()=>{k=(k+1)%(MK.length+3);setT(Math.min(k,MK.length-1));},M3?1100:700);}
-function stopAuto(){clearInterval(tgAuto);tgAuto=null;}
-filmBtns.forEach((b,i)=>b.addEventListener('click',()=>{stopAuto();setT(i);}));
-
-/* ---------- Motion ---------- */
-if(reduce||!hasGsap){if(!reduce)autoPlay();return;}
-gsap.registerPlugin(ScrollTrigger);
-
-let lenis=null;
-if(window.Lenis){
-  lenis=new Lenis({duration:1.15,smoothWheel:true});
-  lenis.on('scroll',ScrollTrigger.update);
-  gsap.ticker.add(t=>lenis.raf(t*1000));
-  gsap.ticker.lagSmoothing(0);
-  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-    const id=a.getAttribute('href');const t=id==='#top'?0:document.querySelector(id);
-    if(t!==null){e.preventDefault();lenis.scrollTo(t,{offset:id==='#top'?0:-70});}
-  }));
-}
-
-/* hero parallax */
-gsap.to('#wordmark',{yPercent:-30,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-gsap.to('#crest',{yPercent:18,rotation:8,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-gsap.to('#bubbles',{opacity:.2,scale:1.08,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-gsap.to('.hero-sub,.scroll-cue',{y:-60,opacity:.3,ease:'none',scrollTrigger:{trigger:'.hero',start:'30% top',end:'bottom top',scrub:true}});
-
-/* word reveal */
-gsap.to('#reveal .w',{opacity:1,stagger:.08,ease:'none',scrollTrigger:{trigger:'#reveal',start:'top 80%',end:'bottom 40%',scrub:true}});
-gsap.from('.manifesto-foot p',{y:30,opacity:.3,stagger:.12,duration:1,ease:'power3.out',scrollTrigger:{trigger:'.manifesto-foot',start:'top 85%'}});
-
-const mm=gsap.matchMedia();
-mm.add('(min-width: 901px)',()=>{
-  /* mark pinned sequence: scroll builds the W */
-  const steps=gsap.utils.toArray('.blend-step');
-  steps.forEach((s,i)=>gsap.set(s,{opacity:i===0?1:0,y:i===0?0:40}));
-  setT(0);
-  const tl=gsap.timeline({scrollTrigger:{trigger:'#blend',start:'top top',end:'bottom bottom',scrub:1,
-    onUpdate:self=>setT(Math.min(1,self.progress*1.15)*(MK.length-1))}});
-  tl.to(steps[0],{opacity:0,y:-40,duration:.5},1.1).to(steps[1],{opacity:1,y:0,duration:.5},1.35)
-    .to(steps[1],{opacity:0,y:-40,duration:.5},2.3).to(steps[2],{opacity:1,y:0,duration:.5},2.55)
-    .to('.tangram svg',{scale:1.05,duration:.5,ease:'none'},2.6);
-
-  /* events horizontal pin */
-  const r=document.getElementById('evRail');
-  const dist=()=>Math.max(0,r.scrollWidth-window.innerWidth);
-  if(dist()>0){
-    gsap.to(r,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#evPin',start:'top 18%',end:()=>'+='+dist(),pin:'#events',pinSpacing:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1}});
-  }
-  return ()=>{};
-});
-mm.add('(max-width: 900px)',()=>{document.querySelectorAll('.blend-step').forEach(s=>s.style.opacity=1);autoPlay();return()=>stopAuto();});
-
-/* plate parallax + reveal */
-gsap.utils.toArray('[data-parallax]').forEach(el=>{
-  gsap.fromTo(el,{yPercent:-8},{yPercent:8,ease:'none',scrollTrigger:{trigger:el.parentElement,start:'top bottom',end:'bottom top',scrub:true}});
-});
-gsap.utils.toArray('.plate').forEach(p=>gsap.from(p,{clipPath:'inset(8% 8% 8% 8% round 24px)',duration:1.4,ease:'power3.out',scrollTrigger:{trigger:p,start:'top 85%'}}));
-gsap.utils.toArray('.panel .copy').forEach(c=>gsap.from(c.children,{y:30,opacity:.25,stagger:.08,duration:1,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 85%'}}));
-
-/* counters */
-gsap.utils.toArray('[data-count]').forEach(el=>{
-  const end=+el.dataset.count,o={v:0};
-  ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>gsap.to(o,{v:end,duration:1.6,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)})});
-});
-
-/* section titles */
-gsap.utils.toArray('.sec-head h2,.book h2').forEach(h=>gsap.from(h,{y:60,opacity:.2,duration:1.2,ease:'power4.out',scrollTrigger:{trigger:h,start:'top 90%'}}));
-gsap.from('.book-w',{rotation:-12,y:80,ease:'none',scrollTrigger:{trigger:'#book',start:'top bottom',end:'bottom top',scrub:true}});
-gsap.from('.giant',{yPercent:40,opacity:.3,ease:'none',scrollTrigger:{trigger:'footer',start:'top bottom',end:'bottom bottom',scrub:true}});
-
-window.addEventListener('load',()=>ScrollTrigger.refresh());
-})();
-</script>
-
+<script src="assets/js/data.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
 </html>

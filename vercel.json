@@ -1,41 +1,14 @@
 {
   "cleanUrls": true,
   "headers": [
-    {
-      "source": "/img/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
+    { "source": "/img/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }] }
   ],
   "redirects": [
-    {
-      "source": "/food",
-      "destination": "/#kitchen",
-      "permanent": true
-    },
-    {
-      "source": "/drink-menu",
-      "destination": "/#cellar",
-      "permanent": true
-    },
-    {
-      "source": "/events",
-      "destination": "/#events",
-      "permanent": true
-    },
-    {
-      "source": "/reach-out",
-      "destination": "/#visit",
-      "permanent": true
-    },
-    {
-      "source": "/events/:path*",
-      "destination": "/#events",
-      "permanent": false
-    }
+    { "source": "/food", "destination": "/kitchen", "permanent": true },
+    { "source": "/drink-menu", "destination": "/beer#taps", "permanent": true },
+    { "source": "/reach-out", "destination": "/#visit", "permanent": true },
+    { "source": "/news", "destination": "/#news", "permanent": false },
+    { "source": "/events/:path+", "destination": "/calendar", "permanent": false }
   ]
 }

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kitchen &amp; Catering · Woodhouse</title>
+<meta name="description" content="Handmade food and catering from the Woodhouse kitchen in Santa Cruz: buffets, family style and chef led menus for every kind of event.">
+<meta name="theme-color" content="#0a0f0f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kitchen &amp; Catering · Woodhouse">
+<meta property="og:description" content="Handmade food and catering from the Woodhouse kitchen in Santa Cruz: buffets, family style and chef led menus for every kind of event.">
+<meta property="og:image" content="https://www.woodhousebrews.com/img/ribs.jpg">
+<meta property="og:url" content="https://www.woodhousebrews.com/kitchen">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.woodhousebrews.com/kitchen">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700;800&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="Woodhouse Blending and Brewing home">
+      <svg viewBox="0 0 256 340" aria-hidden="true"><use href="#wmark"/></svg>
+      <span><span class="wm" aria-hidden="true"></span><small>Blending &amp; Brewing</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary"><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen" aria-current="page">Kitchen</a><a href="/events">Events</a><a href="#visit">Visit</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></nav>
+    <a class="btn btn-teal" href="/events#plan">Plan an event <span class="arr">→</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="/">Home</a><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen" aria-current="page">Kitchen</a><a href="/events">Events</a><a href="#visit">Visit</a>
+  <a href="/events#plan" style="color:var(--teal)">Plan an event</a>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="wmark">
+      <path fill="#89d8d0" fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/>
+      <polygon fill="#89d8d0" points="44,213 86,255 86,340 128,298 171,340 171,255 213,213"/>
+    </g>
+  </defs>
+</svg>
+<main id="top" class="pg-kitchen">
+<section class="page-hero" aria-label="The kitchen">
+  <div class="bg" data-drift="-14" style="background-image:url('img/ribs.jpg');background-position:center 40%"></div>
+  <div class="wrap">
+    <p class="crumb"><a href="/">Woodhouse</a><span class="chev" aria-hidden="true"></span>Kitchen</p>
+    <h1>The <span class="o">Kitchen</span></h1>
+    <p class="lede">Made by hand, a few steps from the brewhouse. Sourdough pretzels, cheese bread, empanadas and flatbreads for the taproom, and full spreads for your biggest nights.</p>
+    <div class="btn-row"><a class="btn btn-teal" href="#menu-sec">See the menu <span class="arr">→</span></a><a class="btn btn-ghost" href="#catering">Catering</a></div>
+  </div>
+</section>
+
+<!-- CRAFT -->
+<section class="manifesto" style="padding-block:clamp(80px,11vw,150px)">
+  <div class="wrap">
+    <p class="eyebrow">Our culinary playground</p>
+    <p class="reveal-text" data-words>An ever evolving kitchen of creativity and craft. The menu follows the seasons and the artistry of our chefs, with <span class="hl">bold flavors and unexpected twists</span> in every bite.</p>
+    <div class="manifesto-foot">
+      <p>We bake our pretzels from sourdough, fold our empanadas by hand, roll our sausage rolls in puff pastry and make our hummus, dressings and beer cheese in house. Flatbreads come out of the oven to order.</p>
+      <p>Expect weekly pop ups showcasing global flavors and themed cuisine nights. Every dish tells a story, and the journey never stops.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="sec" id="menu-sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Taproom <span class="o">Menu</span></h2>
+      <p class="lede">Built for sharing between sets. Gluten free, vegetarian and vegan options are marked.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Menu sections">
+      <button class="tab" role="tab" id="tab-small" aria-selected="true" data-tab="small">Small Plates</button>
+      <button class="tab" role="tab" id="tab-salads" aria-selected="false" data-tab="salads">Salads</button>
+      <button class="tab" role="tab" id="tab-flat" aria-selected="false" data-tab="flat">Flatbread Pizza</button>
+    </div>
+    <div class="menu" id="menu" role="tabpanel" aria-live="polite"></div>
+    <p class="kitchen-note">Menu changes with the seasons. Ask about today's pop up.</p>
+  </div>
+</section>
+
+<!-- CATERING -->
+<section class="sec" id="catering" style="background:linear-gradient(180deg,var(--ink),#0d1514 35%,var(--ink))">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>We <span class="o">Cater</span></h2>
+      <div><p class="lede">From a backyard birthday buffet to a seated wedding dinner for hundreds, our kitchen shapes a menu around your gathering.</p></div>
+    </div>
+    <div class="mosaic" data-stagger>
+      <figure class="m-a"><div style="background-image:url('img/ribs.jpg')" role="img" aria-label="Smoked, glazed ribs sliced on a cutting board"></div><figcaption>Smoked ribs</figcaption></figure>
+      <figure class="m-b"><div style="background-image:url('img/lantern-hall.jpg')" role="img" aria-label="A catered buffet under paper lanterns in the Woodhouse hall"></div><figcaption>Buffet service</figcaption></figure>
+      <figure class="m-c"><div style="background-image:url('img/wings.jpg');background-position:center 70%" role="img" aria-label="Crispy wings with celery, ranch and a hazy beer"></div><figcaption>Wings and a hazy</figcaption></figure>
+      <figure class="m-d"><div style="background-image:url('img/cater-2.jpg')" role="img" aria-label="Shrimp ceviche with lime and tortilla chips"></div><figcaption>Coastal ceviche</figcaption></figure>
+      <figure class="m-e"><div style="background-image:url('img/cater-1.jpg')" role="img" aria-label="Hummus and golden empanadas"></div><figcaption>Hummus and empanadas</figcaption></figure>
+      <figure class="m-f"><div style="background-image:url('img/cater-4.jpg')" role="img" aria-label="A golden sourdough pretzel"></div><figcaption>Sourdough pretzels</figcaption></figure>
+    </div>
+
+    <h3 style="font-size:clamp(26px,2.8vw,38px);text-transform:uppercase;margin-top:clamp(70px,8vw,110px)">Menu inspirations</h3>
+    <div class="styles"><span>BBQ &amp; smoked meats</span><span>Taco bar</span><span>Mediterranean</span><span>Coastal California</span><span>Pizza &amp; flatbreads</span><span>Brazilian bites</span><span>Custom menus</span></div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="sec" id="collections" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Catering <span class="o">Collections</span></h2>
+      <p class="lede">Three ways to feed your guests. Pricing is per guest for food; drinks are separate and final menus are confirmed in your proposal.</p>
+    </div>
+    <div class="tiers">
+      <article class="tier">
+        <h3>Classic</h3><p class="from">From</p><p class="price">$30 <small>per guest</small></p>
+        <p>For casual celebrations, birthdays, family gatherings and corporate lunches.</p>
+        <ul><li>Buffet style service</li><li>Woodhouse menu favorites</li><li>Standard buffet presentation</li></ul>
+      </article>
+      <article class="tier feat">
+        <h3>Select</h3><p class="from">From</p><p class="price">$45 <small>per guest</small></p>
+        <p>Expanded menus, family style service and upgraded sides.</p>
+        <ul><li>BBQ, taco bar, Mediterranean or Coastal California</li><li>Family style service</li><li>Upgraded accompaniments</li></ul>
+      </article>
+      <article class="tier">
+        <h3>Chef's Table</h3><p class="from">From</p><p class="price">$60 <small>per guest</small></p>
+        <p>For weddings, corporate events and milestones where food takes center stage.</p>
+        <ul><li>Custom menu consultation</li><li>Premium selections, elevated presentation</li><li>Optional dessert coordination</li></ul>
+      </article>
+    </div>
+    <div class="grid-3" style="margin-top:56px" data-stagger>
+      <div class="card"><span class="k">We've fed</span><h3>Weddings &amp; welcomes</h3><p>Rehearsal dinners, welcome parties and full receptions, buffet or family style.</p></div>
+      <div class="card"><span class="k">We've fed</span><h3>Companies &amp; teams</h3><p>Corporate lunches, all hands, holiday parties and client nights.</p></div>
+      <div class="card"><span class="k">We've fed</span><h3>Celebrations &amp; causes</h3><p>Birthdays, showers, reunions, retirements and fundraisers of every size.</p></div>
+    </div>
+    <p class="muted" style="margin-top:28px;max-width:70ch">Share dietary needs and allergies while planning and we'll build options around them. Our kitchen handles common allergens, so we can't promise an allergen free environment.</p>
+  </div>
+</section>
+
+<section class="book" id="book" aria-label="Book the space">
+  <svg class="book-w" viewBox="0 0 256 340" aria-hidden="true"><path fill="#0a0f0f" fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><polygon fill="#0a0f0f" points="44,213 86,255 86,340 128,298 171,340 171,255 213,213"/></svg>
+  <div class="wrap">
+    <p class="eyebrow" style="color:#0f2a27">Food, drinks and the room to enjoy them</p>
+    <h2>Throw it at</h2>
+    <div class="wm" style="background:var(--ink);width:min(980px,100%);margin-top:14px" role="img" aria-label="Woodhouse"></div>
+    <p>Pair your menu with an open bar, a reserved patio or the whole property. Tell us your date and headcount and we'll send a proposal.</p>
+    <div class="row">
+      <a class="btn btn-dark" href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Start a booking <span class="arr">→</span></a>
+      <a class="btn btn-line" href="/events">Private events</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<section class="visit-band" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <p class="eyebrow" style="margin-bottom:22px">Come say hi</p>
+      <p class="addr">119 Madrone St<small>Santa Cruz, CA 95060</small></p>
+      <div class="contact">
+        <div class="ci"><div><div class="k">Phone</div><div class="v">(831) 313-9461</div></div><button class="copybtn" data-copy="(831) 313-9461">Copy</button></div>
+        <div class="ci"><div><div class="k">Email</div><div class="v">beer@woodhousebrews.com</div></div><button class="copybtn" data-copy="beer@woodhousebrews.com">Copy</button></div>
+      </div>
+      <div class="socials">
+        <a class="btn btn-ghost" href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions <span class="arr">↗</span></a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn btn-ghost" href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a>
+        <a class="btn btn-ghost" href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow" style="margin-bottom:22px">Hours</p>
+      <div class="hours" id="hours"></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/" aria-label="Woodhouse Blending and Brewing"><svg viewBox="0 0 256 340" aria-hidden="true" style="width:30px"><use href="#wmark"/></svg><span><span class="wm" aria-hidden="true" style="width:150px"></span><small>Blending &amp; Brewing</small></span></a>
+        <p style="color:var(--muted);margin-top:18px;max-width:38ch;font-size:15px">Get first word on shows, releases and pop ups.</p>
+        <form class="signup" id="signup" novalidate>
+          <label for="email" style="position:absolute;left:-9999px">Email address</label>
+          <input id="email" type="email" placeholder="you@email.com" autocomplete="email">
+          <button class="btn btn-teal" type="submit">Join</button>
+        </form>
+        <p class="signup-msg" id="signupMsg" aria-live="polite"></p>
+      </div>
+      <div><h5>Explore</h5><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Private events</a></div>
+      <div><h5>Work with us</h5><a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Book an event</a><a href="downloads/woodhouse-events-brochure-2026.pdf" download>Events brochure</a><a href="/calendar#play">Play at Woodhouse</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></div>
+      <div><h5>Follow</h5><a href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">@woodhousebrews</a><a href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a><a href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a></div>
+    </div>
+    <div class="giant wm" aria-hidden="true"></div>
+    <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>Brewed and blended in Santa Cruz</span></div>
+  </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+</html>
