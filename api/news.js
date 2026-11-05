@@ -1,5 +1,9 @@
 // GET /api/news  ->  { posts: [{ title, date, url, excerpt, image }] }
 const { strip, clip, abs, getJson, getRss, send } = require('./_squarespace');
+const bodyText = (html = '') =>
+  String(html).replace(/<br\s*\/?>/gi, '\n').replace(/<\/(p|div|h\d|li)>/gi, '\n').replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;|&rsquo;/g, "'").replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim();
 const PATH = process.env.SQUARESPACE_BLOG_PATH || '/news';
 
 module.exports = async (req, res) => {
@@ -12,10 +16,11 @@ module.exports = async (req, res) => {
         date: p.publishOn || p.addedOn,
         url: abs(p.fullUrl),
         excerpt: clip(strip(p.excerpt || p.body || '')),
+        body: clip(bodyText(p.body || p.excerpt || ''), 4000),
         image: p.assetUrl ? p.assetUrl + '?format=750w' : '',
       }));
     } catch {
-      posts = (await getRss(PATH)).map((p) => ({ ...p, excerpt: clip(strip(p.html)), html: undefined }));
+      posts = (await getRss(PATH)).map((p) => ({ ...p, excerpt: clip(strip(p.html)), body: clip(bodyText(p.html), 4000), html: undefined }));
     }
     send(res, { posts: posts.filter((p) => p.title).slice(0, 6) });
   } catch (err) {

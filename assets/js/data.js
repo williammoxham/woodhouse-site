@@ -145,6 +145,19 @@ EVENTS:[
    body:"There are bands you listen to, and then there are bands you experience.\n\nHorse Feathers has spent nearly two decades crafting songs that are intimate, cinematic and quietly unforgettable. Rooted in the Pacific Northwest, their sound weaves together folk, chamber music and haunting harmonies into something that feels both timeless and deeply human.\n\nIf you love the kind of music that makes a room go still before the applause, this is a night you won't want to miss."}
 ],
 
+/* ---- House News fallback (used only if the Squarespace blog can't be reached) ---- */
+NEWS:[
+  {title:"Why we're called Blending & Brewing",image:'img/pints.jpg',
+   excerpt:'Blending and brewing community and positive relationships. Blending and brewing cultural backgrounds. And yes, the beer.',
+   body:"For anyone who has ever asked about the name of our brewery:\n\nBlending and brewing community and positive relationships.\n\nBlending and brewing cultural backgrounds and enriching each other through them.\n\nAnd blending and brewing beer: classic technique, barrels, mixed cultures and a lot of curiosity. Every piece fits."},
+  {title:'The hippest hangout in Santa Cruz',image:'img/stage.jpg',
+   excerpt:'We hosted the Nexties and took home the award for the hippest hangout spot in town. It means the world to us.',
+   body:"We were beyond excited to host the Nexties, and honored that Woodhouse won the award for the hippest hangout spot in Santa Cruz.\n\nThis means the world to us. We've worked tirelessly to build a place where everyone feels welcome, and the award belongs to every regular, artist, maker and friend who shows up. We even brewed a Nexties Hazy IPA for the occasion."},
+  {title:'Jam Session: a band and brewery collab',image:'img/cheers.jpg',
+   excerpt:'Superblume and Woodhouse brewed an IPA with the Berkeley Superbloom yeast strain and released it on show night.',
+   body:"Superblume and Woodhouse teamed up on a band and brew collaboration: Jam Session IPA, brewed with the Berkeley Superbloom yeast strain and hopped with Citra and Mosaic.\n\nWe released four packs the same night the band took our stage. Music and beer, made together."}
+],
+
 /* ---- Artists and series we have hosted (Calendar page wall). Add freely. ---- */
 ARTISTS:[
   'KRS-One','Devin The Dude','Horse Feathers','China Cats','Slow Gherkin','MU330','Honor System','Shinobu',

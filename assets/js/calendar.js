@@ -35,7 +35,7 @@ function renderList(){
         <p>${esc(e.p)}</p>
 
       </div>
-      <div class="cal-side">${e.img?`<button type="button" class="cal-thumb" data-i="${idx}" style="background-image:url('${e.img}')" aria-label="More about ${esc(e.t)}"></button>`:''}<button type="button" class="btn btn-ghost" data-i="${idx}">More info +</button></div>
+      <div class="cal-side">${e.img?`<button type="button" class="cal-thumb" data-i="${idx}" style="background-image:url('${e.img}')" aria-label="More about ${esc(e.t)}"></button>`:''}<button type="button" class="btn btn-ghost" data-i="${idx}">Details +</button></div>
     </article>`;
   });
   list.innerHTML=html;

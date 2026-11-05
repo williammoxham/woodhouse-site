@@ -43,7 +43,7 @@ function renderRail(res){
       ${e.img?`<span class="ev-img" style="background-image:url('${e.img}')"></span>`:''}${chip}
       <div class="ev-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd.slice(0,3)}</span></div>
       <h3>${esc(e.t)}</h3><p>${esc(e.p)}</p>
-      <div class="ev-foot"><span>${e.time||''}</span><span>More info +</span></div></button>`;
+      <div class="ev-foot"><span>${e.time||''}</span><span>Details +</span></div></button>`;
   });
   rh+=`<div class="ev-end"><span class="eyebrow">Every week</span><h3>Tuesday jams, Afrobeats, line dancing, comedy and more.</h3><a class="btn btn-teal" href="calendar.html" style="align-self:flex-start">See the full calendar <span class="arr">→</span></a></div>`;
   rail.innerHTML=rh;
@@ -53,15 +53,21 @@ function renderRail(res){
 }
 if(rail)loadEvents(renderRail);
 
-/* ---------- House News (Squarespace blog) ---------- */
+/* ---------- House News (Squarespace blog, read on our site; never links out) ---------- */
+const newsGrid=document.getElementById('newsGrid');
+function renderNews(posts,live){
+  if(!newsGrid)return;
+  newsGrid.innerHTML=posts.slice(0,3).map((p,i)=>{let date='From the archive';if(live&&p.date){const a=laParts(p.date);date=`${MON[a.m-1]} ${a.d}, ${a.y}`;}
+    return `<button type="button" class="post" data-i="${i}">${p.image?`<span class="post-img" style="background-image:url('${p.image}')"></span>`:'<span class="post-img"></span>'}
+      <span class="post-date">${date}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p><span class="txt-link">Read more +</span></button>`;}).join('');
+  newsGrid.querySelectorAll('.post').forEach(b=>b.addEventListener('click',()=>{const p=posts[+b.dataset.i];
+    const paras=String(p.body||p.excerpt||'').split(/\n+/).map(x=>x.trim()).filter(Boolean).map(x=>`<p>${esc(x)}</p>`).join('');
+    window.WH.openModal(`${p.image?`<div class="ev-hero" style="background-image:url('${p.image}')"></div>`:''}<div class="ev-pad"><p class="eyebrow">House News</p><h2 id="modalTitle">${esc(p.title)}</h2><div class="ev-text">${paras}</div></div>`,{cls:'modal-ev'});}));
+}
+renderNews(D.NEWS,false);
 if(/^https?:$/.test(location.protocol)){
   fetch('/api/news').then(r=>r.ok?r.json():Promise.reject()).then(data=>{
-    if(!data||!Array.isArray(data.posts)||!data.posts.length)return;
-    const sec=document.getElementById('news'),grid=document.getElementById('newsGrid');
-    grid.innerHTML=data.posts.slice(0,3).map(p=>{const a=laParts(p.date);
-      return `<a class="post" href="${p.url}" target="_blank" rel="noopener">${p.image?`<span class="post-img" style="background-image:url('${p.image}')"></span>`:'<span class="post-img"></span>'}
-        <span class="post-date">${MON[a.m-1]} ${a.d}, ${a.y}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p></a>`;}).join('');
-    sec.hidden=false;if(window.ScrollTrigger)ScrollTrigger.refresh();
+    if(data&&Array.isArray(data.posts)&&data.posts.length){renderNews(data.posts,true);if(window.ScrollTrigger)ScrollTrigger.refresh();}
   }).catch(()=>{});
 }
 
