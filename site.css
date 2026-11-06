@@ -876,3 +876,10 @@ button.post .txt-link{margin-top:2px}
 .bio .por{background-size:cover;font-size:0}
 .ode-close{font-family:var(--f-display);font-weight:600;font-size:clamp(22px,2.6vw,34px);line-height:1.2;max-width:34ch;color:var(--teal)}
 .ode-close span{display:block;color:var(--cream);font-weight:400;font-size:.62em;margin-top:10px;font-family:var(--f-body)}
+
+/* Home hero: wordmark at the top, hours sit right above the buttons */
+.pg-index .hero{align-items:stretch;padding-top:calc(env(safe-area-inset-top,0px) + clamp(92px,10vw,118px))}
+.pg-index .hero .wrap{display:flex;flex-direction:column}
+.pg-index .hero-sub{margin-top:auto;padding-top:clamp(28px,4vw,48px)}
+.hero-act{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+@media (max-width:760px){.hero-act{align-items:flex-start}}
