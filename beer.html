@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700;800&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=202611060007">
+<link rel="stylesheet" href="assets/css/site.css?v=202611060026">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -47,29 +47,29 @@
   </defs>
 </svg>
 <main id="top" class="pg-beer">
-<!-- CELLAR HERO -->
+<!-- CELLAR HERO: mirrors the brewing app's cellar view, read only -->
 <section class="beer-hero" aria-label="The cellar">
   <div class="wrap">
-    <div class="top">
+    <p class="crumb"><a href="/">Woodhouse</a><span class="chev" aria-hidden="true"></span>Beer</p>
+    <h1>From the <span class="o">Cellar</span></h1>
+    <div class="cx-head">
       <div>
-        <p class="crumb"><a href="/">Woodhouse</a><span class="chev" aria-hidden="true"></span>Beer</p>
-        <h1>From the <span class="o">Cellar</span></h1>
+        <p class="cx-eyebrow">The cellar · 10 bbl 3-vessel brewhouse · 6 fermenters · 4 brite tanks · 12 barrels</p>
+        <h2 class="cx-title">What's in the tanks</h2>
       </div>
-      <p class="lede">Brewed, blended and conditioned at 119 Madrone St. This is our cellar right now, straight from our brewing log. Flip on x-ray to see inside the steel, and tap any tank for its brew sheet.</p>
+      <div class="cx-stats" id="cxStats"></div>
     </div>
-    <div class="cellar3d" id="cellar3d">
-      <div class="c3-stage" id="c3stage" aria-label="3D view of the Woodhouse cellar. Drag to look around, tap a tank for details.">
+    <div class="cx" id="cellar3d">
+      <div class="cx-stage" id="c3stage" aria-label="3D view of the Woodhouse cellar. Drag to orbit, tap a tank for details.">
         <div class="c3-labels" id="c3labels"></div>
-        <div class="c3-top">
-          <span class="c3-chip" id="c3chip"><span class="dot"></span><span id="c3chipText">Loading the cellar</span></span>
-          <span class="c3-tools"><button type="button" class="xray-btn" id="xrayBtn" aria-pressed="false"><span class="sw" aria-hidden="true"></span>X-ray</button><span class="c3-hint">Drag to look around · Tap a tank</span></span>
-        </div>
+        <button type="button" class="cx-view" id="xrayBtn" aria-pressed="true">Steel view</button>
+        <ul class="cx-legend" id="cxLegend" aria-label="Tank status colors"></ul>
+        <p class="cx-hint">Drag to orbit · scroll to zoom · tap a tank</p>
+        <span class="cx-chip" id="c3chip"><span class="dot"></span><span id="c3chipText">Loading</span></span>
       </div>
-      <aside class="c3-card" id="c3card" aria-live="polite"></aside>
-      <div class="c3-legend" aria-hidden="true">
-        <span><i style="background:var(--amber)"></i>Fermenting</span><span><i style="background:var(--teal)"></i>Conditioning</span><span><i style="background:var(--cream)"></i>Ready to pour</span><span><i style="background:#4a5856"></i>Empty or cleaning</span>
-      </div>
+      <aside class="cx-panel" id="c3card" aria-live="polite"></aside>
     </div>
+    <details class="cx-list"><summary><b>All tanks as a list</b><span>HLT, fermenters, brites, barrels</span></summary><div class="cx-table-wrap"><table class="cx-table" id="cxTable"></table></div></details>
   </div>
 </section>
 
@@ -271,10 +271,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/js/data.js?v=202611060007"></script>
-<script src="assets/js/core.js?v=202611060007"></script>
-<script src="assets/js/cellar3d.js?v=202611060007"></script>
-<script src="assets/js/pint.js?v=202611060007"></script>
-<script src="assets/js/beer.js?v=202611060007"></script>
+<script src="assets/js/data.js?v=202611060026"></script>
+<script src="assets/js/core.js?v=202611060026"></script>
+<script src="assets/js/cellar3d.js?v=202611060026"></script>
+<script src="assets/js/pint.js?v=202611060026"></script>
+<script src="assets/js/beer.js?v=202611060026"></script>
 </body>
 </html>

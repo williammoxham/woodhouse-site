@@ -34,15 +34,17 @@ function normApi(x){
   return {y:a.y,m:a.m,d:a.d,sh:a.h+a.min/60,eh:(b.d!==a.d?24:b.h+b.min/60),t:x.title,p:x.excerpt||'',body:x.body||x.excerpt||'',u:x.url,img:x.image||'',tickets:x.tickets||'',
     tags:[...(x.tags||[]),...(x.categories||[])],time:`${clock12(a.h,a.min)} to ${clock12(b.h,b.min)} ${ampm(b.h)}`};
 }
+const ticketFor=e=>{const k=Object.keys(D.TICKETS||{}).find(t=>t.toLowerCase().replace(/[^a-z0-9]/g,'')===String(e.t).toLowerCase().replace(/[^a-z0-9]/g,''));
+  if(k&&!e.tickets)e.tickets=D.TICKETS[k];const m=String(e.body||e.p||'').match(/\$\s?(\d+)[^.\n]{0,20}door/i);if(m)e.door='$'+m[1]+' at the door';return e;};
 const isUpcoming=e=>{const k=e.y*10000+e.m*100+e.d;return k>todayKey||(k===todayKey&&now.h*60+now.min<e.eh*60);};
 const evSort=(a,b)=>(a.y*1e4+a.m*100+a.d+a.sh/100)-(b.y*1e4+b.m*100+b.d+b.sh/100);
 /* loadEvents(cb): calls cb immediately with fallback, then again with Squarespace data when it arrives */
 function loadEvents(cb){
-  cb({events:D.EVENTS.map(normFallback).filter(isUpcoming).sort(evSort),live:false});
+  cb({events:D.EVENTS.map(normFallback).map(ticketFor).filter(isUpcoming).sort(evSort),live:false});
   if(!/^https?:$/.test(location.protocol))return;
   fetch('/api/events').then(r=>r.ok?r.json():Promise.reject()).then(data=>{
     if(!data||!Array.isArray(data.events)||!data.events.length)return;
-    cb({events:data.events.map(normApi).filter(isUpcoming).sort(evSort),past:(data.past||[]).map(normApi),calendarUrl:data.calendarUrl||'',live:true});
+    cb({events:data.events.map(normApi).map(ticketFor).filter(isUpcoming).sort(evSort),past:(data.past||[]).map(normApi),calendarUrl:data.calendarUrl||'',live:true});
   }).catch(()=>{});
 }
 
@@ -172,7 +174,7 @@ function eventHtml(e,i){
   const img=e.img||FALLBACK_IMG[(i||0)%FALLBACK_IMG.length];
   return `<div class="ev-hero" style="background-image:url('${img}')"><div class="ev-hero-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd}</span></div></div>
     <div class="ev-pad"><p class="eyebrow">${esc(e.time)} · Woodhouse, 119 Madrone St</p><h2 id="modalTitle">${esc(e.t)}</h2>
-    <div class="chips" style="margin-top:14px">${(e.cats||e.tags||[]).filter(c=>c!=='Ticketed').slice(0,3).map(c=>`<span class="chip">${esc(c)}</span>`).join('')}${tickets?'<span class="chip warm">Tickets</span>':''}</div>
+    <div class="chips" style="margin-top:14px">${(e.cats||e.tags||[]).filter(c=>c!=='Ticketed').slice(0,3).map(c=>`<span class="chip">${esc(c)}</span>`).join('')}${tickets?'<span class="chip warm">Tickets</span>':e.door?`<span class="chip warm">${esc(e.door)}</span>`:''}</div>
     <div class="ev-text">${paras}</div>
     <div class="btn-row" style="margin-top:26px">${tickets?`<a class="btn btn-teal" href="${tickets}" target="_blank" rel="noopener">Get tickets <span class="arr">↗</span></a>`:''}
       <a class="btn ${tickets?'btn-ghost':'btn-teal'}" href="${gcal(e)}" target="_blank" rel="noopener">Add to calendar</a>

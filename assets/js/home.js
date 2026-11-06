@@ -37,7 +37,7 @@ function renderRail(res){
   res.events.slice(0,10).forEach((e,i)=>{
     const wd=WD[new Date(Date.UTC(e.y,e.m-1,e.d,12)).getUTCDay()];
     const diff=Math.round((Date.UTC(e.y,e.m-1,e.d)-Date.UTC(now.y,now.m-1,now.d))/864e5);
-    const tick=(e.tags||[]).find(t=>/ticket/i.test(t));
+    const tick=e.tickets||(e.tags||[]).find(t=>/ticket/i.test(t));
     const chip=diff===0?'<span class="ev-chip">Tonight</span>':diff===1?'<span class="ev-chip soft">Tomorrow</span>':tick?'<span class="ev-chip soft">Tickets</span>':'';
     rh+=`<button type="button" class="ev${e.img?' has-img':''}" data-i="${i}" style="--glow:${glows[i%3]}">
       ${e.img?`<span class="ev-img" style="background-image:url('${e.img}')"></span>`:''}${chip}

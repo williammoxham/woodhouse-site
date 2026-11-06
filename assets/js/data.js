@@ -114,24 +114,55 @@ GALLERIES:{
 /* ---- Live cellar: the brewing app's Supabase (see cellar-setup.sql). Empty = preview data. ---- */
 CELLAR_SOURCE:{url:'',anonKey:'',view:'public_cellar',refreshMinutes:5},
 CELLAR_LAYOUT:[
-  {code:'FV1',bbl:10,kind:'fv'},{code:'FV2',bbl:10,kind:'fv'},{code:'FV3',bbl:10,kind:'fv'},{code:'FV4',bbl:20,kind:'fv'},
-  {code:'P1',bbl:2,kind:'fv',label:'Pilot 1'},{code:'P2',bbl:2,kind:'fv',label:'Pilot 2'},
-  {code:'BT2',bbl:7,kind:'bt'},{code:'BT3',bbl:7,kind:'bt'},{code:'BT4',bbl:7,kind:'bt'},{code:'B20',bbl:20,kind:'bt',label:'20 bbl Bright'}
+  /* brewhouse (on the platform) */
+  {code:'HLT',kind:'hlt',bbl:10,x:-250,z:40,label:'Hot liquor'},
+  {code:'MLT',kind:'mlt',bbl:10,x:-268,z:-20,label:'Mash / lauter'},
+  {code:'BK',kind:'bk',bbl:10,x:-205,z:-58,label:'Kettle / whirlpool'},
+  /* fermenters */
+  {code:'FV1',kind:'fv',bbl:10,x:-10,z:-190},
+  {code:'FV2',kind:'fv',bbl:10,x:30,z:-148},
+  {code:'FV3',kind:'fv',bbl:10,x:72,z:-106},
+  {code:'FV4',kind:'fv',bbl:20,x:138,z:-40},
+  {code:'FV5',kind:'fv',bbl:2,x:-60,z:196},
+  {code:'FV6',kind:'fv',bbl:2,x:0,z:178},
+  /* brites */
+  {code:'BT1',kind:'bt',bbl:20,x:-40,z:20},
+  {code:'BT2',kind:'bt',bbl:7,x:-150,z:86},
+  {code:'BT3',kind:'bt',bbl:7,x:-120,z:120},
+  {code:'BT4',kind:'bt',bbl:7,x:-90,z:154},
+  /* barrels: 12 in two racks, two high */
+  {code:'B1',kind:'barrel',bbl:1.9,rack:0,slot:0},{code:'B2',kind:'barrel',bbl:1.9,rack:0,slot:1},{code:'B3',kind:'barrel',bbl:1.9,rack:0,slot:2},
+  {code:'B4',kind:'barrel',bbl:1.9,rack:0,slot:3},{code:'B5',kind:'barrel',bbl:1.9,rack:0,slot:4},{code:'B6',kind:'barrel',bbl:1.9,rack:0,slot:5},
+  {code:'B7',kind:'barrel',bbl:1.9,rack:1,slot:0},{code:'B8',kind:'barrel',bbl:1.9,rack:1,slot:1},{code:'B9',kind:'barrel',bbl:1.9,rack:1,slot:2},
+  {code:'B10',kind:'barrel',bbl:1.9,rack:1,slot:3},{code:'B11',kind:'barrel',bbl:1.9,rack:1,slot:4},{code:'B12',kind:'barrel',bbl:1.9,rack:1,slot:5}
 ],
+/* Preview only. Live data comes from the brewing app (see cellar-setup.sql).
+   status: brewing | fermenting | conditioning | cold_crash | carbonating | ready | serving | aging | empty */
 CELLAR_PREVIEW:[
-  {tank_code:'FV1',beer_name:'Egyptian Cotton',style:'Hazy IPA',status:'fermenting',fill_pct:90,brewed_on:iso(-5),ready_on:iso(9),abv_target:6.1,batch:'#214',og:1.062,sg:1.024,fg_target:1.016,ibu:35,temp_f:66,yeast:'London Ale III',hops:'Cashmere, Idaho 7, Azacca, Citra, Mosaic',malt:'Pilsner, oats, wheat'},
-  {tank_code:'FV2',beer_name:'Herringbone',style:'Pale Ale',status:'conditioning',fill_pct:92,brewed_on:iso(-12),ready_on:iso(3),abv_target:5.8,batch:'#212',og:1.054,sg:1.011,fg_target:1.010,ibu:40,temp_f:34,yeast:'Chico',hops:'Mosaic, Simcoe, Citra',malt:'2-row, Vienna, crystal'},
-  {tank_code:'FV3',status:'cleaning'},
-  {tank_code:'FV4',beer_name:'Better Late',style:'House beer',status:'fermenting',fill_pct:94,brewed_on:iso(-2),ready_on:iso(16),batch:'#215',og:1.058,sg:1.040,fg_target:1.012,temp_f:67},
-  {tank_code:'P1',beer_name:'Framboise',style:'Mixed fermentation · Raspberry',status:'fermenting',fill_pct:72,brewed_on:iso(-40),ready_on:iso(50),batch:'#P07',og:1.050,sg:1.006,temp_f:68,yeast:'House mixed culture',malt:'Pilsner, wheat'},
-  {tank_code:'P2',status:'empty'},
-  {tank_code:'BT2',beer_name:'Dark & Ominous Tones',style:'Milk Stout',status:'ready',fill_pct:66,brewed_on:iso(-26),ready_on:iso(-2),abv_target:7.5,batch:'#209',og:1.074,sg:1.020,fg_target:1.020,ibu:30,temp_f:36,yeast:'English Ale',malt:'Maris Otter, chocolate, roasted barley, lactose'},
-  {tank_code:'BT3',beer_name:'Egyptian Cotton',style:'Hazy IPA',status:'ready',fill_pct:48,brewed_on:iso(-20),ready_on:iso(-4),abv_target:6.1,batch:'#211',og:1.062,sg:1.015,fg_target:1.015,ibu:35,temp_f:34,yeast:'London Ale III',hops:'Cashmere, Idaho 7, Azacca, Citra, Mosaic'},
-  {tank_code:'BT4',status:'empty'},
-  {tank_code:'B20',status:'empty'}
+  {tank_code:'HLT',status:'empty'},{tank_code:'MLT',status:'empty'},{tank_code:'BK',status:'empty'},
+  {tank_code:'FV1',beer_name:'West Coast IPA',style:'West Coast IPA',status:'fermenting',volume_bbl:9.6,batch:'3',day:4,og:1.064,sg:1.030,fg_target:1.010,yeast:'Chico',ready_on:iso(12),readings:[[iso(-4),1.064],[iso(-3),1.055],[iso(-2),1.044],[iso(-1),1.036],[iso(0),1.030]]},
+  {tank_code:'FV2',beer_name:'Egyptian Cotton',style:'Hazy IPA',status:'conditioning',volume_bbl:9.4,batch:'2',day:13,og:1.062,sg:1.015,fg_target:1.015,yeast:'London Ale III',ready_on:iso(2),readings:[[iso(-13),1.062],[iso(-11),1.040],[iso(-9),1.022],[iso(-6),1.016],[iso(0),1.015]]},
+  {tank_code:'FV3',beer_name:'West Coast IPA',style:'West Coast IPA',status:'cold_crash',volume_bbl:9.5,batch:'4',day:15,og:1.064,sg:1.011,fg_target:1.010,yeast:'Chico',ready_on:iso(3),readings:[[iso(-15),1.064],[iso(-12),1.034],[iso(-8),1.014],[iso(0),1.011]]},
+  {tank_code:'FV4',beer_name:'Pilsner',style:'German Pils',status:'fermenting',volume_bbl:13,batch:'1',day:6,og:1.047,sg:1.047,fg_target:1.010,yeast:'34/70',ready_on:'',readings:[[iso(-6),1.047]]},
+  {tank_code:'FV5',status:'empty'},
+  {tank_code:'FV6',beer_name:'Kir Royale',style:'Mixed fermentation',status:'aging',volume_bbl:1.4,batch:'P7',day:40,og:1.050,sg:1.004,yeast:'House culture'},
+  {tank_code:'BT1',status:'empty'},
+  {tank_code:'BT2',beer_name:'Still Life In Gold',style:'Golden Ale',status:'serving',volume_bbl:4.2,batch:'5'},
+  {tank_code:'BT3',status:'empty',next_beer:'Radler'},
+  {tank_code:'BT4',status:'empty',next_beer:'Wit'},
+  {tank_code:'B1',beer_name:'Dark & Ominous Tones',style:'Barrel aged milk stout',status:'aging',volume_bbl:1.9},
+  {tank_code:'B2',beer_name:'Dark & Ominous Tones',style:'Barrel aged milk stout',status:'aging',volume_bbl:1.9},
+  {tank_code:'B3',beer_name:'Framboise',style:'Mixed fermentation · raspberry',status:'aging',volume_bbl:1.9},
+  {tank_code:'B4',beer_name:'Framboise',style:'Mixed fermentation · raspberry',status:'aging',volume_bbl:1.9},
+  {tank_code:'B7',beer_name:'Persistence',style:'Mixed fermentation',status:'aging',volume_bbl:1.9}
 ],
 
 /* ---- Fallback events (used only if Squarespace can't be reached). Times are Pacific. ---- */
+/* Ticket links you want to force on an event (title must match). Squarespace "Tickets" links are picked up automatically. */
+TICKETS:{
+  'Foster Andersen Benefit':'https://www.eventbrite.com/e/benefit-for-foster-anderson-the-executive-director-of-shared-adventures-tickets-2003041624419',
+  'Horse Feathers':'https://www.eventbrite.com/e/horse-feathers-tickets-1993861278758'
+},
 EVENTS:[
   {date:'2026-11-05',start:'19:00',end:'22:00',title:'Camellia Boutros Band & Flat SUN Society',image:'img/stage-night.jpg',tags:['Live music'],
    excerpt:'Arab experimentalism on the electric oud guitar, then six friends from Big Sur and Santa Cruz with polyrhythmic psych rock.',

@@ -16,7 +16,8 @@ const shape = (e) => ({
   excerpt: clip(strip(e.excerpt || e.body || ''), 220),
   body: clip(bodyText(e.body), 1600),
   image: e.assetUrl ? e.assetUrl + '?format=750w' : '',
-  tickets: ((String(e.body || '').match(/href="(https?:[^"]*(?:eventbrite|fareharbor|ticket|tix|dice\.fm|seetickets|universe\.com)[^"]*)"/i)) || [])[1] || '',
+  tickets: ((String(e.body || '').match(/<a[^>]+href="(https?:[^"]+)"[^>]*>(?:(?!<\/a>)[\s\S])*?(?:ticket|rsvp|buy|register)(?:(?!<\/a>)[\s\S])*?<\/a>/i)) || [])[1] ||
+    ((String(e.body || '').match(/href="(https?:[^"]*(?:eventbrite|fareharbor|ticket|tix|dice\.fm|seetickets|universe\.com)[^"]*)"/i)) || [])[1] || '',
   tags: e.tags || [],
   categories: e.categories || [],
 });
