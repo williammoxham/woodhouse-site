@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700;800&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=202611050106">
+<link rel="stylesheet" href="assets/css/site.css?v=202611060007">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -32,6 +32,7 @@
     <a class="btn btn-teal" href="/events#plan">Plan an event <span class="arr">→</span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button>
   </div>
+  <span class="nav-hint" aria-hidden="true">Explore the whole house up here</span>
 </header>
 <div class="drawer" id="drawer">
   <a href="/">Home</a><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events" aria-current="page">Events</a><a href="#visit">Visit</a>
@@ -129,15 +130,15 @@
     <div>
       <div class="sec-head" style="margin-bottom:24px"><h2>Make it <span class="o">Yours</span></h2></div>
       <p class="lede">Music, dancing, performances, presentations, florals, rentals and personal touches. Our team helps figure out what fits your space, service plan and event flow.</p>
-      <div class="btn-row" style="margin-top:28px"><a class="txt-link" href="/kitchen#catering">Catering menus <span class="arr">→</span></a><a class="txt-link" href="/beer">Open bar beers <span class="arr">→</span></a></div>
+      <div class="btn-row" style="margin-top:28px"><a class="txt-link" href="/kitchen#catering">Catering menus <span class="arr">→</span></a><button type="button" class="txt-link linkish" data-open="bar">Open bar packages <span class="arr">+</span></button></div>
     </div>
     <ul class="make" data-stagger>
-      <li>Seated dinners and cocktail style receptions</li>
-      <li>Live bands, DJs and dancing</li>
-      <li>Stage performances and speeches</li>
-      <li>Presentations and projection</li>
-      <li>Custom catering and hosted bars</li>
-      <li>Rentals, florals and entertainment</li>
+      <li><button type="button" class="make-btn" data-gallery="dinners">Seated dinners and cocktail style receptions<span aria-hidden="true">+</span></button></li>
+      <li><button type="button" class="make-btn" data-gallery="music">Live bands, DJs and dancing<span aria-hidden="true">+</span></button></li>
+      <li><button type="button" class="make-btn" data-gallery="stage">Stage performances and speeches<span aria-hidden="true">+</span></button></li>
+      <li><button type="button" class="make-btn" data-gallery="present">Presentations and projection<span aria-hidden="true">+</span></button></li>
+      <li><button type="button" class="make-btn" data-gallery="food">Custom catering and hosted bars<span aria-hidden="true">+</span></button></li>
+      <li><button type="button" class="make-btn" data-gallery="decor">Rentals, florals and entertainment<span aria-hidden="true">+</span></button></li>
     </ul>
   </div>
 </section>
@@ -146,7 +147,18 @@
 <section class="sec" style="padding-top:0">
   <div class="wrap grid-2">
     <a class="photo-card" href="/kitchen#collections" style="min-height:420px"><span class="ph" style="background-image:url('img/ribs.jpg');background-position:center 60%"></span><span class="k">Catering</span><h3>Feed everyone</h3><p>Classic buffets, family style spreads and chef's table menus from our own kitchen.</p><span class="txt-link" style="margin-top:14px">Our Kitchen <span class="arr">→</span></span></a>
-    <button type="button" class="photo-card" id="barBtn" style="min-height:420px"><span class="ph" style="background-image:url('img/pints.jpg')"></span><span class="k">Bar packages</span><h3>Pour Woodhouse</h3><p>Open bars with our own beer, wine, cider, seltzer and signature cocktails, or tickets and hosted tabs. Tap to see the options.</p><span class="txt-link" style="margin-top:14px">See bar packages <span class="arr">+</span></span></button>
+    <button type="button" class="photo-card" data-open="bar" style="min-height:420px"><span class="ph" style="background-image:url('img/pints.jpg')"></span><span class="k">Bar packages</span><h3>Pour Woodhouse</h3><p>Open bars with our own beer, wine, cider, seltzer and signature cocktails, or tickets and hosted tabs. Tap to see the options.</p><span class="txt-link" style="margin-top:14px">See bar packages <span class="arr">+</span></span></button>
+  </div>
+</section>
+
+<!-- OPEN BAR PACKAGES -->
+<section class="sec" id="bar" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Open Bar <span class="o">Packages</span></h2>
+      <p class="lede">Two open bars with up to three hours of unlimited service, or a flexible setup that fits your crowd. Pricing depends on your date, headcount and hours, so our event planner builds it with you.</p>
+    </div>
+    <div data-bar-tiers></div>
   </div>
 </section>
 
@@ -226,17 +238,18 @@
       </div>
       <div><h5>Explore</h5><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Private events</a></div>
       <div><h5>Work with us</h5><a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Book an event</a><a href="downloads/woodhouse-events-brochure-2026.pdf" download>Events brochure</a><a href="/calendar#play">Play at Woodhouse</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></div>
+      <div><h5>Find us</h5><p class="foot-addr">119 Madrone St<br>Santa Cruz, CA 95060</p><a href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions ↗</a><a href="#visit">Hours</a></div>
       <div><h5>Follow</h5><a href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">@woodhousebrews</a><a href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a><a href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a></div>
     </div>
     <div class="giant wm" aria-hidden="true"></div>
-    <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>Brewed and blended in Santa Cruz</span></div>
+    <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>119 Madrone St · (831) 313-9461</span></div>
   </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/js/data.js?v=202611050106"></script>
-<script src="assets/js/core.js?v=202611050106"></script>
-<script src="assets/js/events.js?v=202611050106"></script>
+<script src="assets/js/data.js?v=202611060007"></script>
+<script src="assets/js/core.js?v=202611060007"></script>
+<script src="assets/js/events.js?v=202611060007"></script>
 </body>
 </html>

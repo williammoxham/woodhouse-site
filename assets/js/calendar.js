@@ -56,5 +56,6 @@ if(list)loadEvents(res=>{
 /* artist wall */
 const wall=document.getElementById('wall');
 if(wall){const a=D.ARTISTS.slice(2),rows=[[D.ARTISTS[0]],[],[D.ARTISTS[1]]];a.forEach((n,i)=>rows[i%3].push(n));
-  wall.innerHTML=rows.map(r=>{const s=r.map(n=>`<span>${esc(n)}</span>`).join('');return `<div class="wall-row">${s}${s.replace(/<span>/g,'<span aria-hidden="true">')}</div>`;}).join('');}
+  rows.splice(1,0,D.CULTURE.slice());
+  wall.innerHTML=rows.map((r,ri)=>{const s=r.map(n=>`<span>${esc(n)}</span>`).join('');return `<div class="wall-row${ri===1?' culture':''}">${s}${s.replace(/<span>/g,'<span aria-hidden="true">')}</div>`;}).join('');}
 })();

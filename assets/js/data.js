@@ -101,6 +101,16 @@ BAR_PACKAGES:[
   {name:'Your Way',mark:3,lede:'Flexible options when an open bar isn\'t the right fit.',items:['Guests pay: individual purchases','Drink tickets purchased in advance','Hosted tab with an agreed spending limit','Food and beverage minimum agreed in advance','Extra hours arranged ahead of time']}
 ],
 
+/* ---- Make it yours galleries (events page). [image, caption] ---- */
+GALLERIES:{
+  dinners:{title:'Seated dinners & receptions',imgs:[['img/lantern-hall.jpg','The Hall set for a catered reception'],['img/gallery-room.jpg','Long tables in the Gallery'],['img/patio-deck.jpg','Candlelit tables on the deck'],['img/patio-dusk.jpg','The patio at dusk']]},
+  music:{title:'Live bands, DJs & dancing',imgs:[['img/crowd.jpg','KRS-One on the patio'],['img/indoor.jpg','A DJ set inside'],['img/stage.jpg','Live on the outdoor stage'],['img/stage-night.jpg','The stage lit for the night']]},
+  stage:{title:'Stage performances & speeches',imgs:[['img/stage-night.jpg','The outdoor stage'],['img/stage.jpg','Behind the kit'],['img/crowd.jpg','A full patio facing the stage']]},
+  present:{title:'Presentations & projection',imgs:[['img/indoor.jpg','The video wall inside'],['img/gallery-room.jpg','The Gallery set for a meeting'],['img/purple-room.jpg','Lights down for a show']]},
+  food:{title:'Custom catering & hosted bars',imgs:[['img/ribs.jpg','Smoked ribs'],['img/lantern-hall.jpg','Buffet service'],['img/wings.jpg','Wings and a hazy'],['img/cater-2.jpg','Coastal ceviche'],['img/cater-1.jpg','Hummus and empanadas'],['img/cater-3.jpg','Flatbreads'],['img/cater-4.jpg','Sourdough pretzel'],['img/pints.jpg','Woodhouse pints']]},
+  decor:{title:'Rentals, florals & entertainment',imgs:[['img/lantern-hall.jpg','Lanterns, ferns and florals'],['img/patio-deck.jpg','String lights and a disco ball'],['img/outdoor-bar.jpg','The outdoor bar rail'],['img/purple-room.jpg','Custom lighting']]}
+},
+
 /* ---- Live cellar: the brewing app's Supabase (see cellar-setup.sql). Empty = preview data. ---- */
 CELLAR_SOURCE:{url:'',anonKey:'',view:'public_cellar',refreshMinutes:5},
 CELLAR_LAYOUT:[
@@ -157,6 +167,10 @@ NEWS:[
    excerpt:'Superblume and Woodhouse brewed an IPA with the Berkeley Superbloom yeast strain and released it on show night.',
    body:"Superblume and Woodhouse teamed up on a band and brew collaboration: Jam Session IPA, brewed with the Berkeley Superbloom yeast strain and hopped with Citra and Mosaic.\n\nWe released four packs the same night the band took our stage. Music and beer, made together."}
 ],
+
+/* ---- Cultural event types (Calendar ticker) ---- */
+CULTURE:['Afrobeats','Reggae & Dancehall','Hip-Hop','Latin Nights','Line Dancing','Square Dancing','Grateful Dead Tributes','Jazz','Bluegrass & Americana',
+  'Psych Rock','Arab Experimental','Chamber Folk','Prog & Jazz Rock','Comedy','Figure Drawing','Art Shows','Makers Markets','Cultural Festivals','Community Benefits','DJ Nights'],
 
 /* ---- Artists and series we have hosted (Calendar page wall). Add freely. ---- */
 ARTISTS:[

@@ -139,15 +139,18 @@ document.querySelectorAll('[data-words]').forEach(splitWords);
 
 /* ---------- Popup window (events, bar packages) ---------- */
 const modal=document.createElement('div');modal.className='modal';modal.hidden=true;
-modal.innerHTML='<div class="modal-back" data-close></div><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><button class="modal-x" type="button" aria-label="Close" data-close>×</button><div class="modal-body"></div></div>';
+modal.innerHTML='<div class="modal-back" data-close></div><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1" data-lenis-prevent><button class="modal-x" type="button" aria-label="Close" data-close>×</button><div class="modal-body"></div><div class="modal-more" aria-hidden="true"><span>Scroll for more</span></div></div>';
 document.body.appendChild(modal);
 const mBody=modal.querySelector('.modal-body'),mCard=modal.querySelector('.modal-card');let lastFocus=null,onClose=null;
 function openModal(html,opts={}){
   lastFocus=document.activeElement;mBody.innerHTML=html;modal.className='modal'+(opts.cls?' '+opts.cls:'');modal.hidden=false;
   document.documentElement.classList.add('modal-open');if(window.WH&&WH.lenis)WH.lenis.stop();
   requestAnimationFrame(()=>{modal.classList.add('in');mCard.focus();});mCard.scrollTop=0;onClose=opts.onClose||null;
+  requestAnimationFrame(moreHint);
   mBody.querySelectorAll('.copybtn').forEach(b=>b.addEventListener('click',()=>{try{navigator.clipboard.writeText(b.dataset.copy).then(()=>{b.textContent='Copied';});}catch(e){}}));
 }
+function moreHint(){modal.classList.toggle('has-more',mCard.scrollHeight-mCard.clientHeight-mCard.scrollTop>40);}
+mCard.addEventListener('scroll',moreHint,{passive:true});window.addEventListener('resize',()=>{if(!modal.hidden)moreHint();});
 function closeModal(){if(modal.hidden)return;modal.classList.remove('in');document.documentElement.classList.remove('modal-open');if(window.WH&&WH.lenis)WH.lenis.start();
   setTimeout(()=>{modal.hidden=true;mBody.innerHTML='';},250);if(lastFocus)lastFocus.focus();if(onClose)onClose();}
 modal.addEventListener('click',e=>{if(e.target.closest('[data-close]'))closeModal();});
@@ -178,7 +181,57 @@ function eventHtml(e,i){
 }
 function openEvent(e,i){openModal(eventHtml(e,i),{cls:'modal-ev'});}
 
-window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,slug,lenis:null};
+/* ---------- Bar packages (same look as catering collections) ---------- */
+const ICONS=['<svg class="tier-ic" viewBox="-100 -100 200 200" aria-hidden="true"><polygon points="0,-84 85,1 0,86 -85,1" fill="#89d8d0"/></svg>',
+  '<svg class="tier-ic" viewBox="-100 -100 200 200" aria-hidden="true"><polygon points="0,-88 85,-3 -85,-3" fill="#89d8d0"/><polygon points="-85,6 85,6 0,91" fill="#f2ead9"/></svg>',
+  '<svg class="tier-ic" viewBox="-20 -10 296 360" aria-hidden="true"><use href="#wmark"/></svg>'];
+function barTiersHtml(){
+  return `<div class="tiers">${D.BAR_PACKAGES.map((p,i)=>`<article class="tier${i===1?' feat':''}">${ICONS[i]}<h3>${esc(p.name)}</h3><p>${esc(p.lede)}</p><ul>${p.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+    <a class="txt-link" href="${D.LINKS.tally}" target="_blank" rel="noopener">Ask our event planner <span class="arr">→</span></a></article>`).join('')}</div>`;
+}
+function openBar(){
+  openModal(`<div class="ev-pad"><p class="eyebrow">Open bar packages</p><h2 id="modalTitle">Pour Woodhouse</h2>
+    <p class="muted" style="margin-top:12px;max-width:62ch">Two open bar packages, each with up to three hours of unlimited service, or a flexible setup that fits your crowd. Pricing depends on your date, headcount and hours, so our event planner builds it with you.</p>
+    <div style="margin-top:26px">${barTiersHtml()}</div>
+    <div class="btn-row" style="margin-top:26px;align-items:center"><a class="btn btn-teal" href="${D.LINKS.tally}" target="_blank" rel="noopener">Talk to our event planner <span class="arr">→</span></a><span class="muted" style="font-size:14px">or email ${esc(D.CONTACT.events)}</span></div></div>`,{cls:'modal-wide'});
+}
+document.querySelectorAll('[data-bar-tiers]').forEach(el=>el.innerHTML=barTiersHtml());
+
+/* ---------- Gallery popup ---------- */
+function openGallery(title,imgs,start){
+  let i=start||0;
+  const draw=()=>{
+    const main=mBody.querySelector('.gal-main'),cap=mBody.querySelector('.gal-cap');
+    main.style.backgroundImage=`url('${imgs[i][0]}')`;main.setAttribute('aria-label',imgs[i][1]);cap.textContent=`${i+1} / ${imgs.length} · ${imgs[i][1]}`;
+    mBody.querySelectorAll('.gal-th').forEach((t,k)=>t.setAttribute('aria-current',k===i?'true':'false'));
+  };
+  openModal(`<div class="ev-pad"><p class="eyebrow">Make it yours</p><h2 id="modalTitle">${esc(title)}</h2>
+    <div class="gal"><div class="gal-main" role="img"></div><button type="button" class="gal-nav prev" aria-label="Previous photo">‹</button><button type="button" class="gal-nav next" aria-label="Next photo">›</button></div>
+    <p class="gal-cap"></p><div class="gal-thumbs">${imgs.map((m,k)=>`<button type="button" class="gal-th" data-k="${k}" style="background-image:url('${m[0]}')" aria-label="${esc(m[1])}"></button>`).join('')}</div>
+    <div class="btn-row" style="margin-top:22px"><a class="btn btn-teal" href="${D.LINKS.tally}" target="_blank" rel="noopener">Plan yours <span class="arr">→</span></a></div></div>`,{cls:'modal-wide'});
+  mBody.querySelector('.prev').addEventListener('click',()=>{i=(i-1+imgs.length)%imgs.length;draw();});
+  mBody.querySelector('.next').addEventListener('click',()=>{i=(i+1)%imgs.length;draw();});
+  mBody.querySelectorAll('.gal-th').forEach(t=>t.addEventListener('click',()=>{i=+t.dataset.k;draw();}));
+  draw();
+}
+document.addEventListener('keydown',e=>{if(modal.hidden||!mBody.querySelector('.gal'))return;if(e.key==='ArrowRight')mBody.querySelector('.next').click();if(e.key==='ArrowLeft')mBody.querySelector('.prev').click();});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-open="bar"]');if(b){e.preventDefault();openBar();return;}
+  const g=e.target.closest('[data-gallery]');if(g){e.preventDefault();const set=(D.GALLERIES||{})[g.dataset.gallery];if(set)openGallery(set.title,set.imgs);}
+});
+
+/* ---------- Menu attention nudge (once per visit) ---------- */
+(function(){
+  let seen=false;try{seen=sessionStorage.getItem('wh-nudge')==='1';}catch(e){}
+  if(seen||reduce)return;
+  const fire=()=>{if(seen)return;seen=true;try{sessionStorage.setItem('wh-nudge','1');}catch(e){}
+    const n=document.getElementById('nav');n.classList.add('nudge');setTimeout(()=>n.classList.remove('nudge'),5200);
+    window.removeEventListener('scroll',onS);};
+  const onS=()=>{if(window.scrollY>window.innerHeight*.6)fire();};
+  window.addEventListener('scroll',onS,{passive:true});setTimeout(fire,6000);
+})();
+
+window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
 
 /* ---------- Motion (shared) ---------- */
 if(reduce||!hasGsap)return;
