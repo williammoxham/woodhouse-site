@@ -188,7 +188,7 @@ const ICONS=['<svg class="tier-ic" viewBox="-100 -100 200 200" aria-hidden="true
   '<svg class="tier-ic" viewBox="-100 -100 200 200" aria-hidden="true"><polygon points="0,-88 85,-3 -85,-3" fill="#89d8d0"/><polygon points="-85,6 85,6 0,91" fill="#f2ead9"/></svg>',
   '<svg class="tier-ic" viewBox="-20 -10 296 360" aria-hidden="true"><use href="#wmark"/></svg>'];
 function barTiersHtml(){
-  return `<div class="tiers">${D.BAR_PACKAGES.map((p,i)=>`<article class="tier${i===1?' feat':''}">${ICONS[i]}<h3>${esc(p.name)}</h3><p>${esc(p.lede)}</p><ul>${p.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+  return `<div class="tiers">${D.BAR_PACKAGES.map((p,i)=>`<article class="tier">${ICONS[i]}<h3>${esc(p.name)}</h3><p>${esc(p.lede)}</p><ul>${p.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
     <a class="txt-link" href="${D.LINKS.tally}" target="_blank" rel="noopener">Ask our event planner <span class="arr">→</span></a></article>`).join('')}</div>`;
 }
 function openBar(){
