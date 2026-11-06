@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700;800&family=Albert+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=202611060026">
+<link rel="stylesheet" href="assets/css/site.css?v=202611060654">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -107,9 +107,12 @@
 <!-- PINT -->
 <section class="sec pint-sec" id="pint">
   <div class="wrap pint-grid">
+    <div class="pint-col">
     <div class="pint-stage" id="pintStage">
       <div class="pint-hud"><span>Drag sideways to spin · Drag down to tip</span><span>Pints poured <b id="pintCount">1</b></span></div>
       <div class="pint-toast" id="pintToast">Cheers. Pour another?</div>
+    </div>
+    <div class="pint-under"><label for="tilt">Tip the glass</label><input type="range" id="tilt" min="0" max="100" value="0"><span class="pint-ends" aria-hidden="true"><span>Upright</span><span>Spill it</span></span></div>
     </div>
     <div>
       <p class="eyebrow tg-tag"><span class="chev" aria-hidden="true"></span>Interact with our beer</p>
@@ -124,7 +127,6 @@
             <button type="button" data-beer="sour" aria-pressed="false"><i style="background:#d5604a"></i>Fruited Sour</button>
           </div>
         </div>
-        <div><label for="tilt">Tip the glass</label><input type="range" id="tilt" min="0" max="100" value="0"></div>
         <div class="btn-row"><button type="button" class="btn btn-teal" id="pourBtn">Pour a fresh one <span class="arr">→</span></button><button type="button" class="btn btn-ghost" id="spinBtn">Spin it</button></div>
       </div>
     </div>
@@ -139,31 +141,31 @@
       <p class="lede">Science and heart, in equal measure.</p>
     </div>
     <div class="ode" data-stagger>
-      <p class="ode-big" data-words>Jeff brings the Monterey Bay. Gino brings the still. <span class="hl">Together they science and heart the hell out of every batch.</span></p>
+      <p class="ode-big" data-words>Jeff and Gino bring decades of experience, a deep respect for the craft, and <span class="hl">a shared obsession with making exceptional beer.</span></p>
       <div class="ode-cols">
-        <p>Jeff has spent fifteen years between barrels and vines, with a palate shaped by Carmel Valley fruit and coastal fog. Gino came up the honest way: a homebrew kit, a production brewhouse, and now the patience of the still. One reads a beer like a winemaker. The other reads it like a distiller.</p>
-        <p>In our cellar they measure everything. Gravity, temperature, the minute the hops go in, the day the yeast is done talking. Then they taste, argue, laugh and adjust, because numbers can tell you a beer is correct, but only people can tell you it's good.</p>
-        <p>Science gets every batch to the line. Heart carries it over. That's the whole recipe, and it's the same one we use for everything else in this building.</p>
+        <p>Together, they bring science, heart, and soul to every batch. Brewing is one of humanity's oldest traditions, a craft that has shaped cultures, brought communities together, and evolved over thousands of years. Jeff and Gino carry that legacy forward with curiosity, creativity, and a healthy respect for everything there is still to learn.</p>
+        <p>From the chemistry of fermentation to the delicate balance of hops, malt, and yeast, every detail is considered, every ingredient has a purpose, and every beer is an opportunity to create something extraordinary.</p>
+        <p>They know that great brewing is equal parts precision, intuition, and a little creative instinct. Because numbers can tell you a beer is correct, but only people can tell you it's good.</p>
       </div>
+      <p class="ode-close">Science gets every batch to the line. Heart carries it over. <span>That's the whole recipe, and it's the same one we use for everything else in this building.</span></p>
     </div>
     <div class="bios" style="margin-top:clamp(56px,7vw,90px)">
       <article class="bio">
-        <div class="por oak" aria-hidden="true">JV</div>
+        <div class="por" style="background-image:url('img/jeff.jpg');background-position:30% 20%" role="img" aria-label="Jeff mashing in at the Woodhouse brewhouse"></div>
         <div>
-          <h3>Jeffrey Vitalich</h3>
+          <h3>Jeff Vitalich</h3>
           <p class="role">Brewer</p>
-          <p>With a long history of success in multiple fields, Jeffrey found the craft beer industry to be the most fun and rewarding. Coming of age in the Monterey Bay Area, he became deeply involved in the two worlds of craft beer and wine, and has dedicated the last decade and a half to those creative outlets.</p>
-          <p>Stay tuned for all the fun changes, and come over to taste the inspiration and dedication to the beauty of Carmel, Carmel Valley and the Monterey Bay coast.</p>
+          <p>Jeff's roots run through Monterey and Carmel Valley, with a career spanning Gordon Biersch, award-winning brewing, winemaking, and his own Hidden Hills Brewing.</p>
+          <p>Coming of age in the Monterey Bay Area, he found himself in the two worlds of craft beer and wine, and has dedicated the last decade and a half to both. Come taste the inspiration, and his dedication to Carmel, Carmel Valley and the Monterey Bay coast.</p>
         </div>
       </article>
       <article class="bio">
-        <div class="por oak" aria-hidden="true">GM</div>
+        <div class="por" style="background-image:url('img/gino.jpg');background-position:45% 30%" role="img" aria-label="Gino grinning from inside a brew kettle"></div>
         <div>
           <h3>Gino Monjaraz</h3>
           <p class="role">Brewer</p>
-          <p>Gino's brewing life started the way the best ones do: a homebrew kit, a lot of questions and a stack of batches shared with friends. He sharpened that obsession at Shanty Shack, learning to brew on a production system, and now distills at Venus Spirits, where the craft of fermentation meets the patience of the still.</p>
-          <p>That range, from the bucket to the brewhouse to the column still, shows up in every beer he touches at Woodhouse.</p>
-          <p class="ph-note">Placeholder bio. Final version coming from Gino.</p>
+          <p>Gino brings his own impressive range of experience, from brewing at Shanty Shack to exploring the art of distilling at Venus Spirits.</p>
+          <p>That range, from the brewhouse to the still, shows up in every beer he touches at Woodhouse.</p>
         </div>
       </article>
     </div>
@@ -271,10 +273,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="assets/js/data.js?v=202611060026"></script>
-<script src="assets/js/core.js?v=202611060026"></script>
-<script src="assets/js/cellar3d.js?v=202611060026"></script>
-<script src="assets/js/pint.js?v=202611060026"></script>
-<script src="assets/js/beer.js?v=202611060026"></script>
+<script src="assets/js/data.js?v=202611060654"></script>
+<script src="assets/js/core.js?v=202611060654"></script>
+<script src="assets/js/cellar3d.js?v=202611060654"></script>
+<script src="assets/js/pint.js?v=202611060654"></script>
+<script src="assets/js/beer.js?v=202611060654"></script>
 </body>
 </html>
