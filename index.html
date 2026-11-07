@@ -6,7 +6,7 @@
 <title>Woodhouse Blending &amp; Brewing</title>
 <meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611062347">
+<meta name="woodhouse-build" content="202611070108">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Woodhouse Blending &amp; Brewing">
 <meta property="og:description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
@@ -104,7 +104,7 @@ p{margin:0}
   background:linear-gradient(180deg,var(--cream) 0 50%,rgba(137,216,208,.22) 50% 100%);background-size:100% 200%;background-position:0 0;animation:pour 2.4s var(--ease) .2s both}
 @keyframes pour{from{background-position:0 100%}to{background-position:0 0}}
 .wm-sub{display:flex;justify-content:space-between;gap:12px;margin-top:clamp(12px,1.6vw,22px);font-size:clamp(11px,1.5vw,22px)}
-.hero-mark{position:relative;width:clamp(120px,14vw,200px);aspect-ratio:256/340;margin:clamp(22px,3vw,40px) auto 0;max-width:100%}
+.hero-mark{position:relative;width:clamp(150px,18vw,260px);aspect-ratio:256/340;margin:clamp(22px,3vw,40px) auto 0;max-width:100%}
 .hero-mark::before{content:"";position:absolute;inset:-30% -60%;background:radial-gradient(closest-side,rgba(137,216,208,.16),transparent);pointer-events:none}
 .hero-mark>svg{position:relative;width:100%;height:100%}
 .hero-mark.is3d>svg{display:none}
@@ -817,7 +817,7 @@ button.post .txt-link{margin-top:2px}
 .nav-hint::before{content:"";position:absolute;top:-6px;right:28px;width:12px;height:12px;background:var(--teal);transform:rotate(45deg)}
 .nav.nudge .nav-hint{opacity:1;transform:none}
 @media (min-width:901px){.nav-hint{right:auto;left:50%;transform:translate(-50%,-6px)}.nav.nudge .nav-hint{transform:translate(-50%,0)}.nav-hint::before{right:auto;left:calc(50% - 6px)}}
-@media (prefers-reduced-motion:reduce){.nav.nudge *{animation:none!important}}
+
 .modal-more{position:sticky;bottom:0;height:0;pointer-events:none;z-index:4}
 .modal-more span{position:absolute;left:0;right:0;bottom:0;height:90px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:14px;font:600 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--teal);background:linear-gradient(180deg,rgba(17,25,24,0),var(--ink-2) 75%);opacity:0;transition:opacity .25s}
 .modal-more span::after{content:"";width:10px;height:9px;margin-left:10px;margin-bottom:2px;background:var(--teal);clip-path:polygon(0 0,50% 48%,100% 0,100% 52%,50% 100%,0 52%);animation:bob 1.4s ease-in-out infinite}
@@ -917,7 +917,184 @@ button.post .txt-link{margin-top:2px}
 .cx-lbl span{color:#f5f5f7}
 .cx-lbl.sel b{color:#fff}
 .cx-lbl.compact span{display:none}
-@media (max-width:560px){.cx-stage .cx-chip{top:auto;bottom:10px;left:10px;right:10px;transform:none;justify-content:center}}</style>
+@media (max-width:560px){.cx-stage .cx-chip{top:auto;bottom:10px;left:10px;right:10px;transform:none;justify-content:center}}
+
+/* menu nudge, stronger: links light up in a wave */
+.nav.nudge .nav-links a{animation:linkwave 1.3s var(--ease) both;animation-delay:calc(var(--i,0)*.11s + .1s)}
+@keyframes linkwave{35%{color:#89d8d0;transform:translateY(-3px);text-shadow:0 0 14px rgba(137,216,208,.7)}}
+.nav.nudge .nav-links a[aria-current]{animation-name:linkwave-cur}
+@keyframes linkwave-cur{35%{transform:translateY(-3px);box-shadow:0 0 18px rgba(137,216,208,.6)}}
+.nav.nudge .nav-links{animation:navglow 1.4s var(--ease) 3}
+.nav-hint{font-size:14px;padding:10px 16px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.nav.nudge .nav-hint{animation:hintbob 1.2s ease-in-out 3}
+@keyframes hintbob{50%{margin-top:5px}}
+@media (prefers-reduced-motion:reduce){.nav.nudge .nav-links a{animation:none;color:#89d8d0}}
+
+/* ---------- Calendar: poster cards + month view ---------- */
+.cal-bar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:clamp(22px,3vw,36px)}
+.cal-bar .filters{margin:0}
+.cal-views{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.02)}
+.cal-views button{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:0;background:none;color:var(--muted);font:600 14px var(--f-body);cursor:pointer}
+.cal-views svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6}
+.cal-views button[aria-pressed=true]{background:var(--teal);color:var(--ink)}
+.cal-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:clamp(16px,2vw,26px)}
+.cal-cards .cal-month{grid-column:1/-1;margin:clamp(18px,3vw,34px) 0 0;font:800 clamp(30px,4vw,54px)/1 var(--f-display);text-transform:uppercase;letter-spacing:-.01em;color:var(--cream);border-top:1px solid var(--line);padding-top:clamp(18px,2.4vw,28px)}
+.cal-cards .cal-month:first-child{margin-top:0}
+.cal-cards .cal-month span{color:var(--teal)}
+.pc{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#121a19,#0d1312);transition:transform .4s var(--ease),border-color .3s,box-shadow .4s}
+.pc:hover{transform:translateY(-4px);border-color:rgba(137,216,208,.45);box-shadow:0 22px 50px rgba(0,0,0,.4)}
+.pc-art{position:relative;display:block;aspect-ratio:4/3.4;border:0;padding:0;cursor:pointer;background:#0a0f0f;overflow:hidden}
+.pc-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .8s var(--ease)}
+.pc:hover .pc-img{transform:scale(1.05)}
+.pc-noimg{display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(137,216,208,.16),transparent 65%),#0e1514}
+.pc-noimg svg{width:30%;opacity:.35}
+.pc-art::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:linear-gradient(180deg,transparent,rgba(8,12,12,.85));pointer-events:none}
+.pc-date{position:absolute;left:16px;bottom:12px;z-index:1;display:flex;align-items:flex-end;gap:10px;color:var(--cream);text-align:left}
+.pc-date b{font:800 64px/.85 var(--f-display);letter-spacing:-.04em}
+.pc-date span{font:500 12px/1.35 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;padding-bottom:4px}
+.pc-art .ev-chip{z-index:1;top:14px;right:14px}
+.pc-body{display:flex;flex-direction:column;gap:10px;padding:18px 18px 18px;flex:1;min-width:0}
+.pc-body .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pc-body .time{font:500 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-right:4px}
+.pc-body h3{font:700 clamp(20px,1.9vw,25px)/1.12 var(--f-display);text-transform:uppercase;margin:0;text-wrap:balance}
+.pc-body h3 button{all:unset;cursor:pointer}
+.pc-body h3 button:hover{color:var(--teal)}
+.pc-body p{margin:0;color:var(--muted);font-size:15px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pc-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:auto;padding-top:6px}
+.pc-foot .btn{padding:10px 16px;font-size:14px}
+
+.cal-month-view{border:1px solid var(--line);border-radius:22px;padding:clamp(14px,2vw,26px);background:linear-gradient(180deg,#111918,#0c1211)}
+.mc-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.mc-head h3{font:800 clamp(28px,3.6vw,48px)/1 var(--f-display);text-transform:uppercase;margin:0;min-width:0}
+.mc-head h3 span{color:var(--teal)}
+.mc-nav{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--cream);font-size:24px;line-height:1;cursor:pointer}
+.mc-nav:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
+.mc-nav:disabled{opacity:.3;cursor:default}
+.mc-count{margin-left:auto;font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mc-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.mc-wd{font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:4px 6px}
+.mc{min-height:118px;border-radius:12px;border:1px solid rgba(242,234,217,.06);background:rgba(255,255,255,.015);padding:6px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.mc.empty{background:none;border-color:transparent}
+.mc.past{opacity:.45}
+.mc.has{border-color:rgba(137,216,208,.22);background:rgba(137,216,208,.04)}
+.mc.today{border-color:var(--amber);box-shadow:inset 0 0 0 1px rgba(227,169,92,.4)}
+.mc.pick{background:rgba(137,216,208,.1);border-color:var(--teal)}
+.mc-num{all:unset;font:600 14px var(--f-body);color:var(--cream);padding:2px 4px;align-self:flex-start;cursor:default}
+.mc.has .mc-num{cursor:pointer}
+.mc.today .mc-num{color:var(--amber)}
+.mc-evs{display:flex;flex-direction:column;gap:4px;min-width:0}
+.mc-ev{display:flex;align-items:center;gap:6px;min-width:0;border:0;border-radius:7px;padding:4px 5px;background:rgba(137,216,208,.13);color:var(--cream);font:600 11.5px/1.2 var(--f-body);text-align:left;cursor:pointer}
+.mc-ev:hover{background:rgba(137,216,208,.28)}
+.mc-ev.tix{background:rgba(227,169,92,.18)}
+.mc-ev i{flex:none;width:18px;height:18px;border-radius:4px;background-size:cover;background-position:center}
+.mc-ev span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.mc-more{font:500 10.5px var(--f-mono);color:var(--muted);padding-left:4px}
+.mc-dots{display:none;gap:3px;justify-content:center;margin-top:auto}
+.mc-dots i{width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mc-day{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;display:grid;gap:8px}
+.mc-row{display:flex;align-items:center;gap:14px;width:100%;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);padding:10px;color:var(--cream);text-align:left;cursor:pointer}
+.mc-row:hover{border-color:var(--teal)}
+.mc-row i{flex:none;width:58px;height:58px;border-radius:10px;background-size:cover;background-position:center;background-color:#0e1514}
+.mc-row span{display:grid;gap:3px;min-width:0;flex:1}
+.mc-row b{font:700 17px/1.2 var(--f-display);text-transform:uppercase}
+.mc-row small{font:500 12px var(--f-mono);color:var(--teal);letter-spacing:.06em}
+.mc-row em{font-style:normal;font:600 13px var(--f-body);color:var(--muted);white-space:nowrap}
+@media (max-width:760px){
+  .mc{min-height:54px;padding:4px;align-items:center}
+  .mc-evs{display:none}.mc-dots{display:flex}
+  .mc-num{align-self:center}
+  .mc-wd{text-align:center;padding:4px 0;letter-spacing:.06em;font-size:10px}
+  .mc-grid{gap:4px}
+  .mc-count{width:100%;margin-left:0}
+  .cal-views{width:100%;justify-content:center}.cal-views button{flex:1;justify-content:center}
+}
+.mc-head{flex-wrap:nowrap}
+.mc-head h3{flex:0 1 auto;white-space:nowrap}
+@media (max-width:760px){.mc-head{flex-wrap:wrap}.mc-head h3{font-size:clamp(22px,6.6vw,34px);flex:1;text-align:center}.mc-count{order:5;text-align:center}}
+.ev-hero.no-img{min-height:200px;background:radial-gradient(circle at 75% 20%,rgba(137,216,208,.18),transparent 60%),linear-gradient(180deg,#152220,#0f1716)}
+
+/* ---------- Visit page ---------- */
+.vz-glance{display:grid;grid-template-columns:1.1fr .9fr 1.2fr;gap:clamp(14px,1.8vw,22px)}
+.vz-card{border:1px solid var(--line);border-radius:20px;padding:clamp(18px,2.2vw,28px);background:linear-gradient(180deg,#121a19,#0d1312);min-width:0;display:flex;flex-direction:column;gap:14px}
+.vz-where .addr{margin:0}
+.vz-where .status{align-self:flex-start}
+.vz-map{padding:0;overflow:hidden;position:relative;min-height:320px}
+.vz-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.55) contrast(1.05) brightness(.85)}
+.vz-map-fallback{position:absolute;left:14px;bottom:14px;z-index:1;display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:999px;background:rgba(10,15,15,.85);color:var(--teal);font:600 14px var(--f-body);text-decoration:none;backdrop-filter:blur(6px)}
+.vz-map-fallback span{color:var(--cream)}
+.vz-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:clamp(18px,2.4vw,28px);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--line)}
+.vz-facts>div{background:var(--ink);padding:18px 20px;display:grid;gap:6px}
+.vz-facts .k{font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.vz-facts b{font:600 16px/1.35 var(--f-body)}
+.vz-h2{font:800 clamp(34px,4.4vw,64px)/.95 var(--f-display);text-transform:uppercase;margin:12px 0 20px;text-wrap:balance}
+.vz-near{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.vz-near span{font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--line);border-radius:999px;color:var(--cream)}
+.vz-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,22px)}
+.vz-card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.vz-next{display:grid;gap:8px}
+.vz-ev{display:flex;align-items:center;gap:14px;width:100%;border:1px solid var(--line-2);border-radius:14px;background:rgba(255,255,255,.02);padding:12px 14px;color:var(--cream);text-align:left;cursor:pointer;transition:border-color .25s,background .25s}
+.vz-ev:hover{border-color:var(--teal);background:rgba(137,216,208,.06)}
+.vz-ev-d{display:grid;justify-items:center;min-width:54px;font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.vz-ev-d b{font:800 34px/.95 var(--f-display);color:var(--cream);letter-spacing:-.03em}
+.vz-ev-t{display:grid;gap:4px;min-width:0;flex:1}
+.vz-ev-t b{font:700 17px/1.2 var(--f-display);text-transform:uppercase}
+.vz-ev-t small{font:500 12px var(--f-mono);color:var(--teal);letter-spacing:.04em}
+.vz-ev em{font-style:normal;font-size:22px;color:var(--muted)}
+.vz-regular{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.vz-regular li{display:grid;gap:3px;padding:12px 0;border-bottom:1px solid var(--line-2)}
+.vz-regular li:last-child{border-bottom:0}
+.vz-regular b{font:700 18px var(--f-display);text-transform:uppercase}
+.vz-regular span{font:500 12px var(--f-mono);letter-spacing:.06em;color:var(--teal)}
+.vz-regular small{color:var(--muted);font-size:14px}
+.vz-cals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.vz-cals a{position:relative;display:grid;gap:6px;padding:18px 44px 18px 18px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02);color:var(--cream);text-decoration:none;transition:border-color .25s,transform .3s var(--ease)}
+.vz-cals a:hover{border-color:var(--teal);transform:translateY(-2px)}
+.vz-cals b{font:700 17px var(--f-display);text-transform:uppercase}
+.vz-cals span{color:var(--muted);font-size:14px;line-height:1.45}
+.vz-cals em{position:absolute;top:16px;right:18px;font-style:normal;color:var(--teal)}
+.vz-groups{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px)}
+.vz-gh{font:500 12px var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin:0 0 12px}
+.vz-list,.vz-venues{list-style:none;margin:0;padding:0;display:grid}
+.vz-list li a,.vz-venues li a{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:14px;row-gap:3px;padding:14px 4px;border-bottom:1px solid var(--line-2);color:var(--cream);text-decoration:none;transition:background .25s,padding .25s}
+.vz-list li a:hover,.vz-venues li a:hover{background:rgba(137,216,208,.05);padding-left:10px}
+.vz-list b,.vz-venues b{font:700 19px/1.2 var(--f-display);text-transform:uppercase;grid-column:1}
+.vz-list span,.vz-venues a>span:not(.vz-kind){font:500 13px var(--f-mono);color:var(--teal);letter-spacing:.04em;grid-column:1}
+.vz-list small,.vz-venues small{color:var(--muted);font-size:14px;grid-column:1}
+.vz-list em,.vz-venues em{grid-column:2;grid-row:1/span 3;align-self:center;font-style:normal;color:var(--muted);transition:color .25s}
+.vz-list a:hover em,.vz-venues a:hover em{color:var(--teal)}
+.vz-venues{grid-template-columns:1fr 1fr;column-gap:clamp(20px,3vw,48px)}
+.vz-venues .vz-kind{grid-column:1;justify-self:start;font:500 10.5px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(227,169,92,.35);border-radius:999px;padding:3px 8px;margin-bottom:4px}
+.vz-note{margin-top:22px;font-size:14px}
+.vz-day{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.8vw,22px)}
+.vz-day article{border:1px solid var(--line);border-radius:18px;padding:22px;background:linear-gradient(180deg,#121a19,#0d1312);display:grid;gap:10px;align-content:start}
+.vz-day .n{font:500 12px var(--f-mono);color:var(--teal);letter-spacing:.14em}
+.vz-day h3{font:700 22px/1.1 var(--f-display);text-transform:uppercase;margin:0}
+.vz-day p{margin:0;color:var(--muted);line-height:1.55}
+@media (max-width:980px){.vz-glance{grid-template-columns:1fr 1fr}.vz-map{grid-column:1/-1}.vz-facts{grid-template-columns:1fr 1fr}.vz-cals{grid-template-columns:1fr 1fr}.vz-day{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){.vz-glance,.vz-two,.vz-groups,.vz-venues,.vz-cals,.vz-day{grid-template-columns:1fr}.vz-facts{grid-template-columns:1fr 1fr}}
+.vz-glance{grid-template-columns:1.25fr .9fr 1.1fr}
+.vz-where .ci .v{font-size:15px;overflow-wrap:anywhere}
+
+/* ---------- Rustic modern finish ---------- */
+:root{--oak:#c4915c;--oak-2:#8b5d36;--oak-line:rgba(196,145,92,.28)}
+.card,.tier,.insp-card,.pc,.vz-card,.vz-day article,.vz-cals a,.contact-card{
+  background-image:linear-gradient(170deg,rgba(26,35,32,.95),rgba(16,23,22,.975)),var(--oak-tex,linear-gradient(transparent,transparent));
+  background-size:auto,560px auto}
+.tier:hover,.insp-card:hover,.card:hover,.vz-day article:hover{border-color:var(--oak-line)}
+.eyebrow{position:relative}
+.sec-head h2::after{content:"";display:block;width:64px;height:3px;margin-top:18px;border-radius:2px;background:linear-gradient(90deg,var(--oak),var(--oak-2) 70%,transparent)}
+.visit-band,footer{position:relative;isolation:isolate}
+.visit-band::before,footer::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(242,234,217,.022) 0 2px,transparent 2px 16px),linear-gradient(180deg,rgba(10,15,15,.9),rgba(10,15,15,.95)),var(--oak-tex,none);background-size:auto,auto,640px auto}
+footer{border-top:0}
+footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,var(--oak-2) 15%,var(--oak) 50%,var(--oak-2) 85%,transparent);opacity:.7}
+.foot-stamp-row{display:flex;align-items:center;gap:clamp(16px,3vw,40px)}
+.foot-stamp-row .giant{flex:1;min-width:0}
+.stamp{flex:none;width:clamp(96px,11vw,150px);color:var(--oak);transform:rotate(-9deg);opacity:.85}
+.stat b{background:linear-gradient(180deg,var(--cream) 55%,#e7cfa9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn-ghost:hover{border-color:var(--oak-line)}
+@media (max-width:600px){.foot-stamp-row{flex-direction:column-reverse;align-items:flex-start}.stamp{width:96px}}
+.foot-stamp-row{margin-top:72px}.foot-stamp-row .giant{margin-top:0}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -928,14 +1105,14 @@ button.post .txt-link{margin-top:2px}
       <svg viewBox="0 0 256 340" aria-hidden="true"><use href="#wmark"/></svg>
       <span><span class="wm" aria-hidden="true"></span><small>Blending &amp; Brewing</small></span>
     </a>
-    <nav class="nav-links" aria-label="Primary"><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Events</a><a href="#visit">Visit</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></nav>
+    <nav class="nav-links" aria-label="Primary"><a href="/" aria-current="page">Home</a><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Events</a><a href="/visit">Visit</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></nav>
     <a class="btn btn-teal" href="/events#plan">Plan an event <span class="arr">→</span></a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="drawer">Menu</button>
   </div>
   <span class="nav-hint" aria-hidden="true">Explore the whole house up here</span>
 </header>
 <div class="drawer" id="drawer">
-  <a href="/">Home</a><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Events</a><a href="#visit">Visit</a>
+  <a href="/" aria-current="page">Home</a><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Events</a><a href="/visit">Visit</a>
   <a href="/events#plan" style="color:var(--teal)">Plan an event</a>
 </div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -961,7 +1138,7 @@ button.post .txt-link{margin-top:2px}
       <div class="hero-act">
         <div class="hero-cta">
           <a class="btn btn-teal" href="#events">What's on this week <span class="arr">→</span></a>
-          <a class="btn btn-ghost" href="#visit">Plan a visit</a>
+          <a class="btn btn-ghost" href="/visit">Plan a visit</a>
         </div>
       </div>
     </div>
@@ -1091,6 +1268,7 @@ button.post .txt-link{margin-top:2px}
       </div>
       <div class="socials">
         <a class="btn btn-ghost" href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions <span class="arr">↗</span></a>
+        <a class="btn btn-teal" href="/visit">Plan your visit <span class="arr">→</span></a>
         <a class="btn btn-ghost" href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">Instagram</a>
         <a class="btn btn-ghost" href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a>
         <a class="btn btn-ghost" href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a>
@@ -1115,12 +1293,12 @@ button.post .txt-link{margin-top:2px}
         </form>
         <p class="signup-msg" id="signupMsg" aria-live="polite"></p>
       </div>
-      <div><h5>Explore</h5><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Private events</a></div>
+      <div><h5>Explore</h5><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Private events</a><a href="/visit">Visit Santa Cruz</a></div>
       <div><h5>Work with us</h5><a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Book an event</a><a href="downloads/woodhouse-events-brochure-2026.pdf" download>Events brochure</a><a href="/calendar#play">Play at Woodhouse</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></div>
-      <div><h5>Find us</h5><p class="foot-addr">119 Madrone St<br>Santa Cruz, CA 95060</p><a href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions ↗</a><a href="#visit">Hours</a></div>
+      <div><h5>Find us</h5><p class="foot-addr">119 Madrone St<br>Santa Cruz, CA 95060</p><a href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions ↗</a><a href="/visit">Hours &amp; visiting</a></div>
       <div><h5>Follow</h5><a href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">@woodhousebrews</a><a href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a><a href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a></div>
     </div>
-    <div class="giant wm" aria-hidden="true"></div>
+    <div class="foot-stamp-row"><div class="giant wm" aria-hidden="true"></div><svg class="stamp" viewBox="0 0 200 200" role="img" aria-label="Blended and brewed in Santa Cruz since 2020"><defs><path id="stTop" d="M30,100 a70,70 0 0,1 140,0"/><path id="stBot" d="M24,100 a76,76 0 0,0 152,0"/></defs><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stTop" startOffset="50%">BLENDED &amp; BREWED</textPath></text><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stBot" startOffset="50%" side="right">SANTA CRUZ</textPath></text><circle cx="31" cy="100" r="2.5" fill="currentColor"/><circle cx="169" cy="100" r="2.5" fill="currentColor"/><g transform="translate(81,70) scale(.148)" fill="currentColor"><path fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><path d="M44 213L86 255L86 340L128 298L171 340L171 255L213 213Z"/></g><text x="100" y="138" text-anchor="middle" font-size="10.5" letter-spacing="2.5" fill="currentColor" font-family="IBM Plex Mono, monospace">EST. 2020</text></svg></div>
     <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>119 Madrone St · (831) 313-9461</span></div>
   </div>
 </footer>
@@ -1193,6 +1371,8 @@ MENU:{
 
 /* ---- Drinks: live from Square via /api/taps (what actually sold in the last 7 days).
         This snapshot is only shown if Square can't be reached. Snapshot taken Nov 5, 2026. ---- */
+/* which group a drink belongs in, whatever Square's category says (lowercase name: group key) */
+TAP_GROUP_FIX:{'slippery slope':'house','black lager':'guest'},
 TAPS_SNAPSHOT:{updated:'2026-11-05',groups:[
   {key:'house',label:'Woodhouse Beer',items:[
     {name:'Egyptian Cotton',desc:'Hazy IPA · 6.1% ABV · Cashmere, Idaho 7, Azacca, Citra, Mosaic',abv:6.1,style:'Hazy IPA',color:'#12BF94',sizes:[['Pint (16oz)',900],['Tulip (12oz)',700],['Taster (5oz)',300],['Crowler (32oz)',1700]]},
@@ -1202,7 +1382,8 @@ TAPS_SNAPSHOT:{updated:'2026-11-05',groups:[
     {name:'Framboise',desc:'',style:'Raspberry',color:'#990838',sizes:[['Tulip (12oz)',800],['Taster (5oz)',400],['Bottle',1500]]}
   ]},
   {key:'guest',label:'Guest Taps',items:[
-    {name:'Slippery Slope',desc:'',style:'Guest beer',color:'#12BF94',sizes:[['Regular',900]]}
+    {name:'Slippery Slope',desc:'',style:'House beer',color:'#12BF94',sizes:[['Pint (16oz)',900]]},
+    {name:'Black Lager',desc:'',style:'Guest beer',color:'#2b1a10',sizes:[['Pint (16oz)',900]]}
   ]},
   {key:'spritz',label:'Spritzes & Seltzers',items:[
     {name:'Lemoncello Spritz',desc:'',color:'#FFBF00',sizes:[['Tulip (12oz)',1000],['Taster (5oz)',500]]},
@@ -1525,8 +1706,8 @@ function eventHtml(e,i){
   const wd=WD[new Date(Date.UTC(e.y,e.m-1,e.d,12)).getUTCDay()];
   const tickets=e.tickets||((e.body||'').match(/https?:\/\/\S*(eventbrite|fareharbor|ticket|tix)\S*/i)||[])[0]||'';
   const paras=String(e.body||e.p||'').split(/\n{2,}|\n/).map(x=>x.trim()).filter(Boolean).map(x=>`<p>${esc(x)}</p>`).join('');
-  const img=e.img||FALLBACK_IMG[(i||0)%FALLBACK_IMG.length];
-  return `<div class="ev-hero" style="background-image:url('${img}')"><div class="ev-hero-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd}</span></div></div>
+  const img=e.img;
+  return `<div class="ev-hero${img?'':' no-img'}"${img?` style="background-image:url('${img}')"`:''}><div class="ev-hero-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd}</span></div></div>
     <div class="ev-pad"><p class="eyebrow">${esc(e.time)} · Woodhouse, 119 Madrone St</p><h2 id="modalTitle">${esc(e.t)}</h2>
     <div class="chips" style="margin-top:14px">${(e.cats||e.tags||[]).filter(c=>c!=='Ticketed').slice(0,3).map(c=>`<span class="chip">${esc(c)}</span>`).join('')}${tickets?'<span class="chip warm">Tickets</span>':e.door?`<span class="chip warm">${esc(e.door)}</span>`:''}</div>
     <div class="ev-text">${paras}</div>
@@ -1576,18 +1757,23 @@ document.addEventListener('click',e=>{
   const g=e.target.closest('[data-gallery]');if(g){e.preventDefault();const set=(D.GALLERIES||{})[g.dataset.gallery];if(set)openGallery(set.title,set.imgs);}
 });
 
-/* ---------- Menu attention nudge: shine + pulse + hint bubble ---------- */
+/* ---------- Menu attention nudge: a teal wave runs across the menu, a hint bubble points at it ---------- */
 (function(){
-  if(reduce)return;
   const n=document.getElementById('nav');if(!n)return;
-  let shown=0;try{shown=+sessionStorage.getItem('wh-nudge')||0;}catch(e){}
-  const fire=()=>{if(shown>=2)return;shown++;try{sessionStorage.setItem('wh-nudge',String(shown));}catch(e){}
-    n.classList.remove('nudge');void n.offsetWidth;n.classList.add('nudge');setTimeout(()=>n.classList.remove('nudge'),5200);};
-  setTimeout(fire,2200);
-  /* once more after they have scrolled into the page, so it is noticed */
-  const onS=()=>{if(window.scrollY>window.innerHeight*.9){window.removeEventListener('scroll',onS);setTimeout(fire,600);}};
+  n.querySelectorAll('.nav-links a').forEach((a,i)=>a.style.setProperty('--i',i));
+  let busy=false;
+  const fire=()=>{if(busy)return;busy=true;n.classList.remove('nudge');void n.offsetWidth;n.classList.add('nudge');
+    setTimeout(()=>{n.classList.remove('nudge');busy=false;},reduce?3500:4800);};
+  setTimeout(fire,1400);                               /* every page, shortly after it opens */
+  let again=true;const onS=()=>{if(again&&window.scrollY>window.innerHeight*1.2){again=false;setTimeout(fire,500);}};
   window.addEventListener('scroll',onS,{passive:true});
+  n.addEventListener('pointerenter',()=>{n.classList.remove('nudge');});
 })();
+
+/* ---------- Rustic finish: faint oak grain behind cards, footer and visit band ---------- */
+(function(){const run=()=>{try{const c=makeWoodCanvas(false),s=document.createElement('canvas');s.width=s.height=512;const x=s.getContext('2d');x.drawImage(c,0,0,512,512);
+  document.documentElement.style.setProperty('--oak-tex',`url(${s.toDataURL('image/jpeg',.72)})`);}catch(e){}};
+  (window.requestIdleCallback||(f=>setTimeout(f,400)))(run);})();
 
 window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
 
@@ -1628,7 +1814,7 @@ window.addEventListener('load',()=>ScrollTrigger.refresh());
 const box=document.getElementById('heroMark');
 if(!box||!window.THREE)return;
 const {reduce,makeWoodCanvas}=window.WH;
-const SET={hold:1.2,turns:4,dur:2.4,ms:.25,me:.85,depth:34,idle:.45};
+const SET={hold:1.2,turns:6,dur:5.2,ms:.06,me:.94,depth:34,idle:.45};
 
 /* logo geometry (256 x 340, y down) */
 const LOGO_OUTER=[[0,0],[256,0],[256,213],[213,213],[171,255],[171,340],[128,298],[86,340],[86,255],[44,213],[0,213]];
@@ -1723,19 +1909,41 @@ const mesh=new THREE.Mesh(new THREE.BufferGeometry(),mat),finalA=new THREE.Mesh(
 group.add(mesh,finalA,finalB);mesh.visible=false;
 const P=q=>new THREE.Vector2(q[0]-128,-(q[1]-170));
 const ext={depth:SET.depth,bevelEnabled:true,bevelThickness:1.3,bevelSize:1,bevelOffset:-1,bevelSegments:3,curveSegments:1};
-function setGeo(m,shape){m.geometry.dispose();m.geometry=new THREE.ExtrudeGeometry(shape,ext);m.geometry.translate(0,0,-SET.depth/2);}
+function setGeo(m,shape){m.geometry.dispose();m.geometry=new THREE.ExtrudeGeometry(shape,ext);/* shape may be an array of pieces */m.geometry.translate(0,0,-SET.depth/2);}
 setGeo(finalA,new THREE.Shape(FINAL_A.map(P)));setGeo(finalB,new THREE.Shape(FINAL_B.map(P)));
 
 const LOGO=normalize(resample(LOGO_OUTER,N));
 const holeC=LOGO_HOLE.reduce((a,q)=>[a[0]+q[0]/LOGO_HOLE.length,a[1]+q[1]/LOGO_HOLE.length],[0,0]);
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 let SIL=null,lastMorph=-1;
+/* morph path: the woman, then every stage of the tangram progression, then the W.
+   Each step is three pieces; pieces that don't exist yet start as tiny diamonds and grow. */
+const NP=200;
+const ART=pts=>pts.map(q=>[q[0]+128,q[1]+171]);
+const tinyAt=(x,y)=>[[x,y-1.2],[x+1.2,y],[x,y+1.2],[x-1.2,y]];
+const STAGES=[
+  [[[0,-84],[85,1],[-85,1]],[[-85,1],[85,1],[0,86]],[[0,39],[1,40],[0,41],[-1,40]]],
+  [[[0,-88],[85,-3],[-85,-3]],[[-85,4],[85,4],[0,89]],[[0,42],[1,43],[0,44],[-1,43]]],
+  [[[-85,-85],[85,-85],[0,0]],[[0,0],[85,85],[-85,85]],[[0,42],[1,43],[0,44],[-1,43]]],
+  [[[-85,-86],[0,-1],[-85,84]],[[85,-86],[85,84],[0,-1]],[[0,42],[1,43],[0,44],[-1,43]]],
+  [[[-85,-87],[-43,-45],[-43,41],[-85,83]],[[85,-87],[85,83],[43,41],[43,-45]],[[0,42],[1,43],[0,44],[-1,43]]],
+  [[[-85,-134],[-42,-91],[-42,-8],[-85,36]],[[85,-134],[85,36],[43,-8],[43,-91]],[[0,-42],[85,43],[0,128],[-85,43]]]
+].map(st=>st.map(ART));
+const W_PIECES=[[[0,0],[128,0],[128,128],[86,171],[86,85],[44,43],[44,213],[0,213]],[[128,0],[256,0],[256,213],[213,213],[213,43],[171,85],[171,171],[128,128]],FINAL_B];
+const prep=p=>normalize(resample(p,NP));
+let KEYS=null;
+function buildKeys(){
+  const c=SIL.reduce((a,q)=>[a[0]+q[0]/SIL.length,a[1]+q[1]/SIL.length],[0,0]);
+  KEYS=[[SIL,tinyAt(c[0],c[1]-30),tinyAt(c[0],c[1]+40)]].concat(STAGES,[W_PIECES]).map(k=>k.map(prep));
+}
 function buildMorph(t){
-  const f=ease(Math.max(0,Math.min(1,t)));
-  const sh=new THREE.Shape(SIL.map((p,i)=>P([p[0]+(LOGO[i][0]-p[0])*f,p[1]+(LOGO[i][1]-p[1])*f])));
-  const hs=Math.max(0,(f-.55)/.45);
-  if(hs>.02){const k=(.15+.85*hs)*.985;sh.holes.push(new THREE.Path(LOGO_HOLE.map(q=>[holeC[0]+(q[0]-holeC[0])*k,holeC[1]+(q[1]-holeC[1])*k]).reverse().map(P)));}
-  setGeo(mesh,sh);
+  if(!KEYS)buildKeys();
+  const S=KEYS.length-1,m=Math.max(0,Math.min(1,t))*S,i=Math.min(S-1,Math.floor(m));
+  /* each shape settles for a beat before the next one starts */
+  const f=ease(Math.max(0,Math.min(1,(m-i-.12)/.76)));
+  const A=KEYS[i],B=KEYS[i+1];
+  const shapes=A.map((pa,j)=>{const pb=B[j];return new THREE.Shape(pa.map((p,k)=>P([p[0]+(pb[k][0]-p[0])*f,p[1]+(pb[k][1]-p[1])*f])));});
+  setGeo(mesh,shapes);
 }
 
 /* timeline: person, fast spin + morph, then the slow idle turn */
@@ -1746,7 +1954,7 @@ function replay(h){if(!SIL)return;base=((rot%TAU)+TAU)%TAU;hold=h;mode='play';t0
 function useImage(src,onDone){
   const im=new Image();
   im.onload=()=>{let poly=null;try{poly=trace(im);}catch(e){}const ok=poly&&poly.length>12;
-    if(ok){SIL=normalize(resample(poly,N));if(mode==='wait'){mesh.visible=true;finalA.visible=finalB.visible=false;buildMorph(0);lastMorph=0;}}
+    if(ok){SIL=normalize(resample(poly,N));KEYS=null;if(mode==='wait'){mesh.visible=true;finalA.visible=finalB.visible=false;buildMorph(0);lastMorph=0;}}
     onDone&&onDone(ok);};
   im.onerror=()=>onDone&&onDone(false);
   im.src=src;

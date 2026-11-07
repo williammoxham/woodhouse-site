@@ -263,7 +263,7 @@ api=(function(){
     g.add(mesh(new THREE.CylinderGeometry(.34,.34,.1,36),M.fit,mwx,topY-.1,mwz));
     {const o=mesh(new THREE.TorusGeometry(.3,.035,10,36),M.fit,mwx,topY-.04,mwz);o.rotation.x=Math.PI/2;g.add(o)}
     g.add(mesh(new THREE.CylinderGeometry(.24,.24,.03,32),new THREE.MeshStandardMaterial({color:0x89d8d0,metalness:.1,roughness:.05,transparent:true,opacity:.55}),mwx,topY-.02,mwz));
-    if(t.id==="HLT"||t.id==="MLT"){
+    if(t.id==="MLT"){ /* rake gearmotor: mash / lauter tun only */
       g.add(mesh(new THREE.CylinderGeometry(.2,.24,.22,20),M.steel,.1,topY+.06,-.1));
       g.add(mesh(new THREE.BoxGeometry(.42,.34,.36),MOTOR,.1,topY+.32,-.1));
       const mot=mesh(new THREE.CylinderGeometry(.16,.16,.5,24),MOTOR,.48,topY+.36,-.1);mot.rotation.z=Math.PI/2;g.add(mot);

@@ -72,21 +72,52 @@ decal.rotation.y=Math.PI;decal.renderOrder=12;
 
 /* beer + foam: one solid, cut by world-space clipping planes so the surface stays level */
 const BEERS={
-  light:{c:0xd99a12,foam:0xfbf3dc,op:.9,headMax:12},
-  hazy:{c:0xe58a1c,foam:0xfdf5e2,op:.97,headMax:15},
-  porter:{c:0x2a1308,foam:0xd9b88c,op:1,headMax:13},
+  light:{c:0xe0a015,foam:0xf8efd8,op:.9,headMax:12},
+  hazy:{c:0xeba232,foam:0xfbf1dc,op:.97,headMax:15},
+  porter:{c:0x3a1a0a,foam:0xd8b48a,op:1,headMax:13},
   sour:{c:0xb8322a,foam:0xf6d9d0,op:.92,headMax:7}
 };
 let beer=BEERS.light;
+/* ---- realism: beer depth gradient, bubbly foam, condensation ---- */
+const mix=(a,b,t)=>a+(b-a)*t;
+function beerCanvas(hex){const c=document.createElement('canvas');c.width=64;c.height=512;const g=c.getContext('2d');
+  const col=new THREE.Color(hex),r=col.r*255,gg=col.g*255,b=col.b*255;
+  const shade=(k,lift)=>`rgb(${Math.round(Math.min(255,mix(r*k,255,lift)))},${Math.round(Math.min(255,mix(gg*k,235,lift)))},${Math.round(Math.min(255,mix(b*k,170,lift)))})`;
+  /* lathe v runs bottom (0) to top (1); the wall sits in the middle third */
+  const gr=g.createLinearGradient(0,512,0,0);
+  gr.addColorStop(0,shade(.45,0));gr.addColorStop(.34,shade(.55,0));gr.addColorStop(.45,shade(.85,0));gr.addColorStop(.58,shade(1,.06));gr.addColorStop(.66,shade(1.05,.16));gr.addColorStop(1,shade(1.05,.16));
+  g.fillStyle=gr;g.fillRect(0,0,64,512);
+  /* faint rising streaks of carbonation */
+  for(let i=0;i<26;i++){const x=Math.random()*64;g.fillStyle=`rgba(255,248,220,${.03+Math.random()*.05})`;g.fillRect(x,170,.8,170);}
+  return c;}
+function foamCanvas(hex){const c=document.createElement('canvas');c.width=c.height=512;const g=c.getContext('2d');
+  g.fillStyle=new THREE.Color(hex).getStyle();g.fillRect(0,0,512,512);
+  for(let i=0;i<2600;i++){const x=Math.random()*512,y=Math.random()*512,rr=Math.random()<.9?1+Math.random()*4:4+Math.random()*9;
+    const rg=g.createRadialGradient(x-rr*.3,y-rr*.3,0,x,y,rr);rg.addColorStop(0,'rgba(255,255,255,.95)');rg.addColorStop(.6,'rgba(255,252,244,.35)');rg.addColorStop(.92,'rgba(120,96,60,.28)');rg.addColorStop(1,'rgba(120,96,60,0)');
+    g.fillStyle=rg;g.beginPath();g.arc(x,y,rr,0,7);g.fill();}
+  return c;}
+function dropsCanvas(){const c=document.createElement('canvas');c.width=1024;c.height=512;const g=c.getContext('2d');
+  for(let i=0;i<1700;i++){const x=Math.random()*1024,y=40+Math.random()*450,rr=Math.random()<.85?.6+Math.random()*1.8:2+Math.random()*3.5;
+    g.fillStyle='rgba(255,255,255,.10)';g.beginPath();g.ellipse(x,y,rr,rr*1.15,0,0,7);g.fill();
+    g.fillStyle='rgba(255,255,255,.75)';g.beginPath();g.arc(x-rr*.35,y-rr*.4,Math.max(.4,rr*.32),0,7);g.fill();}
+  /* a few runs where drops have slid down */
+  for(let i=0;i<14;i++){const x=Math.random()*1024,y=80+Math.random()*250,l=60+Math.random()*160;g.fillStyle='rgba(255,255,255,.09)';g.fillRect(x,y,2.2,l);g.fillStyle='rgba(255,255,255,.6)';g.beginPath();g.arc(x+1,y+l,2.4,0,7);g.fill();}
+  return c;}
+const beerTex=new THREE.CanvasTexture(beerCanvas(BEERS.light.c));beerTex.encoding=THREE.sRGBEncoding;
+const foamTex=new THREE.CanvasTexture(foamCanvas(BEERS.light.foam));foamTex.encoding=THREE.sRGBEncoding;foamTex.wrapS=foamTex.wrapT=THREE.RepeatWrapping;foamTex.repeat.set(8,12);
+const foamBump=new THREE.CanvasTexture(foamCanvas('#808080'));foamBump.wrapS=foamBump.wrapT=THREE.RepeatWrapping;foamBump.repeat.copy(foamTex.repeat);
+const capTex=foamTex.clone();capTex.needsUpdate=true;capTex.repeat.set(2.6,2.6);
+const capBump=foamBump.clone();capBump.needsUpdate=true;capBump.repeat.set(2.6,2.6);
 const IN=[V(0,BASE+.5),V(rAt(BASE)-WALL-.4,BASE+.5),V(RT-WALL-.45,H-.4),V(0,H-.4)];
 const clipTop=new THREE.Plane(new THREE.Vector3(0,-1,0),0),clipFoamLo=new THREE.Plane(new THREE.Vector3(0,1,0),0),clipBeerTop=new THREE.Plane(new THREE.Vector3(0,-1,0),0);
-const beerMat=new THREE.MeshPhysicalMaterial({color:beer.c,roughness:.12,clearcoat:.8,transparent:false,side:THREE.DoubleSide,clippingPlanes:[clipBeerTop],emissive:beer.c,emissiveIntensity:.14,depthWrite:true});
-const foamMat=new THREE.MeshStandardMaterial({color:beer.foam,roughness:.95,side:THREE.DoubleSide,clippingPlanes:[clipTop,clipFoamLo]});
+const beerMat=new THREE.MeshPhysicalMaterial({color:0xffffff,map:beerTex,roughness:.06,clearcoat:1,clearcoatRoughness:.04,envMapIntensity:1.25,transparent:false,side:THREE.DoubleSide,clippingPlanes:[clipBeerTop],emissive:0xffffff,emissiveMap:beerTex,emissiveIntensity:.32,depthWrite:true});
+const foamMat=new THREE.MeshStandardMaterial({color:0xffffff,map:foamTex,bumpMap:foamBump,bumpScale:.9,roughness:.88,side:THREE.DoubleSide,clippingPlanes:[clipTop,clipFoamLo]});
 const liquidGeo=new THREE.LatheGeometry(IN,72);
 const beerMesh=new THREE.Mesh(liquidGeo,beerMat),foamMesh=new THREE.Mesh(liquidGeo,foamMat);
 beerMesh.renderOrder=2;foamMesh.renderOrder=3;
 /* surface cap (an ellipse that tracks the level when tipped) */
-const cap=new THREE.Mesh(new THREE.CircleGeometry(1,64),new THREE.MeshStandardMaterial({color:beer.foam,roughness:.9,side:THREE.DoubleSide}));cap.renderOrder=4;scene.add(cap);
+const capMat=new THREE.MeshStandardMaterial({color:0xffffff,map:capTex,bumpMap:capBump,bumpScale:1.1,roughness:.85,side:THREE.DoubleSide});
+const cap=new THREE.Mesh(new THREE.CircleGeometry(1,64),capMat);cap.renderOrder=4;scene.add(cap);
 
 /* bubbles */
 const NB=140,bPos=new Float32Array(NB*3),bSeed=[];
@@ -94,10 +125,13 @@ for(let i=0;i<NB;i++){bSeed.push({a:Math.random()*6.283,r:Math.sqrt(Math.random(
 const bGeo=new THREE.BufferGeometry();bGeo.setAttribute('position',new THREE.BufferAttribute(bPos,3));
 const bubbles=new THREE.Points(bGeo,new THREE.PointsMaterial({color:0xfff8e6,size:1.5,transparent:true,opacity:.7,depthWrite:false,clippingPlanes:[clipBeerTop]}));bubbles.renderOrder=5;
 
+const dropTex=new THREE.CanvasTexture(dropsCanvas());dropTex.encoding=THREE.sRGBEncoding;dropTex.wrapS=THREE.RepeatWrapping;dropTex.repeat.set(2,1);dropTex.anisotropy=ani;
+const condense=new THREE.Mesh(new THREE.LatheGeometry([V(rAt(6)+.35,6),V(rAt(112)+.35,112)],128),
+  new THREE.MeshBasicMaterial({map:dropTex,transparent:true,opacity:.55,depthWrite:false,blending:THREE.AdditiveBlending}));condense.renderOrder=13;
 /* hierarchy: tilt (world z) > spin (local y) */
 const tiltG=new THREE.Group(),spinG=new THREE.Group();
 tiltG.position.set(0,60,0);spinG.position.set(0,-60,0);
-spinG.add(beerMesh,foamMesh,bubbles,baseDisc,glass,rimRing,decal);tiltG.add(spinG);scene.add(tiltG);
+spinG.add(beerMesh,foamMesh,bubbles,baseDisc,glass,rimRing,decal,condense);tiltG.add(spinG);scene.add(tiltG);
 
 /* soft contact shadow + puddle on the bar */
 const sh=document.createElement('canvas');sh.width=sh.height=128;{const g=sh.getContext('2d'),rg=g.createRadialGradient(64,64,0,64,64,64);rg.addColorStop(0,'rgba(0,0,0,.55)');rg.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=rg;g.fillRect(0,0,128,128);}
@@ -120,9 +154,11 @@ const lin=h=>new THREE.Color(h).convertSRGBToLinear();
 function setBeer(name){
   beer=BEERS[name]||BEERS.light;
   const bc=lin(beer.c),fc=lin(beer.foam);
-  [beerMat,puddleMat,drops.material,stream.material].forEach(m=>m.color.copy(bc));
-  beerMat.emissive.copy(bc);stream.material.emissive.copy(bc);
-  foamMat.color.copy(fc);cap.material.color.copy(fc);
+  [puddleMat,drops.material,stream.material].forEach(m=>m.color.copy(bc));
+  stream.material.emissive.copy(bc);
+  beerTex.image=beerCanvas(beer.c);beerTex.needsUpdate=true;
+  const fcv=foamCanvas(beer.foam);foamTex.image=fcv;foamTex.needsUpdate=true;capTex.image=fcv;capTex.needsUpdate=true;
+  baseDisc.material.color.copy(bc).lerp(new THREE.Color(1,1,1),.55);
 }
 
 setBeer('light');
@@ -199,7 +235,7 @@ function frame(){
   beerMesh.visible=foamMesh.visible=bubbles.visible=has;cap.visible=has;
   const cosT=Math.max(.12,Math.cos(th)),rr=rAt(level)-WALL-.5;
   cap.position.copy(axisPt);cap.rotation.set(-Math.PI/2,0,0);cap.scale.set(rr*.96/cosT,rr*.96,1);
-  cap.material.color.copy(f>.6?lin(beer.foam):lin(beer.c));
+  if(f>.6){capMat.map=capTex;capMat.bumpMap=capBump;capMat.color.set(0xffffff);}else{capMat.map=null;capMat.bumpMap=null;capMat.color.copy(lin(beer.c));}capMat.needsUpdate=capMat._f!==(f>.6);capMat._f=f>.6;
   /* keep the cap inside the glass when tipped steeply */
   cap.visible=has&&th<.95;
 

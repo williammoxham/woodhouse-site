@@ -3,7 +3,7 @@
 const box=document.getElementById('heroMark');
 if(!box||!window.THREE)return;
 const {reduce,makeWoodCanvas}=window.WH;
-const SET={hold:1.2,turns:4,dur:2.4,ms:.25,me:.85,depth:34,idle:.45};
+const SET={hold:1.2,turns:6,dur:5.2,ms:.06,me:.94,depth:34,idle:.45};
 
 /* logo geometry (256 x 340, y down) */
 const LOGO_OUTER=[[0,0],[256,0],[256,213],[213,213],[171,255],[171,340],[128,298],[86,340],[86,255],[44,213],[0,213]];
@@ -98,19 +98,41 @@ const mesh=new THREE.Mesh(new THREE.BufferGeometry(),mat),finalA=new THREE.Mesh(
 group.add(mesh,finalA,finalB);mesh.visible=false;
 const P=q=>new THREE.Vector2(q[0]-128,-(q[1]-170));
 const ext={depth:SET.depth,bevelEnabled:true,bevelThickness:1.3,bevelSize:1,bevelOffset:-1,bevelSegments:3,curveSegments:1};
-function setGeo(m,shape){m.geometry.dispose();m.geometry=new THREE.ExtrudeGeometry(shape,ext);m.geometry.translate(0,0,-SET.depth/2);}
+function setGeo(m,shape){m.geometry.dispose();m.geometry=new THREE.ExtrudeGeometry(shape,ext);/* shape may be an array of pieces */m.geometry.translate(0,0,-SET.depth/2);}
 setGeo(finalA,new THREE.Shape(FINAL_A.map(P)));setGeo(finalB,new THREE.Shape(FINAL_B.map(P)));
 
 const LOGO=normalize(resample(LOGO_OUTER,N));
 const holeC=LOGO_HOLE.reduce((a,q)=>[a[0]+q[0]/LOGO_HOLE.length,a[1]+q[1]/LOGO_HOLE.length],[0,0]);
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 let SIL=null,lastMorph=-1;
+/* morph path: the woman, then every stage of the tangram progression, then the W.
+   Each step is three pieces; pieces that don't exist yet start as tiny diamonds and grow. */
+const NP=200;
+const ART=pts=>pts.map(q=>[q[0]+128,q[1]+171]);
+const tinyAt=(x,y)=>[[x,y-1.2],[x+1.2,y],[x,y+1.2],[x-1.2,y]];
+const STAGES=[
+  [[[0,-84],[85,1],[-85,1]],[[-85,1],[85,1],[0,86]],[[0,39],[1,40],[0,41],[-1,40]]],
+  [[[0,-88],[85,-3],[-85,-3]],[[-85,4],[85,4],[0,89]],[[0,42],[1,43],[0,44],[-1,43]]],
+  [[[-85,-85],[85,-85],[0,0]],[[0,0],[85,85],[-85,85]],[[0,42],[1,43],[0,44],[-1,43]]],
+  [[[-85,-86],[0,-1],[-85,84]],[[85,-86],[85,84],[0,-1]],[[0,42],[1,43],[0,44],[-1,43]]],
+  [[[-85,-87],[-43,-45],[-43,41],[-85,83]],[[85,-87],[85,83],[43,41],[43,-45]],[[0,42],[1,43],[0,44],[-1,43]]],
+  [[[-85,-134],[-42,-91],[-42,-8],[-85,36]],[[85,-134],[85,36],[43,-8],[43,-91]],[[0,-42],[85,43],[0,128],[-85,43]]]
+].map(st=>st.map(ART));
+const W_PIECES=[[[0,0],[128,0],[128,128],[86,171],[86,85],[44,43],[44,213],[0,213]],[[128,0],[256,0],[256,213],[213,213],[213,43],[171,85],[171,171],[128,128]],FINAL_B];
+const prep=p=>normalize(resample(p,NP));
+let KEYS=null;
+function buildKeys(){
+  const c=SIL.reduce((a,q)=>[a[0]+q[0]/SIL.length,a[1]+q[1]/SIL.length],[0,0]);
+  KEYS=[[SIL,tinyAt(c[0],c[1]-30),tinyAt(c[0],c[1]+40)]].concat(STAGES,[W_PIECES]).map(k=>k.map(prep));
+}
 function buildMorph(t){
-  const f=ease(Math.max(0,Math.min(1,t)));
-  const sh=new THREE.Shape(SIL.map((p,i)=>P([p[0]+(LOGO[i][0]-p[0])*f,p[1]+(LOGO[i][1]-p[1])*f])));
-  const hs=Math.max(0,(f-.55)/.45);
-  if(hs>.02){const k=(.15+.85*hs)*.985;sh.holes.push(new THREE.Path(LOGO_HOLE.map(q=>[holeC[0]+(q[0]-holeC[0])*k,holeC[1]+(q[1]-holeC[1])*k]).reverse().map(P)));}
-  setGeo(mesh,sh);
+  if(!KEYS)buildKeys();
+  const S=KEYS.length-1,m=Math.max(0,Math.min(1,t))*S,i=Math.min(S-1,Math.floor(m));
+  /* each shape settles for a beat before the next one starts */
+  const f=ease(Math.max(0,Math.min(1,(m-i-.12)/.76)));
+  const A=KEYS[i],B=KEYS[i+1];
+  const shapes=A.map((pa,j)=>{const pb=B[j];return new THREE.Shape(pa.map((p,k)=>P([p[0]+(pb[k][0]-p[0])*f,p[1]+(pb[k][1]-p[1])*f])));});
+  setGeo(mesh,shapes);
 }
 
 /* timeline: person, fast spin + morph, then the slow idle turn */
@@ -121,7 +143,7 @@ function replay(h){if(!SIL)return;base=((rot%TAU)+TAU)%TAU;hold=h;mode='play';t0
 function useImage(src,onDone){
   const im=new Image();
   im.onload=()=>{let poly=null;try{poly=trace(im);}catch(e){}const ok=poly&&poly.length>12;
-    if(ok){SIL=normalize(resample(poly,N));if(mode==='wait'){mesh.visible=true;finalA.visible=finalB.visible=false;buildMorph(0);lastMorph=0;}}
+    if(ok){SIL=normalize(resample(poly,N));KEYS=null;if(mode==='wait'){mesh.visible=true;finalA.visible=finalB.visible=false;buildMorph(0);lastMorph=0;}}
     onDone&&onDone(ok);};
   im.onerror=()=>onDone&&onDone(false);
   im.src=src;

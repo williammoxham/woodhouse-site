@@ -62,6 +62,8 @@ MENU:{
 
 /* ---- Drinks: live from Square via /api/taps (what actually sold in the last 7 days).
         This snapshot is only shown if Square can't be reached. Snapshot taken Nov 5, 2026. ---- */
+/* which group a drink belongs in, whatever Square's category says (lowercase name: group key) */
+TAP_GROUP_FIX:{'slippery slope':'house','black lager':'guest'},
 TAPS_SNAPSHOT:{updated:'2026-11-05',groups:[
   {key:'house',label:'Woodhouse Beer',items:[
     {name:'Egyptian Cotton',desc:'Hazy IPA · 6.1% ABV · Cashmere, Idaho 7, Azacca, Citra, Mosaic',abv:6.1,style:'Hazy IPA',color:'#12BF94',sizes:[['Pint (16oz)',900],['Tulip (12oz)',700],['Taster (5oz)',300],['Crowler (32oz)',1700]]},
@@ -71,7 +73,8 @@ TAPS_SNAPSHOT:{updated:'2026-11-05',groups:[
     {name:'Framboise',desc:'',style:'Raspberry',color:'#990838',sizes:[['Tulip (12oz)',800],['Taster (5oz)',400],['Bottle',1500]]}
   ]},
   {key:'guest',label:'Guest Taps',items:[
-    {name:'Slippery Slope',desc:'',style:'Guest beer',color:'#12BF94',sizes:[['Regular',900]]}
+    {name:'Slippery Slope',desc:'',style:'House beer',color:'#12BF94',sizes:[['Pint (16oz)',900]]},
+    {name:'Black Lager',desc:'',style:'Guest beer',color:'#2b1a10',sizes:[['Pint (16oz)',900]]}
   ]},
   {key:'spritz',label:'Spritzes & Seltzers',items:[
     {name:'Lemoncello Spritz',desc:'',color:'#FFBF00',sizes:[['Tulip (12oz)',1000],['Taster (5oz)',500]]},

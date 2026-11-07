@@ -17,8 +17,13 @@ function renderTaps(){
         <h4>${esc(t.name)}</h4><span class="abv">${t.abv?t.abv+'%':''}</span>
         <p class="sty">${poured||(t.desc?esc(t.desc):esc(t.style||''))}</p>${sizes?`<p class="sizes">${sizes}</p>`:''}</div>`;}).join('')}</div></div>`).join('');
 }
+function fixGroups(d){const fix=D.TAP_GROUP_FIX||{},groups=d.groups.map(g=>Object.assign({},g,{items:[]}));const by={};groups.forEach(g=>by[g.key]=g);
+  d.groups.forEach(g=>g.items.forEach(t=>{const k=fix[(t.name||'').toLowerCase().trim()];let dest=by[k||g.key];
+    if(!dest){dest={key:k,label:k==='house'?'Woodhouse Beer':'Guest Taps',items:[]};by[k]=dest;groups.splice(k==='house'?0:1,0,dest);}
+    dest.items.push(k==='house'&&/guest/i.test(t.style||'')?Object.assign({},t,{style:'House beer'}):t);}));
+  return Object.assign({},d,{groups});}
 function setTaps(d,live){
-  data=d;const chip=document.getElementById('tapChip'),tx=document.getElementById('tapChipText');
+  d=fixGroups(d);data=d;const chip=document.getElementById('tapChip'),tx=document.getElementById('tapChipText');
   if(chip){chip.classList.toggle('live',live);chip.classList.toggle('preview',!live);
     tx.textContent=live?'Live from our bar · updated '+new Date(d.updated).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}):'Snapshot from our bar · goes live with Square';}
   renderTaps();
