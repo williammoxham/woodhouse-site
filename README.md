@@ -9,7 +9,7 @@ calendar.html       On the Calendar: shows, artists, stage info, press kit
 beer.html           From the Cellar: live 3D cellar, taps, pint, process, brewers, history
 kitchen.html        Kitchen: menu and catering
 events.html         Private events: event types, spaces, sizer, FAQ, brochure
-assets/js/data.js   <- EDIT THIS for hours, menu, taps, artists, contacts, cellar connection
+assets/js/data.js   <- source copy of hours, menu, artists, contacts (each page has it built in; see below)
 assets/js/*.js      page scripts (core.js runs on every page)
 assets/css/site.css all styles
 img/                photos and brand art
@@ -20,6 +20,9 @@ cellar-setup.sql    one-time setup for the live cellar (brewing app's Supabase)
 ```
 
 ## Everyday edits
+
+Each page (index.html, beer.html and so on) carries its own styles, scripts and data, so uploading the .html pages is all it takes for a change to go live. Ask Claude for content changes and upload the new zip.
+
 - Hours, food menu, tap list, other drinks, beer archive, artist wall, contact emails:
   `assets/js/data.js`. Commit and Vercel redeploys in about 30 seconds.
 - Events and blog posts: add them in Squarespace as usual. They appear within 5 minutes.

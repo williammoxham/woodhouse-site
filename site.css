@@ -883,3 +883,10 @@ button.post .txt-link{margin-top:2px}
 .pg-index .hero-sub{margin-top:auto;padding-top:clamp(28px,4vw,48px)}
 .hero-act{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
 @media (max-width:760px){.hero-act{align-items:flex-start}}
+
+.hero-status{position:relative;z-index:3;display:flex;margin-top:clamp(14px,1.8vw,22px)}
+.pg-index .hero-mark{margin-top:clamp(20px,2.6vw,34px)}
+/* menu button keeps breathing until the visitor opens it once */
+.nav.menu-fresh .menu-btn{border-color:var(--teal);color:var(--teal);animation:menubreath 2.4s ease-in-out infinite}
+@keyframes menubreath{0%,100%{box-shadow:0 0 0 0 rgba(137,216,208,.0)}50%{box-shadow:0 0 0 7px rgba(137,216,208,.22)}}
+@media (prefers-reduced-motion:reduce){.nav.menu-fresh .menu-btn{animation:none}}

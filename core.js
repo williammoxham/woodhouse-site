@@ -103,7 +103,10 @@ const nav=document.getElementById('nav');
 const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);
 window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 const menuBtn=document.getElementById('menuBtn'),drawer=document.getElementById('drawer');
-menuBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o);menuBtn.textContent=o?'Close':'Menu';});
+let menuUsed=false;try{menuUsed=localStorage.getItem('wh-menu')==='1';}catch(e){}
+if(!menuUsed)document.getElementById('nav').classList.add('menu-fresh');
+menuBtn.addEventListener('click',()=>{document.getElementById('nav').classList.remove('menu-fresh');try{localStorage.setItem('wh-menu','1');}catch(e){}
+  const o=drawer.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o);menuBtn.textContent=o?'Close':'Menu';});
 drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{drawer.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='Menu';}));
 
 /* ---------- Oak texture (shared by every 3D piece) ---------- */
@@ -222,15 +225,17 @@ document.addEventListener('click',e=>{
   const g=e.target.closest('[data-gallery]');if(g){e.preventDefault();const set=(D.GALLERIES||{})[g.dataset.gallery];if(set)openGallery(set.title,set.imgs);}
 });
 
-/* ---------- Menu attention nudge (once per visit) ---------- */
+/* ---------- Menu attention nudge: shine + pulse + hint bubble ---------- */
 (function(){
-  let seen=false;try{seen=sessionStorage.getItem('wh-nudge')==='1';}catch(e){}
-  if(seen||reduce)return;
-  const fire=()=>{if(seen)return;seen=true;try{sessionStorage.setItem('wh-nudge','1');}catch(e){}
-    const n=document.getElementById('nav');n.classList.add('nudge');setTimeout(()=>n.classList.remove('nudge'),5200);
-    window.removeEventListener('scroll',onS);};
-  const onS=()=>{if(window.scrollY>window.innerHeight*.6)fire();};
-  window.addEventListener('scroll',onS,{passive:true});setTimeout(fire,6000);
+  if(reduce)return;
+  const n=document.getElementById('nav');if(!n)return;
+  let shown=0;try{shown=+sessionStorage.getItem('wh-nudge')||0;}catch(e){}
+  const fire=()=>{if(shown>=2)return;shown++;try{sessionStorage.setItem('wh-nudge',String(shown));}catch(e){}
+    n.classList.remove('nudge');void n.offsetWidth;n.classList.add('nudge');setTimeout(()=>n.classList.remove('nudge'),5200);};
+  setTimeout(fire,2200);
+  /* once more after they have scrolled into the page, so it is noticed */
+  const onS=()=>{if(window.scrollY>window.innerHeight*.9){window.removeEventListener('scroll',onS);setTimeout(fire,600);}};
+  window.addEventListener('scroll',onS,{passive:true});
 })();
 
 window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
