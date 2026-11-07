@@ -61,6 +61,16 @@ if(hoursEl){
   });
   hoursEl.innerHTML=hh;
 }
+/* compact hours for the footer: days with the same hours are grouped, today's group is highlighted */
+const footH=document.getElementById('footHours');
+if(footH){
+  const order=[2,3,4,5,6,0,1],groups=[];
+  order.forEach(i=>{const h=HOURS[i],key=h.o==null?'x':h.o+'-'+h.c,g=groups[groups.length-1];
+    if(g&&g.key===key)g.days.push(i);else groups.push({key,days:[i],h});});
+  footH.innerHTML=groups.map(g=>{const today=g.days.includes(now.wd),d0=HOURS[g.days[0]].d,d1=HOURS[g.days[g.days.length-1]].d;
+    const days=g.days.length>1?d0+' to '+d1:d0;
+    return `<div class="${today?'today':''}"><dt>${days}</dt><dd>${g.h.o==null?'Closed':fmt(g.h.o)+' to '+fmt(g.h.c)}</dd></div>`;}).join('');
+}
 function openStatus(){
   const t=HOURS[now.wd];
   if(t.o!=null&&nowMin>=t.o*60&&nowMin<t.c*60)return {open:true,text:'Open now · until '+fmt(t.c)};

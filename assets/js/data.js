@@ -33,6 +33,69 @@ HOURS:[
   {d:'Thu',o:13,c:21},{d:'Fri',o:13,c:22},{d:'Sat',o:12,c:22}
 ],
 
+/* ---- Visit page: partners, beer trail, coffee, music. Each opens a pop-up.
+   n name, a address (city added when it is not Santa Cruz), area, kind, s short line, about longer text, url optional ---- */
+PLACES:{
+ partners:[
+  {n:'Flower Bar Design Studio',a:'511 River St',area:'River St · By appointment',kind:'Florals',s:'Handcrafted florals, wreaths and event design.',about:'Led by Sharon, with more than 20 years of floral design behind her. Handcrafted flowers, wreaths, plant arrangements and subscriptions, plus florals for weddings, corporate events and remembrance services. Same day delivery when you order by noon. Studio visits by appointment.',url:'https://flowerbardesignstudio.com'},
+  {n:'The Haus of Botanica',a:'',area:'Santa Cruz Mountains',kind:'Hair & beauty',s:'Hair salon: color, balayage, bridal styling and scalp health.',about:'A hair salon in the Santa Cruz mountains offering transformative hair care: balayage, highlights, all over color, glazes and toners, blowouts, bridal and updo styling and braids, with Olaplex and K18 treatments. They also offer scalp health consultations and hair loss treatments, plus tooth gems. Book online through their site.',url:'https://www.thehausofbotanica.com/hair',ig:'https://www.instagram.com/thehausofbotanica/'},
+  {n:'Yayah Designs',a:'',area:'Santa Cruz',kind:'Design',s:'Design by Yayah.',about:'A Santa Cruz designer and longtime Woodhouse collaborator. See the work at yayahdesigns.com.',url:'https://yayahdesigns.com',ig:'https://www.instagram.com/yayahdesigns/'},
+  {n:'Gut Designs',a:'511 River St',area:'River St',kind:'Design',s:'Branding, painting, illustration and product design.',about:'A design studio working across branding, painting, illustration, product design and publishing.',url:'https://www.gutdesigns.com',ig:'https://www.instagram.com/gutdesigns/'},
+  {n:'Imprint Records',a:'511 River St',area:'River St',kind:'Records',s:'Records and DJ culture. More coming soon.',about:'Records and DJ culture on River Street. More information coming soon.',ig:'https://www.instagram.com/djkraeon/'},
+  {n:'Living Swell Kombucha',a:'',area:'Santa Cruz',kind:'Kombucha',s:'Farm to bottle kombucha, brewed in small batches.',about:'Small batch kombucha started in 2021 by Santa Cruz moms Sophie Slosberg and Summer Torrez. It is 100% kombucha, made with local, organic fruit and herbs, and you will find it at local farmers markets and on tap around town.',url:'https://livingswellkombucha.com'}
+ ],
+ beer:[
+  {g:'In Santa Cruz',items:[
+   {n:'Humble Sea Brewing Co.',a:'820 Swift St',area:'Westside',s:'Hazy IPAs, lagers and a beer garden',about:'One of the best known names in California craft beer, with a big Westside taproom and garden, hazy IPAs, crisp lagers and a long list of collaborations.'},
+   {n:'Santa Cruz Mountain Brewing',a:'402 Ingalls St, Suite 27',area:'Westside',s:'Organic, local ingredients, big patio',about:'A Westside original known for organic beers made with local ingredients, in the Ingalls Street food and drink courtyard.'},
+   {n:'Private Press Brewing',a:'334 C Ingalls St',area:'Westside',s:'Barrel aged, strong and dark',about:'Small, serious and barrel focused: imperial stouts, barleywines and blends worth sipping slowly.'},
+   {n:'Shanty Shack Brewing',a:'138 Fern St',area:'Harvey West',s:'IPAs, sours, live music',about:'A neighborhood brewery just up the road from us in Harvey West, pouring IPAs and sours with live music on the calendar.'},
+   {n:'Sante Adairius Rustic Ales',a:'1315 Water St',area:'Eastside',s:'Rustic farmhouse ales and pizza',about:'The Santa Cruz outpost of one of the country\'s most respected farmhouse and saison breweries.'},
+   {n:'Gilman Brewing',a:'817 Soquel Ave',area:'Midtown',s:'Award winning IPAs, in Midtown',about:'A Berkeley born brewery with more than 30 competition medals, now pouring in Midtown Santa Cruz on Soquel Avenue.'},
+   {n:'Beer Run',a:'Soquel Ave',area:'Midtown · Coming soon',s:'Beer garden and bottle shop, coming to Midtown',about:'The sibling of Beer Thirty and Beer Mule, coming to Midtown on Soquel Avenue: a beer garden and bottle shop with dozens of drafts and craft hot dogs.'},
+   {n:'Lúpulo Craft Beer House',a:'233 Cathcart St',area:'Downtown',s:'Rotating taps from everywhere',about:'Downtown\'s craft beer house, with a rotating draft list and food.'},
+   {n:'Balefire Brewing',a:'2-1517 East Cliff Dr',area:'Live Oak',s:'IPAs and English ales',about:'A small brewery near the harbor in Live Oak.'}
+  ]},
+  {g:'Mid county',items:[
+   {n:'Sante Adairius Rustic Ales',a:'103 Kennedy Dr, Capitola',area:'Capitola',s:'The original brewery and tasting rooms',about:'Where Sante Adairius started, with tasting rooms for their farmhouse ales and barrel projects.'},
+   {n:'Discretion Brewing',a:'2703 41st Ave, Soquel',area:'Soquel',s:'Hop forward beers and a full kitchen',about:'A Soquel brewpub with a full kitchen and a wide range of beers.'},
+   {n:'Beer Thirty',a:'2504 S Main St, Soquel',area:'Soquel',s:'Bottle shop and pour house',about:'A bottle shop and pour house with a big rotating tap list and a garden.'},
+   {n:'Other Brother Beer Co. Taproom',a:'10 Parade St, Suite B, Aptos',area:'Aptos Village',s:'Seaside\'s Other Brother, now in Aptos',about:'The Aptos Village taproom of Seaside\'s award winning Other Brother Beer Co., with 22 taps and a short menu of sandwiches and shareable plates.'}
+  ]},
+  {g:'North county',items:[
+   {n:'Steel Bonnet Brewing',a:'20 Victor Square, Scotts Valley',area:'Scotts Valley',s:'British and American ales, pub style',about:'A pub style brewery in Scotts Valley pouring British and American ales.'},
+   {n:'Laughing Monk Brewing',a:'262 Mount Hermon Rd, Scotts Valley',area:'Scotts Valley',s:'Brewery and gastropub',about:'A big Scotts Valley brewery and gastropub with indoor and outdoor space and a long bar.'}
+  ]},
+  {g:'South county',items:[
+   {n:'Buena Vista Brewing Co.',a:'65 Hangar Way, Watsonville',area:'Watsonville',s:'Family owned, Latin culture meets craft beer',about:'A family owned brewery and taproom that grew out of weekly recipe nights with family and friends. Their dream, in their words: uniting Latin culture and craft beer.'},
+   {n:'Corralitos Brewing Co.',a:'2536 Freedom Blvd, Watsonville',area:'Watsonville',s:'In a former apple packing shed',about:'A brewery in an old apple packing shed in the farmland outside Watsonville.'},
+   {n:'Fruition Brewing',a:'918 E Lake Ave, Watsonville',area:'Watsonville',s:'Lagers, sours and barrel aged beer',about:'A Watsonville brewery known for fruit forward sours, lagers and barrel aged beer.'},
+   {n:'Beer Mule',a:'45 Aviation Way, Watsonville',area:'Watsonville',s:'Bottle shop, pour house and kitchen',about:'A craft beer bar with rotating beers and ciders on tap, a bottle shop and a kitchen.'}
+  ]}
+ ],
+ coffee:[
+  {n:'Mariposa Coffee Bar',a:'1010 Pacific Ave',area:'Downtown',s:'Cuban and Vietnamese coffee, all vegetarian',about:'Founded by Chelsea and Tram, drawing on their Cuban and Vietnamese roots, with an all vegetarian menu and a slow, communal vibe.'},
+  {n:'Junkhead Vintage',a:'Portola Dr',area:'Pleasure Point',s:'Coffee and vintage clothing',about:'Coffee and vintage clothing under one roof.'},
+  {n:'Cafe Delmarette',a:'1126 Pacific Ave',area:'Downtown',s:'House roasted coffee and a from scratch deli',about:'A downtown café and deli that roasts its own coffee and makes its scones, sandwiches, salads and sweets in house with local ingredients.'},
+  {n:'Coffee Conspiracy Co.',a:'1855 41st Ave, Capitola',area:'Capitola',s:'Roasts its own, questions everything',about:'A roaster with rotating single origins, organic house made syrups and contrarian branding. They also run coffee backstage for big name tours.'},
+  {n:'Alta Organic Coffee',a:'2712 Mission St Ext',area:'Westside',s:'The county\'s certified organic roaster, since 1987',about:'Founded by Patti Spooner in 1987 and now run by the next generation, Alta is the only certified organic coffee company in the county. Dark and medium roasts from a vintage air roaster, at a Westside café across from the Wrigley Building.'},
+  {n:'Verve Coffee Roasters',a:'1540 Pacific Ave',area:'Downtown',s:'Santa Cruz born roaster, light filled café',about:'The Santa Cruz roaster that went worldwide, with a big, bright café in the heart of downtown.'},
+  {n:'11th Hour Coffee',a:'402 Ingalls St',area:'Westside',s:'Coffee and tea house, community nights',about:'A Westside coffee and tea house on Ingalls Street that hosts evening community events and seasonal drinks.'},
+  {n:'Cat & Cloud Coffee',a:'3600 Portola Dr',area:'Pleasure Point',s:'Creative local roaster',about:'A local roaster with an artsy streak, known for its mocha and breakfast burrito.'},
+  {n:'Lulu Carpenter\'s',a:'1545 Pacific Ave',area:'Downtown',s:'A downtown classic',about:'A longtime downtown coffeehouse on Pacific Avenue.'}
+ ],
+ music:[
+  {n:'The Catalyst',a:'1011 Pacific Ave',area:'Downtown',kind:'Club',s:'Touring and local acts in every genre',about:'The classic Santa Cruz club, with touring and local acts in every genre.'},
+  {n:'Moe\'s Alley',a:'1535 Commercial Way',area:'Eastside',kind:'Club',s:'Blues, roots, reggae, funk and more',about:'A beloved Eastside club for blues, roots, reggae, funk and more.'},
+  {n:'Kuumbwa Jazz Center',a:'320 Cedar St',area:'Downtown',kind:'Jazz',s:'A nationally respected jazz room',about:'A nationally respected jazz room downtown.'},
+  {n:'Rio Theatre',a:'1205 Soquel Ave',area:'Midtown',kind:'Theater',s:'Concerts and films',about:'A restored single screen theater hosting concerts and films.'},
+  {n:'The Crepe Place',a:'1134 Soquel Ave',area:'Midtown',kind:'Room',s:'Small, loud and loved',about:'A small, loud and much loved music room.'},
+  {n:'The Hotel',a:'1003 Cedar St',area:'Downtown',kind:'Bar',s:'Music and DJs downtown, formerly the Red Room',about:'The downtown bar long known as the Red Room, now called the Hotel, with music and DJs.'},
+  {n:'Santa Cruz Civic Auditorium',a:'307 Church St',area:'Downtown',kind:'Hall',s:'The big downtown stage',about:'The big downtown stage for touring headliners.'},
+  {n:'Felton Music Hall',a:'6275 Hwy 9, Felton',area:'Felton',kind:'Hall',s:'Up in the redwoods',about:'A music hall up in the redwoods, worth the drive.'}
+ ]
+},
+
 /* ---- Food menu ---- [name, price, description, tag] ---- */
 MENU:{
  small:[

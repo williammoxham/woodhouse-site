@@ -3,7 +3,7 @@
 const box=document.getElementById('heroMark');
 if(!box||!window.THREE)return;
 const {reduce,makeWoodCanvas}=window.WH;
-const SET={hold:1.2,turns:6,dur:5.2,ms:.06,me:.94,depth:34,idle:.45};
+const SET={hold:1.2,turns:3,dur:3.2,ms:.08,me:.92,depth:34,idle:.45};
 
 /* logo geometry (256 x 340, y down) */
 const LOGO_OUTER=[[0,0],[256,0],[256,213],[213,213],[171,255],[171,340],[128,298],[86,340],[86,255],[44,213],[0,213]];
@@ -121,12 +121,22 @@ const STAGES=[
 const W_PIECES=[[[0,0],[128,0],[128,128],[86,171],[86,85],[44,43],[44,213],[0,213]],[[128,0],[256,0],[256,213],[213,213],[213,43],[171,85],[171,171],[128,128]],FINAL_B];
 const prep=p=>normalize(resample(p,NP));
 let KEYS=null;
+/* cut a polygon with a vertical line (Sutherland-Hodgman), keeping the side where keep(x) is true */
+function clipX(poly,cx,left){const out=[],inside=q=>left?q[0]<=cx:q[0]>=cx;
+  for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],ia=inside(a),ib=inside(b);
+    if(ia)out.push(a);
+    if(ia!==ib){const t=(cx-a[0])/(b[0]-a[0]);out.push([cx,a[1]+(b[1]-a[1])*t]);}}
+  return out;}
+/* only the last steps of the progression: two verticals (her raised arms), the three piece stage, then the W */
 function buildKeys(){
-  const c=SIL.reduce((a,q)=>[a[0]+q[0]/SIL.length,a[1]+q[1]/SIL.length],[0,0]);
-  KEYS=[[SIL,tinyAt(c[0],c[1]-30),tinyAt(c[0],c[1]+40)]].concat(STAGES,[W_PIECES]).map(k=>k.map(prep));
+  let mnx=1e9,mxx=-1e9;SIL.forEach(q=>{mnx=Math.min(mnx,q[0]);mxx=Math.max(mxx,q[0]);});
+  const cx=(mnx+mxx)/2,by=Math.max(...SIL.map(q=>q[1]));
+  const L=clipX(SIL,cx+1.2,true),R=clipX(SIL,cx-1.2,false);
+  KEYS=[[L,R,tinyAt(cx,(Math.min(...SIL.map(q=>q[1]))+by)/2)],STAGES[5],W_PIECES].map(k=>k.map(prep));
 }
 function buildMorph(t){
   if(!KEYS)buildKeys();
+  if(t<=.0005){setGeo(mesh,new THREE.Shape(SIL.map(P)));return;}   /* at rest she is one piece */
   const S=KEYS.length-1,m=Math.max(0,Math.min(1,t))*S,i=Math.min(S-1,Math.floor(m));
   /* each shape settles for a beat before the next one starts */
   const f=ease(Math.max(0,Math.min(1,(m-i-.12)/.76)));

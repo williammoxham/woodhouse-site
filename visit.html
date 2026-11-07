@@ -6,7 +6,7 @@
 <title>Visit · Woodhouse</title>
 <meta name="description" content="Find Woodhouse at 119 Madrone St in Santa Cruz: hours, directions, the neighborhood, town event calendars, and the best breweries and live music spots around Santa Cruz.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611070108">
+<meta name="woodhouse-build" content="202611070919">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Visit · Woodhouse">
 <meta property="og:description" content="Find Woodhouse at 119 Madrone St in Santa Cruz: hours, directions, the neighborhood, town event calendars, and the best breweries and live music spots around Santa Cruz.">
@@ -1072,7 +1072,7 @@ button.post .txt-link{margin-top:2px}
 .vz-day p{margin:0;color:var(--muted);line-height:1.55}
 @media (max-width:980px){.vz-glance{grid-template-columns:1fr 1fr}.vz-map{grid-column:1/-1}.vz-facts{grid-template-columns:1fr 1fr}.vz-cals{grid-template-columns:1fr 1fr}.vz-day{grid-template-columns:1fr 1fr}}
 @media (max-width:700px){.vz-glance,.vz-two,.vz-groups,.vz-venues,.vz-cals,.vz-day{grid-template-columns:1fr}.vz-facts{grid-template-columns:1fr 1fr}}
-.vz-glance{grid-template-columns:1.25fr .9fr 1.1fr}
+@media (min-width:981px){.vz-glance{grid-template-columns:1.25fr .9fr 1.1fr}}
 .vz-where .ci .v{font-size:15px;overflow-wrap:anywhere}
 
 /* ---------- Rustic modern finish ---------- */
@@ -1094,7 +1094,111 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
 .stat b{background:linear-gradient(180deg,var(--cream) 55%,#e7cfa9);-webkit-background-clip:text;background-clip:text;color:transparent}
 .btn-ghost:hover{border-color:var(--oak-line)}
 @media (max-width:600px){.foot-stamp-row{flex-direction:column-reverse;align-items:flex-start}.stamp{width:96px}}
-.foot-stamp-row{margin-top:72px}.foot-stamp-row .giant{margin-top:0}</style>
+.foot-stamp-row{margin-top:72px}.foot-stamp-row .giant{margin-top:0}
+
+.pg-events .band{margin-bottom:clamp(56px,8vw,110px)}
+
+/* ---------- Visit page v2 ---------- */
+.vz-glance>*,.vz-facts>*{min-width:0}
+.vz-where .addr{font-size:clamp(34px,8vw,64px);overflow-wrap:anywhere}
+@media (max-width:700px){
+  .vz-glance{grid-template-columns:1fr!important}
+  .vz-map{min-height:260px}
+  .vz-facts{grid-template-columns:1fr 1fr}
+  .vz-facts>div{padding:14px}
+  .vz-facts b{font-size:14px}
+  .vz-card{padding:18px}
+  .vz-where .contact .ci{flex-wrap:wrap}
+}
+.vz-cals{grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))}
+.vz-list li button,.vz-venues li button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:14px;row-gap:3px;padding:14px 4px;border-bottom:1px solid var(--line-2);color:var(--cream);transition:background .25s,padding .25s}
+.vz-list li button:hover,.vz-venues li button:hover,.vz-list li button:focus-visible,.vz-venues li button:focus-visible{background:rgba(196,145,92,.07);padding-left:10px}
+.vz-list li button>*,.vz-venues li button>*{grid-column:1}
+.vz-list li button em,.vz-venues li button em{grid-column:2;grid-row:1/span 4;align-self:center;font-style:normal;font-size:22px;color:var(--muted);transition:color .25s,transform .25s}
+.vz-list li button:hover em,.vz-venues li button:hover em{color:var(--oak);transform:rotate(90deg)}
+.vz-list li button>span:not(.vz-kind),.vz-venues li button>span:not(.vz-kind){font:500 13px var(--f-mono);color:var(--teal);letter-spacing:.04em}
+.vz-coffee{grid-template-columns:1fr 1fr;column-gap:clamp(20px,3vw,48px)}
+@media (max-width:700px){.vz-coffee{grid-template-columns:1fr}}
+.vz-pgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,1.4vw,18px)}
+.vz-partner{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:10px;min-height:260px;padding:22px;border-radius:20px;border:1px solid rgba(196,145,92,.35);overflow:hidden;color:var(--cream);
+  background-image:linear-gradient(165deg,rgba(40,26,14,.55),rgba(14,12,10,.88) 70%),var(--oak-tex,linear-gradient(#3a2614,#1a120a));background-size:auto,420px auto;transition:transform .4s var(--ease),border-color .3s,box-shadow .4s}
+.vz-partner:hover,.vz-partner:focus-visible{transform:translateY(-5px);border-color:var(--oak);box-shadow:0 24px 50px rgba(0,0,0,.45)}
+.vz-partner .vz-pn{font:500 12px var(--f-mono);letter-spacing:.14em;color:var(--oak)}
+.vz-partner .chip{align-self:flex-start}
+.vz-partner b{margin-top:auto;font:800 clamp(22px,2vw,28px)/1.02 var(--f-display);text-transform:uppercase;text-wrap:balance}
+.vz-partner small{color:rgba(242,234,217,.78);font-size:14px;line-height:1.45}
+.vz-partner em{font-style:normal;font:600 13px var(--f-body);color:var(--oak)}
+@media (max-width:1100px){.vz-pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.vz-pgrid{grid-template-columns:1fr 1fr}.vz-partner{min-height:200px;padding:18px}}
+@media (max-width:420px){.vz-pgrid{grid-template-columns:1fr}}
+.chip.warm{color:var(--oak);border-color:rgba(196,145,92,.4)}
+/* place pop-up */
+.pl-pop{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+.pl-map{position:relative;min-height:340px;border-radius:26px 0 0 26px;overflow:hidden;background:#0e1514}
+.pl-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.45) contrast(1.05) brightness(.9)}
+.pl-nomap{display:grid;place-items:center;background-image:linear-gradient(165deg,rgba(40,26,14,.5),rgba(14,12,10,.85)),var(--oak-tex,none);background-size:auto,420px}
+.pl-nomap svg{width:34%;opacity:.5}
+.pl-body{padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.pl-tags{display:flex;flex-wrap:wrap;gap:6px}
+.pl-body h3{font:800 clamp(28px,3vw,40px)/1 var(--f-display);text-transform:uppercase;margin:0;text-wrap:balance}
+.pl-addr{margin:0;font:500 13px var(--f-mono);color:var(--teal);letter-spacing:.04em}
+.pl-about{margin:0;color:var(--muted);line-height:1.6}
+.pl-body .btn-row{margin-top:auto;padding-top:8px}
+@media (max-width:760px){.pl-pop{grid-template-columns:1fr}.pl-map{min-height:220px;border-radius:26px 26px 0 0}}
+
+/* ---------- More wood: we are Woodhouse ---------- */
+.card,.tier,.insp-card,.pc,.vz-card,.vz-day article,.vz-cals a,.contact-card{
+  background-image:linear-gradient(170deg,rgba(30,28,22,.86),rgba(15,18,16,.93)),var(--oak-tex,linear-gradient(transparent,transparent));background-size:auto,520px auto;border-color:rgba(196,145,92,.2)}
+.visit-band::before,footer::before{background:repeating-linear-gradient(90deg,rgba(242,234,217,.025) 0 2px,transparent 2px 16px),linear-gradient(180deg,rgba(14,12,9,.72),rgba(10,12,11,.84)),var(--oak-tex,none);background-size:auto,auto,560px auto}
+footer::after{height:10px;opacity:1;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.45)),var(--oak-tex,linear-gradient(90deg,var(--oak-2),var(--oak)));background-size:auto,420px auto;box-shadow:0 1px 0 rgba(0,0,0,.6)}
+.sec-head h2::after{width:96px;height:6px;border-radius:3px;background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.25)),var(--oak-tex,linear-gradient(90deg,var(--oak),var(--oak-2)));background-size:auto,300px auto;box-shadow:0 1px 0 rgba(0,0,0,.5)}
+.nav{border-bottom-color:rgba(196,145,92,.28)}
+.btn-ghost{border-color:rgba(196,145,92,.32)}
+.btn-ghost:hover{border-color:var(--oak);color:var(--cream)}
+.eyebrow{color:var(--oak)}
+.tier-ic,.insp-card .n,.vz-day .n{color:var(--oak)}
+.frame,.plate{box-shadow:0 0 0 1px rgba(196,145,92,.25),0 30px 60px rgba(0,0,0,.35)}
+.filters button[aria-pressed=true],.tab[aria-selected=true]{box-shadow:inset 0 -3px 0 var(--oak)}
+.stats{border-color:rgba(196,145,92,.25)}
+
+.vz-pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:700px){.vz-pgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.vz-pgrid{grid-template-columns:1fr}}
+.vz-partner{min-height:230px}
+.vz-paddr{font:500 12px var(--f-mono);color:var(--teal);letter-spacing:.04em}
+/* hours band: room before the footer on every page */
+.visit-band{padding-bottom:clamp(64px,8vw,120px)}
+
+/* the 'Throw it at Woodhouse' block: room before what follows */
+.book{margin-bottom:clamp(64px,8vw,120px)}
+.vz-beyond{position:relative;isolation:isolate;margin-block:clamp(40px,6vw,90px) 0;padding-block:clamp(70px,9vw,130px)}
+.vz-beyond::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,12,9,.55),rgba(10,12,11,.82)),var(--oak-tex,linear-gradient(#2a1c10,#120d08));background-size:auto,560px auto;border-block:1px solid rgba(196,145,92,.35)}
+.vz-beyond h2{font:800 clamp(44px,7vw,110px)/.9 var(--f-display);text-transform:uppercase;margin:14px 0 18px;letter-spacing:-.02em}
+.vz-beyond .lede{max-width:56ch}
+.vz-jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.vz-jump a{padding:10px 16px;border-radius:999px;border:1px solid rgba(196,145,92,.45);color:var(--cream);text-decoration:none;font:600 14px var(--f-body);transition:background .25s,border-color .25s}
+.vz-jump a:hover{background:rgba(196,145,92,.15);border-color:var(--oak)}
+.vz-day p .txt-link{display:inline}
+.vz-next-card .vz-next{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.vz-next-card .vz-next{grid-template-columns:1fr}}
+.vz-day .vz-home{border-color:var(--oak);background-image:linear-gradient(165deg,rgba(40,26,14,.6),rgba(14,12,10,.9)),var(--oak-tex,none);background-size:auto,480px auto}
+.vz-day .vz-home h3{color:var(--cream)}
+.vz-cals-list{grid-template-columns:1fr;gap:8px}
+.vz-cals-list a{padding:14px 40px 14px 16px}
+/* footer hours: compact, today highlighted */
+.foot{grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) minmax(0,1fr) minmax(0,1.25fr) minmax(0,.9fr)}
+.foot-status{margin:4px 0 12px;font-size:11.5px}
+.foot-hours{margin:0 0 10px;display:grid;gap:2px;max-width:240px}
+.foot-hours>div{display:flex;justify-content:space-between;gap:14px;padding:5px 8px;margin-inline:-8px;border-radius:8px;font-size:14px}
+.foot-hours dt{color:var(--muted)}
+.foot-hours dd{margin:0;color:var(--cream);font-variant-numeric:tabular-nums}
+.foot-hours .today{background:rgba(137,216,208,.1);box-shadow:inset 2px 0 0 var(--teal)}
+.foot-hours .today dt,.foot-hours .today dd{color:var(--teal)}
+@media (max-width:900px){.foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}.foot-find{grid-column:1/-1}}
+
+/* Visit: find us + map only (hours live in the footer) */
+@media (min-width:981px){.vz-glance{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}}
+@media (max-width:980px) and (min-width:701px){.vz-glance{grid-template-columns:1fr 1fr}.vz-map{grid-column:auto}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1130,7 +1234,7 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
     <p class="crumb"><a href="/">Woodhouse</a><span class="chev" aria-hidden="true"></span>Visit</p>
     <h1>Come <span class="o">Visit</span></h1>
     <p class="lede">A brewery, a kitchen, two stages and a big open sky, tucked on a little street at the edge of downtown Santa Cruz. Here's how to find us, and how to make a whole day of the town around us.</p>
-    <div class="btn-row"><a class="btn btn-teal" href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Get directions <span class="arr">↗</span></a><a class="btn btn-ghost" href="#around">Around town</a></div>
+    <div class="btn-row"><a class="btn btn-teal" href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Get directions <span class="arr">↗</span></a><a class="btn btn-ghost" href="#day">Make a day of it</a></div>
   </div>
 </section>
 
@@ -1142,16 +1246,11 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
         <p class="eyebrow">Find us</p>
         <p class="addr">119 Madrone St<small>Santa Cruz, CA 95060</small></p>
         <span class="status" data-status><span class="dot"></span><span class="status-text">Checking hours</span></span>
-        <p class="muted">On a small street just off River Street, across from the River Street shopping center. A few minutes from Pacific Avenue and the heart of downtown.</p>
+        <p class="muted">On a small street just off River Street, across from the River Street shopping center. About a seven minute walk from Pacific Avenue, downtown's main strip.</p>
         <div class="contact">
           <div class="ci"><div><div class="k">Phone</div><div class="v">(831) 313-9461</div></div><button class="copybtn" data-copy="(831) 313-9461">Copy</button></div>
           <div class="ci"><div><div class="k">Email</div><div class="v">beer@woodhousebrews.com</div></div><button class="copybtn" data-copy="beer@woodhousebrews.com">Copy</button></div>
         </div>
-      </div>
-      <div class="vz-card vz-hours">
-        <p class="eyebrow">Hours</p>
-        <div class="hours" id="hours"></div>
-        <p class="muted" style="margin-top:14px;font-size:14px">Ticketed shows can run later. Check the <a class="txt-link" href="/calendar">calendar</a>.</p>
       </div>
       <div class="vz-card vz-map">
         <iframe title="Map to Woodhouse, 119 Madrone St, Santa Cruz" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=119+Madrone+St,+Santa+Cruz,+CA+95060&amp;z=15&amp;output=embed"></iframe>
@@ -1163,7 +1262,7 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
       <div><span class="k">Inside</span><b>Taproom, kitchen &amp; indoor stage</b></div>
       <div><span class="k">Outside</span><b>Open air patio &amp; covered outdoor stage</b></div>
       <div><span class="k">Most shows</span><b>Free, all welcome</b></div>
-      <div><span class="k">Since</span><b>2020, small batch on site</b></div>
+      <div><span class="k">Since</span><b>2016, small batch on site</b></div>
     </div>
   </div>
 </section>
@@ -1176,7 +1275,7 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
       <p class="eyebrow">Our corner of town</p>
       <h2 class="vz-h2">Between the river and <span class="o">downtown</span></h2>
       <div class="prose">
-        <p>We sit where the Westside meets downtown, a block off River Street. The San Lorenzo River runs just to the east, Pacific Avenue's shops, bookstores and theaters are a short walk south, and the redwoods of Pogonip and Harvey West Park start just up the road.</p>
+        <p>We sit where the Westside meets downtown, a block off River Street. The San Lorenzo River runs just to the east, Pacific Avenue, downtown's main strip of shops, bookstores and theaters, is about a seven minute walk, and the redwoods of Pogonip and Harvey West Park start just up the road.</p>
         <p>It's an easy stop on the way in or out of town: grab a pint after a ride in the hills, before a show downtown, or on a long afternoon between the beach and the mountains.</p>
       </div>
       <div class="vz-near">
@@ -1186,18 +1285,58 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
   </div>
 </section>
 
-<!-- AROUND TOWN -->
-<section class="sec" id="around" style="background:linear-gradient(180deg,var(--ink),#0d1514 30%,var(--ink))">
+<!-- MAKE A DAY: starts with our calendar, ends back at Woodhouse -->
+<section class="sec" id="day" style="background:linear-gradient(180deg,var(--ink),#0d1514 30%,var(--ink))">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Make a <span class="o">Day</span> of It</h2>
+      <p class="lede">Check what's on at our place tonight, then spend the day around town: beach in the morning, redwoods at noon, and back to Woodhouse for a pint and a show by dark.</p>
+    </div>
+    <div class="vz-card vz-next-card">
+      <div class="vz-card-head"><p class="eyebrow">Coming up at Woodhouse</p><a class="txt-link" href="/calendar">Our full calendar <span class="arr">→</span></a></div>
+      <div class="vz-next" id="vzNext"><p class="muted">Loading our calendar</p></div>
+    </div>
+    <p class="eyebrow" style="margin:clamp(40px,5vw,64px) 0 16px">Then make a day of it</p>
+    <div class="vz-day" data-stagger>
+      <article><span class="n">01</span><h3>Santa Cruz Beach Boardwalk</h3><p>California's oldest surviving amusement park, on the beach since 1907. The Giant Dipper is a rite of passage.</p></article>
+      <article><span class="n">02</span><h3>West Cliff Drive</h3><p>A coastal path along the cliffs from the wharf past Steamer Lane's surfers to Natural Bridges and its rock arch. Grab a snack at <a class="txt-link" href="https://steamerlanesc.com" target="_blank" rel="noopener">Steamer Lane Supply</a> on the way.</p></article>
+      <article><span class="n">03</span><h3>The Redwoods</h3><p>Pogonip is right up the road. Henry Cowell Redwoods State Park and its old growth groves are a short drive into the mountains.</p></article>
+      <article><span class="n">04</span><h3>Downtown</h3><p>Pacific Avenue's bookstores, record shops, cafés and theaters, about a seven minute walk from our patio. Grab a Vietnamese or Cuban coffee at <a class="txt-link" href="https://mariposacoffeebar.com" target="_blank" rel="noopener">Mariposa</a>.</p></article>
+      <article><span class="n">05</span><h3>The Wharf</h3><p>Walk out over the bay, look for sea lions underneath, and watch the sun go down over Monterey Bay.</p></article>
+      <article class="vz-home"><span class="n">06</span><h3>Back to Woodhouse</h3><p>Finish with a fresh pint, something from the kitchen and whoever's on our stage tonight.</p><a class="txt-link" href="/calendar">See tonight's show <span class="arr">→</span></a></article>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND WOODHOUSE -->
+<section class="vz-beyond" id="explore" aria-label="Explore Santa Cruz">
+  <div class="wrap">
+    <p class="eyebrow">Beyond our walls</p>
+    <h2>Explore <span class="o">Santa Cruz</span></h2>
+    <p class="lede">Everything else we love around town: what's happening, where to drink, where to get coffee and where to hear a band. Tap any spot for the details.</p>
+    <nav class="vz-jump" aria-label="Jump to"><a href="#around">Around Town</a><a href="#breweries">The Beer Trail</a><a href="#coffee">The Coffee Scene</a><a href="#music">Live Music</a><a href="#partners">Our Partners</a></nav>
+  </div>
+</section>
+
+<!-- AROUND TOWN: town calendars and regulars -->
+<section class="sec" id="around">
   <div class="wrap">
     <div class="sec-head">
       <h2>Around <span class="o">Town</span></h2>
-      <p class="lede">What's on at our place, what's on all over Santa Cruz, and the regular things worth planning a week around.</p>
+      <p class="lede">What's on all over Santa Cruz, and the regular things worth planning a week around.</p>
     </div>
-
     <div class="vz-two">
       <div class="vz-card">
-        <div class="vz-card-head"><p class="eyebrow">Next at Woodhouse</p><a class="txt-link" href="/calendar">Full calendar <span class="arr">→</span></a></div>
-        <div class="vz-next" id="vzNext"><p class="muted">Loading our calendar</p></div>
+        <p class="eyebrow">Town calendars</p>
+        <div class="vz-cals vz-cals-list">
+          <a href="https://www.santacruzscene.com/" target="_blank" rel="noopener"><b>Santa Cruz Scene</b><span>Concerts, markets, festivals and family events across the county</span><em>↗</em></a>
+          <a href="https://www.santacruz.org/upcoming-events" target="_blank" rel="noopener"><b>Visit Santa Cruz County</b><span>Festivals, outdoor events and markets across the county</span><em>↗</em></a>
+          <a href="https://downtownsantacruz.com/" target="_blank" rel="noopener"><b>Downtown Santa Cruz</b><span>Shows, shopping and happenings on and around Pacific Ave</span><em>↗</em></a>
+          <a href="https://firstfridaysantacruz.com/" target="_blank" rel="noopener"><b>First Friday Santa Cruz</b><span>This month's art walk venues and artists</span><em>↗</em></a>
+          <a href="https://www.goodtimes.sc/" target="_blank" rel="noopener"><b>Good Times</b><span>Santa Cruz's weekly, with music and arts listings</span><em>↗</em></a>
+          <a href="https://lookout.co/" target="_blank" rel="noopener"><b>Lookout Santa Cruz</b><span>Local news, weekend picks and food and drink coverage</span><em>↗</em></a>
+          <a href="https://santacruzfarmersmarket.org/" target="_blank" rel="noopener"><b>Santa Cruz Farmers' Markets</b><span>Current market days, hours and vendors</span><em>↗</em></a>
+        </div>
       </div>
       <div class="vz-card">
         <p class="eyebrow">Every week, every month</p>
@@ -1209,16 +1348,6 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
         </ul>
       </div>
     </div>
-
-    <p class="eyebrow" style="margin:clamp(40px,5vw,64px) 0 16px">Town calendars</p>
-    <div class="vz-cals">
-      <a href="https://www.santacruz.org/upcoming-events" target="_blank" rel="noopener"><b>Visit Santa Cruz County</b><span>Festivals, outdoor events and markets across the county</span><em>↗</em></a>
-      <a href="https://downtownsantacruz.com/" target="_blank" rel="noopener"><b>Downtown Santa Cruz</b><span>Shows, shopping and happenings on and around Pacific Ave</span><em>↗</em></a>
-      <a href="https://firstfridaysantacruz.com/" target="_blank" rel="noopener"><b>First Friday Santa Cruz</b><span>This month's art walk venues and artists</span><em>↗</em></a>
-      <a href="https://www.goodtimes.sc/" target="_blank" rel="noopener"><b>Good Times</b><span>Santa Cruz's weekly, with music and arts listings</span><em>↗</em></a>
-      <a href="https://lookout.co/" target="_blank" rel="noopener"><b>Lookout Santa Cruz</b><span>Local news, weekend picks and food and drink coverage</span><em>↗</em></a>
-      <a href="https://santacruzfarmersmarket.org/" target="_blank" rel="noopener"><b>Santa Cruz Farmers' Markets</b><span>Current market days, hours and vendors</span><em>↗</em></a>
-    </div>
   </div>
 </section>
 
@@ -1229,34 +1358,19 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
       <h2>The <span class="o">Beer</span> Trail</h2>
       <p class="lede">Santa Cruz County punches way above its size for beer. Start here, then go see our neighbors. Tap a name for directions.</p>
     </div>
-    <div class="vz-groups">
-      <div class="vz-group">
-        <h3 class="vz-gh">In Santa Cruz</h3>
-        <ul class="vz-list" data-maps>
-          <li><b>Humble Sea Brewing Co.</b><span>820 Swift St</span><small>Westside · hazy IPAs, lagers and a beer garden</small></li>
-          <li><b>Santa Cruz Mountain Brewing</b><span>402 Ingalls St, Suite 27</span><small>Westside · organic, local ingredients, big patio</small></li>
-          <li><b>Private Press Brewing</b><span>334 C Ingalls St</span><small>Westside · barrel aged, strong and dark</small></li>
-          <li><b>Shanty Shack Brewing</b><span>138 Fern St</span><small>Harvey West · IPAs, sours, live music</small></li>
-          <li><b>Sante Adairius Rustic Ales</b><span>1315 Water St</span><small>Eastside · rustic farmhouse ales and pizza</small></li>
-          <li><b>Lúpulo Craft Beer House</b><span>233 Cathcart St</span><small>Downtown · rotating taps from everywhere</small></li>
-          <li><b>Balefire Brewing</b><span>2-1517 East Cliff Dr</span><small>Live Oak · IPAs and English ales</small></li>
-        </ul>
-      </div>
-      <div class="vz-group">
-        <h3 class="vz-gh">Mid county &amp; the mountains</h3>
-        <ul class="vz-list" data-maps>
-          <li><b>Sante Adairius Rustic Ales</b><span>103 Kennedy Dr, Capitola</span><small>The original brewery and tasting rooms</small></li>
-          <li><b>Discretion Brewing</b><span>2703 41st Ave, Soquel</span><small>Hop forward beers and a full kitchen</small></li>
-          <li><b>Beer Thirty</b><span>2504 S Main St, Soquel</span><small>Bottle shop and pour house, 30 taps</small></li>
-          <li><b>Steel Bonnet Brewing</b><span>20 Victor Square, Scotts Valley</span><small>British and American ales, pub style</small></li>
-        </ul>
-        <h3 class="vz-gh" style="margin-top:28px">South county</h3>
-        <ul class="vz-list" data-maps>
-          <li><b>Corralitos Brewing Co.</b><span>2536 Freedom Blvd, Watsonville</span><small>In a former apple packing shed</small></li>
-          <li><b>Fruition Brewing</b><span>918 E Lake Ave, Watsonville</span><small>Lagers, sours and barrel aged beer</small></li>
-        </ul>
-      </div>
+    <div class="vz-groups" id="vzBeer"></div>
+    <p class="muted vz-note">Tap any spot for the details, a map and photos.</p>
+  </div>
+</section>
+
+<!-- COFFEE -->
+<section class="sec" id="coffee" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The <span class="o">Coffee</span> Scene</h2>
+      <p class="lede">Santa Cruz has an unreal coffee scene. Mornings here start at one of these, and some of the best days end at ours.</p>
     </div>
+    <ul class="vz-list vz-coffee" id="vzCoffee"></ul>
   </div>
 </section>
 
@@ -1267,35 +1381,19 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
       <h2>Live <span class="o">Music</span> in Town</h2>
       <p class="lede">After our stage, here's where Santa Cruz goes to hear a band.</p>
     </div>
-    <ul class="vz-venues" data-maps>
-      <li><span class="vz-kind">Club</span><b>The Catalyst</b><span>1011 Pacific Ave</span><small>The classic Santa Cruz club, touring and local acts in every genre</small></li>
-      <li><span class="vz-kind">Club</span><b>Moe's Alley</b><span>1535 Commercial Way</span><small>Blues, roots, reggae, funk and more, just off the Eastside</small></li>
-      <li><span class="vz-kind">Jazz</span><b>Kuumbwa Jazz Center</b><span>320 Cedar St</span><small>A nationally respected jazz room, downtown</small></li>
-      <li><span class="vz-kind">Theater</span><b>Rio Theatre</b><span>1205 Soquel Ave</span><small>A restored single screen theater hosting concerts and films</small></li>
-      <li><span class="vz-kind">Room</span><b>The Crepe Place</b><span>1134 Soquel Ave</span><small>Small, loud and loved, on the Eastside</small></li>
-      <li><span class="vz-kind">Bar</span><b>The Red Room</b><span>1003 Cedar St</span><small>Downtown dive with music and DJs</small></li>
-      <li><span class="vz-kind">Hall</span><b>Santa Cruz Civic Auditorium</b><span>307 Church St</span><small>The big downtown stage for touring headliners</small></li>
-      <li><span class="vz-kind">Hall</span><b>Felton Music Hall</b><span>6275 Hwy 9, Felton</span><small>Up in the redwoods, worth the drive</small></li>
-    </ul>
+    <ul class="vz-venues" id="vzMusic"></ul>
     <p class="muted vz-note">Hours and lineups change. Check with each spot before you head out.</p>
   </div>
 </section>
 
-<!-- MAKE A DAY -->
-<section class="sec" id="day" style="padding-top:0">
+<!-- PARTNERS -->
+<section class="sec vz-partners" id="partners" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
-      <h2>Make a <span class="o">Day</span> of It</h2>
-      <p class="lede">Beach in the morning, redwoods at noon, a pint and a show by dark. Santa Cruz does all of it within a few miles.</p>
+      <h2>Our <span class="o">Partners</span></h2>
+      <p class="lede">The Santa Cruz makers we build with: florals, plants, design, kombucha and records, several of them right around the corner on River Street. Look for them at our events, and go see them at home.</p>
     </div>
-    <div class="vz-day" data-stagger>
-      <article><span class="n">01</span><h3>Santa Cruz Beach Boardwalk</h3><p>California's oldest surviving amusement park, on the beach since 1907. The Giant Dipper is a rite of passage.</p></article>
-      <article><span class="n">02</span><h3>West Cliff Drive</h3><p>A coastal path along the cliffs from the wharf past Steamer Lane's surfers to Natural Bridges and its rock arch.</p></article>
-      <article><span class="n">03</span><h3>The Redwoods</h3><p>Pogonip is right up the road. Henry Cowell Redwoods State Park and its old growth groves are a short drive into the mountains.</p></article>
-      <article><span class="n">04</span><h3>Downtown</h3><p>Pacific Avenue's bookstores, record shops, cafés and theaters, a short walk from our patio.</p></article>
-      <article><span class="n">05</span><h3>The Wharf</h3><p>Walk out over the bay, look for sea lions underneath, and watch the sun go down over Monterey Bay.</p></article>
-      <article><span class="n">06</span><h3>Back to Woodhouse</h3><p>Finish with a fresh pint, something from the kitchen and whoever's on our stage tonight.</p></article>
-    </div>
+    <div class="vz-pgrid" id="vzPartners"></div>
   </div>
 </section>
 
@@ -1315,11 +1413,14 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;backg
       </div>
       <div><h5>Explore</h5><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Private events</a><a href="/visit">Visit Santa Cruz</a></div>
       <div><h5>Work with us</h5><a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Book an event</a><a href="downloads/woodhouse-events-brochure-2026.pdf" download>Events brochure</a><a href="/calendar#play">Play at Woodhouse</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></div>
-      <div><h5>Find us</h5><p class="foot-addr">119 Madrone St<br>Santa Cruz, CA 95060</p><a href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions ↗</a><a href="/visit">Hours &amp; visiting</a></div>
+      <div class="foot-find"><h5>Find us</h5><p class="foot-addr">119 Madrone St<br>Santa Cruz, CA 95060</p>
+        <span class="status foot-status" data-status><span class="dot"></span><span class="status-text">Checking hours</span></span>
+        <dl class="foot-hours" id="footHours" aria-label="Hours"></dl>
+        <a href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions ↗</a><a href="/visit">Plan a visit</a></div>
       <div><h5>Follow</h5><a href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">@woodhousebrews</a><a href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a><a href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a></div>
     </div>
-    <div class="foot-stamp-row"><div class="giant wm" aria-hidden="true"></div><svg class="stamp" viewBox="0 0 200 200" role="img" aria-label="Blended and brewed in Santa Cruz since 2020"><defs><path id="stTop" d="M30,100 a70,70 0 0,1 140,0"/><path id="stBot" d="M24,100 a76,76 0 0,0 152,0"/></defs><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stTop" startOffset="50%">BLENDED &amp; BREWED</textPath></text><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stBot" startOffset="50%" side="right">SANTA CRUZ</textPath></text><circle cx="31" cy="100" r="2.5" fill="currentColor"/><circle cx="169" cy="100" r="2.5" fill="currentColor"/><g transform="translate(81,70) scale(.148)" fill="currentColor"><path fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><path d="M44 213L86 255L86 340L128 298L171 340L171 255L213 213Z"/></g><text x="100" y="138" text-anchor="middle" font-size="10.5" letter-spacing="2.5" fill="currentColor" font-family="IBM Plex Mono, monospace">EST. 2020</text></svg></div>
-    <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>119 Madrone St · (831) 313-9461</span></div>
+    <div class="foot-stamp-row"><div class="giant wm" aria-hidden="true"></div><svg class="stamp" viewBox="0 0 200 200" role="img" aria-label="Blended and brewed in Santa Cruz since 2016"><defs><path id="stTop" d="M30,100 a70,70 0 0,1 140,0"/><path id="stBot" d="M24,100 a76,76 0 0,0 152,0"/></defs><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stTop" startOffset="50%">BLENDED &amp; BREWED</textPath></text><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stBot" startOffset="50%" side="right">SANTA CRUZ</textPath></text><circle cx="31" cy="100" r="2.5" fill="currentColor"/><circle cx="169" cy="100" r="2.5" fill="currentColor"/><g transform="translate(81,70) scale(.148)" fill="currentColor"><path fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><path d="M44 213L86 255L86 340L128 298L171 340L171 255L213 213Z"/></g><text x="100" y="138" text-anchor="middle" font-size="10.5" letter-spacing="2.5" fill="currentColor" font-family="IBM Plex Mono, monospace">EST. 2016</text></svg></div>
+    <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>119 Madrone St · (831) 313-9461 · beer@woodhousebrews.com</span></div>
   </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -1360,6 +1461,69 @@ HOURS:[
   {d:'Sun',o:12,c:19},{d:'Mon',o:null,c:null},{d:'Tue',o:13,c:21},{d:'Wed',o:13,c:21},
   {d:'Thu',o:13,c:21},{d:'Fri',o:13,c:22},{d:'Sat',o:12,c:22}
 ],
+
+/* ---- Visit page: partners, beer trail, coffee, music. Each opens a pop-up.
+   n name, a address (city added when it is not Santa Cruz), area, kind, s short line, about longer text, url optional ---- */
+PLACES:{
+ partners:[
+  {n:'Flower Bar Design Studio',a:'511 River St',area:'River St · By appointment',kind:'Florals',s:'Handcrafted florals, wreaths and event design.',about:'Led by Sharon, with more than 20 years of floral design behind her. Handcrafted flowers, wreaths, plant arrangements and subscriptions, plus florals for weddings, corporate events and remembrance services. Same day delivery when you order by noon. Studio visits by appointment.',url:'https://flowerbardesignstudio.com'},
+  {n:'The Haus of Botanica',a:'',area:'Santa Cruz Mountains',kind:'Hair & beauty',s:'Hair salon: color, balayage, bridal styling and scalp health.',about:'A hair salon in the Santa Cruz mountains offering transformative hair care: balayage, highlights, all over color, glazes and toners, blowouts, bridal and updo styling and braids, with Olaplex and K18 treatments. They also offer scalp health consultations and hair loss treatments, plus tooth gems. Book online through their site.',url:'https://www.thehausofbotanica.com/hair',ig:'https://www.instagram.com/thehausofbotanica/'},
+  {n:'Yayah Designs',a:'',area:'Santa Cruz',kind:'Design',s:'Design by Yayah.',about:'A Santa Cruz designer and longtime Woodhouse collaborator. See the work at yayahdesigns.com.',url:'https://yayahdesigns.com',ig:'https://www.instagram.com/yayahdesigns/'},
+  {n:'Gut Designs',a:'511 River St',area:'River St',kind:'Design',s:'Branding, painting, illustration and product design.',about:'A design studio working across branding, painting, illustration, product design and publishing.',url:'https://www.gutdesigns.com',ig:'https://www.instagram.com/gutdesigns/'},
+  {n:'Imprint Records',a:'511 River St',area:'River St',kind:'Records',s:'Records and DJ culture. More coming soon.',about:'Records and DJ culture on River Street. More information coming soon.',ig:'https://www.instagram.com/djkraeon/'},
+  {n:'Living Swell Kombucha',a:'',area:'Santa Cruz',kind:'Kombucha',s:'Farm to bottle kombucha, brewed in small batches.',about:'Small batch kombucha started in 2021 by Santa Cruz moms Sophie Slosberg and Summer Torrez. It is 100% kombucha, made with local, organic fruit and herbs, and you will find it at local farmers markets and on tap around town.',url:'https://livingswellkombucha.com'}
+ ],
+ beer:[
+  {g:'In Santa Cruz',items:[
+   {n:'Humble Sea Brewing Co.',a:'820 Swift St',area:'Westside',s:'Hazy IPAs, lagers and a beer garden',about:'One of the best known names in California craft beer, with a big Westside taproom and garden, hazy IPAs, crisp lagers and a long list of collaborations.'},
+   {n:'Santa Cruz Mountain Brewing',a:'402 Ingalls St, Suite 27',area:'Westside',s:'Organic, local ingredients, big patio',about:'A Westside original known for organic beers made with local ingredients, in the Ingalls Street food and drink courtyard.'},
+   {n:'Private Press Brewing',a:'334 C Ingalls St',area:'Westside',s:'Barrel aged, strong and dark',about:'Small, serious and barrel focused: imperial stouts, barleywines and blends worth sipping slowly.'},
+   {n:'Shanty Shack Brewing',a:'138 Fern St',area:'Harvey West',s:'IPAs, sours, live music',about:'A neighborhood brewery just up the road from us in Harvey West, pouring IPAs and sours with live music on the calendar.'},
+   {n:'Sante Adairius Rustic Ales',a:'1315 Water St',area:'Eastside',s:'Rustic farmhouse ales and pizza',about:'The Santa Cruz outpost of one of the country\'s most respected farmhouse and saison breweries.'},
+   {n:'Gilman Brewing',a:'817 Soquel Ave',area:'Midtown',s:'Award winning IPAs, in Midtown',about:'A Berkeley born brewery with more than 30 competition medals, now pouring in Midtown Santa Cruz on Soquel Avenue.'},
+   {n:'Beer Run',a:'Soquel Ave',area:'Midtown · Coming soon',s:'Beer garden and bottle shop, coming to Midtown',about:'The sibling of Beer Thirty and Beer Mule, coming to Midtown on Soquel Avenue: a beer garden and bottle shop with dozens of drafts and craft hot dogs.'},
+   {n:'Lúpulo Craft Beer House',a:'233 Cathcart St',area:'Downtown',s:'Rotating taps from everywhere',about:'Downtown\'s craft beer house, with a rotating draft list and food.'},
+   {n:'Balefire Brewing',a:'2-1517 East Cliff Dr',area:'Live Oak',s:'IPAs and English ales',about:'A small brewery near the harbor in Live Oak.'}
+  ]},
+  {g:'Mid county',items:[
+   {n:'Sante Adairius Rustic Ales',a:'103 Kennedy Dr, Capitola',area:'Capitola',s:'The original brewery and tasting rooms',about:'Where Sante Adairius started, with tasting rooms for their farmhouse ales and barrel projects.'},
+   {n:'Discretion Brewing',a:'2703 41st Ave, Soquel',area:'Soquel',s:'Hop forward beers and a full kitchen',about:'A Soquel brewpub with a full kitchen and a wide range of beers.'},
+   {n:'Beer Thirty',a:'2504 S Main St, Soquel',area:'Soquel',s:'Bottle shop and pour house',about:'A bottle shop and pour house with a big rotating tap list and a garden.'},
+   {n:'Other Brother Beer Co. Taproom',a:'10 Parade St, Suite B, Aptos',area:'Aptos Village',s:'Seaside\'s Other Brother, now in Aptos',about:'The Aptos Village taproom of Seaside\'s award winning Other Brother Beer Co., with 22 taps and a short menu of sandwiches and shareable plates.'}
+  ]},
+  {g:'North county',items:[
+   {n:'Steel Bonnet Brewing',a:'20 Victor Square, Scotts Valley',area:'Scotts Valley',s:'British and American ales, pub style',about:'A pub style brewery in Scotts Valley pouring British and American ales.'},
+   {n:'Laughing Monk Brewing',a:'262 Mount Hermon Rd, Scotts Valley',area:'Scotts Valley',s:'Brewery and gastropub',about:'A big Scotts Valley brewery and gastropub with indoor and outdoor space and a long bar.'}
+  ]},
+  {g:'South county',items:[
+   {n:'Buena Vista Brewing Co.',a:'65 Hangar Way, Watsonville',area:'Watsonville',s:'Family owned, Latin culture meets craft beer',about:'A family owned brewery and taproom that grew out of weekly recipe nights with family and friends. Their dream, in their words: uniting Latin culture and craft beer.'},
+   {n:'Corralitos Brewing Co.',a:'2536 Freedom Blvd, Watsonville',area:'Watsonville',s:'In a former apple packing shed',about:'A brewery in an old apple packing shed in the farmland outside Watsonville.'},
+   {n:'Fruition Brewing',a:'918 E Lake Ave, Watsonville',area:'Watsonville',s:'Lagers, sours and barrel aged beer',about:'A Watsonville brewery known for fruit forward sours, lagers and barrel aged beer.'},
+   {n:'Beer Mule',a:'45 Aviation Way, Watsonville',area:'Watsonville',s:'Bottle shop, pour house and kitchen',about:'A craft beer bar with rotating beers and ciders on tap, a bottle shop and a kitchen.'}
+  ]}
+ ],
+ coffee:[
+  {n:'Mariposa Coffee Bar',a:'1010 Pacific Ave',area:'Downtown',s:'Cuban and Vietnamese coffee, all vegetarian',about:'Founded by Chelsea and Tram, drawing on their Cuban and Vietnamese roots, with an all vegetarian menu and a slow, communal vibe.'},
+  {n:'Junkhead Vintage',a:'Portola Dr',area:'Pleasure Point',s:'Coffee and vintage clothing',about:'Coffee and vintage clothing under one roof.'},
+  {n:'Cafe Delmarette',a:'1126 Pacific Ave',area:'Downtown',s:'House roasted coffee and a from scratch deli',about:'A downtown café and deli that roasts its own coffee and makes its scones, sandwiches, salads and sweets in house with local ingredients.'},
+  {n:'Coffee Conspiracy Co.',a:'1855 41st Ave, Capitola',area:'Capitola',s:'Roasts its own, questions everything',about:'A roaster with rotating single origins, organic house made syrups and contrarian branding. They also run coffee backstage for big name tours.'},
+  {n:'Alta Organic Coffee',a:'2712 Mission St Ext',area:'Westside',s:'The county\'s certified organic roaster, since 1987',about:'Founded by Patti Spooner in 1987 and now run by the next generation, Alta is the only certified organic coffee company in the county. Dark and medium roasts from a vintage air roaster, at a Westside café across from the Wrigley Building.'},
+  {n:'Verve Coffee Roasters',a:'1540 Pacific Ave',area:'Downtown',s:'Santa Cruz born roaster, light filled café',about:'The Santa Cruz roaster that went worldwide, with a big, bright café in the heart of downtown.'},
+  {n:'11th Hour Coffee',a:'402 Ingalls St',area:'Westside',s:'Coffee and tea house, community nights',about:'A Westside coffee and tea house on Ingalls Street that hosts evening community events and seasonal drinks.'},
+  {n:'Cat & Cloud Coffee',a:'3600 Portola Dr',area:'Pleasure Point',s:'Creative local roaster',about:'A local roaster with an artsy streak, known for its mocha and breakfast burrito.'},
+  {n:'Lulu Carpenter\'s',a:'1545 Pacific Ave',area:'Downtown',s:'A downtown classic',about:'A longtime downtown coffeehouse on Pacific Avenue.'}
+ ],
+ music:[
+  {n:'The Catalyst',a:'1011 Pacific Ave',area:'Downtown',kind:'Club',s:'Touring and local acts in every genre',about:'The classic Santa Cruz club, with touring and local acts in every genre.'},
+  {n:'Moe\'s Alley',a:'1535 Commercial Way',area:'Eastside',kind:'Club',s:'Blues, roots, reggae, funk and more',about:'A beloved Eastside club for blues, roots, reggae, funk and more.'},
+  {n:'Kuumbwa Jazz Center',a:'320 Cedar St',area:'Downtown',kind:'Jazz',s:'A nationally respected jazz room',about:'A nationally respected jazz room downtown.'},
+  {n:'Rio Theatre',a:'1205 Soquel Ave',area:'Midtown',kind:'Theater',s:'Concerts and films',about:'A restored single screen theater hosting concerts and films.'},
+  {n:'The Crepe Place',a:'1134 Soquel Ave',area:'Midtown',kind:'Room',s:'Small, loud and loved',about:'A small, loud and much loved music room.'},
+  {n:'The Hotel',a:'1003 Cedar St',area:'Downtown',kind:'Bar',s:'Music and DJs downtown, formerly the Red Room',about:'The downtown bar long known as the Red Room, now called the Hotel, with music and DJs.'},
+  {n:'Santa Cruz Civic Auditorium',a:'307 Church St',area:'Downtown',kind:'Hall',s:'The big downtown stage',about:'The big downtown stage for touring headliners.'},
+  {n:'Felton Music Hall',a:'6275 Hwy 9, Felton',area:'Felton',kind:'Hall',s:'Up in the redwoods',about:'A music hall up in the redwoods, worth the drive.'}
+ ]
+},
 
 /* ---- Food menu ---- [name, price, description, tag] ---- */
 MENU:{
@@ -1612,6 +1776,16 @@ if(hoursEl){
   });
   hoursEl.innerHTML=hh;
 }
+/* compact hours for the footer: days with the same hours are grouped, today's group is highlighted */
+const footH=document.getElementById('footHours');
+if(footH){
+  const order=[2,3,4,5,6,0,1],groups=[];
+  order.forEach(i=>{const h=HOURS[i],key=h.o==null?'x':h.o+'-'+h.c,g=groups[groups.length-1];
+    if(g&&g.key===key)g.days.push(i);else groups.push({key,days:[i],h});});
+  footH.innerHTML=groups.map(g=>{const today=g.days.includes(now.wd),d0=HOURS[g.days[0]].d,d1=HOURS[g.days[g.days.length-1]].d;
+    const days=g.days.length>1?d0+' to '+d1:d0;
+    return `<div class="${today?'today':''}"><dt>${days}</dt><dd>${g.h.o==null?'Closed':fmt(g.h.o)+' to '+fmt(g.h.c)}</dd></div>`;}).join('');
+}
 function openStatus(){
   const t=HOURS[now.wd];
   if(t.o!=null&&nowMin>=t.o*60&&nowMin<t.c*60)return {open:true,text:'Open now · until '+fmt(t.c)};
@@ -1828,17 +2002,51 @@ window.addEventListener('load',()=>ScrollTrigger.refresh());
 
 </script>
 <script>/* visit.js */
-/* Woodhouse: visit page (next shows at Woodhouse, tap any address for directions) */
+/* Woodhouse: visit page. Partners, beer trail, coffee and music come from WH_DATA.PLACES;
+   every place opens a pop-up with the details, a map, directions and Google photos. */
 (function(){
-const {esc,MON,WD,now,loadEvents}=window.WH;
-/* every listed place opens in Maps */
-document.querySelectorAll('[data-maps] li').forEach(li=>{
-  const name=li.querySelector('b').textContent,addr=li.querySelector('b+span').textContent;
-  const q=encodeURIComponent(name+', '+addr+(/,/.test(addr)?', CA':', Santa Cruz, CA'));
-  const a=document.createElement('a');a.href='https://www.google.com/maps/search/?api=1&query='+q;a.target='_blank';a.rel='noopener';
-  a.setAttribute('aria-label',name+', '+addr+', open in Maps');
-  while(li.firstChild)a.appendChild(li.firstChild);a.insertAdjacentHTML('beforeend','<em aria-hidden="true">↗</em>');li.appendChild(a);
-});
+const {D,esc,MON,WD,now,loadEvents,openModal}=window.WH;
+const P=D.PLACES||{partners:[],beer:[],coffee:[],music:[]};
+const full=p=>p.a?(p.a+(/,/.test(p.a)?', CA':', Santa Cruz, CA')):p.n+', Santa Cruz, CA';
+const mapsQ=p=>encodeURIComponent((p.a?p.n+', ':'')+full(p));
+const all=[];const reg=p=>{all.push(p);return all.length-1;};
+
+function openPlace(p){
+  const q=mapsQ(p),partner=!!p.partner,hasAddr=!!p.a&&!partner;
+  openModal(`<div class="pl-pop">
+    ${hasAddr?`<div class="pl-map"><iframe title="Map of ${esc(p.n)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${q}&amp;z=15&amp;output=embed"></iframe></div>`:'<div class="pl-map pl-nomap"><svg viewBox="-20 -10 296 360" aria-hidden="true"><use href="#wmark"/></svg></div>'}
+    <div class="pl-body">
+      <div class="pl-tags">${p.kind?`<span class="chip warm">${esc(p.kind)}</span>`:''}<span class="chip">${esc(p.area||'Santa Cruz')}</span></div>
+      <h3 id="modalTitle">${esc(p.n)}</h3>
+      ${p.a?`<p class="pl-addr">${esc(full(p))}</p>`:''}
+      <p class="pl-about">${esc(p.about||p.s||'')}</p>
+      <div class="btn-row">
+        ${hasAddr?`<a class="btn btn-teal" href="https://www.google.com/maps/dir/?api=1&amp;destination=${q}" target="_blank" rel="noopener">Directions <span class="arr">↗</span></a>`:''}
+        ${partner?'':`<a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=${q}" target="_blank" rel="noopener">Photos &amp; reviews on Google ↗</a>`}
+        ${p.ig?`<a class="btn ${partner?'btn-teal':'btn-ghost'}" href="${p.ig}" target="_blank" rel="noopener">Instagram @${p.ig.replace(/\/$/,'').split('/').pop()} ↗</a>`:''}
+        ${p.url?`<a class="btn ${partner&&!p.ig?'btn-teal':'btn-ghost'}" href="${p.url}" target="_blank" rel="noopener">Website ↗</a>`:''}
+      </div>
+    </div></div>`,{cls:'pl-modal'});
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-place]');if(!b)return;e.preventDefault();openPlace(all[+b.dataset.place]);});
+
+const row=p=>`<li><button type="button" data-place="${reg(p)}"><b>${esc(p.n)}</b><span>${esc(p.a?p.a+(p.area?' · '+p.area:''):p.area||'')}</span><small>${esc(p.s||'')}</small><em aria-hidden="true">+</em></button></li>`;
+
+/* partners: featured */
+const pg=document.getElementById('vzPartners');
+if(pg)pg.innerHTML=P.partners.map(p=>Object.assign(p,{partner:true})).map((p,i)=>`<button type="button" class="vz-partner" data-place="${reg(p)}">
+  <span class="vz-pn">${String(i+1).padStart(2,'0')}</span><span class="chip warm">${esc(p.kind||'Partner')}</span>
+  <b>${esc(p.n)}</b><small>${esc(p.s||'')}</small>${p.a?`<span class="vz-paddr">${esc(p.a)}</span>`:''}<em>More +</em></button>`).join('');
+/* beer trail */
+const bt=document.getElementById('vzBeer');
+if(bt){const half=Math.ceil(P.beer.length/2);const cols=[P.beer.slice(0,1),P.beer.slice(1)];
+  bt.innerHTML=cols.map(gs=>`<div class="vz-group">${gs.map((g,k)=>`<h3 class="vz-gh"${k?' style="margin-top:28px"':''}>${esc(g.g)}</h3><ul class="vz-list">${g.items.map(row).join('')}</ul>`).join('')}</div>`).join('');}
+/* coffee */
+const cf=document.getElementById('vzCoffee');if(cf)cf.innerHTML=P.coffee.map(row).join('');
+/* music */
+const mu=document.getElementById('vzMusic');
+if(mu)mu.innerHTML=P.music.map(p=>`<li><button type="button" data-place="${reg(p)}"><span class="vz-kind">${esc(p.kind||'')}</span><b>${esc(p.n)}</b><span>${esc(p.a)}</span><small>${esc(p.s||'')}</small><em aria-hidden="true">+</em></button></li>`).join('');
+
 /* next four at Woodhouse */
 const box=document.getElementById('vzNext');
 if(box)loadEvents(res=>{
