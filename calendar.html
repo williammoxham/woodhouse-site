@@ -6,7 +6,7 @@
 <title>Calendar · Woodhouse</title>
 <meta name="description" content="Live music, DJs, comedy, dance nights, markets and community events at Woodhouse in Santa Cruz. Most shows are free.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611061325">
+<meta name="woodhouse-build" content="202611062347">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Calendar · Woodhouse">
 <meta property="og:description" content="Live music, DJs, comedy, dance nights, markets and community events at Woodhouse in Santa Cruz. Most shows are free.">
@@ -909,7 +909,15 @@ button.post .txt-link{margin-top:2px}
 /* menu button keeps breathing until the visitor opens it once */
 .nav.menu-fresh .menu-btn{border-color:var(--teal);color:var(--teal);animation:menubreath 2.4s ease-in-out infinite}
 @keyframes menubreath{0%,100%{box-shadow:0 0 0 0 rgba(137,216,208,.0)}50%{box-shadow:0 0 0 7px rgba(137,216,208,.22)}}
-@media (prefers-reduced-motion:reduce){.nav.menu-fresh .menu-btn{animation:none}}</style>
+@media (prefers-reduced-motion:reduce){.nav.menu-fresh .menu-btn{animation:none}}
+
+/* cellar: the Woodhouse Weekly look */
+.cx-stage{background:#0a0a0b}
+.cx-lbl b{color:#89d8d0}
+.cx-lbl span{color:#f5f5f7}
+.cx-lbl.sel b{color:#fff}
+.cx-lbl.compact span{display:none}
+@media (max-width:560px){.cx-stage .cx-chip{top:auto;bottom:10px;left:10px;right:10px;transform:none;justify-content:center}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>

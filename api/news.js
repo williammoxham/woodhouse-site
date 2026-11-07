@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
         url: abs(p.fullUrl),
         excerpt: clip(strip(p.excerpt || p.body || '')),
         body: clip(bodyText(p.body || p.excerpt || ''), 4000),
-        image: p.assetUrl ? p.assetUrl + '?format=750w' : '',
+        image: (() => { const m = String(p.body || '').match(/<img[^>]+(?:data-src|src)="(https?:[^"]+)"/i); const u = p.assetUrl || (m ? m[1].replace(/&amp;/g, '&') : ''); return u ? u.split('?')[0] + '?format=750w' : ''; })(),
       }));
     } catch {
       posts = (await getRss(PATH)).map((p) => ({ ...p, excerpt: clip(strip(p.html)), body: clip(bodyText(p.html), 4000), html: undefined }));

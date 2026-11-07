@@ -95,53 +95,6 @@ let tgCur=MK.length-1;
 function showStage(k){if(k===tgCur)return;tgCur=k;tgStages.forEach((g,i)=>g.classList.toggle('on',i===k));filmBtns.forEach((b,i)=>b.classList.toggle('on',i===k));}
 
 
-/* ---------- Hero: 3D oak W mark ---------- */
-(function(){
-  const box=document.getElementById('heroMark');
-  if(!box||!window.THREE)return;
-  let R;try{R=new THREE.WebGLRenderer({antialias:true,alpha:true});}catch(e){return;}
-  if(!R.getContext())return;
-  R.setPixelRatio(Math.min(2.5,window.devicePixelRatio||1));R.outputEncoding=THREE.sRGBEncoding;
-  R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.15;
-  const cv=R.domElement;cv.setAttribute('role','img');cv.setAttribute('aria-label','The Woodhouse W mark in oak. Drag to spin.');
-  box.appendChild(cv);box.classList.add('is3d');
-  const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(28,256/340,1,4000);cam.position.set(0,0,860);
-  scene.add(new THREE.HemisphereLight(0xf2ead9,0x0a0f0f,.6));
-  const key=new THREE.DirectionalLight(0xfff4e6,1.45);key.position.set(300,380,620);scene.add(key);
-  const rim=new THREE.PointLight(0x89d8d0,2,1500);rim.position.set(-360,120,-300);scene.add(rim);
-  const warm=new THREE.PointLight(0xe3a95c,.8,1400);warm.position.set(280,-300,320);scene.add(warm);
-  const ani=R.capabilities.getMaxAnisotropy();
-  const tex=(c,srgb)=>{const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1/300,1/300);t.anisotropy=ani;if(srgb)t.encoding=THREE.sRGBEncoding;return t;};
-  const mat=new THREE.MeshPhysicalMaterial({map:tex(makeWoodCanvas(false),true),bumpMap:tex(makeWoodCanvas(true),false),bumpScale:.9,roughness:.4,clearcoat:.9,clearcoatRoughness:.16});
-  const P=pts=>new THREE.Shape(pts.map(q=>new THREE.Vector2(q[0]-128,-(q[1]-170))));
-  const ext={depth:34,bevelEnabled:true,bevelThickness:1.3,bevelSize:1,bevelOffset:-1,bevelSegments:4,curveSegments:1};
-  const g=new THREE.Group();
-  [P([[0,0],[256,0],[256,213],[213,213],[213,43],[171,85],[171,171],[128,128],[86,171],[86,85],[44,43],[44,213],[0,213]]),
-   P([[120,184],[137,184],[137,213],[213,213],[171,255],[171,340],[128,298],[86,340],[86,255],[44,213],[120,213]])]
-   .forEach(sh=>{const m=new THREE.Mesh(new THREE.ExtrudeGeometry(sh,ext),mat);m.position.z=-17;g.add(m);});
-  scene.add(g);
-  let rot=reduce?.45:-1.4,vel=0,drag=false,lx=0,last=0,intro=reduce?1:0,vis=true,raf=0;
-  cv.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;cv.setPointerCapture(e.pointerId);last=performance.now();});
-  cv.addEventListener('pointermove',e=>{if(!drag)return;vel=(e.clientX-lx)*.014;rot+=vel;lx=e.clientX;last=performance.now();});
-  const up=()=>drag=false;cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
-  function resize(){const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
-  new ResizeObserver(resize).observe(box);resize();
-  const clock=new THREE.Clock();
-  function frame(){
-    const dt=Math.min(.05,clock.getDelta()),t=clock.elapsedTime;
-    if(intro<1){intro=Math.min(1,intro+dt*.7);}
-    const e=1-Math.pow(1-intro,3);
-    if(!drag&&!reduce){rot+=vel;vel*=.95;if(performance.now()-last>1800)rot+=dt*.45;}
-    g.rotation.y=rot+(1-e)*1.2;g.rotation.x=reduce?0:Math.sin(t*.7)*.06;
-    g.position.y=reduce?0:Math.sin(t*1.1)*5;
-    const s=.7+.3*e;g.scale.set(s,s,s);
-    R.render(scene,cam);
-    if(vis&&!reduce)raf=requestAnimationFrame(frame);
-  }
-  new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis&&!reduce){cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);}}).observe(box);
-  frame();
-})();
-
 /* ---------- 3D mark: the same stages, extruded and morphed ---------- */
 let tgT=MK.length-1, tgTarget=MK.length-1;
 const M3=(function(){

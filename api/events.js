@@ -8,6 +8,16 @@ const bodyText = (html = '') =>
     .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;|&rsquo;/g, "'").replace(/&quot;|&ldquo;|&rdquo;/g, '"')
     .replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim();
 
+// The event's own photo: its thumbnail, or else the first image in its description (flyers usually live there).
+const sized = (u) => (u ? u.split('?')[0] + '?format=750w' : '');
+const imageOf = (e) => {
+  if (e.assetUrl && !/\/static\/|placeholder/i.test(e.assetUrl)) return sized(e.assetUrl);
+  const html = String(e.body || '');
+  const m = html.match(/<img[^>]+data-src="(https?:[^"]+)"/i) || html.match(/<img[^>]+src="(https?:[^"]+)"/i) ||
+    html.match(/data-image="(https?:[^"]+)"/i);
+  return sized(m ? m[1].replace(/&amp;/g, '&') : (e.assetUrl || ''));
+};
+
 const shape = (e) => ({
   title: strip(e.title),
   start: e.startDate,
@@ -15,7 +25,7 @@ const shape = (e) => ({
   url: abs(e.fullUrl),
   excerpt: clip(strip(e.excerpt || e.body || ''), 220),
   body: clip(bodyText(e.body), 1600),
-  image: e.assetUrl ? e.assetUrl + '?format=750w' : '',
+  image: imageOf(e),
   tickets: ((String(e.body || '').match(/<a[^>]+href="(https?:[^"]+)"[^>]*>(?:(?!<\/a>)[\s\S])*?(?:ticket|rsvp|buy|register)(?:(?!<\/a>)[\s\S])*?<\/a>/i)) || [])[1] ||
     ((String(e.body || '').match(/href="(https?:[^"]*(?:eventbrite|fareharbor|ticket|tix|dice\.fm|seetickets|universe\.com)[^"]*)"/i)) || [])[1] || '',
   tags: e.tags || [],
