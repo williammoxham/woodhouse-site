@@ -61,6 +61,16 @@ if(hoursEl){
   });
   hoursEl.innerHTML=hh;
 }
+/* compact hours for the footer: days with the same hours are grouped, today's group is highlighted */
+const footH=document.getElementById('footHours');
+if(footH){
+  const order=[2,3,4,5,6,0,1],groups=[];
+  order.forEach(i=>{const h=HOURS[i],key=h.o==null?'x':h.o+'-'+h.c,g=groups[groups.length-1];
+    if(g&&g.key===key)g.days.push(i);else groups.push({key,days:[i],h});});
+  footH.innerHTML=groups.map(g=>{const today=g.days.includes(now.wd),d0=HOURS[g.days[0]].d,d1=HOURS[g.days[g.days.length-1]].d;
+    const days=g.days.length>1?d0+' to '+d1:d0;
+    return `<div class="${today?'today':''}"><dt>${days}</dt><dd>${g.h.o==null?'Closed':fmt(g.h.o)+' to '+fmt(g.h.c)}</dd></div>`;}).join('');
+}
 function openStatus(){
   const t=HOURS[now.wd];
   if(t.o!=null&&nowMin>=t.o*60&&nowMin<t.c*60)return {open:true,text:'Open now · until '+fmt(t.c)};
@@ -174,8 +184,8 @@ function eventHtml(e,i){
   const wd=WD[new Date(Date.UTC(e.y,e.m-1,e.d,12)).getUTCDay()];
   const tickets=e.tickets||((e.body||'').match(/https?:\/\/\S*(eventbrite|fareharbor|ticket|tix)\S*/i)||[])[0]||'';
   const paras=String(e.body||e.p||'').split(/\n{2,}|\n/).map(x=>x.trim()).filter(Boolean).map(x=>`<p>${esc(x)}</p>`).join('');
-  const img=e.img||FALLBACK_IMG[(i||0)%FALLBACK_IMG.length];
-  return `<div class="ev-hero" style="background-image:url('${img}')"><div class="ev-hero-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd}</span></div></div>
+  const img=e.img;
+  return `<div class="ev-hero${img?'':' no-img'}"${img?` style="background-image:url('${img}')"`:''}><div class="ev-hero-date"><span class="d">${e.d}</span><span class="m"><b>${MON[e.m-1]}</b>${wd}</span></div></div>
     <div class="ev-pad"><p class="eyebrow">${esc(e.time)} · Woodhouse, 119 Madrone St</p><h2 id="modalTitle">${esc(e.t)}</h2>
     <div class="chips" style="margin-top:14px">${(e.cats||e.tags||[]).filter(c=>c!=='Ticketed').slice(0,3).map(c=>`<span class="chip">${esc(c)}</span>`).join('')}${tickets?'<span class="chip warm">Tickets</span>':e.door?`<span class="chip warm">${esc(e.door)}</span>`:''}</div>
     <div class="ev-text">${paras}</div>
@@ -225,18 +235,23 @@ document.addEventListener('click',e=>{
   const g=e.target.closest('[data-gallery]');if(g){e.preventDefault();const set=(D.GALLERIES||{})[g.dataset.gallery];if(set)openGallery(set.title,set.imgs);}
 });
 
-/* ---------- Menu attention nudge: shine + pulse + hint bubble ---------- */
+/* ---------- Menu attention nudge: a teal wave runs across the menu, a hint bubble points at it ---------- */
 (function(){
-  if(reduce)return;
   const n=document.getElementById('nav');if(!n)return;
-  let shown=0;try{shown=+sessionStorage.getItem('wh-nudge')||0;}catch(e){}
-  const fire=()=>{if(shown>=2)return;shown++;try{sessionStorage.setItem('wh-nudge',String(shown));}catch(e){}
-    n.classList.remove('nudge');void n.offsetWidth;n.classList.add('nudge');setTimeout(()=>n.classList.remove('nudge'),5200);};
-  setTimeout(fire,2200);
-  /* once more after they have scrolled into the page, so it is noticed */
-  const onS=()=>{if(window.scrollY>window.innerHeight*.9){window.removeEventListener('scroll',onS);setTimeout(fire,600);}};
+  n.querySelectorAll('.nav-links a').forEach((a,i)=>a.style.setProperty('--i',i));
+  let busy=false;
+  const fire=()=>{if(busy)return;busy=true;n.classList.remove('nudge');void n.offsetWidth;n.classList.add('nudge');
+    setTimeout(()=>{n.classList.remove('nudge');busy=false;},reduce?3500:4800);};
+  setTimeout(fire,1400);                               /* every page, shortly after it opens */
+  let again=true;const onS=()=>{if(again&&window.scrollY>window.innerHeight*1.2){again=false;setTimeout(fire,500);}};
   window.addEventListener('scroll',onS,{passive:true});
+  n.addEventListener('pointerenter',()=>{n.classList.remove('nudge');});
 })();
+
+/* ---------- Rustic finish: faint oak grain behind cards, footer and visit band ---------- */
+(function(){const run=()=>{try{const c=makeWoodCanvas(false),s=document.createElement('canvas');s.width=s.height=512;const x=s.getContext('2d');x.drawImage(c,0,0,512,512);
+  document.documentElement.style.setProperty('--oak-tex',`url(${s.toDataURL('image/jpeg',.72)})`);}catch(e){}};
+  (window.requestIdleCallback||(f=>setTimeout(f,400)))(run);})();
 
 window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
 

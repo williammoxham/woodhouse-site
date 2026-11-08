@@ -6,7 +6,7 @@
 <title>Beer · Woodhouse</title>
 <meta name="description" content="Small batch beer brewed at 119 Madrone St, Santa Cruz. See the live cellar, what is on tap, how we brew and who brews it.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611070919">
+<meta name="woodhouse-build" content="202611071432">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Beer · Woodhouse">
 <meta property="og:description" content="Small batch beer brewed at 119 Madrone St, Santa Cruz. See the live cellar, what is on tap, how we brew and who brews it.">
@@ -1198,7 +1198,31 @@ footer::after{height:10px;opacity:1;background:linear-gradient(180deg,rgba(0,0,0
 
 /* Visit: find us + map only (hours live in the footer) */
 @media (min-width:981px){.vz-glance{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}}
-@media (max-width:980px) and (min-width:701px){.vz-glance{grid-template-columns:1fr 1fr}.vz-map{grid-column:auto}}</style>
+@media (max-width:980px) and (min-width:701px){.vz-glance{grid-template-columns:1fr 1fr}.vz-map{grid-column:auto}}
+
+/* ---------- Footer: everything centered, one Woodhouse ---------- */
+footer{text-align:center}
+.foot-signup{display:flex;flex-direction:column;align-items:center;gap:4px;padding-bottom:clamp(36px,4vw,56px);margin-bottom:clamp(36px,4vw,56px);border-bottom:1px solid rgba(196,145,92,.25)}
+.foot-signup>p:first-child{margin:0;color:var(--cream);font:600 clamp(18px,1.8vw,22px)/1.3 var(--f-body)}
+.foot-signup .signup{width:min(440px,100%);margin-top:14px}
+.foot{grid-template-columns:repeat(4,minmax(0,1fr));justify-items:center}
+.foot>div{display:flex;flex-direction:column;align-items:center;min-width:0}
+.foot>div:first-child{grid-column:auto}
+.foot h5{text-align:center}
+.foot-hours{width:min(240px,100%);text-align:left}
+.foot-status{align-self:center}
+.foot-stamp-row{flex-direction:column;align-items:center;gap:clamp(18px,2.4vw,30px)}
+.foot-stamp-row .giant{width:100%;flex:none}
+.stamp{transform:rotate(-6deg)}
+.legal{justify-content:center;flex-direction:column;align-items:center;gap:8px;text-align:center}
+@media (max-width:900px){.foot{grid-template-columns:1fr 1fr;row-gap:36px}.foot-find{grid-column:1/-1}}
+@media (max-width:600px){.foot-stamp-row{flex-direction:column}}
+@media (max-width:440px){.foot{grid-template-columns:1fr}}
+
+/* ---------- Menu bar in wood, like the footer ---------- */
+.nav,.nav.scrolled{background:linear-gradient(180deg,rgba(18,14,10,.74),rgba(12,12,10,.84)),var(--oak-tex,rgba(10,15,15,.9));background-size:auto,520px auto;border-bottom:0}
+.nav::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.45)),var(--oak-tex,linear-gradient(90deg,var(--oak-2),var(--oak)));background-size:auto,300px auto;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.nav-links{background:rgba(10,10,8,.45);border-color:rgba(196,145,92,.3)}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1397,17 +1421,16 @@ footer::after{height:10px;opacity:1;background:linear-gradient(180deg,rgba(0,0,0
 </main>
 <footer>
   <div class="wrap">
+    <div class="foot-signup">
+      <p>Get first word on shows, releases and pop ups.</p>
+      <form class="signup" id="signup" novalidate>
+        <label for="email" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email" type="email" placeholder="you@email.com" autocomplete="email">
+        <button class="btn btn-teal" type="submit">Join</button>
+      </form>
+      <p class="signup-msg" id="signupMsg" aria-live="polite"></p>
+    </div>
     <div class="foot">
-      <div>
-        <a class="brand" href="/" aria-label="Woodhouse Blending and Brewing"><svg viewBox="0 0 256 340" aria-hidden="true" style="width:30px"><use href="#wmark"/></svg><span><span class="wm" aria-hidden="true" style="width:150px"></span><small>Blending &amp; Brewing</small></span></a>
-        <p style="color:var(--muted);margin-top:18px;max-width:38ch;font-size:15px">Get first word on shows, releases and pop ups.</p>
-        <form class="signup" id="signup" novalidate>
-          <label for="email" style="position:absolute;left:-9999px">Email address</label>
-          <input id="email" type="email" placeholder="you@email.com" autocomplete="email">
-          <button class="btn btn-teal" type="submit">Join</button>
-        </form>
-        <p class="signup-msg" id="signupMsg" aria-live="polite"></p>
-      </div>
       <div><h5>Explore</h5><a href="/calendar">Calendar</a><a href="/beer">Beer</a><a href="/kitchen">Kitchen</a><a href="/events">Private events</a><a href="/visit">Visit Santa Cruz</a></div>
       <div><h5>Work with us</h5><a href="https://tally.so/r/Y5g81W" target="_blank" rel="noopener">Book an event</a><a href="downloads/woodhouse-events-brochure-2026.pdf" download>Events brochure</a><a href="/calendar#play">Play at Woodhouse</a><a href="https://woodhouse-gear.myshopify.com" target="_blank" rel="noopener">Merch</a></div>
       <div class="foot-find"><h5>Find us</h5><p class="foot-addr">119 Madrone St<br>Santa Cruz, CA 95060</p>
@@ -1467,10 +1490,10 @@ HOURS:[
 PLACES:{
  partners:[
   {n:'Flower Bar Design Studio',a:'511 River St',area:'River St · By appointment',kind:'Florals',s:'Handcrafted florals, wreaths and event design.',about:'Led by Sharon, with more than 20 years of floral design behind her. Handcrafted flowers, wreaths, plant arrangements and subscriptions, plus florals for weddings, corporate events and remembrance services. Same day delivery when you order by noon. Studio visits by appointment.',url:'https://flowerbardesignstudio.com'},
-  {n:'The Haus of Botanica',a:'',area:'Santa Cruz Mountains',kind:'Hair & beauty',s:'Hair salon: color, balayage, bridal styling and scalp health.',about:'A hair salon in the Santa Cruz mountains offering transformative hair care: balayage, highlights, all over color, glazes and toners, blowouts, bridal and updo styling and braids, with Olaplex and K18 treatments. They also offer scalp health consultations and hair loss treatments, plus tooth gems. Book online through their site.',url:'https://www.thehausofbotanica.com/hair',ig:'https://www.instagram.com/thehausofbotanica/'},
+  {n:'The Haus of Botanica',a:'',area:'Santa Cruz Mountains',kind:'Hair & beauty',s:'Tara Murphy\'s hair studio: color, balayage, bridal styling and scalp health.',about:'The hair studio of Tara Murphy, up in the Santa Cruz mountains. Tara does transformative hair care: balayage, highlights, all over color, glazes and toners, blowouts, bridal and updo styling and braids, with Olaplex and K18 treatments. She also offers scalp health consultations and hair loss treatments, plus tooth gems. Book with Tara through her site.',url:'https://www.thehausofbotanica.com/hair',ig:'https://www.instagram.com/thehausofbotanica/'},
   {n:'Yayah Designs',a:'',area:'Santa Cruz',kind:'Design',s:'Design by Yayah.',about:'A Santa Cruz designer and longtime Woodhouse collaborator. See the work at yayahdesigns.com.',url:'https://yayahdesigns.com',ig:'https://www.instagram.com/yayahdesigns/'},
   {n:'Gut Designs',a:'511 River St',area:'River St',kind:'Design',s:'Branding, painting, illustration and product design.',about:'A design studio working across branding, painting, illustration, product design and publishing.',url:'https://www.gutdesigns.com',ig:'https://www.instagram.com/gutdesigns/'},
-  {n:'Imprint Records',a:'511 River St',area:'River St',kind:'Records',s:'Records and DJ culture. More coming soon.',about:'Records and DJ culture on River Street. More information coming soon.',ig:'https://www.instagram.com/djkraeon/'},
+  {n:'Imprint Productions',a:'511 River St',area:'River St',kind:'Records & apparel',s:'Hip-hop record releases, production, apparel and accessories.',about:'DJ Kraeon\'s company, rooted in hip-hop. Imprint Productions puts out record releases for hip-hop artists and offers music production, plus apparel and accessories for artists, crews and brands who want their name on something real.',ig:'https://www.instagram.com/djkraeon/'},
   {n:'Living Swell Kombucha',a:'',area:'Santa Cruz',kind:'Kombucha',s:'Farm to bottle kombucha, brewed in small batches.',about:'Small batch kombucha started in 2021 by Santa Cruz moms Sophie Slosberg and Summer Torrez. It is 100% kombucha, made with local, organic fruit and herbs, and you will find it at local farmers markets and on tap around town.',url:'https://livingswellkombucha.com'}
  ],
  beer:[
