@@ -1320,3 +1320,6 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 .mh-co-card h2{margin:0;font:800 clamp(30px,4vw,42px)/1 var(--f-display);text-transform:uppercase}
 .mh-co-card p{margin:0;color:var(--muted)}
 #mhOpts{display:grid;gap:18px}
+
+/* Merch title: the real Woodhouse wordmark, sized to the heading */
+.mh-wm{display:inline-block;height:.74em;width:auto;max-width:none;vertical-align:baseline;margin-right:.08em}

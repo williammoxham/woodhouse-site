@@ -6,7 +6,7 @@
 <title>Merch · Woodhouse</title>
 <meta name="description" content="Woodhouse gear: tees, hoodies, tanks and more with the Woodhouse mark. Shop and check out right here.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611080112">
+<meta name="woodhouse-build" content="202611080116">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Merch · Woodhouse">
 <meta property="og:description" content="Woodhouse gear: tees, hoodies, tanks and more with the Woodhouse mark. Shop and check out right here.">
@@ -1339,7 +1339,10 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 .mh-co-card svg{width:48px;color:var(--teal)}
 .mh-co-card h2{margin:0;font:800 clamp(30px,4vw,42px)/1 var(--f-display);text-transform:uppercase}
 .mh-co-card p{margin:0;color:var(--muted)}
-#mhOpts{display:grid;gap:18px}</style>
+#mhOpts{display:grid;gap:18px}
+
+/* Merch title: the real Woodhouse wordmark, sized to the heading */
+.mh-wm{display:inline-block;height:.74em;width:auto;max-width:none;vertical-align:baseline;margin-right:.08em}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1373,7 +1376,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
   <div class="bg" data-drift="-14" style="background-image:url('img/crowd.jpg');background-position:center 30%"></div>
   <div class="wrap">
     <p class="crumb"><a href="/">Woodhouse</a><span class="chev" aria-hidden="true"></span>Merch</p>
-    <h1>Woodhouse <span class="o">Gear</span></h1>
+    <h1 aria-label="Woodhouse Gear"><span class="wm mh-wm" aria-hidden="true"></span> <span class="o" aria-hidden="true">Gear</span></h1>
     <p class="lede">Tees, hoodies and tanks with the notched mark, made to order and shipped to your door. Wear the house.</p>
     <div class="btn-row"><a class="btn btn-teal" href="#shop">Shop the gear <span class="arr">→</span></a><button type="button" class="btn btn-ghost" data-cart-open>Your bag <span class="mh-count" data-cart-count>0</span></button></div>
   </div>
