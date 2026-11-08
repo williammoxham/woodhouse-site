@@ -12,6 +12,8 @@ const iso=dd=>new Date(Date.UTC(t.getFullYear(),t.getMonth(),t.getDate()+dd)).to
 window.WH_DATA={
 
 /* ---- Contacts and links ---- */
+/* ---- Merch: your Shopify store, read through the Headless channel. The public token is meant to live in website code. ---- */
+SHOPIFY:{domain:'woodhouse-gear.myshopify.com',token:'373d173acfe45a6c407dfba1591c8610',api:'2026-07'},
 CONTACT:{
   phone:'(831) 313-9461',
   general:'beer@woodhousebrews.com',
@@ -38,10 +40,10 @@ HOURS:[
 PLACES:{
  partners:[
   {n:'Flower Bar Design Studio',a:'511 River St',area:'River St · By appointment',kind:'Florals',s:'Handcrafted florals, wreaths and event design.',about:'Led by Sharon, with more than 20 years of floral design behind her. Handcrafted flowers, wreaths, plant arrangements and subscriptions, plus florals for weddings, corporate events and remembrance services. Same day delivery when you order by noon. Studio visits by appointment.',url:'https://flowerbardesignstudio.com'},
-  {n:'The Haus of Botanica',a:'',area:'Santa Cruz Mountains',kind:'Hair & beauty',s:'Hair salon: color, balayage, bridal styling and scalp health.',about:'A hair salon in the Santa Cruz mountains offering transformative hair care: balayage, highlights, all over color, glazes and toners, blowouts, bridal and updo styling and braids, with Olaplex and K18 treatments. They also offer scalp health consultations and hair loss treatments, plus tooth gems. Book online through their site.',url:'https://www.thehausofbotanica.com/hair',ig:'https://www.instagram.com/thehausofbotanica/'},
+  {n:'The Haus of Botanica',a:'',area:'Santa Cruz Mountains',kind:'Hair & beauty',s:'Tara Murphy\'s hair studio: color, balayage, bridal styling and scalp health.',about:'The hair studio of Tara Murphy, up in the Santa Cruz mountains. Tara does transformative hair care: balayage, highlights, all over color, glazes and toners, blowouts, bridal and updo styling and braids, with Olaplex and K18 treatments. She also offers scalp health consultations and hair loss treatments, plus tooth gems. Book with Tara through her site.',url:'https://www.thehausofbotanica.com/hair',ig:'https://www.instagram.com/thehausofbotanica/'},
   {n:'Yayah Designs',a:'',area:'Santa Cruz',kind:'Design',s:'Design by Yayah.',about:'A Santa Cruz designer and longtime Woodhouse collaborator. See the work at yayahdesigns.com.',url:'https://yayahdesigns.com',ig:'https://www.instagram.com/yayahdesigns/'},
   {n:'Gut Designs',a:'511 River St',area:'River St',kind:'Design',s:'Branding, painting, illustration and product design.',about:'A design studio working across branding, painting, illustration, product design and publishing.',url:'https://www.gutdesigns.com',ig:'https://www.instagram.com/gutdesigns/'},
-  {n:'Imprint Records',a:'511 River St',area:'River St',kind:'Records',s:'Records and DJ culture. More coming soon.',about:'Records and DJ culture on River Street. More information coming soon.',ig:'https://www.instagram.com/djkraeon/'},
+  {n:'Imprint Productions',a:'511 River St',area:'River St',kind:'Records & apparel',s:'Hip-hop record releases, production, apparel and accessories.',about:'DJ Kraeon\'s company, rooted in hip-hop. Imprint Productions puts out record releases for hip-hop artists and offers music production, plus apparel and accessories for artists, crews and brands who want their name on something real.',ig:'https://www.instagram.com/djkraeon/'},
   {n:'Living Swell Kombucha',a:'',area:'Santa Cruz',kind:'Kombucha',s:'Farm to bottle kombucha, brewed in small batches.',about:'Small batch kombucha started in 2021 by Santa Cruz moms Sophie Slosberg and Summer Torrez. It is 100% kombucha, made with local, organic fruit and herbs, and you will find it at local farmers markets and on tap around town.',url:'https://livingswellkombucha.com'}
  ],
  beer:[

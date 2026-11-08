@@ -253,6 +253,26 @@ document.addEventListener('click',e=>{
   document.documentElement.style.setProperty('--oak-tex',`url(${s.toDataURL('image/jpeg',.72)})`);}catch(e){}};
   (window.requestIdleCallback||(f=>setTimeout(f,400)))(run);})();
 
+/* ---------- No widows: glue the last two words of every block of copy together ---------- */
+const NW_SEL='h1,h2,h3,h4,h5,p,li,dd,dt,figcaption,blockquote,small,.lede,.vz-partner b,.pc-body h3 button,.mc-row b,.vz-ev-t b';
+const NW_SKIP='.nav,.drawer,.btn,.chip,.ev-chip,.status,.marquee,.ticker,.mc-ev,.mc-num,.tlabel,.cx-lbl,.legal,.foot-hours,.stamp,[data-nowidow-skip]';
+function glue(el){
+  if(el.closest(NW_SKIP)||el.dataset.nw==='1')return;
+  if((el.textContent||'').trim().split(/\s+/).length<3)return;
+  /* walk all text, even across styled pieces, and turn the last breaking space into a no-break space */
+  const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&n.parentElement.closest('svg,script,style')?2:1});
+  const nodes=[];let n;while((n=tw.nextNode()))nodes.push(n);
+  let seenWord=false;
+  for(let j=nodes.length-1;j>=0;j--){const v=nodes[j].nodeValue;
+    for(let i=v.length-1;i>=0;i--){const c=v[i];
+      if(/[ \t\n\r]/.test(c)){if(seenWord){nodes[j].nodeValue=v.slice(0,i)+' '+v.slice(i+1);el.dataset.nw='1';return;}}
+      else if(c!==' ')seenWord=true;}}
+}
+function noWidows(root){(root||document).querySelectorAll(NW_SEL).forEach(glue);}
+noWidows();
+/* copy that arrives later (events, places, pop-ups) */
+let nwT=0;new MutationObserver(()=>{clearTimeout(nwT);nwT=setTimeout(()=>noWidows(),60);}).observe(document.body,{childList:true,subtree:true});
+
 window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
 
 /* ---------- Motion (shared) ---------- */
