@@ -1203,3 +1203,9 @@ footer{text-align:center}
 .nav,.nav.scrolled{background:linear-gradient(180deg,rgba(18,14,10,.74),rgba(12,12,10,.84)),var(--oak-tex,rgba(10,15,15,.9));background-size:auto,520px auto;border-bottom:0}
 .nav::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.45)),var(--oak-tex,linear-gradient(90deg,var(--oak-2),var(--oak)));background-size:auto,300px auto;box-shadow:0 2px 6px rgba(0,0,0,.35)}
 .nav-links{background:rgba(10,10,8,.45);border-color:rgba(196,145,92,.3)}
+
+/* ---------- No widows: balanced headings, pretty paragraphs ---------- */
+h1,h2,h3,h4,h5,.vz-h2,.lede,.reveal-text,blockquote{text-wrap:balance}
+p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
+/* bigger header logo */
+.hero-mark{width:clamp(180px,21vw,310px)}

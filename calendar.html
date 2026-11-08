@@ -6,7 +6,7 @@
 <title>Calendar · Woodhouse</title>
 <meta name="description" content="Live music, DJs, comedy, dance nights, markets and community events at Woodhouse in Santa Cruz. Most shows are free.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611071432">
+<meta name="woodhouse-build" content="202611072233">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Calendar · Woodhouse">
 <meta property="og:description" content="Live music, DJs, comedy, dance nights, markets and community events at Woodhouse in Santa Cruz. Most shows are free.">
@@ -1222,7 +1222,13 @@ footer{text-align:center}
 /* ---------- Menu bar in wood, like the footer ---------- */
 .nav,.nav.scrolled{background:linear-gradient(180deg,rgba(18,14,10,.74),rgba(12,12,10,.84)),var(--oak-tex,rgba(10,15,15,.9));background-size:auto,520px auto;border-bottom:0}
 .nav::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.45)),var(--oak-tex,linear-gradient(90deg,var(--oak-2),var(--oak)));background-size:auto,300px auto;box-shadow:0 2px 6px rgba(0,0,0,.35)}
-.nav-links{background:rgba(10,10,8,.45);border-color:rgba(196,145,92,.3)}</style>
+.nav-links{background:rgba(10,10,8,.45);border-color:rgba(196,145,92,.3)}
+
+/* ---------- No widows: balanced headings, pretty paragraphs ---------- */
+h1,h2,h3,h4,h5,.vz-h2,.lede,.reveal-text,blockquote{text-wrap:balance}
+p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
+/* bigger header logo */
+.hero-mark{width:clamp(180px,21vw,310px)}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1930,6 +1936,26 @@ document.addEventListener('click',e=>{
 (function(){const run=()=>{try{const c=makeWoodCanvas(false),s=document.createElement('canvas');s.width=s.height=512;const x=s.getContext('2d');x.drawImage(c,0,0,512,512);
   document.documentElement.style.setProperty('--oak-tex',`url(${s.toDataURL('image/jpeg',.72)})`);}catch(e){}};
   (window.requestIdleCallback||(f=>setTimeout(f,400)))(run);})();
+
+/* ---------- No widows: glue the last two words of every block of copy together ---------- */
+const NW_SEL='h1,h2,h3,h4,h5,p,li,dd,dt,figcaption,blockquote,small,.lede,.vz-partner b,.pc-body h3 button,.mc-row b,.vz-ev-t b';
+const NW_SKIP='.nav,.drawer,.btn,.chip,.ev-chip,.status,.marquee,.ticker,.mc-ev,.mc-num,.tlabel,.cx-lbl,.legal,.foot-hours,.stamp,[data-nowidow-skip]';
+function glue(el){
+  if(el.closest(NW_SKIP)||el.dataset.nw==='1')return;
+  if((el.textContent||'').trim().split(/\s+/).length<3)return;
+  /* walk all text, even across styled pieces, and turn the last breaking space into a no-break space */
+  const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&&n.parentElement.closest('svg,script,style')?2:1});
+  const nodes=[];let n;while((n=tw.nextNode()))nodes.push(n);
+  let seenWord=false;
+  for(let j=nodes.length-1;j>=0;j--){const v=nodes[j].nodeValue;
+    for(let i=v.length-1;i>=0;i--){const c=v[i];
+      if(/[ \t\n\r]/.test(c)){if(seenWord){nodes[j].nodeValue=v.slice(0,i)+' '+v.slice(i+1);el.dataset.nw='1';return;}}
+      else if(c!==' ')seenWord=true;}}
+}
+function noWidows(root){(root||document).querySelectorAll(NW_SEL).forEach(glue);}
+noWidows();
+/* copy that arrives later (events, places, pop-ups) */
+let nwT=0;new MutationObserver(()=>{clearTimeout(nwT);nwT=setTimeout(()=>noWidows(),60);}).observe(document.body,{childList:true,subtree:true});
 
 window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
 
