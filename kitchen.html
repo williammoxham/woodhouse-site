@@ -6,7 +6,7 @@
 <title>Kitchen &amp; Catering · Woodhouse</title>
 <meta name="description" content="Handmade food and catering from the Woodhouse kitchen in Santa Cruz: buffets, family style and chef led menus for every kind of event.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611080116">
+<meta name="woodhouse-build" content="202611081216">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kitchen &amp; Catering · Woodhouse">
 <meta property="og:description" content="Handmade food and catering from the Woodhouse kitchen in Santa Cruz: buffets, family style and chef led menus for every kind of event.">
@@ -1706,7 +1706,10 @@ GALLERIES:{
 },
 
 /* ---- Live cellar: the brewing app's Supabase (see cellar-setup.sql). Empty = preview data. ---- */
-CELLAR_SOURCE:{url:'',anonKey:'',view:'public_cellar',refreshMinutes:5},
+/* Live cellar. endpoint = the brewing app's public tank feed (Woodhouse Weekly at woodhouseupdates.com).
+   It returns the same tanks the app's 3D view uses: [{id,kind,cap,beer,style,status,vol,srm}, ...].
+   (url + anonKey is the older direct-to-Supabase option; leave blank when using the endpoint.) */
+CELLAR_SOURCE:{endpoint:'https://www.woodhouseupdates.com/api/public-cellar',url:'',anonKey:'',view:'public_cellar',refreshMinutes:5},
 CELLAR_LAYOUT:[
   /* brewhouse (on the platform) */
   {code:'HLT',kind:'hlt',bbl:10,x:-250,z:40,label:'Hot liquor'},

@@ -180,7 +180,10 @@ GALLERIES:{
 },
 
 /* ---- Live cellar: the brewing app's Supabase (see cellar-setup.sql). Empty = preview data. ---- */
-CELLAR_SOURCE:{url:'',anonKey:'',view:'public_cellar',refreshMinutes:5},
+/* Live cellar. endpoint = the brewing app's public tank feed (Woodhouse Weekly at woodhouseupdates.com).
+   It returns the same tanks the app's 3D view uses: [{id,kind,cap,beer,style,status,vol,srm}, ...].
+   (url + anonKey is the older direct-to-Supabase option; leave blank when using the endpoint.) */
+CELLAR_SOURCE:{endpoint:'https://www.woodhouseupdates.com/api/public-cellar',url:'',anonKey:'',view:'public_cellar',refreshMinutes:5},
 CELLAR_LAYOUT:[
   /* brewhouse (on the platform) */
   {code:'HLT',kind:'hlt',bbl:10,x:-250,z:40,label:'Hot liquor'},
