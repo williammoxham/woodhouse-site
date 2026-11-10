@@ -6,7 +6,7 @@
 <title>Beer · Woodhouse</title>
 <meta name="description" content="Small batch beer brewed at 119 Madrone St, Santa Cruz. See the live cellar, what is on tap, how we brew and who brews it.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611092324">
+<meta name="woodhouse-build" content="202611100048">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Beer · Woodhouse">
 <meta property="og:description" content="Small batch beer brewed at 119 Madrone St, Santa Cruz. See the live cellar, what is on tap, how we brew and who brews it.">
@@ -2222,11 +2222,16 @@ function fromApp(t){
 async function loadCellar(){
   const c=D.CELLAR_SOURCE;
   if(c.endpoint){
-    try{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),8000);
-      const r=await fetch(c.endpoint,{signal:ac.signal,cache:'no-store'});clearTimeout(to);if(!r.ok)throw 0;
-      const j=await r.json(),list=Array.isArray(j)?j:(j.tanks||j.rows||[]);if(!list.length)throw 0;
-      return {rows:list.map(fromApp),live:true,at:j.updated?new Date(j.updated):new Date()};
-    }catch(e){if(!c.url||!c.anonKey)return {rows:D.CELLAR_PREVIEW,live:false};}
+    /* try the address as written, then with/without www, in case one of them redirects */
+    const alt=/:\/\/www\./.test(c.endpoint)?c.endpoint.replace('://www.','://'):c.endpoint.replace('://','://www.');
+    for(const ep of [c.endpoint,alt]){
+      try{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),8000);
+        const r=await fetch(ep,{signal:ac.signal,cache:'no-store'});clearTimeout(to);if(!r.ok)throw 0;
+        const j=await r.json(),list=Array.isArray(j)?j:(j.tanks||j.rows||[]);if(!list.length)throw 0;
+        return {rows:list.map(fromApp),live:true,at:j.updated?new Date(j.updated):new Date()};
+      }catch(e){}
+    }
+    if(!c.url||!c.anonKey)return {rows:D.CELLAR_PREVIEW,live:false};
   }
   if(!c.url||!c.anonKey)return {rows:D.CELLAR_PREVIEW,live:false};
   try{

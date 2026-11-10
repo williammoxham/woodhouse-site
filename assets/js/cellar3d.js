@@ -36,11 +36,16 @@ function fromApp(t){
 async function loadCellar(){
   const c=D.CELLAR_SOURCE;
   if(c.endpoint){
-    try{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),8000);
-      const r=await fetch(c.endpoint,{signal:ac.signal,cache:'no-store'});clearTimeout(to);if(!r.ok)throw 0;
-      const j=await r.json(),list=Array.isArray(j)?j:(j.tanks||j.rows||[]);if(!list.length)throw 0;
-      return {rows:list.map(fromApp),live:true,at:j.updated?new Date(j.updated):new Date()};
-    }catch(e){if(!c.url||!c.anonKey)return {rows:D.CELLAR_PREVIEW,live:false};}
+    /* try the address as written, then with/without www, in case one of them redirects */
+    const alt=/:\/\/www\./.test(c.endpoint)?c.endpoint.replace('://www.','://'):c.endpoint.replace('://','://www.');
+    for(const ep of [c.endpoint,alt]){
+      try{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),8000);
+        const r=await fetch(ep,{signal:ac.signal,cache:'no-store'});clearTimeout(to);if(!r.ok)throw 0;
+        const j=await r.json(),list=Array.isArray(j)?j:(j.tanks||j.rows||[]);if(!list.length)throw 0;
+        return {rows:list.map(fromApp),live:true,at:j.updated?new Date(j.updated):new Date()};
+      }catch(e){}
+    }
+    if(!c.url||!c.anonKey)return {rows:D.CELLAR_PREVIEW,live:false};
   }
   if(!c.url||!c.anonKey)return {rows:D.CELLAR_PREVIEW,live:false};
   try{
