@@ -6,7 +6,7 @@
 <title>Merch · Woodhouse</title>
 <meta name="description" content="Woodhouse gear: tees, hoodies, tanks and more with the Woodhouse mark. Shop and check out right here.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611081216">
+<meta name="woodhouse-build" content="202611092324">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Merch · Woodhouse">
 <meta property="og:description" content="Woodhouse gear: tees, hoodies, tanks and more with the Woodhouse mark. Shop and check out right here.">
@@ -1342,7 +1342,22 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 #mhOpts{display:grid;gap:18px}
 
 /* Merch title: the real Woodhouse wordmark, sized to the heading */
-.mh-wm{display:inline-block;height:.74em;width:auto;max-width:none;vertical-align:baseline;margin-right:.08em}</style>
+.mh-wm{display:inline-block;height:.74em;width:auto;max-width:none;vertical-align:baseline;margin-right:.08em}
+
+/* v31: tighter Blending/Brewing steps on phones */
+@media (max-width:900px){.blend-stage{padding-block:72px}.blend-copy{gap:24px}}
+.no-motion .blend-copy{gap:24px}
+/* v31: book band eyebrow stays on one line */
+.book p.eyebrow{white-space:nowrap}
+@media (max-width:640px){.book p.eyebrow{font-size:clamp(10px,3.2vw,15px);letter-spacing:.12em}}
+/* v31: pint sits right under the cellar; heading leads on phones */
+.pint-grid{grid-template-areas:"glass head" "glass ctrl";grid-template-rows:auto auto;row-gap:0}
+.pint-col{grid-area:glass;align-self:center;min-width:0}
+.pint-head{grid-area:head;align-self:end;min-width:0}
+.pint-grid>.pint-ctrl{grid-area:ctrl;align-self:start;min-width:0}
+.pint-sec{padding-block:clamp(56px,7vw,100px)}
+#pint+.sec{padding-top:clamp(48px,6vw,90px)}
+@media (max-width:900px){.pint-grid{grid-template-areas:"head" "glass" "ctrl";row-gap:26px}.pint-grid>.pint-ctrl{margin-top:0}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>

@@ -6,7 +6,7 @@
 <title>Woodhouse Blending &amp; Brewing</title>
 <meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611081216">
+<meta name="woodhouse-build" content="202611092324">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Woodhouse Blending &amp; Brewing">
 <meta property="og:description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
@@ -1342,7 +1342,22 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 #mhOpts{display:grid;gap:18px}
 
 /* Merch title: the real Woodhouse wordmark, sized to the heading */
-.mh-wm{display:inline-block;height:.74em;width:auto;max-width:none;vertical-align:baseline;margin-right:.08em}</style>
+.mh-wm{display:inline-block;height:.74em;width:auto;max-width:none;vertical-align:baseline;margin-right:.08em}
+
+/* v31: tighter Blending/Brewing steps on phones */
+@media (max-width:900px){.blend-stage{padding-block:72px}.blend-copy{gap:24px}}
+.no-motion .blend-copy{gap:24px}
+/* v31: book band eyebrow stays on one line */
+.book p.eyebrow{white-space:nowrap}
+@media (max-width:640px){.book p.eyebrow{font-size:clamp(10px,3.2vw,15px);letter-spacing:.12em}}
+/* v31: pint sits right under the cellar; heading leads on phones */
+.pint-grid{grid-template-areas:"glass head" "glass ctrl";grid-template-rows:auto auto;row-gap:0}
+.pint-col{grid-area:glass;align-self:center;min-width:0}
+.pint-head{grid-area:head;align-self:end;min-width:0}
+.pint-grid>.pint-ctrl{grid-area:ctrl;align-self:start;min-width:0}
+.pint-sec{padding-block:clamp(56px,7vw,100px)}
+#pint+.sec{padding-top:clamp(48px,6vw,90px)}
+@media (max-width:900px){.pint-grid{grid-template-areas:"head" "glass" "ctrl";row-gap:26px}.pint-grid>.pint-ctrl{margin-top:0}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1411,8 +1426,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
     <div class="wrap blend-grid">
       <div><p class="eyebrow tg-tag"><span class="chev" aria-hidden="true"></span>Interact with our brand</p>
       <div class="tangram" id="tangram"><svg id="tgSvg" viewBox="-140 -180 280 330" aria-hidden="true"></svg></div>
-      <div class="film" id="film" aria-label="Steps in the Woodhouse mark"></div>
-      <p class="tg-hint"><span>Drag to spin</span><span>Scroll to build</span><span>Tap a step to jump</span></p></div>
+      <div class="film" id="film" aria-label="Steps in the Woodhouse mark"></div></div>
       <div class="blend-copy">
         <div class="blend-step" data-step="0">
           <span class="eyebrow">Why the name</span>
@@ -1431,7 +1445,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 <!-- ON THE CALENDAR -->
 <section class="sec events" id="events">
   <div class="wrap sec-head">
-    <h2>On the <span class="o">Calendar</span></h2>
+    <h2 data-nowidow-skip>On&nbsp;the <span class="o">Calendar</span></h2>
     <div><p class="lede">Free shows most nights, plus bigger ticketed nights with touring bands, authors and comedians. Here's what's coming up.</p><a class="txt-link" href="/calendar" style="margin-top:18px">Full calendar <span class="arr">→</span></a></div>
   </div>
   <div class="ev-pin" id="evPin">
@@ -1443,7 +1457,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
   <div class="wrap">
     <div class="sec-head">
       <h2>Our <span class="o">Space</span></h2>
-      <div><p class="lede">A stripped down room that puts the focus on the artist, and an open air patio built for the whole town.</p><div class="btn-row" style="margin-top:22px"><a class="txt-link" href="/events">Host an event here <span class="arr">→</span></a><a class="txt-link" href="/calendar#space">For artists <span class="arr">→</span></a></div></div>
+      <div><p class="lede">A stripped down room that puts the focus on the artist, and an open air patio built for the whole town.</p><div class="btn-row" style="margin-top:22px"><a class="txt-link" href="/events">For events <span class="arr">→</span></a><a class="txt-link" href="/calendar#space">For artists <span class="arr">→</span></a></div></div>
     </div>
     <div class="space-list">
       <article class="panel">

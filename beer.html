@@ -6,7 +6,7 @@
 <title>Beer · Woodhouse</title>
 <meta name="description" content="Small batch beer brewed at 119 Madrone St, Santa Cruz. See the live cellar, what is on tap, how we brew and who brews it.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611081216">
+<meta name="woodhouse-build" content="202611092324">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Beer · Woodhouse">
 <meta property="og:description" content="Small batch beer brewed at 119 Madrone St, Santa Cruz. See the live cellar, what is on tap, how we brew and who brews it.">
@@ -1342,7 +1342,22 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 #mhOpts{display:grid;gap:18px}
 
 /* Merch title: the real Woodhouse wordmark, sized to the heading */
-.mh-wm{display:inline-block;height:.74em;width:auto;max-width:none;vertical-align:baseline;margin-right:.08em}</style>
+.mh-wm{display:inline-block;height:.74em;width:auto;max-width:none;vertical-align:baseline;margin-right:.08em}
+
+/* v31: tighter Blending/Brewing steps on phones */
+@media (max-width:900px){.blend-stage{padding-block:72px}.blend-copy{gap:24px}}
+.no-motion .blend-copy{gap:24px}
+/* v31: book band eyebrow stays on one line */
+.book p.eyebrow{white-space:nowrap}
+@media (max-width:640px){.book p.eyebrow{font-size:clamp(10px,3.2vw,15px);letter-spacing:.12em}}
+/* v31: pint sits right under the cellar; heading leads on phones */
+.pint-grid{grid-template-areas:"glass head" "glass ctrl";grid-template-rows:auto auto;row-gap:0}
+.pint-col{grid-area:glass;align-self:center;min-width:0}
+.pint-head{grid-area:head;align-self:end;min-width:0}
+.pint-grid>.pint-ctrl{grid-area:ctrl;align-self:start;min-width:0}
+.pint-sec{padding-block:clamp(56px,7vw,100px)}
+#pint+.sec{padding-top:clamp(48px,6vw,90px)}
+@media (max-width:900px){.pint-grid{grid-template-areas:"head" "glass" "ctrl";row-gap:26px}.pint-grid>.pint-ctrl{margin-top:0}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1388,7 +1403,6 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
         <div class="c3-labels" id="c3labels"></div>
         <button type="button" class="cx-view" id="xrayBtn" aria-pressed="true">Steel view</button>
         <ul class="cx-legend" id="cxLegend" aria-label="Tank status colors"></ul>
-        <p class="cx-hint">Drag to orbit · scroll to zoom · tap a tank</p>
         <span class="cx-chip" id="c3chip"><span class="dot"></span><span id="c3chipText">Loading</span></span>
       </div>
       <aside class="cx-panel" id="c3card" aria-live="polite"></aside>
@@ -1397,6 +1411,35 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
   </div>
 </section>
 
+
+<!-- PINT -->
+<section class="sec pint-sec" id="pint">
+  <div class="wrap pint-grid">
+    <div class="pint-col">
+    <div class="pint-stage" id="pintStage">
+      <div class="pint-hud"><span></span><span>Pints poured <b id="pintCount">1</b></span></div>
+      <div class="pint-toast" id="pintToast">Cheers. Pour another?</div>
+    </div>
+    <div class="pint-under"><label for="tilt">Tip the glass</label><input type="range" id="tilt" min="0" max="100" value="0"><span class="pint-ends" aria-hidden="true"><span>Upright</span><span>Spill it</span></span></div>
+    </div>
+    <div class="pint-head">
+      <p class="eyebrow tg-tag"><span class="chev" aria-hidden="true"></span>Interact with our beer</p>
+      <h2 style="font-size:clamp(40px,5.6vw,84px);text-transform:uppercase;line-height:.92">Pour one <span style="color:var(--teal)">out</span> for the homies</h2>
+      <p class="lede" style="margin-top:18px">Grab the glass. Spin it to see the mark, tip it until it spills, then pull a fresh one. It's the only beer at Woodhouse you're allowed to waste.</p>
+    </div>
+      <div class="pint-ctrl">
+        <div><label id="beerLbl">Choose your pour</label>
+          <div class="seg" id="beerSeg" role="group" aria-labelledby="beerLbl">
+            <button type="button" data-beer="light" aria-pressed="true"><i style="background:#e8c45a"></i>Light Ale</button>
+            <button type="button" data-beer="hazy" aria-pressed="false"><i style="background:#eaa63a"></i>Hazy IPA</button>
+            <button type="button" data-beer="porter" aria-pressed="false"><i style="background:#2a140a;outline:1px solid #6b4a33"></i>Porter</button>
+            <button type="button" data-beer="sour" aria-pressed="false"><i style="background:#d5604a"></i>Fruited Sour</button>
+          </div>
+        </div>
+        <div class="btn-row"><button type="button" class="btn btn-teal" id="pourBtn">Pour a fresh one <span class="arr">→</span></button><button type="button" class="btn btn-ghost" id="spinBtn">Spin it</button></div>
+      </div>
+  </div>
+</section>
 
 <!-- ON TAP -->
 <section class="sec" id="taps">
@@ -1416,35 +1459,6 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
         <p><strong>The next generation of Woodhouse beer is on its way.</strong></p>
       </div>
       <div class="frame" style="aspect-ratio:3/2"><div class="plate-img" data-parallax style="background-image:url('img/bar.jpg')" role="img" aria-label="The Woodhouse bar looking toward the fermenters and barrel racks"></div><span class="plate-cap">Brewhouse and barrel room</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PINT -->
-<section class="sec pint-sec" id="pint">
-  <div class="wrap pint-grid">
-    <div class="pint-col">
-    <div class="pint-stage" id="pintStage">
-      <div class="pint-hud"><span>Drag sideways to spin · Drag down to tip</span><span>Pints poured <b id="pintCount">1</b></span></div>
-      <div class="pint-toast" id="pintToast">Cheers. Pour another?</div>
-    </div>
-    <div class="pint-under"><label for="tilt">Tip the glass</label><input type="range" id="tilt" min="0" max="100" value="0"><span class="pint-ends" aria-hidden="true"><span>Upright</span><span>Spill it</span></span></div>
-    </div>
-    <div>
-      <p class="eyebrow tg-tag"><span class="chev" aria-hidden="true"></span>Interact with our beer</p>
-      <h2 style="font-size:clamp(40px,5.6vw,84px);text-transform:uppercase;line-height:.92">Pour one <span style="color:var(--teal)">out</span> for the homies</h2>
-      <p class="lede" style="margin-top:18px">Grab the glass. Spin it to see the mark, tip it until it spills, then pull a fresh one. It's the only beer at Woodhouse you're allowed to waste.</p>
-      <div class="pint-ctrl">
-        <div><label id="beerLbl">Choose your pour</label>
-          <div class="seg" id="beerSeg" role="group" aria-labelledby="beerLbl">
-            <button type="button" data-beer="light" aria-pressed="true"><i style="background:#e8c45a"></i>Light Ale</button>
-            <button type="button" data-beer="hazy" aria-pressed="false"><i style="background:#eaa63a"></i>Hazy IPA</button>
-            <button type="button" data-beer="porter" aria-pressed="false"><i style="background:#2a140a;outline:1px solid #6b4a33"></i>Porter</button>
-            <button type="button" data-beer="sour" aria-pressed="false"><i style="background:#d5604a"></i>Fruited Sour</button>
-          </div>
-        </div>
-        <div class="btn-row"><button type="button" class="btn btn-teal" id="pourBtn">Pour a fresh one <span class="arr">→</span></button><button type="button" class="btn btn-ghost" id="spinBtn">Spin it</button></div>
-      </div>
     </div>
   </div>
 </section>

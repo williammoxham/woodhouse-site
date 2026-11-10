@@ -25,8 +25,23 @@ const fmtDay=d=>{if(!d)return '';const x=new Date(String(d).slice(0,10)+'T12:00:
 const fx=(v,n=3)=>v==null||v===''?'':Number(v).toFixed(n);
 
 /* ---------- data ---------- */
+/* the brewing app's tanks ({id,status:'Cold crash',vol,...}) become the site's rows */
+const WK={'brewing':'brewing','fermenting':'fermenting','conditioning':'conditioning','cold crash':'cold_crash','cold_crash':'cold_crash','carbonating':'carbonating','ready to package':'ready','ready':'ready','serving':'serving','aging':'aging','empty':'empty','empty · clean':'empty','cip':'empty'};
+function fromApp(t){
+  if(t.tank_code)return t;
+  const st=WK[String(t.status||'').toLowerCase().trim()]||'empty',has=+t.vol>0&&st!=='empty';
+  return {tank_code:t.id,status:has||st==='brewing'?st:'empty',beer_name:has?(t.beer||null):null,style:t.style||null,volume_bbl:t.vol!=null?+t.vol:null,srm:t.srm||null,
+    batch:t.batch||null,brewed_on:t.brewed||t.brew_date||null,ready_on:t.eta||t.ready||null,og:t.og,sg:t.sg,fg_target:t.fg,abv_target:t.abv,ibu:t.ibu,temp_f:t.temp,yeast:t.yeast,readings:t.readings||null,next_beer:t.next||null};
+}
 async function loadCellar(){
   const c=D.CELLAR_SOURCE;
+  if(c.endpoint){
+    try{const ac=new AbortController(),to=setTimeout(()=>ac.abort(),8000);
+      const r=await fetch(c.endpoint,{signal:ac.signal,cache:'no-store'});clearTimeout(to);if(!r.ok)throw 0;
+      const j=await r.json(),list=Array.isArray(j)?j:(j.tanks||j.rows||[]);if(!list.length)throw 0;
+      return {rows:list.map(fromApp),live:true,at:j.updated?new Date(j.updated):new Date()};
+    }catch(e){if(!c.url||!c.anonKey)return {rows:D.CELLAR_PREVIEW,live:false};}
+  }
   if(!c.url||!c.anonKey)return {rows:D.CELLAR_PREVIEW,live:false};
   try{
     const r=await fetch(`${c.url.replace(/\/$/,'')}/rest/v1/${c.view}?select=*`,{headers:{apikey:c.anonKey,Authorization:'Bearer '+c.anonKey}});

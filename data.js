@@ -12,6 +12,8 @@ const iso=dd=>new Date(Date.UTC(t.getFullYear(),t.getMonth(),t.getDate()+dd)).to
 window.WH_DATA={
 
 /* ---- Contacts and links ---- */
+/* ---- Merch: your Shopify store, read through the Headless channel. The public token is meant to live in website code. ---- */
+SHOPIFY:{domain:'woodhouse-gear.myshopify.com',token:'373d173acfe45a6c407dfba1591c8610',api:'2026-07'},
 CONTACT:{
   phone:'(831) 313-9461',
   general:'beer@woodhousebrews.com',
@@ -178,7 +180,10 @@ GALLERIES:{
 },
 
 /* ---- Live cellar: the brewing app's Supabase (see cellar-setup.sql). Empty = preview data. ---- */
-CELLAR_SOURCE:{url:'',anonKey:'',view:'public_cellar',refreshMinutes:5},
+/* Live cellar. endpoint = the brewing app's public tank feed (Woodhouse Weekly at woodhouseupdates.com).
+   It returns the same tanks the app's 3D view uses: [{id,kind,cap,beer,style,status,vol,srm}, ...].
+   (url + anonKey is the older direct-to-Supabase option; leave blank when using the endpoint.) */
+CELLAR_SOURCE:{endpoint:'https://www.woodhouseupdates.com/api/public-cellar',url:'',anonKey:'',view:'public_cellar',refreshMinutes:5},
 CELLAR_LAYOUT:[
   /* brewhouse (on the platform) */
   {code:'HLT',kind:'hlt',bbl:10,x:-250,z:40,label:'Hot liquor'},
