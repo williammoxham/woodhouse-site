@@ -6,7 +6,7 @@
 <title>Woodhouse Blending &amp; Brewing</title>
 <meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611110033">
+<meta name="woodhouse-build" content="202611110755">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Woodhouse Blending &amp; Brewing">
 <meta property="og:description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
@@ -1363,7 +1363,14 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 /* v33: Play at Woodhouse heading sized to its column so it never runs into the booking card */
 #play .split>div{min-width:0}
 #play .sec-head h2{font-size:clamp(40px,5.2vw,92px);overflow-wrap:normal}
-@media (max-width:480px){.contact-card .ci .v{font-size:clamp(13px,3.9vw,16px);white-space:nowrap}}</style>
+@media (max-width:480px){.contact-card .ci .v{font-size:clamp(13px,3.9vw,16px);white-space:nowrap}}
+
+/* v34: partners grid holds 8 evenly; names always fit their card */
+.vz-pgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.vz-partner b{overflow-wrap:break-word;hyphens:manual}
+@media (max-width:1100px){.vz-pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.vz-partner b{font-size:clamp(16px,4.3vw,22px);line-height:1.05}.vz-partner{padding:16px}.vz-partner .chip{font-size:9.5px;letter-spacing:.12em}}
+@media (max-width:420px){.vz-pgrid{grid-template-columns:1fr}.vz-partner b{font-size:22px}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1615,10 +1622,12 @@ HOURS:[
    n name, a address (city added when it is not Santa Cruz), area, kind, s short line, about longer text, url optional ---- */
 PLACES:{
  partners:[
+  {n:'Hidden Hills Brewing & Blending',a:'3777 The Barnyard, Ste I-14, Carmel',area:'Carmel · The Barnyard',kind:'Brewing & blending',s:'Fellow brewers and blenders, down the coast in Carmel.',about:'Our fellow brewers and blenders down the coast, pouring from their taproom at The Barnyard in Carmel. Stop in for whatever is on the taplist, ask about private events, and make a day of it on the Monterey Peninsula. Check their site for current hours.',url:'https://www.hiddenhillscarmel.com',ig:'https://www.instagram.com/hiddenhillsbrewblend/'},
   {n:'Flower Bar Design Studio',a:'511 River St',area:'River St · By appointment',kind:'Florals',s:'Handcrafted florals, wreaths and event design.',about:'Led by Sharon, with more than 20 years of floral design behind her. Handcrafted flowers, wreaths, plant arrangements and subscriptions, plus florals for weddings, corporate events and remembrance services. Same day delivery when you order by noon. Studio visits by appointment.',url:'https://flowerbardesignstudio.com'},
   {n:'The Haus of Botanica',a:'',area:'Santa Cruz Mountains',kind:'Hair & beauty',s:'Tara Murphy\'s hair studio: color, balayage, bridal styling and scalp health.',about:'The hair studio of Tara Murphy, up in the Santa Cruz mountains. Tara does transformative hair care: balayage, highlights, all over color, glazes and toners, blowouts, bridal and updo styling and braids, with Olaplex and K18 treatments. She also offers scalp health consultations and hair loss treatments, plus tooth gems. Book with Tara through her site.',url:'https://www.thehausofbotanica.com/hair',ig:'https://www.instagram.com/thehausofbotanica/'},
   {n:'Yayah Designs',a:'',area:'Santa Cruz',kind:'Design',s:'Design by Yayah.',about:'A Santa Cruz designer and longtime Woodhouse collaborator. See the work at yayahdesigns.com.',url:'https://yayahdesigns.com',ig:'https://www.instagram.com/yayahdesigns/'},
   {n:'Gut Designs',a:'511 River St',area:'River St',kind:'Design',s:'Branding, painting, illustration and product design.',about:'A design studio working across branding, painting, illustration, product design and publishing.',url:'https://www.gutdesigns.com',ig:'https://www.instagram.com/gutdesigns/'},
+  {n:'Cienna Newett',a:'',area:'Day 2 Design · Bay Area',kind:'Brand & motion design',s:'Brand identity, motion and 3D for founders and small businesses.',about:'A brand and motion designer whose end credits have run on more than 300 Warner Bros. Animation episodes. Through her studio, Day 2 Design, she builds brand identities, logos and packaging, launch animations, 3D product renders, and Framer and Shopify sites for founders and small businesses, often in focused three week brand sprints. She also leads hands-on creative workshops for creatives and small business owners.',url:'https://ciennanewett.com',ig:'https://www.instagram.com/2day.day2/'},
   {n:'Imprint Productions',a:'511 River St',area:'River St',kind:'Records & apparel',s:'Hip-hop record releases, production, apparel and accessories.',about:'DJ Kraeon\'s company, rooted in hip-hop. Imprint Productions puts out record releases for hip-hop artists and offers music production, plus apparel and accessories for artists, crews and brands who want their name on something real.',ig:'https://www.instagram.com/djkraeon/'},
   {n:'Living Swell Kombucha',a:'',area:'Santa Cruz',kind:'Kombucha',s:'Farm to bottle kombucha, brewed in small batches.',about:'Small batch kombucha started in 2021 by Santa Cruz moms Sophie Slosberg and Summer Torrez. It is 100% kombucha, made with local, organic fruit and herbs, and you will find it at local farmers markets and on tap around town.',url:'https://livingswellkombucha.com'}
  ],
@@ -2184,7 +2193,7 @@ window.addEventListener('load',()=>ScrollTrigger.refresh());
 const box=document.getElementById('heroMark');
 if(!box||!window.THREE)return;
 const {reduce,makeWoodCanvas}=window.WH;
-const SET={hold:1.2,turns:3,dur:3.2,ms:.08,me:.92,depth:34,idle:.45};
+const SET={hold:1.1,turns:5.5,dur:2.4,ms:.55,me:.60,depth:34,idle:.45};
 
 /* logo geometry (256 x 340, y down) */
 const LOGO_OUTER=[[0,0],[256,0],[256,213],[213,213],[171,255],[171,340],[128,298],[86,340],[86,255],[44,213],[0,213]];
@@ -2327,7 +2336,7 @@ function buildMorph(t){
 }
 
 /* timeline: person, fast spin + morph, then the slow idle turn */
-let mode=reduce?'idle':'wait',t0=0,rot=reduce?.45:0,vel=0,drag=false,lx=0,last=0,base=0,hold=SET.hold;
+let mode='wait',t0=0,rot=0,vel=0,drag=false,lx=0,last=0,base=0,hold=SET.hold;
 const TAU=Math.PI*2;
 function start(){if(mode!=='wait'||!SIL)return;mode='play';t0=performance.now();base=0;hold=SET.hold;}
 function replay(h){if(!SIL)return;base=((rot%TAU)+TAU)%TAU;hold=h;mode='play';t0=performance.now();lastMorph=-1;vel=0;kick();}
@@ -2368,14 +2377,15 @@ let vis=true,raf=0;const clock=new THREE.Clock();
 function kick(){if(vis){cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);}}
 function frame(){
   const dt=Math.min(.05,clock.getDelta()),t=clock.elapsedTime;
-  if(mode==='wait'&&SIL&&t>.4)start();
+  if(mode==='wait'&&SIL&&t>.4&&!document.hidden)start();
   let morphT=1,spin=0,swell=0;
   if(mode==='wait'){morphT=0;}
   else if(mode==='play'){const el=(performance.now()-t0)/1000;
     const front=base>Math.PI?TAU:0;
     if(el<hold){morphT=0;spin=base+(front-base)*ease(Math.min(1,el/(hold*.7)));}
-    else if(el<hold+SET.dur){const p=(el-hold)/SET.dur;spin=front+ease(p)*SET.turns*TAU;morphT=Math.max(0,Math.min(1,(p-SET.ms)/(SET.me-SET.ms)));swell=Math.sin(Math.PI*p);}
-    else{mode='idle';rot=0;last=0;}}
+    else if(reduce&&el<hold+1.6){const p=(el-hold)/1.6;spin=front;morphT=ease(p);}
+    else if(!reduce&&el<hold+SET.dur){const p=(el-hold)/SET.dur;spin=front+ease(p)*SET.turns*TAU;morphT=Math.max(0,Math.min(1,(p-SET.ms)/Math.max(.05,SET.me-SET.ms)));swell=Math.sin(Math.PI*p);}
+    else{mode='idle';rot=front+(reduce?0:SET.turns*TAU);last=0;}}
   if(SIL&&mode!=='idle'){const fin=morphT>=1;mesh.visible=!fin;finalA.visible=finalB.visible=fin;
     if(!fin&&Math.abs(morphT-lastMorph)>.002){buildMorph(morphT);lastMorph=morphT;}}
   if(mode==='idle'){mesh.visible=false;finalA.visible=finalB.visible=true;
@@ -2389,7 +2399,6 @@ function frame(){
   if(vis&&(!reduce||mode==='play'))raf=requestAnimationFrame(frame);
 }
 new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis){clock.getDelta();kick();}}).observe(box);
-if(reduce)setTimeout(frame,300);
 frame();
 })();
 
