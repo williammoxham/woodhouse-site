@@ -6,7 +6,7 @@
 <title>Woodhouse Blending &amp; Brewing</title>
 <meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611102340">
+<meta name="woodhouse-build" content="202611102354">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Woodhouse Blending &amp; Brewing">
 <meta property="og:description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
@@ -2262,7 +2262,11 @@ const rim=new THREE.PointLight(0x89d8d0,2,1600);rim.position.set(-360,120,-300);
 const warm=new THREE.PointLight(0xe3a95c,.8,1400);warm.position.set(280,-300,320);scene.add(warm);
 const ani=R.capabilities.getMaxAnisotropy();
 const tex=(c,srgb)=>{const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1/300,1/300);t.anisotropy=ani;if(srgb)t.encoding=THREE.sRGBEncoding;return t;};
-const mat=new THREE.MeshPhysicalMaterial({map:tex(makeWoodCanvas(false),true),bumpMap:tex(makeWoodCanvas(true),false),bumpScale:.9,roughness:.4,clearcoat:.9,clearcoatRoughness:.16});
+/* ebony: the house wood grain, taken down to a deep near-black brown with faint warm streaks, hand-rubbed gloss */
+const ebony=()=>{const src=makeWoodCanvas(false),c=document.createElement('canvas');c.width=src.width;c.height=src.height;const x=c.getContext('2d');
+  x.filter='brightness(.62) contrast(1.9) saturate(.4)';x.drawImage(src,0,0);x.filter='none';
+  x.globalCompositeOperation='multiply';x.fillStyle='#7d6a60';x.fillRect(0,0,c.width,c.height);return c;};
+const mat=new THREE.MeshPhysicalMaterial({map:tex(ebony(),true),bumpMap:tex(makeWoodCanvas(true),false),bumpScale:.6,roughness:.32,clearcoat:1,clearcoatRoughness:.08});
 const group=new THREE.Group();scene.add(group);
 const mesh=new THREE.Mesh(new THREE.BufferGeometry(),mat),finalA=new THREE.Mesh(new THREE.BufferGeometry(),mat),finalB=new THREE.Mesh(new THREE.BufferGeometry(),mat);
 group.add(mesh,finalA,finalB);mesh.visible=false;
