@@ -6,7 +6,7 @@
 <title>Woodhouse Blending &amp; Brewing</title>
 <meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611100048">
+<meta name="woodhouse-build" content="202611102330">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Woodhouse Blending &amp; Brewing">
 <meta property="og:description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
@@ -1389,8 +1389,25 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 <main id="top" class="pg-index">
 <!-- HERO -->
 <section class="hero" aria-label="Welcome">
+  <style>
+    .hero-vid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#0b1211 url('img/hero-show.jpg') center 40%/cover no-repeat}
+    .hero-vid video{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.5) saturate(.9) contrast(1.05);opacity:0;transition:opacity 1.2s ease}
+    .hero-vid.on video{opacity:1}
+    .hero-vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,17,.55) 0%,rgba(11,18,17,.15) 35%,rgba(11,18,17,.2) 65%,rgba(11,18,17,.85) 100%),radial-gradient(70% 60% at 50% 55%,rgba(30,90,85,.18),transparent 70%)}
+    .hero #bubbles{z-index:1}
+  </style>
+  <div class="hero-vid" aria-hidden="true">
+    <video muted loop playsinline preload="auto" poster="img/hero-show.jpg" disablepictureinpicture><source src="img/hero-show.mp4" type="video/mp4"></video>
+  </div>
+  <script>
+    (function(){var w=document.currentScript.previousElementSibling,v=w.querySelector('video');
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.remove();return;}
+      v.addEventListener('playing',function(){w.classList.add('on')});
+      var go=function(){var p=v.play();if(p&&p.catch)p.catch(function(){})};go();
+      new IntersectionObserver(function(e){e[0].isIntersecting?go():v.pause()}).observe(w);
+      document.addEventListener('visibilitychange',function(){document.hidden?v.pause():go()});})();
+  </script>
   <canvas id="bubbles" aria-hidden="true"></canvas>
-  <img class="crest" id="crest" src="img/crest.png" alt="" width="1100" height="1509">
   <div class="wrap">
     <h1 class="wordmark wm" id="wordmark" aria-label="Woodhouse"></h1>
     <div class="wm-sub lockup-sub" aria-hidden="true"><span>Blending &amp; Brewing</span><span>Santa Cruz, CA</span></div>
