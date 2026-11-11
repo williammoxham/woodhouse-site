@@ -6,7 +6,7 @@
 <title>Woodhouse Blending &amp; Brewing</title>
 <meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611102330">
+<meta name="woodhouse-build" content="202611102340">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Woodhouse Blending &amp; Brewing">
 <meta property="og:description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
@@ -1390,11 +1390,23 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 <!-- HERO -->
 <section class="hero" aria-label="Welcome">
   <style>
-    .hero-vid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#0b1211 url('img/hero-show.jpg') center 40%/cover no-repeat}
-    .hero-vid video{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.5) saturate(.9) contrast(1.05);opacity:0;transition:opacity 1.2s ease}
+    .hero-vid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#0b1211 url('img/hero-show.jpg') center 35%/cover no-repeat}
+    .hero-vid video{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(.6) saturate(.9) contrast(1.05);opacity:0;transition:opacity 1.2s ease}
     .hero-vid.on video{opacity:1}
     .hero-vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,17,.55) 0%,rgba(11,18,17,.15) 35%,rgba(11,18,17,.2) 65%,rgba(11,18,17,.85) 100%),radial-gradient(70% 60% at 50% 55%,rgba(30,90,85,.18),transparent 70%)}
     .hero #bubbles{z-index:1}
+    /* hours pill sits between the two lockup lines, under the H; header a little shorter */
+    .pg-index .hero{min-height:min(820px,88svh);padding-top:calc(env(safe-area-inset-top,0px) + clamp(84px,8.4vw,104px))}
+    .pg-index .wm-sub{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}
+    .pg-index .wm-sub>span:last-child{text-align:right}
+    .pg-index .wm-sub .hero-status{margin:0;text-transform:none;letter-spacing:normal;font-weight:400}
+    .pg-index .hero-mark{margin-top:clamp(2px,.8vw,12px)}
+    @media (max-width:760px){
+      .pg-index .wm-sub{grid-template-columns:auto auto;justify-content:space-between;row-gap:12px}
+      .pg-index .wm-sub>span{white-space:nowrap}
+      .pg-index .wm-sub .hero-status{grid-column:1/-1;grid-row:2;justify-self:center}
+    }
+    @media (max-width:420px){.pg-index .wm-sub>span{letter-spacing:.2em;font-size:10px}}
   </style>
   <div class="hero-vid" aria-hidden="true">
     <video muted loop playsinline preload="auto" poster="img/hero-show.jpg" disablepictureinpicture><source src="img/hero-show.mp4" type="video/mp4"></video>
@@ -1410,8 +1422,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
   <canvas id="bubbles" aria-hidden="true"></canvas>
   <div class="wrap">
     <h1 class="wordmark wm" id="wordmark" aria-label="Woodhouse"></h1>
-    <div class="wm-sub lockup-sub" aria-hidden="true"><span>Blending &amp; Brewing</span><span>Santa Cruz, CA</span></div>
-    <div class="hero-status"><span class="status" data-status><span class="dot"></span><span class="status-text">Checking hours</span></span></div>
+    <div class="wm-sub lockup-sub"><span aria-hidden="true">Blending &amp; Brewing</span><div class="hero-status"><span class="status" data-status><span class="dot"></span><span class="status-text">Checking hours</span></span></div><span aria-hidden="true">Santa Cruz, CA</span></div>
     <div class="hero-mark" id="heroMark"><svg viewBox="0 0 256 340" aria-hidden="true"><use href="#wmark"/></svg></div>
     <div class="hero-sub">
       <p class="tag">More than just a brewery. A home for <em>small batch fermentation</em>, music, art and everyone in between.</p>
