@@ -6,7 +6,7 @@
 <title>Merch · Woodhouse</title>
 <meta name="description" content="Woodhouse gear: tees, hoodies, tanks and more with the Woodhouse mark. Shop and check out right here.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611100048">
+<meta name="woodhouse-build" content="202611110033">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Merch · Woodhouse">
 <meta property="og:description" content="Woodhouse gear: tees, hoodies, tanks and more with the Woodhouse mark. Shop and check out right here.">
@@ -1212,6 +1212,7 @@ footer{text-align:center}
 .foot-hours{width:min(240px,100%);text-align:left}
 .foot-status{align-self:center}
 .foot-stamp-row{flex-direction:column;align-items:center;gap:clamp(18px,2.4vw,30px)}
+.foot-stamp-row .stamp{width:clamp(110px,11vw,150px)}
 .foot-stamp-row .giant{width:100%;flex:none}
 .stamp{transform:rotate(-6deg)}
 .legal{justify-content:center;flex-direction:column;align-items:center;gap:8px;text-align:center}
@@ -1357,7 +1358,12 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 .pint-grid>.pint-ctrl{grid-area:ctrl;align-self:start;min-width:0}
 .pint-sec{padding-block:clamp(56px,7vw,100px)}
 #pint+.sec{padding-top:clamp(48px,6vw,90px)}
-@media (max-width:900px){.pint-grid{grid-template-areas:"head" "glass" "ctrl";row-gap:26px}.pint-grid>.pint-ctrl{margin-top:0}}</style>
+@media (max-width:900px){.pint-grid{grid-template-areas:"head" "glass" "ctrl";row-gap:26px}.pint-grid>.pint-ctrl{margin-top:0}}
+
+/* v33: Play at Woodhouse heading sized to its column so it never runs into the booking card */
+#play .split>div{min-width:0}
+#play .sec-head h2{font-size:clamp(40px,5.2vw,92px);overflow-wrap:normal}
+@media (max-width:480px){.contact-card .ci .v{font-size:clamp(13px,3.9vw,16px);white-space:nowrap}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1459,7 +1465,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
         <a href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions ↗</a><a href="/visit">Plan a visit</a></div>
       <div><h5>Follow</h5><a href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">@woodhousebrews</a><a href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a><a href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a></div>
     </div>
-    <div class="foot-stamp-row"><div class="giant wm" aria-hidden="true"></div><svg class="stamp" viewBox="0 0 200 200" role="img" aria-label="Blended and brewed in Santa Cruz since 2016"><defs><path id="stTop" d="M30,100 a70,70 0 0,1 140,0"/><path id="stBot" d="M24,100 a76,76 0 0,0 152,0"/></defs><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stTop" startOffset="50%">BLENDED &amp; BREWED</textPath></text><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stBot" startOffset="50%" side="right">SANTA CRUZ</textPath></text><circle cx="31" cy="100" r="2.5" fill="currentColor"/><circle cx="169" cy="100" r="2.5" fill="currentColor"/><g transform="translate(81,70) scale(.148)" fill="currentColor"><path fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><path d="M44 213L86 255L86 340L128 298L171 340L171 255L213 213Z"/></g><text x="100" y="138" text-anchor="middle" font-size="10.5" letter-spacing="2.5" fill="currentColor" font-family="IBM Plex Mono, monospace">EST. 2016</text></svg></div>
+    <div class="foot-stamp-row"><svg class="stamp" viewBox="0 0 200 200" role="img" aria-label="Blended and brewed in Santa Cruz since 2016"><defs><path id="stTop" d="M30,100 a70,70 0 0,1 140,0"/><path id="stBot" d="M24,100 a76,76 0 0,0 152,0"/></defs><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stTop" startOffset="50%">BLENDED &amp; BREWED</textPath></text><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stBot" startOffset="50%" side="right">SANTA CRUZ</textPath></text><circle cx="31" cy="100" r="2.5" fill="currentColor"/><circle cx="169" cy="100" r="2.5" fill="currentColor"/><g transform="translate(81,70) scale(.148)" fill="currentColor"><path fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><path d="M44 213L86 255L86 340L128 298L171 340L171 255L213 213Z"/></g><text x="100" y="138" text-anchor="middle" font-size="10.5" letter-spacing="2.5" fill="currentColor" font-family="IBM Plex Mono, monospace">EST. 2016</text></svg></div>
     <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>119 Madrone St · (831) 313-9461 · beer@woodhousebrews.com</span></div>
   </div>
 </footer>
@@ -1902,6 +1908,11 @@ function makeWoodCanvas(bump){
     return c;
   }
 
+/* ebony: the house grain taken down to a deep near-black brown with faint warm streaks */
+function makeEbonyCanvas(){const src=makeWoodCanvas(false),c=document.createElement('canvas');c.width=src.width;c.height=src.height;const x=c.getContext('2d');
+  x.filter='brightness(.62) contrast(1.9) saturate(.4)';x.drawImage(src,0,0);x.filter='none';
+  x.globalCompositeOperation='multiply';x.fillStyle='#7d6a60';x.fillRect(0,0,c.width,c.height);return c;}
+
 /* ---------- Word-by-word reveal ---------- */
 function splitWords(el){
   const wrap=node=>{[...node.childNodes].forEach(n=>{
@@ -2033,7 +2044,7 @@ noWidows();
 /* copy that arrives later (events, places, pop-ups) */
 let nwT=0;new MutationObserver(()=>{clearTimeout(nwT);nwT=setTimeout(()=>noWidows(),60);}).observe(document.body,{childList:true,subtree:true});
 
-window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
+window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,makeEbonyCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
 
 /* ---------- Motion (shared) ---------- */
 if(reduce||!hasGsap)return;

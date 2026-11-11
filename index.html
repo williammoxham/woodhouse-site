@@ -6,7 +6,7 @@
 <title>Woodhouse Blending &amp; Brewing</title>
 <meta name="description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611102354">
+<meta name="woodhouse-build" content="202611110033">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Woodhouse Blending &amp; Brewing">
 <meta property="og:description" content="Woodhouse Blending &amp; Brewing: small batch craft beer, free live music, art and a kitchen in Santa Cruz, California. 119 Madrone St.">
@@ -1212,6 +1212,7 @@ footer{text-align:center}
 .foot-hours{width:min(240px,100%);text-align:left}
 .foot-status{align-self:center}
 .foot-stamp-row{flex-direction:column;align-items:center;gap:clamp(18px,2.4vw,30px)}
+.foot-stamp-row .stamp{width:clamp(110px,11vw,150px)}
 .foot-stamp-row .giant{width:100%;flex:none}
 .stamp{transform:rotate(-6deg)}
 .legal{justify-content:center;flex-direction:column;align-items:center;gap:8px;text-align:center}
@@ -1357,7 +1358,12 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 .pint-grid>.pint-ctrl{grid-area:ctrl;align-self:start;min-width:0}
 .pint-sec{padding-block:clamp(56px,7vw,100px)}
 #pint+.sec{padding-top:clamp(48px,6vw,90px)}
-@media (max-width:900px){.pint-grid{grid-template-areas:"head" "glass" "ctrl";row-gap:26px}.pint-grid>.pint-ctrl{margin-top:0}}</style>
+@media (max-width:900px){.pint-grid{grid-template-areas:"head" "glass" "ctrl";row-gap:26px}.pint-grid>.pint-ctrl{margin-top:0}}
+
+/* v33: Play at Woodhouse heading sized to its column so it never runs into the booking card */
+#play .split>div{min-width:0}
+#play .sec-head h2{font-size:clamp(40px,5.2vw,92px);overflow-wrap:normal}
+@media (max-width:480px){.contact-card .ci .v{font-size:clamp(13px,3.9vw,16px);white-space:nowrap}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1452,7 +1458,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 <section class="blend" id="blend" aria-label="What Blending and Brewing means">
   <div class="blend-stage">
     <div class="wrap blend-grid">
-      <div><p class="eyebrow tg-tag"><span class="chev" aria-hidden="true"></span>Interact with our brand</p>
+      <div>
       <div class="tangram" id="tangram"><svg id="tgSvg" viewBox="-140 -180 280 330" aria-hidden="true"></svg></div>
       <div class="film" id="film" aria-label="Steps in the Woodhouse mark"></div></div>
       <div class="blend-copy">
@@ -1559,7 +1565,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
         <a href="https://maps.google.com?q=119%20Madrone%20Street%20Santa%20Cruz%2C%20CA%2095060" target="_blank" rel="noopener">Directions ↗</a><a href="/visit">Plan a visit</a></div>
       <div><h5>Follow</h5><a href="https://www.instagram.com/woodhousebrews/" target="_blank" rel="noopener">@woodhousebrews</a><a href="http://www.facebook.com/284941388996556" target="_blank" rel="noopener">Facebook</a><a href="https://www.yelp.com/biz/woodhouse-blending-and-brewing-santa-cruz" target="_blank" rel="noopener">Yelp</a></div>
     </div>
-    <div class="foot-stamp-row"><div class="giant wm" aria-hidden="true"></div><svg class="stamp" viewBox="0 0 200 200" role="img" aria-label="Blended and brewed in Santa Cruz since 2016"><defs><path id="stTop" d="M30,100 a70,70 0 0,1 140,0"/><path id="stBot" d="M24,100 a76,76 0 0,0 152,0"/></defs><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stTop" startOffset="50%">BLENDED &amp; BREWED</textPath></text><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stBot" startOffset="50%" side="right">SANTA CRUZ</textPath></text><circle cx="31" cy="100" r="2.5" fill="currentColor"/><circle cx="169" cy="100" r="2.5" fill="currentColor"/><g transform="translate(81,70) scale(.148)" fill="currentColor"><path fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><path d="M44 213L86 255L86 340L128 298L171 340L171 255L213 213Z"/></g><text x="100" y="138" text-anchor="middle" font-size="10.5" letter-spacing="2.5" fill="currentColor" font-family="IBM Plex Mono, monospace">EST. 2016</text></svg></div>
+    <div class="foot-stamp-row"><svg class="stamp" viewBox="0 0 200 200" role="img" aria-label="Blended and brewed in Santa Cruz since 2016"><defs><path id="stTop" d="M30,100 a70,70 0 0,1 140,0"/><path id="stBot" d="M24,100 a76,76 0 0,0 152,0"/></defs><circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stTop" startOffset="50%">BLENDED &amp; BREWED</textPath></text><text font-size="14" letter-spacing="4" fill="currentColor" font-family="IBM Plex Mono, monospace" text-anchor="middle"><textPath href="#stBot" startOffset="50%" side="right">SANTA CRUZ</textPath></text><circle cx="31" cy="100" r="2.5" fill="currentColor"/><circle cx="169" cy="100" r="2.5" fill="currentColor"/><g transform="translate(81,70) scale(.148)" fill="currentColor"><path fill-rule="evenodd" d="M0 0H256V213H0Z M44 43L86 85V171L128 128L171 171V85L213 43V213H137V184H120V213H44Z"/><path d="M44 213L86 255L86 340L128 298L171 340L171 255L213 213Z"/></g><text x="100" y="138" text-anchor="middle" font-size="10.5" letter-spacing="2.5" fill="currentColor" font-family="IBM Plex Mono, monospace">EST. 2016</text></svg></div>
     <div class="legal"><span>© 2026 Woodhouse Blending &amp; Brewing™</span><span>119 Madrone St · (831) 313-9461 · beer@woodhousebrews.com</span></div>
   </div>
 </footer>
@@ -2003,6 +2009,11 @@ function makeWoodCanvas(bump){
     return c;
   }
 
+/* ebony: the house grain taken down to a deep near-black brown with faint warm streaks */
+function makeEbonyCanvas(){const src=makeWoodCanvas(false),c=document.createElement('canvas');c.width=src.width;c.height=src.height;const x=c.getContext('2d');
+  x.filter='brightness(.62) contrast(1.9) saturate(.4)';x.drawImage(src,0,0);x.filter='none';
+  x.globalCompositeOperation='multiply';x.fillStyle='#7d6a60';x.fillRect(0,0,c.width,c.height);return c;}
+
 /* ---------- Word-by-word reveal ---------- */
 function splitWords(el){
   const wrap=node=>{[...node.childNodes].forEach(n=>{
@@ -2134,7 +2145,7 @@ noWidows();
 /* copy that arrives later (events, places, pop-ups) */
 let nwT=0;new MutationObserver(()=>{clearTimeout(nwT);nwT=setTimeout(()=>noWidows(),60);}).observe(document.body,{childList:true,subtree:true});
 
-window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
+window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,makeEbonyCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
 
 /* ---------- Motion (shared) ---------- */
 if(reduce||!hasGsap)return;
@@ -2262,11 +2273,7 @@ const rim=new THREE.PointLight(0x89d8d0,2,1600);rim.position.set(-360,120,-300);
 const warm=new THREE.PointLight(0xe3a95c,.8,1400);warm.position.set(280,-300,320);scene.add(warm);
 const ani=R.capabilities.getMaxAnisotropy();
 const tex=(c,srgb)=>{const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1/300,1/300);t.anisotropy=ani;if(srgb)t.encoding=THREE.sRGBEncoding;return t;};
-/* ebony: the house wood grain, taken down to a deep near-black brown with faint warm streaks, hand-rubbed gloss */
-const ebony=()=>{const src=makeWoodCanvas(false),c=document.createElement('canvas');c.width=src.width;c.height=src.height;const x=c.getContext('2d');
-  x.filter='brightness(.62) contrast(1.9) saturate(.4)';x.drawImage(src,0,0);x.filter='none';
-  x.globalCompositeOperation='multiply';x.fillStyle='#7d6a60';x.fillRect(0,0,c.width,c.height);return c;};
-const mat=new THREE.MeshPhysicalMaterial({map:tex(ebony(),true),bumpMap:tex(makeWoodCanvas(true),false),bumpScale:.6,roughness:.32,clearcoat:1,clearcoatRoughness:.08});
+const mat=new THREE.MeshPhysicalMaterial({map:tex(window.WH.makeEbonyCanvas(),true),bumpMap:tex(makeWoodCanvas(true),false),bumpScale:.6,roughness:.32,clearcoat:1,clearcoatRoughness:.08});
 const group=new THREE.Group();scene.add(group);
 const mesh=new THREE.Mesh(new THREE.BufferGeometry(),mat),finalA=new THREE.Mesh(new THREE.BufferGeometry(),mat),finalB=new THREE.Mesh(new THREE.BufferGeometry(),mat);
 group.add(mesh,finalA,finalB);mesh.visible=false;
@@ -2538,9 +2545,9 @@ const M3=(function(){
   const woodCanvas=makeWoodCanvas;
   const maxAniso=renderer.capabilities.getMaxAnisotropy();
   const mkTex=(cvs,srgb)=>{const t=new THREE.CanvasTexture(cvs);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1/300,1/300);t.anisotropy=maxAniso;if(srgb)t.encoding=THREE.sRGBEncoding;return t;};
-  const woodTex=mkTex(woodCanvas(false),true), bumpTex=mkTex(woodCanvas(true),false);
+  const woodTex=mkTex(window.WH.makeEbonyCanvas(),true), bumpTex=mkTex(woodCanvas(true),false);
   const tints=[0xffffff,0xe7d2b8,0xf6e6d0];
-  const mats=tints.map((tc,i)=>{const m=new THREE.MeshPhysicalMaterial({color:tc,map:woodTex,bumpMap:bumpTex,bumpScale:.9,roughness:.42,metalness:0,clearcoat:.85,clearcoatRoughness:.18,sheen:0});return m;});
+  const mats=tints.map((tc,i)=>{const m=new THREE.MeshPhysicalMaterial({color:tc,map:woodTex,bumpMap:bumpTex,bumpScale:.6,roughness:.32,metalness:0,clearcoat:1,clearcoatRoughness:.08,sheen:0});return m;});
   const meshes=mats.map((m,i)=>{const me=new THREE.Mesh(new THREE.BufferGeometry(),m);me.position.z=i*.25-13;group.add(me);return me;});
   const ext={depth:26,bevelEnabled:true,bevelThickness:1.1,bevelSize:.9,bevelOffset:-.9,bevelSegments:4,curveSegments:1};
   function clean(p){

@@ -1192,6 +1192,7 @@ footer{text-align:center}
 .foot-hours{width:min(240px,100%);text-align:left}
 .foot-status{align-self:center}
 .foot-stamp-row{flex-direction:column;align-items:center;gap:clamp(18px,2.4vw,30px)}
+.foot-stamp-row .stamp{width:clamp(110px,11vw,150px)}
 .foot-stamp-row .giant{width:100%;flex:none}
 .stamp{transform:rotate(-6deg)}
 .legal{justify-content:center;flex-direction:column;align-items:center;gap:8px;text-align:center}
@@ -1338,3 +1339,8 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 .pint-sec{padding-block:clamp(56px,7vw,100px)}
 #pint+.sec{padding-top:clamp(48px,6vw,90px)}
 @media (max-width:900px){.pint-grid{grid-template-areas:"head" "glass" "ctrl";row-gap:26px}.pint-grid>.pint-ctrl{margin-top:0}}
+
+/* v33: Play at Woodhouse heading sized to its column so it never runs into the booking card */
+#play .split>div{min-width:0}
+#play .sec-head h2{font-size:clamp(40px,5.2vw,92px);overflow-wrap:normal}
+@media (max-width:480px){.contact-card .ci .v{font-size:clamp(13px,3.9vw,16px);white-space:nowrap}}

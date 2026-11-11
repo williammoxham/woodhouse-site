@@ -148,9 +148,9 @@ const M3=(function(){
   const woodCanvas=makeWoodCanvas;
   const maxAniso=renderer.capabilities.getMaxAnisotropy();
   const mkTex=(cvs,srgb)=>{const t=new THREE.CanvasTexture(cvs);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1/300,1/300);t.anisotropy=maxAniso;if(srgb)t.encoding=THREE.sRGBEncoding;return t;};
-  const woodTex=mkTex(woodCanvas(false),true), bumpTex=mkTex(woodCanvas(true),false);
+  const woodTex=mkTex(window.WH.makeEbonyCanvas(),true), bumpTex=mkTex(woodCanvas(true),false);
   const tints=[0xffffff,0xe7d2b8,0xf6e6d0];
-  const mats=tints.map((tc,i)=>{const m=new THREE.MeshPhysicalMaterial({color:tc,map:woodTex,bumpMap:bumpTex,bumpScale:.9,roughness:.42,metalness:0,clearcoat:.85,clearcoatRoughness:.18,sheen:0});return m;});
+  const mats=tints.map((tc,i)=>{const m=new THREE.MeshPhysicalMaterial({color:tc,map:woodTex,bumpMap:bumpTex,bumpScale:.6,roughness:.32,metalness:0,clearcoat:1,clearcoatRoughness:.08,sheen:0});return m;});
   const meshes=mats.map((m,i)=>{const me=new THREE.Mesh(new THREE.BufferGeometry(),m);me.position.z=i*.25-13;group.add(me);return me;});
   const ext={depth:26,bevelEnabled:true,bevelThickness:1.1,bevelSize:.9,bevelOffset:-.9,bevelSegments:4,curveSegments:1};
   function clean(p){

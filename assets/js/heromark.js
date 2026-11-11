@@ -92,7 +92,7 @@ const rim=new THREE.PointLight(0x89d8d0,2,1600);rim.position.set(-360,120,-300);
 const warm=new THREE.PointLight(0xe3a95c,.8,1400);warm.position.set(280,-300,320);scene.add(warm);
 const ani=R.capabilities.getMaxAnisotropy();
 const tex=(c,srgb)=>{const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1/300,1/300);t.anisotropy=ani;if(srgb)t.encoding=THREE.sRGBEncoding;return t;};
-const mat=new THREE.MeshPhysicalMaterial({map:tex(makeWoodCanvas(false),true),bumpMap:tex(makeWoodCanvas(true),false),bumpScale:.9,roughness:.4,clearcoat:.9,clearcoatRoughness:.16});
+const mat=new THREE.MeshPhysicalMaterial({map:tex(window.WH.makeEbonyCanvas(),true),bumpMap:tex(makeWoodCanvas(true),false),bumpScale:.6,roughness:.32,clearcoat:1,clearcoatRoughness:.08});
 const group=new THREE.Group();scene.add(group);
 const mesh=new THREE.Mesh(new THREE.BufferGeometry(),mat),finalA=new THREE.Mesh(new THREE.BufferGeometry(),mat),finalB=new THREE.Mesh(new THREE.BufferGeometry(),mat);
 group.add(mesh,finalA,finalB);mesh.visible=false;

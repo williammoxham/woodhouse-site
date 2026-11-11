@@ -142,6 +142,11 @@ function makeWoodCanvas(bump){
     return c;
   }
 
+/* ebony: the house grain taken down to a deep near-black brown with faint warm streaks */
+function makeEbonyCanvas(){const src=makeWoodCanvas(false),c=document.createElement('canvas');c.width=src.width;c.height=src.height;const x=c.getContext('2d');
+  x.filter='brightness(.62) contrast(1.9) saturate(.4)';x.drawImage(src,0,0);x.filter='none';
+  x.globalCompositeOperation='multiply';x.fillStyle='#7d6a60';x.fillRect(0,0,c.width,c.height);return c;}
+
 /* ---------- Word-by-word reveal ---------- */
 function splitWords(el){
   const wrap=node=>{[...node.childNodes].forEach(n=>{
@@ -273,7 +278,7 @@ noWidows();
 /* copy that arrives later (events, places, pop-ups) */
 let nwT=0;new MutationObserver(()=>{clearTimeout(nwT);nwT=setTimeout(()=>noWidows(),60);}).observe(document.body,{childList:true,subtree:true});
 
-window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
+window.WH={D,reduce,hasGsap,now,nowMin,todayKey,MON,WD,fmt,esc,laParts,clock12,makeWoodCanvas,makeEbonyCanvas,loadEvents,openStatus,openModal,closeModal,openEvent,openBar,openGallery,slug,lenis:null};
 
 /* ---------- Motion (shared) ---------- */
 if(reduce||!hasGsap)return;
