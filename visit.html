@@ -6,7 +6,7 @@
 <title>Visit · Woodhouse</title>
 <meta name="description" content="Find Woodhouse at 119 Madrone St in Santa Cruz: hours, directions, the neighborhood, town event calendars, and the best breweries and live music spots around Santa Cruz.">
 <meta name="theme-color" content="#0a0f0f">
-<meta name="woodhouse-build" content="202611110033">
+<meta name="woodhouse-build" content="202611110728">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Visit · Woodhouse">
 <meta property="og:description" content="Find Woodhouse at 119 Madrone St in Santa Cruz: hours, directions, the neighborhood, town event calendars, and the best breweries and live music spots around Santa Cruz.">
@@ -1363,7 +1363,14 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
 /* v33: Play at Woodhouse heading sized to its column so it never runs into the booking card */
 #play .split>div{min-width:0}
 #play .sec-head h2{font-size:clamp(40px,5.2vw,92px);overflow-wrap:normal}
-@media (max-width:480px){.contact-card .ci .v{font-size:clamp(13px,3.9vw,16px);white-space:nowrap}}</style>
+@media (max-width:480px){.contact-card .ci .v{font-size:clamp(13px,3.9vw,16px);white-space:nowrap}}
+
+/* v34: partners grid holds 8 evenly; names always fit their card */
+.vz-pgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.vz-partner b{overflow-wrap:break-word;hyphens:manual}
+@media (max-width:1100px){.vz-pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.vz-partner b{font-size:clamp(16px,4.3vw,22px);line-height:1.05}.vz-partner{padding:16px}.vz-partner .chip{font-size:9.5px;letter-spacing:.12em}}
+@media (max-width:420px){.vz-pgrid{grid-template-columns:1fr}.vz-partner b{font-size:22px}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -1556,7 +1563,7 @@ p,li,dd,figcaption,small,.prose,.pair{text-wrap:pretty}
   <div class="wrap">
     <div class="sec-head">
       <h2>Our <span class="o">Partners</span></h2>
-      <p class="lede">The Santa Cruz makers we build with: florals, plants, design, kombucha and records, several of them right around the corner on River Street. Look for them at our events, and go see them at home.</p>
+      <p class="lede">The Santa Cruz makers we build closely with: brewers, florals and plants, designers, kombucha, records, hair… Look for them working in our space and at our events!</p>
     </div>
     <div class="vz-pgrid" id="vzPartners"></div>
   </div>
@@ -1632,10 +1639,12 @@ HOURS:[
    n name, a address (city added when it is not Santa Cruz), area, kind, s short line, about longer text, url optional ---- */
 PLACES:{
  partners:[
+  {n:'Hidden Hills Brewing & Blending',a:'3777 The Barnyard, Ste I-14, Carmel',area:'Carmel · The Barnyard',kind:'Brewing & blending',s:'Fellow brewers and blenders, down the coast in Carmel.',about:'Our fellow brewers and blenders down the coast, pouring from their taproom at The Barnyard in Carmel. Stop in for whatever is on the taplist, ask about private events, and make a day of it on the Monterey Peninsula. Check their site for current hours.',url:'https://www.hiddenhillscarmel.com',ig:'https://www.instagram.com/hiddenhillsbrewblend/'},
   {n:'Flower Bar Design Studio',a:'511 River St',area:'River St · By appointment',kind:'Florals',s:'Handcrafted florals, wreaths and event design.',about:'Led by Sharon, with more than 20 years of floral design behind her. Handcrafted flowers, wreaths, plant arrangements and subscriptions, plus florals for weddings, corporate events and remembrance services. Same day delivery when you order by noon. Studio visits by appointment.',url:'https://flowerbardesignstudio.com'},
   {n:'The Haus of Botanica',a:'',area:'Santa Cruz Mountains',kind:'Hair & beauty',s:'Tara Murphy\'s hair studio: color, balayage, bridal styling and scalp health.',about:'The hair studio of Tara Murphy, up in the Santa Cruz mountains. Tara does transformative hair care: balayage, highlights, all over color, glazes and toners, blowouts, bridal and updo styling and braids, with Olaplex and K18 treatments. She also offers scalp health consultations and hair loss treatments, plus tooth gems. Book with Tara through her site.',url:'https://www.thehausofbotanica.com/hair',ig:'https://www.instagram.com/thehausofbotanica/'},
   {n:'Yayah Designs',a:'',area:'Santa Cruz',kind:'Design',s:'Design by Yayah.',about:'A Santa Cruz designer and longtime Woodhouse collaborator. See the work at yayahdesigns.com.',url:'https://yayahdesigns.com',ig:'https://www.instagram.com/yayahdesigns/'},
   {n:'Gut Designs',a:'511 River St',area:'River St',kind:'Design',s:'Branding, painting, illustration and product design.',about:'A design studio working across branding, painting, illustration, product design and publishing.',url:'https://www.gutdesigns.com',ig:'https://www.instagram.com/gutdesigns/'},
+  {n:'Cienna Newett',a:'',area:'Day 2 Design · Bay Area',kind:'Brand & motion design',s:'Brand identity, motion and 3D for founders and small businesses.',about:'A brand and motion designer whose end credits have run on more than 300 Warner Bros. Animation episodes. Through her studio, Day 2 Design, she builds brand identities, logos and packaging, launch animations, 3D product renders, and Framer and Shopify sites for founders and small businesses, often in focused three week brand sprints. She also leads hands-on creative workshops for creatives and small business owners.',url:'https://ciennanewett.com',ig:'https://www.instagram.com/2day.day2/'},
   {n:'Imprint Productions',a:'511 River St',area:'River St',kind:'Records & apparel',s:'Hip-hop record releases, production, apparel and accessories.',about:'DJ Kraeon\'s company, rooted in hip-hop. Imprint Productions puts out record releases for hip-hop artists and offers music production, plus apparel and accessories for artists, crews and brands who want their name on something real.',ig:'https://www.instagram.com/djkraeon/'},
   {n:'Living Swell Kombucha',a:'',area:'Santa Cruz',kind:'Kombucha',s:'Farm to bottle kombucha, brewed in small batches.',about:'Small batch kombucha started in 2021 by Santa Cruz moms Sophie Slosberg and Summer Torrez. It is 100% kombucha, made with local, organic fruit and herbs, and you will find it at local farmers markets and on tap around town.',url:'https://livingswellkombucha.com'}
  ],
@@ -2230,7 +2239,7 @@ const row=p=>`<li><button type="button" data-place="${reg(p)}"><b>${esc(p.n)}</b
 const pg=document.getElementById('vzPartners');
 if(pg)pg.innerHTML=P.partners.map(p=>Object.assign(p,{partner:true})).map((p,i)=>`<button type="button" class="vz-partner" data-place="${reg(p)}">
   <span class="vz-pn">${String(i+1).padStart(2,'0')}</span><span class="chip warm">${esc(p.kind||'Partner')}</span>
-  <b>${esc(p.n)}</b><small>${esc(p.s||'')}</small>${p.a?`<span class="vz-paddr">${esc(p.a)}</span>`:''}<em>More +</em></button>`).join('');
+  <b data-nowidow-skip>${esc(p.n)}</b><small>${esc(p.s||'')}</small>${p.a?`<span class="vz-paddr">${esc(p.a)}</span>`:''}<em>More +</em></button>`).join('');
 /* beer trail */
 const bt=document.getElementById('vzBeer');
 if(bt){const half=Math.ceil(P.beer.length/2);const cols=[P.beer.slice(0,1),P.beer.slice(1)];
